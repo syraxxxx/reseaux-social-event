@@ -1,0 +1,47 @@
+div.row{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FCFDFF;
+    div.col{
+        height: 100vh;
+    }
+    overflow-x: hidden;
+
+    div.right{
+        background-image: url("../../assets/image_processing20200224-25163-ji2lr7\ 1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+    }
+
+    div.left{
+        display: flex;
+        z-index: 1;
+        img.curve{
+            height: 100vh;
+        }
+        div.content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 67px;
+            width: 400px;
+            background-color: #191468;
+            div.header{
+                color: white;
+                small{
+                    position: relative;
+                    bottom: 15px;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+}
+
+form.form{
+    position: relative;
+    bottom: 60px;
+    width: fit-content;
+}

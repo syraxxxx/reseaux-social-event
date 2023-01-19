@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="left">
+        <div class="content">
+            <div class="header">
+                <img src="../../../assets/logo.png" alt="">
+                <div>
+                    <small>Garglass repasse garglass culassse</small>
+                </div>
+            </div>
+
+            <form class="form" [formGroup]="form" #formRef="ngForm" (submit)="login()">
+                <label class="form-control">
+                    <p>Mail</p>
+                    <input class="input" placeholder="exemple@gmail.com" type="text" formControlName="mail"
+                        [ngStyle]="{'border-color': form.controls['mail'].hasError('required') && formRef.submitted ? 'red' : 'white' }">
+                </label>
+                <label class="form-control">
+                    <p>Mot de passe</p>
+                    <input class="input" placeholder="exemplepass" type="password"
+                        formControlName="mot_de_passe"
+                        [ngStyle]="{'border-color': form.controls['mot_de_passe'].hasError('required') && formRef.submitted ? 'red' : 'white' }">
+                </label>
+                <div class="form-control" style="margin-top: 40px;">
+                    <button class="button outline-white" type="submit">Login</button>
+                    <p style="text-align: center; margin-top: 20px; color:rgb(255, 52, 52)">{{errorMessage}}</p>
+                </div>
+
+                <div class="form-control" style="margin-top: 20px; opacity: 0.3; text-align: center;">
+                    <a href="/" style="text-decoration: none; color: white">Pas encore inscrit?</a>
+                </div>
+            </form>
+
+            <small style="color: white; opacity: 0.5;">
+                Copyright - Princia - Sitraka
+            </small>
+        </div>
+        <img src="../assets/curve.svg" alt="" class="curve">
+    </div>
+    <div class="right"></div>
+</div>
