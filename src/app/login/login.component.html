@@ -1,40 +1,102 @@
-<div class="row">
-    <div class="left">
-        <div class="content">
-            <div class="header">
-                <img src="../../../assets/logo.png" alt="">
-                <div>
-                    <small>Garglass repasse garglass culassse</small>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
 
-            <form class="form" [formGroup]="form" #formRef="ngForm" (submit)="login()">
-                <label class="form-control">
-                    <p>Mail</p>
-                    <input class="input" placeholder="exemple@gmail.com" type="text" formControlName="mail"
-                        [ngStyle]="{'border-color': form.controls['mail'].hasError('required') && formRef.submitted ? 'red' : 'white' }">
-                </label>
-                <label class="form-control">
-                    <p>Mot de passe</p>
-                    <input class="input" placeholder="exemplepass" type="password"
-                        formControlName="mot_de_passe"
-                        [ngStyle]="{'border-color': form.controls['mot_de_passe'].hasError('required') && formRef.submitted ? 'red' : 'white' }">
-                </label>
-                <div class="form-control" style="margin-top: 40px;">
-                    <button class="button outline-white" type="submit">Login</button>
-                    <p style="text-align: center; margin-top: 20px; color:rgb(255, 52, 52)">{{errorMessage}}</p>
-                </div>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
+		<meta name="description" content="Gambolthemes">
+		<meta name="author" content="Gambolthemes">
+		<title>Goeveni - Event Sharing Social Network Html Template</title>
+		
+	</head>
 
-                <div class="form-control" style="margin-top: 20px; opacity: 0.3; text-align: center;">
-                    <a href="/" style="text-decoration: none; color: white">Pas encore inscrit?</a>
-                </div>
-            </form>
-
-            <small style="color: white; opacity: 0.5;">
-                Copyright - Princia - Sitraka
-            </small>
-        </div>
-        <img src="../assets/curve.svg" alt="" class="curve">
-    </div>
-    <div class="right"></div>
-</div>
+	<body class="body-bg">				
+		<!-- Body Start -->	
+		<main class="register-mp">	
+			<div class="main-section">
+				<div class="container">					
+					<div class="row justify-content-md-center">
+						<div class="col-md-10">
+							<div class="login-register-bg">
+								<div class="row no-gutters">
+									<div class="col-lg-6">
+										<div class="lg-left">
+											<div class="lg-logo">
+												<a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
+											</div>
+											<div class="lr-text">
+												<h2>Login Now</h2>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum blandit felis a hendrerit.</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="lr-right">
+											<div class="social-logins">
+												<button class="social-f-btn"><i class="fab fa-facebook-f"></i>Continue with facebook</button>
+												<button class="social-g-btn"><i class="fab fa-google"></i>Continue with Google</button>
+											</div>
+											<div class="or">Or</div>
+											<div class="login-register-form">
+												<form>
+													<div class="form-group">									
+														<input class="form-input h_50" type="email" placeholder="Type Email or Phone Number">
+													</div>
+													<div class="form-group">									
+														<input class="form-input h_50" type="password" placeholder="Password">
+													</div>
+													<button class="login-btn" type="submit">Login Now</button>
+												</form>
+												<a href="#" class="forgot-link">Forgot Password?</a>
+												<div class="regstr-link">Don’t have an account? <a href="register.html">Register Now</a></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>							
+					</div>										
+										
+				</div>
+			</div>
+		</main>
+		<!-- Body End -->			
+		<!-- Footer Start -->
+		<footer class="footer-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-12">
+						<div class="footer-left">
+							<ul>
+								<li><a href="privacy_policy.html">Privacy</a></li>
+								<li><a href="term_conditions.html">Term and Conditions</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="contact_us.html">Contact Us</a></li>							
+							</ul>
+						</div>
+					</div>					
+					<div class="col-lg-6 col-md-12">
+						<div class="footer-right">
+							<ul class="copyright-text">
+								<li><a href="index.html"><img src="images/logo-2.svg" alt=""></a></li>
+								<li><div class="ftr-1"><i class="far fa-copyright"></i> 2022 Goeveni by <a href="https://themeforest.net/user/gambolthemes">Gambolthemes</a>. All Rights Reserved.</div></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Footer End -->			
+		<!-- Scripts js -->	
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+		<script src="vendor/OwlCarousel/owl.carousel.js"></script>	
+		<script src="js/datepicker.min.js"></script>
+		<script src="js/i18n/datepicker.en.js"></script>
+		<script src="js/custom.js"></script>					
+		
+	</body>
+	
+</html>

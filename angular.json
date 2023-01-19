@@ -36,7 +36,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.6.0.min.js",
+              "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/vendor/bootstrap-select/js/bootstrap-select.min.js",
+              "src/assets/vendor/OwlCarousel/owl.carousel.js",
+              "src/assets/js/datepicker.min.js",
+              "src/assets/js/i18n/datepicker.en.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
