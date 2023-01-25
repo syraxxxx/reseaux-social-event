@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    AccueilComponent
+    AccueilComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

@@ -4360,7 +4360,7 @@ display: block;
 .view-hover:hover {
 	color: #313131 !important;
 	background: #e8f7f7 !important;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 }
 
 .alrspndpple {
@@ -5883,7 +5883,7 @@ display: block;
 .upload-cover .cover-img-btn [type="file"] + label {
 	color: #313131;
     background: #fff;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 	border-radius: 5px;
 	cursor: pointer;
 	display: inline-block;
@@ -7399,7 +7399,7 @@ display: block;
 .upload-profile-cover .cover-img-btn [type="file"] + label {
 	color: #313131;
     background: #fff;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 	border-radius: 5px;
 	cursor: pointer;
 	display: inline-block;
@@ -7416,7 +7416,7 @@ display: block;
 
 .upload-profile-cover .cover-img-btn [type="file"] + label:hover {
 	background: #ff7555;
-	Border: 1px solid #ff7555;
+	border: 1px solid #ff7555;
 	color: #fff;
 }
 
@@ -7459,7 +7459,7 @@ display: block;
 .avatar-img-btn [type="file"] + label {
     color: #313131;
     background: #fff;
-    Border: 1px solid #bbb;
+    border: 1px solid #bbb;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
@@ -7609,14 +7609,14 @@ display: block;
 	font-weight: 400;
     background: #fff !important;
     border-radius: 5px;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 }
 
 .co-main-btn:hover {
 	color: #313131 !important;
 	background: #e8f7f7 !important;
 	border-radius: 5px;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 }
 
 .dash-tabs-block {
@@ -8315,7 +8315,7 @@ display: block;
     color: #313131;
     background: #fff !important;
     border-radius: 3px;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
     padding: 5px 15px;
     font-size: 13px;
 	min-width: 87px;
@@ -8325,7 +8325,7 @@ display: block;
     color: #313131 !important;
 	background: #e8f7f7 !important;
 	border-radius: 3px;
-    Border: 1px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 }
 
 

@@ -1,50 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/css/responsive.css";
-@import "assets/css/bootstrap.css";
+@import "assets/css/style.css";
+@import "assets/css/datepicker.min.css";
+
+@import "assets/vendor/bootstrap/css/bootstrap.min.css";
+@import "assets/vendor/feather-icons/feather.css";
+@import "assets/vendor/fontawesome-free/css/all.min.css";
+@import "assets/vendor/OwlCarousel/assets/owl.carousel.css";
+@import "assets/vendor/OwlCarousel/assets/owl.theme.default.min.css";
+@import "assets/vendor/bootstrap-select/css/bootstrap-select.min.css";
+
+
 *{
     padding: 0 ;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.form-control{
-    display: block;
-    color: white;
-    margin-top: 20px;
-    p{
-        margin-bottom: 10px;
-    }
-}
-
-input.input{
-    padding: 10px;
-    min-width: 350px;
-    border-radius: 5px;
-    box-shadow: none;
-    outline: none;
-}
-
-button.button{
-    padding: 10px;
-    border: none;
-    min-width: 370px;
-    outline: none;
-}
-
-button.outline-white{
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    transition: 300ms background-color, 300ms color;
-    cursor: pointer;
-}
-
-button.outline-white:hover{
-    background-color: white;
-    color: #191468;
-}
-
-button.outline-white:active{
-    box-shadow: 0px 0px 1px 2px #2288ff66;
 }

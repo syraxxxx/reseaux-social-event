@@ -3010,7 +3010,7 @@ border-all:
     - 5.9.0
     - 6.0.0-beta1
     - 6.0.0-beta3
-  label: Border All
+  label: border All
   search:
     terms: []
   styles:
@@ -3026,7 +3026,7 @@ border-none:
     - 5.9.0
     - 6.0.0-beta1
     - 6.0.0-beta3
-  label: Border None
+  label: border None
   search:
     terms: []
   styles:
@@ -3044,7 +3044,7 @@ border-top-left:
     - 5.9.0
     - 6.0.0-beta1
     - 6.0.0-beta3
-  label: Border top left
+  label: border top left
   search:
     terms: []
   styles:
