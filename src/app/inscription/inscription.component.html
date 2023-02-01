@@ -39,9 +39,12 @@
                 <div class="lr-right">
                   <h4>S'inscrire dans Goeveni</h4>
                   <div class="login-register-form">
-                    <form>
+                    <form (ngSubmit)="signIn()" [formGroup]="formInscription">
                       <div class="form-group">
-                        <input class="form-input h_50" type="text" placeholder="Full Name">
+                        <div class="row">
+                          <div class=""></div>
+                        </div>
+                        <input class="form-input h_50" formControlName="nom" type="text" placeholder="Full Name">
                       </div>
                       <div class="form-group">
                         <input class="form-input h_50" type="email" placeholder="Email Address">
