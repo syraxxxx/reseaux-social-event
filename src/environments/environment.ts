@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE: 'http://localhost:8080/api'
+  BASE: 'http://localhost:8080/reseauxsociaux'
 };
 
 /*

@@ -18,7 +18,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
