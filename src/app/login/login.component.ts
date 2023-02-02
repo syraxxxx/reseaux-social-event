@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
-import { LoginService } from '../security/login/login.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from '../security/login/login.service';
+import {UtilisateurService} from "../@core/services/utilisateur.service";
 
 @Component({
   selector: 'app-login',
@@ -16,18 +16,22 @@ export class LoginComponent implements OnInit {
   }
 
   public form = new FormGroup({
-    mail: new FormControl('', [Validators.required]),
-    mot_de_passe: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    mdp: new FormControl('', [Validators.required]),
   })
 
-  constructor(private http: HttpClient, private loginService: LoginService){}
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService,
+    private serviceUser: UtilisateurService
+  ) {
+  }
 
-  public login(){
-    if(this.form.valid){
-      this.http.post(`${environment.BASE}/personne/login`, this.form.value)
-      .subscribe({
+  public login() {
+    if (this.form.valid) {
+      this.serviceUser.login(this.form.value).subscribe({
         next: (res: any) => this.loginService.login(res.token),
-        error: (err: any) => this.errorMessage= err.error.message
+        error: (err: any) => this.errorMessage = err.error.message
       })
     }
   }
