@@ -37,14 +37,14 @@
               </div>
               <div class="col-lg-6">
                 <div class="lr-right">
-                  <h4>S'inscrire dans Goeveni</h4>
+                  <h4>S'inscrire sur Goeveni</h4>
                   <div class="login-register-form">
                     <form (ngSubmit)="signIn()" [formGroup]="formInscription">
                       <div class="form-group">
                         <div class="row">
-                          <div class=""></div>
+                          <div class="col-md-6"><input class="form-input h_50" formControlName="nom" type="text" placeholder="Nom"></div>
+                          <div class="col-md-6"><input class="form-input h_50" formControlName="nom" type="text" placeholder="Prenom"></div>
                         </div>
-                        <input class="form-input h_50" formControlName="nom" type="text" placeholder="Full Name">
                       </div>
                       <div class="form-group">
                         <input class="form-input h_50" type="email" placeholder="Email Address">
@@ -52,8 +52,17 @@
                       <div class="form-group">
                         <input class="form-input h_50" type="password" placeholder="Password">
                       </div>
+                      <div class="form-group">
+                        <input class="form-input h_50" type="password" placeholder="Telephone">
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6"><input class="form-input h_50" formControlName="nom" type="text" placeholder="Pays"></div>
+                          <div class="col-md-6"><input class="form-input h_50" formControlName="nom" type="text" placeholder="Ville"></div>
+                        </div>
+                      </div>
                       <div class="rgstr-dt-txt">
-                        En s'inscrivant , vous accepter les <a href="#">Termes</a>,et les <a href="#">Conditions d'utilisatons</a> Tu peux recevoir des mails de notre part de temps en temps.
+                        En s'inscrivant , vous accepter les <a href="#">Termes</a>,et les <a href="#">Conditions d'utilisatons</a> Tu peux recevoir des mails de notre part .
                       </div>
                       <button class="login-btn" type="submit">S'inscrire</button>
                       <div class="login-link">Tu n'as pas de compte ? <a routerLink="/login">Se connecter Maintenant</a></div>
