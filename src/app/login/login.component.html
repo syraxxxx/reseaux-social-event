@@ -39,12 +39,12 @@
 											</div>
 											<div class="or">Ou</div>
 											<div class="login-register-form">
-												<form>
+                        <form (ngSubmit)="login()" [formGroup]="form">
 													<div class="form-group">
 														<input class="form-input h_50" type="email" placeholder="Mail ou numero de téléphone">
 													</div>
 													<div class="form-group">
-														<input class="form-input h_50" type="password" placeholder="Mot de passe">
+														<input class="form-input h_50" type="mdp" placeholder="Mot de passe">
 													</div>
 													<button class="login-btn" type="submit">Se Connecter</button>
 												</form>
