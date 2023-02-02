@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UtilisateurService} from "../@core/services/utilisateur.service";
 import Swal from 'sweetalert2';
+import {CountryService} from "../@core/services/country.service";
 
 
 @Component({
@@ -23,11 +24,13 @@ export class InscriptionComponent implements OnInit {
   });
 
   constructor(
-    private serviceUser: UtilisateurService
+    private serviceUser: UtilisateurService,
+    private serviceCountry : CountryService
   ) {
   }
 
   ngOnInit(): void {
+    this.getListCountry();
   }
 
   signIn() {
@@ -41,6 +44,11 @@ export class InscriptionComponent implements OnInit {
       },
       error: (erreur) => this.errorMessage = erreur.error.message
     });
+  }
+  getListCountry(){
+    this.serviceCountry.getCountries().subscribe(res =>{
+      console.log(res)
+    })
   }
 
 }
