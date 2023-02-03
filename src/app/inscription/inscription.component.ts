@@ -30,12 +30,14 @@ export class InscriptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getListCountry();
+    // this.getListCountry();
   }
 
   signIn() {
+    console.log(this.formInscription.value)
     this.serviceUser.create(this.formInscription.value).subscribe({
       next: (response) => {
+        console.log(response);
         Swal.fire({
           text: `${this.formInscription.value.nom}, votre inscription a été effectuée avec succès`, icon: 'success',
           showConfirmButton: false,
