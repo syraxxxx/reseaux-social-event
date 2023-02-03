@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class UtilisateurService {
 
-  private apiEndPoint = `${environment.BASE}/user`;
+  private apiEndPoint = `${environment.BASE}/User`;
 
   constructor(private http: HttpClient) {
   }

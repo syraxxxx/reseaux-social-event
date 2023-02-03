@@ -9,6 +9,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { EventComponent } from './pages/event/event.component';
+import { NewEventComponent } from './pages/event/new-event/new-event.component';
+import { DetailsEventComponent } from './pages/event/details-event/details-event.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { EventComponent } from './pages/event/event.component';
     MessagesComponent,
     DiscussionComponent,
     SettingsComponent,
-    EventComponent
+    EventComponent,
+    NewEventComponent,
+    DetailsEventComponent
   ],
   imports: [
     CommonModule,
