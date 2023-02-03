@@ -4,14 +4,12 @@
       <div class="col-lg-12">
         <ol class="title-bar-text">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Add New Event</li>
+          <li aria-current="page" class="breadcrumb-item active">Add New Event</li>
         </ol>
       </div>
     </div>
   </div>
-</div>
-<!-- Title Bar End -->
-<!-- Body Start -->
+</div><!-- Title Bar End --><!-- Body Start -->
 <main class="goeveni-mp">
   <div class="main-section">
     <div class="container">
@@ -21,7 +19,7 @@
             <div class="add-event-cover-image">
               <div class="upload-cover">
                 <div class="cover-img-btn">
-                  <input type="file" id="cover-img">
+                  <input id="cover-img" type="file">
                   <label for="cover-img"><i class="feather-image me-3"></i>Upload Cover Image</label>
                 </div>
                 <p>We recommended using a photo that is 1200x628 pixels.</p>
@@ -31,26 +29,25 @@
           <div class="add-event-tabs">
             <ul class="nav nav-pills nav-fill p-2 goeveni-tab mt-4 mt-xl-0" id="mainTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="online-tab" data-bs-toggle="tab" href="#online" role="tab" aria-controls="online" aria-selected="true"><i class="feather-globe"></i>Online</a>
+                <a aria-controls="online" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#online" id="online-tab" role="tab"><i class="feather-globe"></i>Online</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="in-person-tab" data-bs-toggle="tab" href="#in-person" role="tab" aria-controls="in-person" aria-selected="false"><i class="feather-users"></i>In Person</a>
+                <a aria-controls="in-person" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#in-person" id="in-person-tab" role="tab"><i class="feather-users"></i>In Person</a>
               </li>
             </ul>
             <div class="tab-content" id="mainTabContent">
-              <div class="tab-pane fade active show" id="online" role="tabpanel" aria-labelledby="online-tab">
+              <div aria-labelledby="online-tab" class="tab-pane fade active show" id="online" role="tabpanel">
                 <div class="event-type-dt main-form mt-4">
                   <h5 class="title-b">Event Type</h5>
                   <ul class="nav event-type-tab" id="subTab" role="tablist">
                     <li class="nav-item pe-2" role="presentation">
-                      <a class="nav-link active" id="general-tab" data-bs-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">
+                      <a aria-controls="general" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#general" id="general-tab" role="tab">
                         <span class="etab-icon"><i class="feather-globe"></i></span>
                         <span class="etab-title">General</span>
-                        <span class="etab-des">Add event details, a cover photo and choose your audience.</span>
-                      </a>
+                        <span class="etab-des">Add event details, a cover photo and choose your audience.</span> </a>
                     </li>
                     <li class="nav-item ps-2" role="presentation">
-                      <a class="nav-link" id="class-tab" data-bs-toggle="tab" href="#class" role="tab" aria-controls="class" aria-selected="false">
+                      <a aria-controls="class" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#class" id="class-tab" role="tab">
                         <span class="etab-icon"><i class="feather-airplay"></i></span>
                         <span class="etab-title">Class</span>
                         <span class="etab-des">Create, teach and get paid for your class, all in one place, without switching tools. </span>
@@ -58,22 +55,22 @@
                     </li>
                   </ul>
                   <div class="tab-content" id="subTabContent">
-                    <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
+                    <div aria-labelledby="general-tab" class="tab-pane fade active show" id="general" role="tabpanel">
                       <div class="form-group mt-4">
                         <label class="form-label">Event Name*</label>
-                        <input class="form-input" type="text" placeholder="Enter Event name">
+                        <input class="form-input" placeholder="Enter Event name" type="text">
                       </div>
                       <div class="row">
                         <div class="col-lg-6 col-md-12">
                           <div class="form-group mt-3">
                             <label class="form-label">Start Date*</label>
-                            <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                            <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                           </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
                           <div class="form-group mt-3 clock-icon">
                             <label class="form-label">Start Time*</label>
-                            <select class="selectpicker" data-size="5" data-live-search="true">
+                            <select class="selectpicker" data-live-search="true" data-size="5">
                               <option value="">12:00 AM</option>
                               <option value="">12:15 AM</option>
                               <option value="">12:30 AM</option>
@@ -114,7 +111,7 @@
                               <option value="">09:15 AM</option>
                               <option value="">09:30 AM</option>
                               <option value="">09:45 AM</option>
-                              <option value="" selected>10:00 AM</option>
+                              <option selected value="">10:00 AM</option>
                               <option value="">10:15 AM</option>
                               <option value="">10:30 AM</option>
                               <option value="">10:45 AM</option>
@@ -179,9 +176,8 @@
                               <div class="form-group mt-4">
                                 <div class="d-flex align-items-start">
                                   <label class="btn-switch m-0 me-3">
-                                    <input type="checkbox" class="" id="end-datetime" value="">
-                                    <span class="checkbox-slider"></span>
-                                  </label>
+                                    <input class="" id="end-datetime" type="checkbox" value="">
+                                    <span class="checkbox-slider"></span> </label>
                                   <div class="d-flex flex-column">
                                     <label class="color-black mb-1">End date and time</label>
                                   </div>
@@ -191,13 +187,13 @@
                                     <div class="col-lg-6 col-md-12">
                                       <div class="form-group mt-2">
                                         <label class="form-label">End Date*</label>
-                                        <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                                        <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                                       </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12">
                                       <div class="form-group mt-2 clock-icon">
                                         <label class="form-label">End Time*</label>
-                                        <select class="selectpicker" data-size="5" data-live-search="true">
+                                        <select class="selectpicker" data-live-search="true" data-size="5">
                                           <option value="">12:00 AM</option>
                                           <option value="">12:15 AM</option>
                                           <option value="">12:30 AM</option>
@@ -238,7 +234,7 @@
                                           <option value="">09:15 AM</option>
                                           <option value="">09:30 AM</option>
                                           <option value="">09:45 AM</option>
-                                          <option value="" selected>10:00 AM</option>
+                                          <option selected value="">10:00 AM</option>
                                           <option value="">10:15 AM</option>
                                           <option value="">10:30 AM</option>
                                           <option value="">10:45 AM</option>
@@ -306,10 +302,10 @@
                       </div>
                       <div class="form-group select-icon mt-4">
                         <label class="form-label">Privacy*</label>
-                        <select class="selectpicker" title="Privacy" data-width="100%" data-size="5">
-                          <option value="private" data-icon="feather-lock">Private</option>
-                          <option value="public" data-icon="feather-globe">Public</option>
-                          <option value="friends" data-icon="feather-users">Friends</option>
+                        <select class="selectpicker" data-size="5" data-width="100%" title="Privacy">
+                          <option data-icon="feather-lock" value="private">Private</option>
+                          <option data-icon="feather-globe" value="public">Public</option>
+                          <option data-icon="feather-users" value="friends">Friends</option>
                         </select>
                       </div>
                       <div class="location-content mt-4">
@@ -326,9 +322,8 @@
                             </div>
                             <div class="ms-auto">
                               <label class="btn-switch m-0 me-3">
-                                <input type="radio" name ="online-location-switch" class="" id="goeveni-live-switch" value="goeveni-live">
-                                <span class="checkbox-slider"></span>
-                              </label>
+                                <input class="" id="goeveni-live-switch" name="online-location-switch" type="radio" value="goeveni-live">
+                                <span class="checkbox-slider"></span> </label>
                             </div>
                           </div>
                           <div class="location-wrapper" data-method="goeveni-live" style="display:none;"></div>
@@ -342,9 +337,8 @@
                             </div>
                             <div class="ms-auto">
                               <label class="btn-switch m-0 me-3">
-                                <input type="radio" name="online-location-switch" class="" id="external-link-switch" value="external-link">
-                                <span class="checkbox-slider"></span>
-                              </label>
+                                <input class="" id="external-link-switch" name="online-location-switch" type="radio" value="external-link">
+                                <span class="checkbox-slider"></span> </label>
                             </div>
                           </div>
                           <div class="location-wrapper mb-4" data-method="external-link" style="display:none;">
@@ -352,7 +346,7 @@
                               <div class="col-lg-12 col-md-12">
                                 <div class="form-group mt-2">
                                   <label class="form-label">Event Link*</label>
-                                  <input class="form-input" type="text" placeholder="https://">
+                                  <input class="form-input" placeholder="https://" type="text">
                                 </div>
                               </div>
                             </div>
@@ -367,9 +361,8 @@
                             </div>
                             <div class="ms-auto">
                               <label class="btn-switch m-0 me-3">
-                                <input type="radio" name ="online-location-switch" class="" id="other-link-switch" value="other-link">
-                                <span class="checkbox-slider"></span>
-                              </label>
+                                <input class="" id="other-link-switch" name="online-location-switch" type="radio" value="other-link">
+                                <span class="checkbox-slider"></span> </label>
                             </div>
                           </div>
                           <div class="location-wrapper" data-method="other-link" style="display:none;"></div>
@@ -384,7 +377,7 @@
                         <h4 class="title-b mb-0 fs-5"><i class="feather-settings me-2"></i>Event Setting</h4>
                         <div class="form-group">
                           <label class="form-label">Co-hosts*</label>
-                          <input class="form-input" type="text" placeholder="Add friends">
+                          <input class="form-input" placeholder="Add friends" type="text">
                           <span class="small-des">Co-hosts can accept or decline once you've published your event.</span>
                         </div>
                         <div class="pending-list">
@@ -394,13 +387,13 @@
                           <div class="list-members">
                             <div class="media">
                               <div class="item-img">
-                                <img src="images/find-peoples/user-2.jpg" alt="">
+                                <img alt="" src="images/find-peoples/user-2.jpg">
                               </div>
                               <div class="media-body">
-                                <a href="#" class="item-title">Lily Zaman</a>
+                                <a class="item-title" href="#">Lily Zaman</a>
                               </div>
                               <div class="btn-area">
-                                <a href="#" class="item-btn" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Remove"><i class="feather-x"></i></a>
+                                <a aria-label="Remove" class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#"><i class="feather-x"></i></a>
                               </div>
                             </div>
                           </div>
@@ -412,41 +405,39 @@
                         <div class="d-flex align-items-center w-100 mt-4">
                           <h6 class="mb-0">Show guest list</h6>
                           <div class="ms-auto">
-                            <label class="btn-switch m-0">
-                              <input type="checkbox" class="">
-                              <span class="checkbox-slider"></span>
-                            </label>
+                            <label class="btn-switch m-0"> <input class="" type="checkbox">
+                              <span class="checkbox-slider"></span> </label>
                           </div>
                         </div>
                       </div>
                       <button class="main-btn btn-hover h-40 w-100 mt-37 mb-3">Create Event</button>
                     </div>
-                    <div class="tab-pane fade" id="class" role="tabpanel" aria-labelledby="class-tab">
+                    <div aria-labelledby="class-tab" class="tab-pane fade" id="class" role="tabpanel">
                       <ul class="nav nav-pills nav-fill p-2 goeveni-tab mt-4" id="subTab2" role="tablist">
                         <li class="nav-item">
-                          <a class="nav-link active" id="online-free-tab" data-bs-toggle="tab" href="#online-free" role="tab" aria-controls="online-free" aria-selected="true"><i class="feather-calendar"></i>Free</a>
+                          <a aria-controls="online-free" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#online-free" id="online-free-tab" role="tab"><i class="feather-calendar"></i>Free</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" id="online-paid-tab" data-bs-toggle="tab" href="#online-paid" role="tab" aria-controls="online-paid" aria-selected="false"><i class="feather-credit-card"></i>Paid</a>
+                          <a aria-controls="online-paid" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#online-paid" id="online-paid-tab" role="tab"><i class="feather-credit-card"></i>Paid</a>
                         </li>
                       </ul>
                       <div class="tab-content" id="subTabContent2">
-                        <div class="tab-pane fade active show" id="online-free" role="tabpanel" aria-labelledby="online-free-tab">
+                        <div aria-labelledby="online-free-tab" class="tab-pane fade active show" id="online-free" role="tabpanel">
                           <div class="form-group mt-4">
                             <label class="form-label">Class Name*</label>
-                            <input class="form-input" type="text" placeholder="Enter Class name">
+                            <input class="form-input" placeholder="Enter Class name" type="text">
                           </div>
                           <div class="row">
                             <div class="col-lg-6 col-md-12">
                               <div class="form-group mt-3">
                                 <label class="form-label">Start Date*</label>
-                                <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                                <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                               </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                               <div class="form-group mt-3 clock-icon">
                                 <label class="form-label">Start Time*</label>
-                                <select class="selectpicker" data-size="5" data-live-search="true">
+                                <select class="selectpicker" data-live-search="true" data-size="5">
                                   <option value="">12:00 AM</option>
                                   <option value="">12:15 AM</option>
                                   <option value="">12:30 AM</option>
@@ -487,7 +478,7 @@
                                   <option value="">09:15 AM</option>
                                   <option value="">09:30 AM</option>
                                   <option value="">09:45 AM</option>
-                                  <option value="" selected>10:00 AM</option>
+                                  <option selected value="">10:00 AM</option>
                                   <option value="">10:15 AM</option>
                                   <option value="">10:30 AM</option>
                                   <option value="">10:45 AM</option>
@@ -549,7 +540,7 @@
                             <div class="col-lg-12 col-md-12">
                               <div class="form-group mt-4">
                                 <label class="form-label">Duration*</label>
-                                <select class="selectpicker" data-width="100%" data-size="5">
+                                <select class="selectpicker" data-size="5" data-width="100%">
                                   <option value="1">30 Minutes</option>
                                   <option value="2">1 Hour</option>
                                   <option value="3">90 Minutes</option>
@@ -567,15 +558,15 @@
                               </div>
                               <div class="form-group select-icon mt-4">
                                 <label class="form-label">Privacy*</label>
-                                <select class="selectpicker" title="Privacy" data-width="100%" data-size="5">
-                                  <option value="private" data-icon="feather-lock">Private</option>
-                                  <option value="public" data-icon="feather-globe">Public</option>
-                                  <option value="friends" data-icon="feather-users">Friends</option>
+                                <select class="selectpicker" data-size="5" data-width="100%" title="Privacy">
+                                  <option data-icon="feather-lock" value="private">Private</option>
+                                  <option data-icon="feather-globe" value="public">Public</option>
+                                  <option data-icon="feather-users" value="friends">Friends</option>
                                 </select>
                               </div>
                               <div class="form-group mt-4">
                                 <label class="form-label">Category*</label>
-                                <select class="selectpicker" data-width="100%" data-size="5">
+                                <select class="selectpicker" data-size="5" data-width="100%">
                                   <option value="cate-1">Arts & crafts classes</option>
                                   <option value="cate-2">Fashion & beauty classes</option>
                                   <option value="cate-3">Religion & spirituality classes</option>
@@ -615,9 +606,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-3">
-                                        <input type="radio" name ="online-location-switch-1" class="" id="goeveni-live-switch-1" value="goeveni-live-1">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="goeveni-live-switch-1" name="online-location-switch-1" type="radio" value="goeveni-live-1">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-1" data-method="goeveni-live-1" style="display:none;"></div>
@@ -631,9 +621,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-3">
-                                        <input type="radio" name="online-location-switch-1" class="" id="external-link-switch-1" value="external-link-1">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="external-link-switch-1" name="online-location-switch-1" type="radio" value="external-link-1">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-1 mb-4" data-method="external-link-1" style="display:none;">
@@ -641,7 +630,7 @@
                                       <div class="col-lg-12 col-md-12">
                                         <div class="form-group mt-2">
                                           <label class="form-label">Event Link*</label>
-                                          <input class="form-input" type="text" placeholder="https://">
+                                          <input class="form-input" placeholder="https://" type="text">
                                           <span class="small-des">This will add a button to the event page for your class.</span>
                                         </div>
                                       </div>
@@ -657,9 +646,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-3">
-                                        <input type="radio" name ="online-location-switch-1" class="" id="other-link-switch-1" value="other-link-1">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="other-link-switch-1" name="online-location-switch-1" type="radio" value="other-link-1">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-1" data-method="other-link-1" style="display:none;"></div>
@@ -677,19 +665,15 @@
                                 <div class="d-flex align-items-center w-100 mt-4">
                                   <h6 class="mb-0">Show guest list</h6>
                                   <div class="ms-auto">
-                                    <label class="btn-switch m-0">
-                                      <input type="checkbox" class="">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                    <label class="btn-switch m-0"> <input class="" type="checkbox">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                                 <div class="d-flex align-items-center w-100 mt-4">
                                   <h6 class="mb-0">Only admins can post in event</h6>
                                   <div class="ms-auto">
-                                    <label class="btn-switch m-0">
-                                      <input type="checkbox" class="">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                    <label class="btn-switch m-0"> <input class="" type="checkbox">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                               </div>
@@ -697,22 +681,22 @@
                             </div>
                           </div>
                         </div>
-                        <div class="tab-pane fade" id="online-paid" role="tabpanel" aria-labelledby="online-paid-tab">
+                        <div aria-labelledby="online-paid-tab" class="tab-pane fade" id="online-paid" role="tabpanel">
                           <div class="form-group mt-4">
                             <label class="form-label">Class Name*</label>
-                            <input class="form-input" type="text" placeholder="Enter Class name">
+                            <input class="form-input" placeholder="Enter Class name" type="text">
                           </div>
                           <div class="row">
                             <div class="col-lg-6 col-md-12">
                               <div class="form-group mt-3">
                                 <label class="form-label">Start Date*</label>
-                                <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                                <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                               </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                               <div class="form-group mt-3 clock-icon">
                                 <label class="form-label">Start Time*</label>
-                                <select class="selectpicker" data-size="5" data-live-search="true">
+                                <select class="selectpicker" data-live-search="true" data-size="5">
                                   <option value="">12:00 AM</option>
                                   <option value="">12:15 AM</option>
                                   <option value="">12:30 AM</option>
@@ -753,7 +737,7 @@
                                   <option value="">09:15 AM</option>
                                   <option value="">09:30 AM</option>
                                   <option value="">09:45 AM</option>
-                                  <option value="" selected>10:00 AM</option>
+                                  <option selected value="">10:00 AM</option>
                                   <option value="">10:15 AM</option>
                                   <option value="">10:30 AM</option>
                                   <option value="">10:45 AM</option>
@@ -815,7 +799,7 @@
                             <div class="col-lg-12 col-md-12">
                               <div class="form-group mt-4">
                                 <label class="form-label">Duration*</label>
-                                <select class="selectpicker" data-width="100%" data-size="5">
+                                <select class="selectpicker" data-size="5" data-width="100%">
                                   <option value="1">30 Minutes</option>
                                   <option value="2">1 Hour</option>
                                   <option value="3">90 Minutes</option>
@@ -834,23 +818,22 @@
                               <div class="form-group mt-4">
                                 <label class="form-label">Location*</label>
                                 <div class="position-relative">
-                                  <input class="form-input" type="text" placeholder="Include a place or address">
+                                  <input class="form-input" placeholder="Include a place or address" type="text">
                                   <span class="icon-158"><i class="feather-map-pin"></i></span>
                                 </div>
                                 <span class="small-des">The location you enter will set the time zone and help people find your online event (India Standard Time).</span>
                               </div>
                               <div class="form-group select-icon mt-4">
                                 <label class="form-label">Privacy*</label>
-                                <select class="selectpicker" title="Privacy" data-width="100%" data-size="5" disabled>
-                                  <option value="private" data-icon="feather-lock">Private</option>
-                                  <option value="public" data-icon="feather-globe" selected="">Public</option>
-                                  <option value="friends" data-icon="feather-users">Friends</option>
-                                </select>
-                                <span class="small-des">Anyone on or off Goeveni</span>
+                                <select class="selectpicker" data-size="5" data-width="100%" disabled title="Privacy">
+                                  <option data-icon="feather-lock" value="private">Private</option>
+                                  <option data-icon="feather-globe" selected="" value="public">Public</option>
+                                  <option data-icon="feather-users" value="friends">Friends</option>
+                                </select> <span class="small-des">Anyone on or off Goeveni</span>
                               </div>
                               <div class="form-group mt-4">
                                 <label class="form-label">Category*</label>
-                                <select class="selectpicker" data-width="100%" data-size="5">
+                                <select class="selectpicker" data-size="5" data-width="100%">
                                   <option value="cate-1">Arts & crafts classes</option>
                                   <option value="cate-2">Fashion & beauty classes</option>
                                   <option value="cate-3">Religion & spirituality classes</option>
@@ -871,7 +854,7 @@
                                 <p class="des-b mb-0">Earn money, connect with your students and host your class on Facebook.</p>
                                 <div class="form-group mt-4">
                                   <label class="form-label">Enter a price*</label>
-                                  <input class="form-input" type="text" placeholder="0">
+                                  <input class="form-input" placeholder="0" type="text">
                                   <span class="small-des">This is what guests will pay to attend the event.</span>
                                 </div>
                                 <div class="d-flex w-100 align-items-start mt-4">
@@ -881,9 +864,8 @@
                                   </div>
                                   <div class="ms-auto">
                                     <label class="btn-switch m-0 me-0">
-                                      <input type="checkbox" class="" id="limit-capacity-switch" value="limit-capacity">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                      <input class="" id="limit-capacity-switch" type="checkbox" value="limit-capacity">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                                 <div class="limit-capacity-wrapper mb-4" style="display:none;">
@@ -891,7 +873,7 @@
                                     <div class="col-lg-12 col-md-12">
                                       <div class="form-group mt-3">
                                         <label class="form-label">Set a limited number of attendees*</label>
-                                        <input class="form-input" type="text" placeholder="">
+                                        <input class="form-input" placeholder="" type="text">
                                       </div>
                                     </div>
                                   </div>
@@ -921,9 +903,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-0">
-                                        <input type="radio" name ="online-location-switch-2" class="" id="goeveni-live-switch-2" value="goeveni-live-2">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="goeveni-live-switch-2" name="online-location-switch-2" type="radio" value="goeveni-live-2">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-2" data-method="goeveni-live-2" style="display:none;"></div>
@@ -937,9 +918,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-0">
-                                        <input type="radio" name="online-location-switch-2" class="" id="external-link-switch-2" value="external-link-2">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="external-link-switch-2" name="online-location-switch-2" type="radio" value="external-link-2">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-2 mb-4" data-method="external-link-2" style="display:none;">
@@ -947,7 +927,7 @@
                                       <div class="col-lg-12 col-md-12">
                                         <div class="form-group mt-2">
                                           <label class="form-label">Event Link*</label>
-                                          <input class="form-input" type="text" placeholder="https://">
+                                          <input class="form-input" placeholder="https://" type="text">
                                           <span class="small-des">This will add a button to the event page for your class.</span>
                                         </div>
                                       </div>
@@ -963,9 +943,8 @@
                                     </div>
                                     <div class="ms-auto">
                                       <label class="btn-switch m-0 me-0">
-                                        <input type="radio" name ="online-location-switch-2" class="" id="other-link-switch-2" value="other-link-2">
-                                        <span class="checkbox-slider"></span>
-                                      </label>
+                                        <input class="" id="other-link-switch-2" name="online-location-switch-2" type="radio" value="other-link-2">
+                                        <span class="checkbox-slider"></span> </label>
                                     </div>
                                   </div>
                                   <div class="location-wrapper-2" data-method="other-link-1" style="display:none;"></div>
@@ -983,28 +962,22 @@
                                 <div class="d-flex align-items-center w-100 mt-4">
                                   <h6 class="mb-0">Show guest list</h6>
                                   <div class="ms-auto">
-                                    <label class="btn-switch m-0">
-                                      <input type="checkbox" class="">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                    <label class="btn-switch m-0"> <input class="" type="checkbox">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                                 <div class="d-flex align-items-center w-100 mt-4">
                                   <h6 class="mb-0">Only admins can post in event</h6>
                                   <div class="ms-auto">
-                                    <label class="btn-switch m-0">
-                                      <input type="checkbox" class="">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                    <label class="btn-switch m-0"> <input class="" type="checkbox">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                                 <div class="d-flex align-items-center w-100 mt-4">
                                   <h6 class="mb-0">Let people ask you questions about this event over Messenger</h6>
                                   <div class="ms-auto">
-                                    <label class="btn-switch m-0">
-                                      <input type="checkbox" class="">
-                                      <span class="checkbox-slider"></span>
-                                    </label>
+                                    <label class="btn-switch m-0"> <input class="" type="checkbox">
+                                      <span class="checkbox-slider"></span> </label>
                                   </div>
                                 </div>
                               </div>
@@ -1017,23 +990,23 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="in-person" role="tabpanel" aria-labelledby="in-person-tab">
+              <div aria-labelledby="in-person-tab" class="tab-pane fade" id="in-person" role="tabpanel">
                 <div class="main-form">
                   <div class="form-group mt-4">
                     <label class="form-label">Event Name*</label>
-                    <input class="form-input" type="text" placeholder="Enter Event name">
+                    <input class="form-input" placeholder="Enter Event name" type="text">
                   </div>
                   <div class="row">
                     <div class="col-lg-6 col-md-12">
                       <div class="form-group mt-3">
                         <label class="form-label">Start Date*</label>
-                        <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                        <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                       <div class="form-group mt-3 clock-icon">
                         <label class="form-label">Start Time*</label>
-                        <select class="selectpicker" data-size="5" data-live-search="true">
+                        <select class="selectpicker" data-live-search="true" data-size="5">
                           <option value="">12:00 AM</option>
                           <option value="">12:15 AM</option>
                           <option value="">12:30 AM</option>
@@ -1074,7 +1047,7 @@
                           <option value="">09:15 AM</option>
                           <option value="">09:30 AM</option>
                           <option value="">09:45 AM</option>
-                          <option value="" selected>10:00 AM</option>
+                          <option selected value="">10:00 AM</option>
                           <option value="">10:15 AM</option>
                           <option value="">10:30 AM</option>
                           <option value="">10:45 AM</option>
@@ -1139,9 +1112,8 @@
                           <div class="form-group mt-4">
                             <div class="d-flex align-items-start">
                               <label class="btn-switch m-0 me-3">
-                                <input type="checkbox" class="" id="end-datetime-2" value="">
-                                <span class="checkbox-slider"></span>
-                              </label>
+                                <input class="" id="end-datetime-2" type="checkbox" value="">
+                                <span class="checkbox-slider"></span> </label>
                               <div class="d-flex flex-column">
                                 <label class="color-black mb-1">End date and time</label>
                               </div>
@@ -1151,13 +1123,13 @@
                                 <div class="col-lg-6 col-md-12">
                                   <div class="form-group mt-2">
                                     <label class="form-label">End Date*</label>
-                                    <input class="search-form-input datepicker-here" data-language='en' type="text" placeholder="Select Date">
+                                    <input class="search-form-input datepicker-here" data-language='en' placeholder="Select Date" type="text">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                   <div class="form-group mt-2 clock-icon">
                                     <label class="form-label">End Time*</label>
-                                    <select class="selectpicker" data-size="5" data-live-search="true">
+                                    <select class="selectpicker" data-live-search="true" data-size="5">
                                       <option value="">12:00 AM</option>
                                       <option value="">12:15 AM</option>
                                       <option value="">12:30 AM</option>
@@ -1198,7 +1170,7 @@
                                       <option value="">09:15 AM</option>
                                       <option value="">09:30 AM</option>
                                       <option value="">09:45 AM</option>
-                                      <option value="" selected>10:00 AM</option>
+                                      <option selected value="">10:00 AM</option>
                                       <option value="">10:15 AM</option>
                                       <option value="">10:30 AM</option>
                                       <option value="">10:45 AM</option>
@@ -1266,16 +1238,15 @@
                   </div>
                   <div class="form-group select-icon mt-4">
                     <label class="form-label">Privacy*</label>
-                    <select class="selectpicker" title="Privacy" data-width="100%" data-size="5" disabled>
-                      <option value="private" data-icon="feather-lock">Private</option>
-                      <option value="public" data-icon="feather-globe" selected>Public</option>
-                      <option value="friends" data-icon="feather-users">Friends</option>
-                    </select>
-                    <span class="small-des">Anyone on or off Goeveni</span>
+                    <select class="selectpicker" data-size="5" data-width="100%" disabled title="Privacy">
+                      <option data-icon="feather-lock" value="private">Private</option>
+                      <option data-icon="feather-globe" selected value="public">Public</option>
+                      <option data-icon="feather-users" value="friends">Friends</option>
+                    </select> <span class="small-des">Anyone on or off Goeveni</span>
                   </div>
                   <div class="form-group mt-4">
                     <label class="form-label">Category*</label>
-                    <select class="selectpicker" data-width="100%" data-size="5">
+                    <select class="selectpicker" data-size="5" data-width="100%">
                       <option value="">Visual arts</option>
                       <option value="">Social Issues</option>
                       <option value="">Comedy</option>
@@ -1303,7 +1274,7 @@
                   <div class="form-group mt-4">
                     <label class="form-label">Location*</label>
                     <div class="position-relative">
-                      <input class="form-input" type="text" placeholder="Include a place or address">
+                      <input class="form-input" placeholder="Include a place or address" type="text">
                       <span class="icon-158"><i class="feather-map-pin"></i></span>
                     </div>
                     <span class="small-des"><i class="feather-globe me-2"></i>India Standard Time (GMT+5:30)</span>
@@ -1315,14 +1286,14 @@
                   </div>
                   <div class="form-group mt-4">
                     <label class="form-label">Add ticket link*</label>
-                    <input class="form-input" type="text" placeholder="https://">
+                    <input class="form-input" placeholder="https://" type="text">
                     <span class="small-des">Add a link to your ticketing website</span>
                   </div>
                   <div class="event-setting-block mt-5">
                     <h4 class="title-b mb-0 fs-5"><i class="feather-settings me-2"></i>Event Setting</h4>
                     <div class="form-group">
                       <label class="form-label">Co-hosts*</label>
-                      <input class="form-input" type="text" placeholder="Add friends">
+                      <input class="form-input" placeholder="Add friends" type="text">
                       <span class="small-des">Co-hosts can accept or decline once you've published your event.</span>
                     </div>
                     <div class="pending-list">
@@ -1332,13 +1303,13 @@
                       <div class="list-members">
                         <div class="media">
                           <div class="item-img">
-                            <img src="images/find-peoples/user-2.jpg" alt="">
+                            <img alt="" src="images/find-peoples/user-2.jpg">
                           </div>
                           <div class="media-body">
-                            <a href="#" class="item-title">Lily Zaman</a>
+                            <a class="item-title" href="#">Lily Zaman</a>
                           </div>
                           <div class="btn-area">
-                            <a href="#" class="item-btn" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Remove"><i class="feather-x"></i></a>
+                            <a aria-label="Remove" class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#"><i class="feather-x"></i></a>
                           </div>
                         </div>
                       </div>
@@ -1349,28 +1320,22 @@
                     <div class="d-flex align-items-center w-100 mt-4">
                       <h6 class="mb-0">Show guest list</h6>
                       <div class="ms-auto">
-                        <label class="btn-switch m-0">
-                          <input type="checkbox" class="">
-                          <span class="checkbox-slider"></span>
-                        </label>
+                        <label class="btn-switch m-0"> <input class="" type="checkbox">
+                          <span class="checkbox-slider"></span> </label>
                       </div>
                     </div>
                     <div class="d-flex align-items-center w-100 mt-4">
                       <h6 class="mb-0">Only admins can post in event</h6>
                       <div class="ms-auto">
-                        <label class="btn-switch m-0">
-                          <input type="checkbox" class="">
-                          <span class="checkbox-slider"></span>
-                        </label>
+                        <label class="btn-switch m-0"> <input class="" type="checkbox">
+                          <span class="checkbox-slider"></span> </label>
                       </div>
                     </div>
                     <div class="d-flex align-items-center w-100 mt-4">
                       <h6 class="mb-0">Posts must be approved by a host or co-host.</h6>
                       <div class="ms-auto">
-                        <label class="btn-switch m-0">
-                          <input type="checkbox" class="">
-                          <span class="checkbox-slider"></span>
-                        </label>
+                        <label class="btn-switch m-0"> <input class="" type="checkbox">
+                          <span class="checkbox-slider"></span> </label>
                       </div>
                     </div>
                   </div>

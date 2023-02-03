@@ -4,14 +4,12 @@
       <div class="col-lg-12">
         <ol class="title-bar-text">
           <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Messages</li>
+          <li aria-current="page" class="breadcrumb-item active">Messages</li>
         </ol>
       </div>
     </div>
   </div>
-</div>
-<!-- Title Bar End -->
-<!-- Body Start -->
+</div><!-- Title Bar End --><!-- Body Start -->
 <main class="discussion-mp">
   <div class="main-section">
     <div class="container">
@@ -22,14 +20,18 @@
               <div class="msg-top-left-items">
                 <div class="msg-search">
                   <i class="feather-search"></i>
-                  <input class="form-input pl-left refund-textarea" type="text" placeholder="Rechercher des personnes" value="">
+                  <input class="form-input pl-left refund-textarea" placeholder="Rechercher des personnes" type="text" value="">
                 </div>
                 <div class="msg-create-btns">
-                  <button type="button" class="btn-main btn-hover" data-toggle="tooltip" data-placement="top" title="Mark all conversations as read">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24"><path fill="currentColor" d="M14,10H2V12H14V10M14,6H2V8H14V6M2,16H10V14H2V16M21.5,11.5L23,13L16,20L11.5,15.5L13,14L16,17L21.5,11.5Z"></path></svg>
+                  <button class="btn-main btn-hover" data-placement="top" data-toggle="tooltip" title="Mark all conversations as read" type="button">
+                    <svg height="23" viewBox="0 0 24 24" width="23" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14,10H2V12H14V10M14,6H2V8H14V6M2,16H10V14H2V16M21.5,11.5L23,13L16,20L11.5,15.5L13,14L16,17L21.5,11.5Z" fill="currentColor"></path>
+                    </svg>
                   </button>
-                  <button type="button" class="btn-main btn-hover create_group_chat" data-toggle="tooltip" data-placement="top" title="Create Group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13,13C11,13 7,14 7,16V18H19V16C19,14 15,13 13,13M19.62,13.16C20.45,13.88 21,14.82 21,16V18H24V16C24,14.46 21.63,13.5 19.62,13.16M13,11A3,3 0 0,0 16,8A3,3 0 0,0 13,5A3,3 0 0,0 10,8A3,3 0 0,0 13,11M18,11A3,3 0 0,0 21,8A3,3 0 0,0 18,5C17.68,5 17.37,5.05 17.08,5.14C17.65,5.95 18,6.94 18,8C18,9.06 17.65,10.04 17.08,10.85C17.37,10.95 17.68,11 18,11M8,10H5V7H3V10H0V12H3V15H5V12H8V10Z"></path></svg>
+                  <button class="btn-main btn-hover create_group_chat" data-placement="top" data-toggle="tooltip" title="Create Group" type="button">
+                    <svg height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13,13C11,13 7,14 7,16V18H19V16C19,14 15,13 13,13M19.62,13.16C20.45,13.88 21,14.82 21,16V18H24V16C24,14.46 21.63,13.5 19.62,13.16M13,11A3,3 0 0,0 16,8A3,3 0 0,0 13,5A3,3 0 0,0 10,8A3,3 0 0,0 13,11M18,11A3,3 0 0,0 21,8A3,3 0 0,0 18,5C17.68,5 17.37,5.05 17.08,5.14C17.65,5.95 18,6.94 18,8C18,9.06 17.65,10.04 17.08,10.85C17.37,10.95 17.68,11 18,11M8,10H5V7H3V10H0V12H3V15H5V12H8V10Z" fill="currentColor"></path>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -37,22 +39,20 @@
                 <ul class="nav nav-pills nav-justified" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" data-bs-toggle="pill" href="#users-message" role="tab">
-                      <i class="feather-user me-2"></i>Utilisateurs
-                    </a>
+                      <i class="feather-user me-2"></i>Utilisateurs </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="pill" href="#groups-message" role="tab">
-                      <i class="feather-users me-2"></i>Groupes
-                    </a>
+                      <i class="feather-users me-2"></i>Groupes </a>
                   </li>
                 </ul>
                 <div class="tab-content mt-30">
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body">
-                        <a href="#" class="media">
+                        <a class="media" href="#">
                           <div class="item-img">
-                            <img src="../../../assets/images/find-peoples/lily.jpeg" alt="">
+                            <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>
                           </div>
                           <div class="media-body">
@@ -60,29 +60,27 @@
                             <div class="item-time">1 mins ago</div>
                             <p>Hey How are you Lily Zaman</p>
                           </div>
-                        </a>
-                        <a href="#" class="media">
-                          <div class="item-img">
-                            <img src="../../../assets/images/find-peoples/john.jpg" alt="">
-                            <span class="chat-status online"></span>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="item-title mb-1">Johnson Dua</h6>
-                            <div class="item-time">6 mins ago</div>
-                            <p>Interesting Event! I will join this</p>
-                          </div>
-                        </a>
-                        <a href="#" class="media">
-                          <div class="item-img">
-                            <img src="../../../assets/images/find-peoples/rock.jpg" alt="">
-                            <span class="chat-status offline"></span>
-                          </div>
-                          <div class="media-body">
-                            <h6 class="item-title mb-1">Rock William</h6>
-                            <div class="item-time">11 mins ago</div>
-                            <p>Hey Sir! What about you and where are you now</p>
-                          </div>
-                        </a>
+                        </a> <a class="media" href="#">
+                        <div class="item-img">
+                          <img alt="" src="../../../assets/images/find-peoples/john.jpg">
+                          <span class="chat-status online"></span>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="item-title mb-1">Johnson Dua</h6>
+                          <div class="item-time">6 mins ago</div>
+                          <p>Interesting Event! I will join this</p>
+                        </div>
+                      </a> <a class="media" href="#">
+                        <div class="item-img">
+                          <img alt="" src="../../../assets/images/find-peoples/rock.jpg">
+                          <span class="chat-status offline"></span>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="item-title mb-1">Rock William</h6>
+                          <div class="item-time">11 mins ago</div>
+                          <p>Hey Sir! What about you and where are you now</p>
+                        </div>
+                      </a>
                       </div>
                     </div>
                   </div>
@@ -100,135 +98,7 @@
           </div>
         </div>
         <div class="col-xl-8 col-lg-7 col-md-12">
-          <div class="full-width mb-0 rrmt-30">
-            <div class="messages-container">
-              <div class="recipients-top-dt">
-                <div class="msg-usr-dt">
-                  <div class="recipient-avatar">
-                    <img src="../../../assets/images/find-peoples/lily.jpeg" loading="lazy" alt="" class="presence-entity__image nt-view-attr__img--centered">
-                    <span class="chat-status online"></span>
-                  </div>
-                  <div class="recipient-user-dt">
-                    <a href="user_profile.html" target="_blank">Lily Zaman</a>
-                    <p class="user-last-seen"><span class="small-last-seen">2 d</span></p>
-                  </div>
-                </div>
-                <div class="usr-cht-opts-btns">
-                  <span class="option-icon"><i class="feather-phone"></i></span>
-                  <span class="option-icon"><i class="feather-video"></i></span>
-                  <span class="option-icon"><i class="feather-trash-2"></i></span>
-                </div>
-              </div>
-              <div class="chat-container">
-                <div class="chat-content">
-                  <ul class="chats-lists">
-                    <li class="you">
-                      <div class="chat-thumb">
-                        <img src="../../../assets/images/find-peoples/lily.jpeg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															Hi, Jean, How are you today?.
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 4:52pm</time>
-														</span>
-                      </div>
-                    </li>
-                    <li class="me">
-                      <div class="chat-thumb">
-                        <img src="images/dp.jpg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															Hi, Lily, I am fine but about you?
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 4:54pm</time>
-														</span>
-                      </div>
-                    </li>
-                    <li class="you">
-                      <div class="chat-thumb">
-                        <img src="../../../assets/images/find-peoples/lily.jpeg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															Yes, i am also fine John and check my new event <a href="#">link</a>.
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 4:55pm</time>
-														</span>
-                      </div>
-                    </li>
-                    <li class="me">
-                      <div class="chat-thumb">
-                        <img src="images/dp.jpg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															Wow, great work Lily GLWS
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 4:56pm</time>
-														</span>
-                      </div>
-                    </li>
-                    <li class="you">
-                      <div class="chat-thumb">
-                        <img src="../../../assets/images/find-peoples/lily.jpeg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															 Thanks
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 4:58pm</time>
-														</span>
-                      </div>
-                    </li>
-                    <li class="me">
-                      <div class="chat-thumb">
-                        <img src="images/dp.jpg" alt="">
-                      </div>
-                      <div class="notifi-event">
-														<span class="chat-msg-item">
-															Welcome dear
-														</span>
-                        <span class="notifi-date">
-															<time datetime="2021-01-24T18:18" class="posted-date">Today at 5:00pm</time>
-														</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <form class="send_messages_form">
-                <div class="send_input_group">
-                  <div class="msg_write_combo">
-                    <div class="add_files">
-                      <div class="img-add" data-toggle="tooltip" data-placement="top" title="Files, Photos and Videos">
-                        <input type="file" id="file1">
-                        <label for="file1"><i class="feather-copy"></i></label>
-                      </div>
-                    </div>
-                    <textarea class="form-control custom-controls" placeholder="Écrivez un message..."></textarea>
-                    <div class="emoji-panel" data-toggle="tooltip" data-placement="top" title="Emoji">
-                      <button class="emoji-combo ml-2"><i class="fa-regular fa-face-smile"></i></button>
-                    </div>
-                    <div class="mic_recording-icon" data-toggle="tooltip" data-placement="top" title="Audio Recording">
-                      <button class="mic-record"><i class="feather-mic"></i></button>
-                    </div>
-                  </div>
-                  <span class="input-send-btn">
-												<button class="btn-main btn-hover send-button" type="button">
-													<i class="feather-send"></i>
-												</button>
-											</span>
-                </div>
-              </form>
-            </div>
-          </div>
+          <app-detail-messages></app-detail-messages>
         </div>
       </div>
     </div>
