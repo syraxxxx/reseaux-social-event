@@ -20,4 +20,11 @@ export class UtilisateurService {
   login(body: any): Observable<any> {
     return this.http.post<any>(`${this.apiEndPoint}/login`, body);
   }
+
+  getListePersonMessages(): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/messages`);
+  }
+  getMessage(idmessage : any): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/message`);
+  }
 }

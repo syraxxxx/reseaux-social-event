@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-detail-messages',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-messages.component.scss']
 })
 export class DetailMessagesComponent implements OnInit {
+  @Input() USER_CONNECTED :any;
 
   constructor() { }
 
