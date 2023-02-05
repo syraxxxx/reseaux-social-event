@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.setMenuItems();
-    console.log(this.tokenService.getUserByToken())
+
   }
   setMenuItems(){
     this.menuItems = [

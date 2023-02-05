@@ -12,6 +12,7 @@ import { EventComponent } from './pages/event/event.component';
 import { NewEventComponent } from './pages/event/new-event/new-event.component';
 import { DetailsEventComponent } from './pages/event/details-event/details-event.component';
 import { DetailMessagesComponent } from './pages/messages/detail-messages/detail-messages.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DetailMessagesComponent } from './pages/messages/detail-messages/detail
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
