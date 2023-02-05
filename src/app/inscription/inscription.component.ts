@@ -33,9 +33,10 @@ export class InscriptionComponent implements OnInit {
     this.getListCountry();
   }
 
-  signIn() {
-    this.serviceUser.create(this.formInscription.value).subscribe({
+  async signIn() {
+    (await this.serviceUser.create(this.formInscription.value)).subscribe({
       next: (response) => {
+        console.log(response);
         Swal.fire({
           text: `${this.formInscription.value.nom}, votre inscription a été effectuée avec succès`, icon: 'success',
           showConfirmButton: false,
