@@ -9,7 +9,7 @@ export class TokenService {
 
    getUserByToken() {
     const token = localStorage.getItem('token');
-    const base64Url = token?.split('.')[1];
-    return JSON.parse(window.atob(base64Url || ''))._doc;
+    // const base64Url = token?.split('.')[1];
+    return JSON.parse(window.atob(token || ''))._doc;
   }
 }
