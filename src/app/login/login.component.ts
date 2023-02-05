@@ -27,8 +27,10 @@ export class LoginComponent implements OnInit {
   ) {
   }
 
-  public login() {
+   login() {
+    console.log(this.form.value);
     if (this.form.valid) {
+      console.log('click');
       this.serviceUser.login(this.form.value).subscribe({
         next: (res: any) => this.loginService.login(res.token),
         error: (err: any) => this.errorMessage = err.error.message
