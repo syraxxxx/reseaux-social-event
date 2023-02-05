@@ -20,4 +20,8 @@ export class PublicationService {
   getListePublication(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/liste`);
   }
+
+  getPublication(publication_id:string): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/${publication_id}`);
+  }
 }

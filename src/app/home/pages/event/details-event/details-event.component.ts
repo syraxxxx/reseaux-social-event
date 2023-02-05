@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {PublicationService} from "../../../../@core/services/publication.service";
 
 @Component({
   selector: 'app-details-event',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-event.component.scss']
 })
 export class DetailsEventComponent implements OnInit {
+  eventID: any;
+  event: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private publicationService: PublicationService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    this.eventID = this.route.snapshot.paramMap.get('id');
+    console.log(this.eventID);
+    this.publicationService.getPublication(this.eventID).subscribe(response => {
+      console.log(response);
+    })
+  }
 }
