@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.setMenuItems();
-
   }
+
   setMenuItems(){
     this.menuItems = [
       {path: '/home', title: 'Accueil', icon: 'fas fa-car'},

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PublicationService} from "../../../@core/services/publication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-accueil',
@@ -10,6 +11,7 @@ export class AccueilComponent implements OnInit {
   publications: any;
 
   constructor(
+    private router :Router,
     private postService: PublicationService
   ) {
   }
@@ -23,5 +25,8 @@ export class AccueilComponent implements OnInit {
       this.publications = response.publication;
       console.log(response.publication);
     })
+  }
+  getDetails(pub :any){
+    this.router.navigate(['/home/event', pub]);
   }
 }

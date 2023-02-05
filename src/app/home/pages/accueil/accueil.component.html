@@ -65,7 +65,7 @@
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pub.date_realisation}}</span>
-                            <a href="event_detail_view.html" class="event-title"> {{pub.description}}</a>
+                            <a  routerLink="" (click)="getDetails(pub.id)" class="event-title"> {{pub.description}}</a>
                             <span class="event-type">{{pub.nom }} {{ pub.prenom}}</span>
                             <p class="ingo-counter">
                               <span>25 Interessés</span>
