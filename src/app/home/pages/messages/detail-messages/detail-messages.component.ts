@@ -8,25 +8,31 @@ import {UtilisateurService} from "../../../../@core/services/utilisateur.service
   styleUrls: ['./detail-messages.component.scss']
 })
 export class DetailMessagesComponent implements OnInit {
-  @Input() USER_CONNECTED :any;
-
+  @Input() USER_MESSAGE_SELECTED: any;
+  user_connected: any;
   formMessage = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
     destinataire_id: new FormControl('', [Validators.required]),
     corps: new FormControl('', [Validators.required]),
   });
+
   constructor(
-    private serviceUser : UtilisateurService
-  ) { }
+    private serviceUser: UtilisateurService
+  ) {
+  }
 
   ngOnInit(): void {
   }
-  getData(){
+
+  getData() {
     //load all message here
   }
-  sendMessage(){
+
+  sendMessage() {
     console.log('message')
-    this.serviceUser.sendMessage(this.formMessage).subscribe();
+    this.formMessage.get('user_id')?.setValue(1);
+    this.formMessage.get('destinataire_id')?.setValue(5);
+    this.serviceUser.sendMessage(this.formMessage.value).subscribe();
     this.getData();
   }
 }
