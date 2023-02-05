@@ -31,77 +31,11 @@
               <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
             </div>
           </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
-            <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-            </div>
-          </li>
         </ul>
       </div>
 
     </div>
-    <form class="send_messages_form">
+    <form (ngSubmit)="sendMessage()" [formGroup]="formMessage"  class="send_messages_form" >
       <div class="send_input_group">
         <div class="msg_write_combo">
           <div class="add_files">
@@ -109,7 +43,7 @@
               <input id="file1" type="file"> <label for="file1"><i class="feather-copy"></i></label>
             </div>
           </div>
-          <textarea class="form-control custom-controls" placeholder="Écrivez un message..."></textarea>
+          <textarea class="form-control custom-controls" formControlName="corps" placeholder="Écrivez un message..."></textarea>
           <div class="emoji-panel" data-placement="top" data-toggle="tooltip" title="Emoji">
             <button class="emoji-combo ml-2"><i class="fa-regular fa-face-smile"></i></button>
           </div>

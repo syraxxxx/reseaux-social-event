@@ -27,4 +27,7 @@ export class UtilisateurService {
   getMessage(idmessage : any): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/message`);
   }
+  sendMessage(body: any): Observable<any> {
+    return this.http.post<any>(`${this.apiEndPoint}/envoisMessage`, body);
+  }
 }
