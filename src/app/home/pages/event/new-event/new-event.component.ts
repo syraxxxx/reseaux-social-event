@@ -24,5 +24,8 @@ export class NewEventComponent implements OnInit {
   create_event() {
     console.log(this.formNewEvent.value);
     console.log('click');
+
+    //service to create publication
+    //service to insert image in db
   }
 }
