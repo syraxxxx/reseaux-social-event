@@ -31,7 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule { }

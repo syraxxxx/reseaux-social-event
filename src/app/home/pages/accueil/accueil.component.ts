@@ -12,7 +12,8 @@ export class AccueilComponent implements OnInit {
 
   constructor(
     private router :Router,
-    private postService: PublicationService
+    private postService: PublicationService,
+
   ) {
   }
 
@@ -28,5 +29,8 @@ export class AccueilComponent implements OnInit {
   }
   getDetails(pub :any){
     this.router.navigate(['/home/event', pub]);
+  }
+  openNewEventDialog(){
+
   }
 }
