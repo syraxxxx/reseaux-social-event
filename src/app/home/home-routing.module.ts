@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: 'discussion', component: DiscussionComponent},
       {path: 'messages', component: MessagesComponent},
       {path: 'new-event', component: NewEventComponent},
-      {path: 'event/:id', component: DetailsEventComponent},
+      {path: 'event/:publication_id', component: DetailsEventComponent},
       {path: 'settings', component: SettingsComponent},
     ]
   }

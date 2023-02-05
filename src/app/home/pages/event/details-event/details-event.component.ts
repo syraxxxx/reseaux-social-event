@@ -22,7 +22,8 @@ export class DetailsEventComponent implements OnInit {
   }
 
   getData() {
-    this.eventID = this.route.snapshot.paramMap.get('id');
+    console.log('publication id : '+this.route.snapshot.paramMap.get('publication_id'));
+    this.eventID = this.route.snapshot.paramMap.get('publication_id');
     console.log(this.eventID);
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       console.log(response);
