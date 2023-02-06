@@ -21,7 +21,11 @@ export class PublicationService {
     return this.http.get<any>(`${this.apiEndPoint}/liste`);
   }
 
-  getPublication(publication_id:string): Observable<any> {
+  getPublication(publication_id: string): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/${publication_id}`);
+  }
+
+  getCategories(): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/getAllCategorie`);
   }
 }
