@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenService} from "../@core/services/token.service";
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   menuItems !:  any[];
   profilMenuItems !:  any[]
-  constructor() { }
+  constructor(
+    private tokenService : TokenService
+  ) { }
 
   ngOnInit(): void {
     this.setMenuItems();
   }
+
   setMenuItems(){
     this.menuItems = [
       {path: '/home', title: 'Accueil', icon: 'fas fa-car'},

@@ -19,7 +19,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

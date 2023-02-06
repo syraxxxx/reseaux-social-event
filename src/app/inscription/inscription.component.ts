@@ -30,7 +30,7 @@ export class InscriptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getListCountry();
+    // this.getListCountry();
   }
 
   async signIn() {

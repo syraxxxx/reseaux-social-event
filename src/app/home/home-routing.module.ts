@@ -7,6 +7,8 @@ import {MessagesComponent} from "./pages/messages/messages.component";
 import {DiscussionComponent} from "./pages/discussion/discussion.component";
 import {EventComponent} from "./pages/event/event.component";
 import {SettingsComponent} from "./pages/settings/settings.component";
+import {NewEventComponent} from "./pages/event/new-event/new-event.component";
+import {DetailsEventComponent} from "./pages/event/details-event/details-event.component";
 
 const routes: Routes = [
 
@@ -17,7 +19,8 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent},
       {path: 'discussion', component: DiscussionComponent},
       {path: 'messages', component: MessagesComponent},
-      {path: 'new-event', component: EventComponent},
+      {path: 'new-event', component: NewEventComponent},
+      {path: 'event/:publication_id', component: DetailsEventComponent},
       {path: 'settings', component: SettingsComponent},
     ]
   }
