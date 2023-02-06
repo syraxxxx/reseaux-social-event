@@ -52,7 +52,7 @@
                     <label class="form-label">Categorie*</label>
                     <select formControlName="categories_id" class="form-input" data-size="5" data-width="100%">
                       <option value="">Categorie</option>
-                      <option *ngFor="let cat of categories" value=""></option>
+                      <option *ngFor="let cat of categories" value="">{{cat}}</option>
 
                     </select>
                   </div>

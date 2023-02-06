@@ -29,9 +29,11 @@ export class NewEventComponent implements OnInit {
 
   getData() {
     this.postService.getCategories().subscribe(response=>{
-      this.categories=response.likes[0];
-      console.log(response.likes)
-    })
+      this.categories=response.likes;
+      console.log(this.categories)
+    });
+
+
   }
 
   create_event() {
