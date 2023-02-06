@@ -26,25 +26,20 @@
               </div>
             </div>
             <div class="event-title-dts">
-              <span class="evnt_time txtbold">SUN, 22 FEB AT 06:30 PM UTC+05:30</span>
-              <h3 class="event-heading-title text-left">Event Title Here</h3>
-              <div class="event-cate-dt">
-                <div>Paid</div>
-                <div class="mid-space">·</div>
-                <div>Venue event</div>
-              </div>
+              <span class="evnt_time txtbold">{{event?.date_realisation}}</span>
+              <h3 class="event-heading-title text-left"> {{event?.description}}</h3>
             </div>
             <div class="d-md-flex d-block align-self-center p-20">
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
                   <img src="../../../assets/images/homepage/left-side/left-img-5.jpg" alt="">
                 </div>
-                <span class="evntcunt">Créé par Rock Smith</span>
+                <span class="evntcunt">Créé par {{event?.nom}} {{event?.prenom}}</span>
               </div>
               <div class="ms-auto mt-4 mt-md-0 mt-lg-0 mt-xl-0">
                 <ul class="egroup-btns">
-                  <li><a class="main--btn view-hover" href="#"><i class="feather-star me-2"></i>Interested</a></li>
-                  <li><a class="main--btn view-hover" href="#"><i class="feather-check-circle me-2"></i>Going</a></li>
+                  <li><a class="main--btn view-hover" href="#"><i class="feather-star me-2"></i>Interessé</a></li>
+                  <li><a class="main--btn view-hover" href="#"><i class="feather-check-circle me-2"></i>Aller</a></li>
                   <li><a class="m-share-btn view-hover" href="#shareModal" data-bs-toggle="modal" role="button"><i class="feather-share-2"></i></a></li>
                   <li>
                     <div class="view-ellipsis">
@@ -85,8 +80,8 @@
                   <i class="feather-flag"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>Event by</span>
-                  <a href="user_profile.html" class="ml-1">Rock Smith</a>
+                  <span>Evenement par</span>
+                  <a href="user_profile.html" class="ml-1">{{event?.nom}} {{event?.prenom}}</a>
                 </div>
               </div>
             </div>
@@ -106,8 +101,7 @@
                   <i class="feather-clock"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>SUN, 30 JUN AT 06:30 PM UTC+05:30</span>
-                  <span class="wthrsml4">8–20°C Sunny</span>
+                  <span>{{event?.date_realisation}}</span>
                 </div>
               </div>
             </div>
@@ -117,25 +111,15 @@
                   <i class="feather-film"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>Tickets</span>
+                  <span>Ticket </span>
                   <span class="wthrsml4">example.com/eventname</span>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="evntflldt4 flxcntr">
-                <div class="hhttd14s">
-                  <i class="feather-globe"></i>
-                </div>
-                <div class="ttlpple">
-                  <span>Private</span>
                 </div>
               </div>
             </div>
             <div class="mndtlist">
               <div class="mndesp145">
                 <div class="evarticledes">
-                  <p class="mb-0">Get ready to catch up with some lit bollywood party at Ludhiana!<br></p>
+                  <p class="mb-0">{{event?.description}}<br></p>
                   <p class="moretext mb-0">Spice up your Sunday! Bollywood Party<br>
                     ∙ For Booking &amp; Guestlist: <a href="#">http://example.com/eventname</a><br>
                     ∙ Drop Your Names on WhatsApp for Booking: +91-0000-0000-00<br>
@@ -171,7 +155,7 @@
         </div>
         <div class="main-card">
           <div class="categories-left-heading border_bottom">
-            <h3>Go with friends</h3>
+            <h3>Participant</h3>
           </div>
           <div class="p-20">
             <div class="gofrnd15s cursur" data-bs-toggle="modal" data-bs-target="#goWithfriendsModal">
@@ -194,11 +178,11 @@
             <div class="user-follow-card">
               <div class="follow-card-left">
                 <div class="follow-avatar">
-                  <img src="images/find-peoples/user-2.jpg" alt="">
+                  <img src="../../../assets/images/find-peoples/user-2.jpg" alt="">
                 </div>
                 <div class="follow-name">
-                  <a href="user_profile.html">Rock Smith</a>
-                  <span>Event Orgnizar</span>
+                  <a href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a>
+                  <span>Organisateur</span>
                 </div>
               </div>
             </div>
