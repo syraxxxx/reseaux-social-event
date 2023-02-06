@@ -20,7 +20,15 @@ export class UtilisateurService {
       })
     };
     
-    const data = `email=${encodeURIComponent('example@email.com')}&nom=${encodeURIComponent('Example')}&prenom=${encodeURIComponent('User')}&mdp=${encodeURIComponent('password')}&tel=${encodeURIComponent('1234567890')}&pays=${encodeURIComponent('Country')}&ville=${encodeURIComponent('City')}&profil_photo=${encodeURIComponent('photo.jpg')}`;
+    const data = `email=${encodeURIComponent('example@email.com')}&
+    nom=${encodeURIComponent('Example')}&
+    prenom=${encodeURIComponent('User')}&
+    mdp=${encodeURIComponent('password')}&
+    tel=${encodeURIComponent('1234567890')}&
+    pays=${encodeURIComponent('Country')}&
+    ville=${encodeURIComponent('City')}&
+    profil_photo=${encodeURIComponent('photo.jpg')}`;
+
     console.log(data);
     return await this.http.post<any>(`${this.apiEndPoint}/inscription`,data,httpOptions);
   }
