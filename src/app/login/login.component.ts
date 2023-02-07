@@ -33,11 +33,12 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       console.log('click');
       this.serviceUser.login(this.form.value).subscribe({
-        next: (res: any) => this.loginService.login(res.token),
-        error: (err: any) => {this.errorMessage = err.error.message
-        console.log(err.error.message());
+        next: (res: any) => {
+          this.loginService.login(res.token)
+        },
+        error: (err: any) => {
+          this.errorMessage = "Mail ou mot de passe incorrect"
         }
-
       })
     }
   }

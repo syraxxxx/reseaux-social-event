@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../@core/services/token.service";
+import {LogoutService} from "../security/logout/logout.service";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ export class HomeComponent implements OnInit {
   menuItems !:  any[];
   profilMenuItems !:  any[]
   constructor(
-    private tokenService : TokenService
+    private tokenService : TokenService,
+    private logoutService : LogoutService
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +29,9 @@ export class HomeComponent implements OnInit {
       {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
       {path: '/home/messages', title: 'Messages', icon: 'feather-message-square me-3'},
       {path: '/home/settings', title: 'Paramètres', icon: 'feather-settings me-3'},
-      {path: '/home', title: 'Déconnexion', icon: 'feather-log-out me-3'},
     ];
+  }
+  logout(){
+    this.logoutService.logout();
   }
 }

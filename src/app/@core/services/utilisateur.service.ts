@@ -19,24 +19,18 @@ export class UtilisateurService {
         'Content-Type': 'application/x-www-form-urlencoded'
       })
     };
-
     const data = Object.entries(body)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
-
     return this.http.post<any>(`${this.apiEndPoint}/inscription`, data, httpOptions);
   }
 
   login(body: { [key: string]: string | number | boolean }): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    };
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
+
     const data = Object.entries(body)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
-
     return this.http.post<any>(`${this.apiEndPoint}/login`, data, httpOptions);
   }
 
