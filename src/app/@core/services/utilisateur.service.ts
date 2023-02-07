@@ -37,10 +37,9 @@ export class UtilisateurService {
   getUserByToken(): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
     const token = localStorage.getItem('token');
-    const data = `token=${encodeURIComponent(token+'')}}`;
+    const data = `token=${encodeURIComponent(token + '')}}`;
     return this.http.post<any>(`${this.apiEndPoint}/token`, data, httpOptions);
   }
-
 
   getListePersonMessages(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/messages`);
@@ -49,10 +48,6 @@ export class UtilisateurService {
   getMessage(idmessage: any): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/message`);
   }
-
-  // sendMessage(body: any): Observable<any> {
-  //   return this.http.post<any>(`${this.apiEndPoint}/envoisMessage`, body);
-  // }
 
   sendMessage(body: { [key: string]: string | number | boolean }): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
