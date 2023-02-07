@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UtilisateurService} from "../@core/services/utilisateur.service";
 import Swal from 'sweetalert2';
 import {CountryService} from "../@core/services/country.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,8 +16,8 @@ export class InscriptionComponent implements OnInit {
   formInscription = new FormGroup({
     nom: new FormControl('', [Validators.required]),
     prenom: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    tel: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required,Validators.email]),
+    tel: new FormControl('', [Validators.required,Validators.pattern(/^\d+$/)]),
     mdp: new FormControl('', [Validators.required]),
     pays: new FormControl('', [Validators.required]),
     ville: new FormControl('', [Validators.required]),
@@ -25,7 +26,8 @@ export class InscriptionComponent implements OnInit {
 
   constructor(
     private serviceUser: UtilisateurService,
-    private serviceCountry : CountryService
+    private serviceCountry : CountryService,
+    private  router : Router
   ) {
   }
 
@@ -33,8 +35,8 @@ export class InscriptionComponent implements OnInit {
     // this.getListCountry();
   }
 
-  async signIn() {
-    (await this.serviceUser.create(this.formInscription.value)).subscribe({
+   signIn() {
+     this.serviceUser.create(this.formInscription.value).subscribe({
       next: (response) => {
         console.log(response);
         Swal.fire({
@@ -42,6 +44,7 @@ export class InscriptionComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
+        this.router.navigate(['/login']);
       },
       error: (erreur) => this.errorMessage = erreur.error.message
     });

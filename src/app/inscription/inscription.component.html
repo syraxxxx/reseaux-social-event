@@ -3,14 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-  <meta name="description" content="Gambolthemes">
-  <meta name="author" content="Gambolthemes">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, shrink-to-fit=9" name="viewport">
+  <meta content="Gambolthemes" name="description">
+  <meta content="Gambolthemes" name="author">
   <title>Goeveni - Register Now</title>
 
   <!-- Favicon Icon -->
-  <link rel="icon" type="image/png" href="images/fav.png">
+  <link href="images/fav.png" rel="icon" type="image/png">
 
 
 </head>
@@ -27,7 +27,7 @@
               <div class="col-lg-6">
                 <div class="lg-left">
                   <div class="lg-logo">
-                    <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
+                    <a href="index.html"><img alt="" src="images/login-register/logo.svg"></a>
                   </div>
                   <div class="lr-text">
                     <h2>Inscrivez-vous maintenant</h2>
@@ -42,32 +42,65 @@
                     <form (ngSubmit)="signIn()" [formGroup]="formInscription">
                       <div class="form-group">
                         <div class="row">
-                          <div class="col-md-6"><input class="form-input h_50" formControlName="nom" type="text" placeholder="Nom"></div>
-                          <div class="col-md-6"><input class="form-input h_50" formControlName="prenom" type="text" placeholder="Prenom"></div>
+                          <div class="col-md-6">
+                            <input class="form-input h_50" formControlName="nom" placeholder="Nom" type="text">
+                            <div *ngIf="formInscription.get('nom')?.errors?.['required'] && formInscription.get('nom')?.touched">
+                              <span class="error-name">Nom requis</span>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <input class="form-input h_50" formControlName="prenom" placeholder="Prenom" type="text">
+                            <div *ngIf="formInscription.get('prenom')?.errors?.['required'] && formInscription.get('prenom')?.touched">
+                              <span class="error-name">Prenom requis</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-input h_50" type="email" formControlName="email" placeholder="Addresse email">
+                        <input class="form-input h_50" formControlName="email" placeholder="Addresse email" type="email">
+                        <div *ngIf="formInscription.get('email')?.invalid && formInscription.get('email')?.touched">
+                          <div *ngIf="formInscription.get('email')?.errors?.['required']">
+                            <span class="error-formInscription">Le mail est requis</span>
+                          </div>
+                          <div *ngIf="formInscription.get('email')?.errors?.['email']">
+                            <span class="error-formInscription">L'email n'est pas valide.</span>
+                          </div>
+                        </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-input h_50" type="mdp" formControlName="mdp" placeholder="Mot de passe">
+                        <input class="form-input h_50" formControlName="mdp" placeholder="Mot de passe" type="mdp">
+                        <div *ngIf="formInscription.get('mdp')?.invalid && formInscription.get('mdp')?.touched">
+                          <div *ngIf="formInscription.get('mdp')?.errors?.['required']">
+                            <span class="error-formInscription">Mot de passe requis</span>
+                          </div>
+                        </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-input h_50" type="text" formControlName="tel" data-inputmask="'mask': '(999) 999-9999'" placeholder="Téléphone">
+                        <input class="form-input h_50" data-inputmask="'mask': '(999) 999-9999'" formControlName="tel" placeholder="Téléphone" type="text">
+                        <div *ngIf="formInscription.get('tel')?.errors?.['required'] && formInscription.get('tel')?.touched">
+                          <span class="error-formInscription">Numero de téléphone requis</span>
+                        </div>
+                        <div *ngIf="formInscription.get('tel')?.hasError('pattern') && formInscription.get('tel')?.touched">
+                          <span class="error-formInscription">Doit être un nombre</span>
+                        </div>
                       </div>
                       <div class="form-group">
                         <div class="row">
-                          <div class="col-md-6"><input class="form-input h_50" formControlName="pays" type="text" placeholder="Pays"></div>
-                          <div class="col-md-6"><input class="form-input h_50" formControlName="ville" type="text" placeholder="Ville"></div>
+                          <div class="col-md-6">
+                            <input class="form-input h_50" formControlName="pays" placeholder="Pays" type="text"></div>
+                          <div class="col-md-6">
+                            <input class="form-input h_50" formControlName="ville" placeholder="Ville" type="text">
+                          </div>
                         </div>
                       </div>
                       <div class="rgstr-dt-txt">
-                        En s'inscrivant , vous accepter les <a href="#">Termes</a>,et les <a href="#">Conditions d'utilisatons</a> Tu peux recevoir des mails de notre part .
+                        En s'inscrivant , vous accepter les <a href="#">Termes</a>,et les
+                        <a href="#">Conditions d'utilisatons</a> Tu peux recevoir des mails de notre part .
                       </div>
-                      <button class="login-btn" type="submit">S'inscrire</button>
-                      <div class="login-link">Tu n'as pas de compte ? <a routerLink="/login">Se connecter Maintenant</a></div>
+                      <button [disabled]="!formInscription.valid" class="login-btn">S'inscrire</button>
+                      <div class="login-link">Tu n'as pas de compte ? <a routerLink="/login">Se connecter Maintenant</a>
+                      </div>
                     </form>
-
                   </div>
                 </div>
               </div>
@@ -97,8 +130,12 @@
       <div class="col-lg-6 col-md-12">
         <div class="footer-right">
           <ul class="copyright-text">
-            <li><a href="index.html"><img src="../../assets/images/logo-2.svg" alt=""></a></li>
-            <li><div class="ftr-1"><i class="far fa-copyright"></i> 2023 Goeveni by <a href="https://themeforest.net/user/gambolthemes">Gambolthemes</a>. Tous droits Réservées.</div></li>
+            <li><a href="index.html"><img alt="" src="../../assets/images/logo-2.svg"></a></li>
+            <li>
+              <div class="ftr-1"><i class="far fa-copyright"></i> 2023 Goeveni by
+                <a href="https://themeforest.net/user/gambolthemes">Gambolthemes</a>. Tous droits Réservées.
+              </div>
+            </li>
           </ul>
         </div>
       </div>
