@@ -13,6 +13,7 @@ import { NewEventComponent } from './pages/event/new-event/new-event.component';
 import { DetailsEventComponent } from './pages/event/details-event/details-event.component';
 import { DetailMessagesComponent } from './pages/messages/detail-messages/detail-messages.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule,
+    NgxSpinnerModule
   ]
 })
 export class HomeModule { }

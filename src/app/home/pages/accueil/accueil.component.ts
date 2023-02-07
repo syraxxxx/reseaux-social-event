@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PublicationService} from "../../../@core/services/publication.service";
 import {Router} from "@angular/router";
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-accueil',
@@ -15,11 +16,13 @@ export class AccueilComponent implements OnInit {
   constructor(
     private router: Router,
     private postService: PublicationService,
-    private userServive: UtilisateurService
+    private userServive: UtilisateurService,
+    private spinner : NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getData();
   }
 
@@ -29,7 +32,10 @@ export class AccueilComponent implements OnInit {
     });
     this.userServive.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
-    })
+    });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   getDetails(pub: any) {

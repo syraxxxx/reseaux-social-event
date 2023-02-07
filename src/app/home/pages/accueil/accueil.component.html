@@ -345,7 +345,7 @@
                   </li>
                 </ul>
                 <div class="profile-link">
-                  <a href="my_profile.html">Voir Profile</a>
+                  <a routerLink="/home/profile">Voir Profil</a>
                 </div>
               </div>
             </div>
@@ -411,7 +411,7 @@
             <div class="post-event">
               <h6>Tu veux poster tes évènements ? </h6>
               <p>Publiez gratuitement votre événement sur Goeveni. Créez simplement un compte et ajoutez-le via le formulaire simple. Aussi simple que cela.</p>
-              <a href="add_new_event.html" class="add-nw-event">Postez-le maintenant</a>
+              <a routerLink="/home/new-event" class="add-nw-event">Postez-le maintenant</a>
             </div>
             <div class="explore-events">
               <h4>Découvrez les évènements</h4>
@@ -540,3 +540,11 @@
     </div>
   </div>
 </main>
+
+<ngx-spinner bdColor="rgb(2 2 2 / 90%)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen] = "true">
+  <p style="font-size: 18px; color: white">Chargement des données...</p>
+</ngx-spinner>

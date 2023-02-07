@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-messages',
@@ -12,11 +13,13 @@ export class MessagesComponent implements OnInit {
   user_connected: any;
 
   constructor(
-    private serviceUser: UtilisateurService
+    private serviceUser: UtilisateurService,
+    private spinner : NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
+    // this.spinner.show();
   }
 
   getData() {
@@ -26,6 +29,9 @@ export class MessagesComponent implements OnInit {
     this.serviceUser.getMessage(1).subscribe(response => {
       this.messageByUser = response;
     });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   loadMessagebyUser(idDestinataire : any){

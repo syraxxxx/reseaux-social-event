@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PublicationService} from "../../../../@core/services/publication.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-details-event',
@@ -13,11 +14,13 @@ export class DetailsEventComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private publicationService: PublicationService
+    private publicationService: PublicationService,
+    private spinner : NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getData();
   }
 
@@ -25,6 +28,9 @@ export class DetailsEventComponent implements OnInit {
     this.eventID = this.route.snapshot.paramMap.get('publication_id');
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       this.event = response.publication[0];
-    })
+    });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 }
