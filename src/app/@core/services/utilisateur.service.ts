@@ -34,9 +34,14 @@ export class UtilisateurService {
     return this.http.post<any>(`${this.apiEndPoint}/login`, data, httpOptions);
   }
 
-  // login(body: any): Observable<any> {
-  //   return this.http.post<any>(`${this.apiEndPoint}/login`, body);
-  // }
+  getUserByToken(): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
+    const token = localStorage.getItem('token');
+    console.log(token);
+    const data = `token=${encodeURIComponent(token+'')}}`;
+    return this.http.post<any>(`${this.apiEndPoint}/token`, data, httpOptions);
+  }
+
 
   getListePersonMessages(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/messages`);
