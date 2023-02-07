@@ -26,7 +26,7 @@
             </div>
           </li>
           <li class="me">
-            <div class="chat-thumb"><img alt="" src="images/dp.jpg"></div>
+            <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
             <div class="notifi-event">
               <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
             </div>
@@ -35,7 +35,7 @@
       </div>
 
     </div>
-    <form (ngSubmit)="sendMessage()" [formGroup]="formMessage"  class="send_messages_form" >
+    <form [formGroup]="formMessage"  class="send_messages_form" >
       <div class="send_input_group">
         <div class="msg_write_combo">
           <div class="add_files">
@@ -52,7 +52,7 @@
           </div>
         </div>
         <span class="input-send-btn">
-          <button class="btn-main btn-hover send-button" >
+          <button (click)="sendMessage()" [disabled]="!formMessage.get('corps')?.value" class="btn-main btn-hover send-button" >
             <i class="feather-send"></i>
           </button>
         </span>

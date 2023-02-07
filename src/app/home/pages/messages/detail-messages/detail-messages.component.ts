@@ -34,10 +34,12 @@ export class DetailMessagesComponent implements OnInit {
 
   sendMessage() {
     console.log('message');
-    this.formMessage.get('user_id')?.setValue(this.user_connected.id);
-    this.formMessage.get('destinataire_id')?.setValue(5);
-    this.serviceUser.sendMessage(this.formMessage.value).subscribe();
-    this.formMessage.reset();
-    this.getData();
+    if (this.formMessage.get('corps') && this.formMessage.get('corps')?.value){
+      this.formMessage.get('user_id')?.setValue(this.user_connected.id);
+      this.formMessage.get('destinataire_id')?.setValue(5);
+      this.serviceUser.sendMessage(this.formMessage.value).subscribe();
+      this.formMessage.reset();
+      this.getData();
+    }
   }
 }
