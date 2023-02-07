@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PublicationService} from "../../../@core/services/publication.service";
 import {Router} from "@angular/router";
+import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 
 @Component({
   selector: 'app-accueil',
@@ -9,11 +10,12 @@ import {Router} from "@angular/router";
 })
 export class AccueilComponent implements OnInit {
   publications: any;
+  user_connected: any;
 
   constructor(
-    private router :Router,
+    private router: Router,
     private postService: PublicationService,
-
+    private userServive: UtilisateurService
   ) {
   }
 
@@ -24,13 +26,17 @@ export class AccueilComponent implements OnInit {
   getData() {
     this.postService.getListePublication().subscribe(response => {
       this.publications = response.publication;
-      console.log(response.publication);
+    });
+    this.userServive.getUserByToken().subscribe(response => {
+      this.user_connected = response.user[0];
     })
   }
-  getDetails(pub :any){
+
+  getDetails(pub: any) {
     this.router.navigate(['/home/event', pub]);
   }
-  openNewEventDialog(){
+
+  openNewEventDialog() {
 
   }
 }

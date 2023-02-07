@@ -581,6 +581,7 @@
           <div *ngFor="let profilMenuItem of profilMenuItems">
             <a class="link-item" routerLink="{{profilMenuItem.path}}"><i class="{{profilMenuItem.icon}}"></i>{{profilMenuItem.title}}</a>
           </div>
+          <button (click)="logout()" class="link-item"> <i class="feather-log-out me-3"></i>Déconnexion</button>
         </div>
       </div>
     </div>

@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
 import {PublicationService} from "../../../../@core/services/publication.service";
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-event',
@@ -8,18 +11,20 @@ import {PublicationService} from "../../../../@core/services/publication.service
   styleUrls: ['./new-event.component.scss']
 })
 export class NewEventComponent implements OnInit {
+  user_connected: any;
   formNewEvent = new FormGroup({
     utilisateur_id: new FormControl('', [Validators.required]),
     categories_id: new FormControl('', [Validators.required]),
-    date_realisation: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    publication_id: new FormControl('', [Validators.required]),
+    payement_link: new FormControl('', [Validators.required]),
+    event_name: new FormControl('', [Validators.required]),
+    date_realisation: new FormControl('', [Validators.required]),
   });
 
-  categories = [];
-
   constructor(
-    private postService: PublicationService
+    private userService: UtilisateurService,
+    private eventService: PublicationService,
+    private router : Router
   ) {
   }
 
@@ -28,19 +33,27 @@ export class NewEventComponent implements OnInit {
   }
 
   getData() {
-    this.postService.getCategories().subscribe(response=>{
-      this.categories=response.likes;
-      console.log(this.categories)
-    });
-
-
+    this.userService.getUserByToken().subscribe(res => {
+      this.user_connected = res.user[0];
+    })
   }
 
   create_event() {
     console.log(this.formNewEvent.value);
     console.log('click');
-
-    //service to create publication
+    this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.eventService.create(this.formNewEvent.value).subscribe({
+      next(res: any) {
+        Swal.fire({
+          text: `Votre évènement a été crée avec succès`, icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(r => 'nothing');
+      },
+      error(err: any) {
+      }
+    });
+    this.formNewEvent.reset();
     //service to insert image in db
   }
 }
