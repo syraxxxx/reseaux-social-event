@@ -7,8 +7,8 @@ import {UtilisateurService} from "../../../@core/services/utilisateur.service";
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-  personMessages: any;
   messages: any;
+  messageByUser: any;
   user_connected: any;
 
   constructor(
@@ -21,10 +21,16 @@ export class MessagesComponent implements OnInit {
 
   getData() {
     this.serviceUser.getListePersonMessages().subscribe(response => {
-      this.personMessages = response;
+      this.messages = response;
     });
     this.serviceUser.getMessage(1).subscribe(response => {
-      this.messages = response;
+      this.messageByUser = response;
+    });
+  }
+
+  loadMessagebyUser(idDestinataire : any){
+    this.serviceUser.getMessage(2).subscribe(response=>{
+      this.messageByUser = response;
     })
   }
 }

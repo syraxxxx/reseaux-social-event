@@ -9,6 +9,7 @@ import {UtilisateurService} from "../../../../@core/services/utilisateur.service
 })
 export class DetailMessagesComponent implements OnInit {
   @Input() USER_MESSAGE_SELECTED: any;
+  messages : any;
   user_connected: any;
   formMessage = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
@@ -28,6 +29,7 @@ export class DetailMessagesComponent implements OnInit {
   getData() {
     this.serviceUser.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+      console.log(this.user_connected.id);
     })
     //load all message here
   }
@@ -35,8 +37,9 @@ export class DetailMessagesComponent implements OnInit {
   sendMessage() {
     console.log('message');
     if (this.formMessage.get('corps') && this.formMessage.get('corps')?.value){
+
       this.formMessage.get('user_id')?.setValue(this.user_connected.id);
-      this.formMessage.get('destinataire_id')?.setValue(5);
+      this.formMessage.get('destinataire_id')?.setValue(13);
       this.serviceUser.sendMessage(this.formMessage.value).subscribe();
       this.formMessage.reset();
       this.getData();

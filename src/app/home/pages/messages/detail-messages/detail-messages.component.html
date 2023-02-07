@@ -20,6 +20,23 @@
     <div class="chat-container">
       <div class="chat-content">
         <ul class="chats-lists">
+          <div *ngFor="let message of messages">
+            <div *ngIf="message.utilisateur_id==user_connected.id ; else you">
+              <li class="me">
+                <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
+                <div class="notifi-event">
+                  <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
+                </div>
+              </li>
+            </div>
+            <ng-template #you>
+              <li class="you">
+                <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
+                <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
+                </div>
+              </li>
+            </ng-template>
+          </div>
           <li class="you">
             <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
             <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
@@ -35,7 +52,7 @@
       </div>
 
     </div>
-    <form [formGroup]="formMessage"  class="send_messages_form" >
+    <form [formGroup]="formMessage" class="send_messages_form">
       <div class="send_input_group">
         <div class="msg_write_combo">
           <div class="add_files">
@@ -52,7 +69,7 @@
           </div>
         </div>
         <span class="input-send-btn">
-          <button (click)="sendMessage()" [disabled]="!formMessage.get('corps')?.value" class="btn-main btn-hover send-button" >
+          <button (click)="sendMessage()" [disabled]="!formMessage.get('corps')?.value" class="btn-main btn-hover send-button">
             <i class="feather-send"></i>
           </button>
         </span>
