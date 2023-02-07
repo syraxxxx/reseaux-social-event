@@ -39,26 +39,33 @@
                     <div class="form-group mt-4">
                       <label class="form-label">Nom de l'évènement*</label>
                       <input class="form-input" formControlName="event_name" placeholder="Nom de l'évènement" type="text">
+                      <div *ngIf="formNewEvent.get('event_name')?.errors?.['required'] && formNewEvent.get('event_name')?.touched">
+                        <span class="error-formNewEvent">Nom requis*</span>
+                      </div>
                     </div>
-                    <div class="row">
-                      <div class="col-lg-6 col-md-12">
-                        <div class="form-group mt-3">
-                          <label class="form-label">Date de réalisation*</label>
-                          <input class="search-form-input datepicker-here" formControlName="date_realisation"  data-language='en' formControlName="date_realisation" type="date">
-                        </div>
+                    <div class="form-group mt-4">
+                      <label class="form-label">Date de réalisation*</label>
+                      <input class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
+                      <div *ngIf="formNewEvent.get('date_realisation')?.errors?.['required'] && formNewEvent.get('date_realisation')?.touched">
+                        <span class="error-formNewEvent">Vous devez indiquer la date de réalisation*</span>
                       </div>
                     </div>
                     <div class="form-group mt-4">
                       <label class="form-label">Categorie*</label>
                       <select class="form-input" data-size="5" data-width="100%" formControlName="categories_id">
                         <option value="">Categorie</option>
-                        <option value="1">Visual arts</option>
-                        <option value="2">Social Issues</option>
+                        <option *ngFor="let categorie of categories" value="{{categorie?.id}}">{{categorie?.nom}}</option>
                       </select>
+                      <div *ngIf="formNewEvent.get('categories_id')?.errors?.['required'] && formNewEvent.get('categories_id')?.touched">
+                        <span class="error-formNewEvent">Categorie requis*</span>
+                      </div>
                     </div>
                     <div class="form-group mt-4">
                       <label class="form-label">Lien du ticket*</label>
                       <input class="form-input" formControlName="payement_link" placeholder="https://" type="text">
+                      <div *ngIf="formNewEvent.get('payement_link')?.errors?.['required'] && formNewEvent.get('payement_link')?.touched">
+                        <span class="error-formNewEvent">Le lien du ticket est requis*</span>
+                      </div>
                       <span class="small-des">Ajouter un lien vers votre site de ticket</span>
                     </div>
                     <div class="form-group mt-4">
@@ -66,7 +73,7 @@
                       <textarea class="form-textarea" formControlName="description" placeholder="Descrivez votre évènement en quelques mots"></textarea>
                       <span class="small-des">Fournissez plus d'informations sur votre événement afin que les invités sachent à quoi s'attendre..</span>
                     </div>
-                    <button class="main-btn btn-hover h-40 w-100 mt-37 mb-3">Creer évènement</button>
+                    <button [disabled]="!formNewEvent.valid" class="main-btn btn-hover h-40 w-100 mt-37 mb-3">Creer évènement</button>
                   </div>
                 </div>
               </div>

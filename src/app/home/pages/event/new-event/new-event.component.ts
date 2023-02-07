@@ -12,10 +12,11 @@ import {Router} from "@angular/router";
 })
 export class NewEventComponent implements OnInit {
   user_connected: any;
+  categories: any;
   formNewEvent = new FormGroup({
-    utilisateur_id: new FormControl('', [Validators.required]),
+    utilisateur_id: new FormControl(''),
     categories_id: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    description: new FormControl(''),
     payement_link: new FormControl('', [Validators.required]),
     event_name: new FormControl('', [Validators.required]),
     date_realisation: new FormControl('', [Validators.required]),
@@ -24,7 +25,7 @@ export class NewEventComponent implements OnInit {
   constructor(
     private userService: UtilisateurService,
     private eventService: PublicationService,
-    private router : Router
+    private router: Router
   ) {
   }
 
@@ -35,6 +36,10 @@ export class NewEventComponent implements OnInit {
   getData() {
     this.userService.getUserByToken().subscribe(res => {
       this.user_connected = res.user[0];
+    });
+    this.eventService.getCategories().subscribe(response => {
+      this.categories = response.likes;
+      console.log(response.likes);
     })
   }
 
@@ -44,6 +49,7 @@ export class NewEventComponent implements OnInit {
     this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
     this.eventService.create(this.formNewEvent.value).subscribe({
       next(res: any) {
+        console.log('here oh ')
         Swal.fire({
           text: `Votre évènement a été crée avec succès`, icon: 'success',
           showConfirmButton: false,
@@ -53,6 +59,7 @@ export class NewEventComponent implements OnInit {
       error(err: any) {
       }
     });
+
     this.formNewEvent.reset();
     //service to insert image in db
   }
