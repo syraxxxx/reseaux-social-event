@@ -4,6 +4,7 @@ import {UtilisateurService} from "../../../../@core/services/utilisateur.service
 import {PublicationService} from "../../../../@core/services/publication.service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-new-event',
@@ -25,11 +26,13 @@ export class NewEventComponent implements OnInit {
   constructor(
     private userService: UtilisateurService,
     private eventService: PublicationService,
-    private router: Router
+    private router: Router,
+    private spinner : NgxSpinnerService
   ) {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getData();
   }
 
@@ -40,7 +43,10 @@ export class NewEventComponent implements OnInit {
     this.eventService.getCategories().subscribe(response => {
       this.categories = response.likes;
       console.log(response.likes);
-    })
+    });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   create_event() {
