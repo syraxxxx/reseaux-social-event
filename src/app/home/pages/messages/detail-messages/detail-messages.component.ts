@@ -22,17 +22,22 @@ export class DetailMessagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getData();
   }
 
   getData() {
+    this.serviceUser.getUserByToken().subscribe(response => {
+      this.user_connected = response.user[0];
+    })
     //load all message here
   }
 
   sendMessage() {
-    console.log('message')
-    this.formMessage.get('user_id')?.setValue(1);
+    console.log('message');
+    this.formMessage.get('user_id')?.setValue(this.user_connected.id);
     this.formMessage.get('destinataire_id')?.setValue(5);
     this.serviceUser.sendMessage(this.formMessage.value).subscribe();
+    this.formMessage.reset();
     this.getData();
   }
 }
