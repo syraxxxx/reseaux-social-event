@@ -50,17 +50,29 @@
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body">
-                        <a class="media" (click)="loadMessagebyUser(2)" href="#">
+                        <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.destinataire_id)" >
                           <div class="item-img">
                             <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>
                           </div>
                           <div class="media-body">
-                            <h6 class="item-title mb-1">Lily Zaman</h6>
-                            <div class="item-time">1 mins ago</div>
-                            <p>Hey How are you Lily Zaman</p>
+                            <h6 class="item-title mb-1">{{mess.nom}} {{mess.prenom}}</h6>
+                            <div class="item-time">{{mess.date_envois}}</div>
+                            <p>{{mess.corps}}</p>
                           </div>
                         </a>
+
+<!--                        <a  class="media" (click)="loadMessagebyUser(2)" href="#">-->
+<!--                          <div class="item-img">-->
+<!--                            <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">-->
+<!--                            <span class="chat-status offline"></span>-->
+<!--                          </div>-->
+<!--                          <div class="media-body">-->
+<!--                            <h6 class="item-title mb-1">Lily Zaman</h6>-->
+<!--                            <div class="item-time">1 mins ago</div>-->
+<!--                            <p>Hey How are you Lily Zaman</p>-->
+<!--                          </div>-->
+<!--                        </a>-->
                       </div>
                     </div>
                   </div>
@@ -78,7 +90,7 @@
           </div>
         </div>
         <div class="col-xl-8 col-lg-7 col-md-12">
-          <app-detail-messages [USER_MESSAGE_SELECTED]="messageByUser"></app-detail-messages>
+          <app-detail-messages [USER_MESSAGE_SELECTED]="messageByUser" [ID_DESTINATAIRE]="destinataire"  ></app-detail-messages>
         </div>
       </div>
     </div>

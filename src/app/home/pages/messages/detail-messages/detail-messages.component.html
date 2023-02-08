@@ -20,34 +20,30 @@
     <div class="chat-container">
       <div class="chat-content">
         <ul class="chats-lists">
-          <div *ngFor="let message of messages">
-            <div *ngIf="message.utilisateur_id==user_connected.id ; else you">
-              <li class="me">
-                <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
-                <div class="notifi-event">
-                  <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
-                </div>
-              </li>
-            </div>
-            <ng-template #you>
-              <li class="you">
-                <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-                <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-                </div>
-              </li>
-            </ng-template>
-          </div>
-          <li class="you">
-            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
-            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
-            </div>
-          </li>
-          <li class="me">
+          <li *ngFor="let message of USER_MESSAGE_SELECTED" [ngClass]="messageByme(message.utilisateur_id) ? 'me' : 'you'">
             <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
             <div class="notifi-event">
-              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
+              <span class="chat-msg-item">{{message.corps}}</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
             </div>
           </li>
+          <ng-template #you>
+            <li class="you">
+              <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>
+              <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>
+              </div>
+            </li>
+          </ng-template>
+<!--          <li class="you">-->
+<!--            <div class="chat-thumb"><img alt="" src="../../../assets/images/find-peoples/lily.jpeg"></div>-->
+<!--            <div class="notifi-event"><span class="chat-msg-item">Thanks</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 4:58pm</time></span>-->
+<!--            </div>-->
+<!--          </li>-->
+<!--          <li class="me">-->
+<!--            <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>-->
+<!--            <div class="notifi-event">-->
+<!--              <span class="chat-msg-item">Welcome dear</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>-->
+<!--            </div>-->
+<!--          </li>-->
         </ul>
       </div>
 
