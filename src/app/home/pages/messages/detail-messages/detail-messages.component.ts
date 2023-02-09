@@ -30,7 +30,8 @@ export class DetailMessagesComponent implements OnChanges {
   getData() {
     this.serviceUser.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
-    })
+    });
+    this.messages=this.USER_MESSAGE_SELECTED;
   }
 
   sendMessage() {

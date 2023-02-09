@@ -26,6 +26,16 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     // this.spinner.show();
     this.getData();
+    console.log('this destinataire : ' + this.destinataire);
+
+    // setInterval(() => {
+    //   if (this.destinataire) {
+    //     setInterval(() => {
+    //       this.loadMessagebyUser(this.destinataire);
+    //     }, 500);
+    //   }
+    // }, 500);
+
   }
 
   getData() {
@@ -49,9 +59,11 @@ export class MessagesComponent implements OnInit {
     console.log(this.messages);
     console.log('connnected : ' + this.user_connected.id);
     console.log('destinataire : ' + idDestinataire);
+
+    this.destinataire = idDestinataire;
     this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
       this.messageByUser = response.publication.sort().reverse();
-      this.destinataire = idDestinataire;
+
     });
 
   }

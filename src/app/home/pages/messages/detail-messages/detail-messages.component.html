@@ -8,7 +8,7 @@
             <span class="chat-status online"></span>
           </div>
           <div class="recipient-user-dt">
-            <a href="user_profile.html" target="_blank">{{USER_MESSAGE_SELECTED[0].nom}} {{USER_MESSAGE_SELECTED[0].prenom}}</a>
+            <a href="user_profile.html" target="_blank">{{messages[0].nom}} {{messages[0].prenom}}</a>
             <p class="user-last-seen"><span class="small-last-seen">2 d</span></p>
           </div>
         </div>
@@ -21,10 +21,10 @@
       <div class="chat-container">
         <div class="chat-content">
           <ul class="chats-lists">
-            <li *ngFor="let message of USER_MESSAGE_SELECTED" [ngClass]="messageByme(message.utilisateur_id) ? 'me' : 'you'">
+            <li *ngFor="let message of messages" [ngClass]="messageByme(message.utilisateur_id) ? 'me' : 'you'">
               <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
               <div class="notifi-event">
-                <span class="chat-msg-item">{{message.corps}}</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">Today at 5:00pm</time></span>
+                <span class="chat-msg-item">{{message.corps}}</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">{{message.date_envois}}</time></span>
               </div>
             </li>
             <ng-template #you>
