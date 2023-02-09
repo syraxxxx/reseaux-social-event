@@ -476,7 +476,7 @@
               <h6>Messages</h6>
             </div>
             <div class="item-body">
-              <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)">
+              <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)" style="cursor:pointer;">
                 <div class="item-img">
                   <img alt="" src="../../assets/images/find-peoples/user-2.jpg">
                   <span class="chat-status offline"></span>

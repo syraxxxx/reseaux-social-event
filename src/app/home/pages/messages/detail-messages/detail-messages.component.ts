@@ -32,11 +32,13 @@ export class DetailMessagesComponent implements OnChanges {
 
   ngOnChanges() {
     this.getData();
+
   }
 
   getData() {
     this.serviceUser.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+      this.messageList.nativeElement.lastElementChild.scrollIntoView({ behavior: "smooth" });
     });
     this.messages = this.USER_MESSAGE_SELECTED;
   }
@@ -55,7 +57,7 @@ export class DetailMessagesComponent implements OnChanges {
   reloadMessage(idUser: any, idDestinataire: any) {
     this.messengerService.getMessageUser(idUser, idDestinataire).subscribe(response => {
       this.messages = response.publication.sort().reverse();
-      this.messageList.nativeElement.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+      this.messageList.nativeElement.lastElementChild.scrollIntoView({ behavior: "smooth" });
       // this.scrollToBottom();
     });
   }
