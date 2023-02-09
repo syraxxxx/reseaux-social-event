@@ -12,7 +12,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 export class AccueilComponent implements OnInit {
   publications: any;
   user_connected: any;
-
+  categories : any;
   constructor(
     private router: Router,
     private postService: PublicationService,
@@ -32,6 +32,10 @@ export class AccueilComponent implements OnInit {
     });
     this.userServive.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+    });
+    this.postService.getCategories().subscribe(response => {
+      this.categories = response.likes;
+      console.log(response.likes);
     });
     setTimeout(() => {
       this.spinner.hide();
