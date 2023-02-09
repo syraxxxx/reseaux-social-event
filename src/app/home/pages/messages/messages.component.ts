@@ -46,12 +46,12 @@ export class MessagesComponent implements OnInit {
   }
 
   loadMessagebyUser(idDestinataire: any) {
+    console.log(this.messages);
     console.log('connnected : ' + this.user_connected.id);
     console.log('destinataire : ' + idDestinataire);
     this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
-      this.messageByUser = response.publication;
+      this.messageByUser = response.publication.sort().reverse();
       this.destinataire = idDestinataire;
-      // console.log(response.publication);
     });
 
   }

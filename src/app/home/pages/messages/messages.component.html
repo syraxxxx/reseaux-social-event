@@ -50,7 +50,7 @@
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body">
-                        <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.destinataire_id)" >
+                        <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)">
                           <div class="item-img">
                             <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>
