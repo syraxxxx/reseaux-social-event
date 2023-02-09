@@ -37,4 +37,12 @@ export class PublicationService {
   getCategories(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/getAllCategorie`);
   }
+  likePublication(body: { [key: string]: string | number | boolean }): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
+
+    const data = Object.entries(body)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    return this.http.post<any>(`${this.apiEndPoint}/likes`, data, httpOptions);
+  }
 }

@@ -17,7 +17,7 @@ export class AccueilComponent implements OnInit {
     private router: Router,
     private postService: PublicationService,
     private userServive: UtilisateurService,
-    private spinner : NgxSpinnerService
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -40,6 +40,16 @@ export class AccueilComponent implements OnInit {
 
   getDetails(pub: any) {
     this.router.navigate(['/home/event', pub]);
+  }
+
+  likePublication(idPub: any) {
+    const data = {
+      utilisateur_id: this.user_connected.id,
+      publication_id: idPub
+    };
+    this.postService.likePublication(data).subscribe(response => {
+      console.log(response);
+    });
   }
 
   openNewEventDialog() {
