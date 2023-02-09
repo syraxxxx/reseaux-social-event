@@ -67,7 +67,9 @@ export class DetailsEventComponent implements OnInit {
       utilisateur_id: this.user_connected.id,
       publication_id: idPub
     };
-    this.postService.likePublication(data).subscribe();
+    this.postService.likePublication(data).subscribe(response=>{
+      console.log(response);
+    });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
       if (response.sideja == 1) {
         this.liked_active = true

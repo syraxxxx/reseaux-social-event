@@ -1,4 +1,10 @@
 .interest-btn-like{
   background-color:#ff7555 !important;
   color: #fff;
+  flex-grow: 1;
+  max-width: 100%;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
 }

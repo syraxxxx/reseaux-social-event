@@ -12,7 +12,8 @@
                       <input class="search-form-input" placeholder="Quoi de neuf ? {{user_connected?.nom}} " type="text">
                     </div>
                     <div class="col-lg-2 col-md-12 col-sm-12">
-                      <button class="search-btn" type="submit"><i class="feather-arrow-right"></i><span>Rechercher</span>
+                      <button class="search-btn" type="submit">
+                        <i class="feather-arrow-right"></i><span>Rechercher</span>
                       </button>
                     </div>
                   </div>
@@ -61,15 +62,20 @@
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pub.date_realisation}}</span>
-                            <a (click)="getDetails(pub.id)" class="event-title" routerLink=""> {{pub.event_name}}</a>
+                            <a (click)="getDetails(pub.id)" class="event-title" routerLink=""> {{pub.event_name}} </a>
                             <span class="event-type">{{pub?.nom }} {{ pub?.prenom}}</span>
                             <p class="ingo-counter">
-                              <span>25 J'aime</span> <span>11 commentaire(s)</span>
+                              <span>{{pub?.nombrelike}} J'aime</span> <span>11 commentaire(s)</span>
                             </p>
                             <div class="group-btns">
-                              <button (click)="likePublication(pub?.id)" class="interest-btn btn-hover">
+                              <button (click)="likePublication(pub?.id)" *ngIf="!pub.like_actived;else activated_like" class="interest-btn btn-hover">
                                 <i class="feather-thumbs-up me-2"></i> J'aime
                               </button>
+                              <ng-template #activated_like>
+                                <button (click)="dislikePublication(pub?.id)" class="interest-btn-like btn-hover">
+                                  <i class="feather-thumbs-up me-2"></i> J'aime déjà
+                                </button>
+                              </ng-template>
                               <button class="share-btn btn-hover" data-bs-target="#shareModal" data-bs-toggle="modal">
                                 <i class="feather-share-2"></i></button>
                             </div>
@@ -336,7 +342,8 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a *ngFor="let cat of categories" class="category-item" href="explore.html"><img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}</a>
+                  <a *ngFor="let cat of categories" class="category-item" href="explore.html"><img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
+                  </a>
                 </div>
               </div>
             </div>

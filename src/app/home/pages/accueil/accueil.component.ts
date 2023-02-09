@@ -28,18 +28,23 @@ export class AccueilComponent implements OnInit {
   }
 
   getData() {
-    this.postService.getListePublication().subscribe(response => {
-      this.publications = response.publication;
-      for (let pub of this.publications) {
-        this.postService.getLikesByPublication(pub.id).subscribe(response => {
-          console.log(response.likes.length);
-          this.publications.nombrelike = response.likes.length;
-        });
-      }
-    });
-
     this.userServive.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+      this.postService.getListePublication().subscribe(response => {
+        this.publications = response.publication;
+        for (let pub of this.publications) {
+          this.postService.getLikesByPublication(pub.id).subscribe(response => {
+            pub.nombrelike = response.likes.length;
+          });
+          this.postService.isLiked(pub.id, this.user_connected.id).subscribe(response => {
+            pub.like_actived = false
+            if (response.sideja == 1) {
+              pub.like_actived = true
+            }
+
+          })
+        }
+      });
     });
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
@@ -60,12 +65,16 @@ export class AccueilComponent implements OnInit {
     };
     this.postService.likePublication(data).subscribe(response => {
       console.log(response);
+      this.getData();
     });
+
   }
 
+  dislikePublication(idPub: any) {}
 
 
   openNewEventDialog() {
 
   }
+
 }
