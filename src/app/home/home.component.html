@@ -473,45 +473,23 @@
           </a>
           <div class="dropdown-menu dropdown-list dropdown-menu-end p-0">
             <div class="item-header">
-              <h6>Message</h6>
+              <h6>Messages</h6>
             </div>
             <div class="item-body">
-              <a class="media" href="messages.html">
+              <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)">
                 <div class="item-img">
                   <img alt="" src="../../assets/images/find-peoples/user-2.jpg">
                   <span class="chat-status offline"></span>
                 </div>
                 <div class="media-body">
-                  <h6 class="item-title mb-1">Lily Zaman</h6>
+                  <h6 class="item-title mb-1">{{mess?.nom}} {{mess?.prenom}}</h6>
                   <div class="item-time">1 mins ago</div>
-                  <p>Hey How are you Lily Zaman</p>
-                </div>
-              </a>
-              <a class="media" href="messages.html">
-                <div class="item-img">
-                  <img alt="" src="../../assets/images/find-peoples/user-3.jpg">
-                  <span class="chat-status online"></span>
-                </div>
-                <div class="media-body">
-                  <h6 class="item-title mb-1">Johnson Dua</h6>
-                  <div class="item-time">6 mins ago</div>
-                  <p>Interesting Event! I will join this</p>
-                </div>
-              </a>
-              <a class="media" href="messages.html">
-                <div class="item-img">
-                  <img alt="" src="../../assets/images/find-peoples/user-4.jpg">
-                  <span class="chat-status offline"></span>
-                </div>
-                <div class="media-body">
-                  <h6 class="item-title mb-1">Rock William</h6>
-                  <div class="item-time">11 mins ago</div>
-                  <p>Hey Sir! What about you and where are you now</p>
+                  <p>{{mess?.corps}}</p>
                 </div>
               </a>
             </div>
             <div class="item-footer">
-              <a class="view-all" href="messages.html">View All Messages</a>
+              <button class="view-all" routerLink="/home/messages" >Voir tous les messages</button>
             </div>
           </div>
         </li>

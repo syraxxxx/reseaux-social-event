@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TokenService} from "../@core/services/token.service";
 import {LogoutService} from "../security/logout/logout.service";
 import {UtilisateurService} from "../@core/services/utilisateur.service";
+import {MessengerService} from "../@core/services/messenger.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,11 +14,15 @@ export class HomeComponent implements OnInit {
   menuItems !: any[];
   profilMenuItems !: any[]
   user_connected: any;
+  messages: any;
+  messageByUser: any;
 
   constructor(
+    private router : Router,
     private tokenService: TokenService,
     private logoutService: LogoutService,
-    private userService: UtilisateurService
+    private userService: UtilisateurService,
+    private messengerService: MessengerService
   ) {
   }
 
@@ -28,6 +34,7 @@ export class HomeComponent implements OnInit {
   getData() {
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+      this.loadAllMessages();
     })
   }
 
@@ -47,4 +54,17 @@ export class HomeComponent implements OnInit {
   logout() {
     this.logoutService.logout();
   }
+
+  loadAllMessages() {
+    this.messengerService.getListePersonMessages(this.user_connected.id).subscribe(response => {
+      this.messages = response.publication;
+    });
+  };
+
+  loadMessagebyUser(idDestinataire: any) {
+    this.router.navigateByUrl('/home/messages');
+    this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
+      this.messageByUser = response.publication.sort().reverse();
+    });
+  };
 }

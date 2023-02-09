@@ -55,7 +55,7 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  public loadMessagebyUser(idDestinataire: any) {
+   loadMessagebyUser(idDestinataire: any) {
     console.log('connnected : ' + this.user_connected.id);
     console.log('destinataire : ' + idDestinataire);
 

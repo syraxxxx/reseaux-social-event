@@ -77,6 +77,4 @@ export class DetailsEventComponent implements OnInit {
     });
   }
 
-  likes() {
-  }
 }
