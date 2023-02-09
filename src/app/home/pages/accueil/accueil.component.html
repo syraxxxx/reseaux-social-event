@@ -12,7 +12,7 @@
                       <input class="search-form-input" placeholder="Quoi de neuf ? {{user_connected?.nom}} " type="text">
                     </div>
                     <div class="col-lg-2 col-md-12 col-sm-12">
-                      <button class="search-btn" type="submit">
+                      <button class="search-btn" type="submit" routerLink="/home/new-event">
                         <i class="feather-arrow-right"></i><span>Rechercher</span>
                       </button>
                     </div>
@@ -23,20 +23,20 @@
             <div class="main-tabs">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" data-bs-toggle="tab" href="#tab-top">Meilleurs classements</a>
+                  <a class="nav-link active" data-bs-toggle="tab" href="#tab-top">Évènements récents</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-local">Local</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-this-week">Cette semaine</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-friends">Amis</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-bs-toggle="tab" href="#tab-following">Suivi</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-local">Local</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-this-week">Cette semaine</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-friends">Amis</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-following">Suivi</a>-->
+<!--                </li>-->
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-top">

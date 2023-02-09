@@ -9,7 +9,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 })
 export class ProfileComponent implements OnInit {
   user_connected: any;
-
+  personne_profil : any;
   constructor(
     private userService: UtilisateurService,
     private spinner: NgxSpinnerService
@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getData() {
+
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
     });

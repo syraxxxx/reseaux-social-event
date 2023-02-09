@@ -17,6 +17,7 @@ const routes: Routes = [
     children: [
       {path: '', component: AccueilComponent},
       {path: 'profile', component: ProfileComponent},
+      {path: 'profile/:user_id', component: ProfileComponent},
       {path: 'discussion', component: DiscussionComponent},
       {path: 'messages', component: MessagesComponent},
       {path: 'new-event', component: NewEventComponent},

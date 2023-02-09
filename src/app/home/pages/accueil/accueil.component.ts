@@ -70,7 +70,14 @@ export class AccueilComponent implements OnInit {
 
   }
 
-  dislikePublication(idPub: any) {}
+  dislikePublication(idPub: any) {
+  }
+
+  getEventByCategorie(idCat: any) {
+    // this.postService.getPublicationByCategorie(idCat).subscribe(response => {
+    //   this.publications = response.publication;
+    // });
+  }
 
 
   openNewEventDialog() {
