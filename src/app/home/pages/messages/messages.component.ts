@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {MessengerService} from "../../../@core/services/messenger.service";
@@ -14,6 +14,7 @@ export class MessagesComponent implements OnInit {
   user_connected: any;
   today = new Date();
   destinataire: any;
+
 
   constructor(
     private serviceUser: UtilisateurService,
@@ -49,22 +50,20 @@ export class MessagesComponent implements OnInit {
   }
 
   loadAllMessages() {
-    console.log(this.user_connected);
     this.messengerService.getListePersonMessages(this.user_connected.id).subscribe(response => {
       this.messages = response.publication;
     });
   }
 
-  loadMessagebyUser(idDestinataire: any) {
-    console.log(this.messages);
+  public loadMessagebyUser(idDestinataire: any) {
     console.log('connnected : ' + this.user_connected.id);
     console.log('destinataire : ' + idDestinataire);
 
     this.destinataire = idDestinataire;
     this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
       this.messageByUser = response.publication.sort().reverse();
-
     });
+  };
 
-  }
+
 }

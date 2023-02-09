@@ -20,7 +20,7 @@
       </div>
       <div class="chat-container">
         <div class="chat-content">
-          <ul class="chats-lists">
+          <ul class="chats-lists" #messageList>
             <li *ngFor="let message of messages" [ngClass]="messageByme(message.utilisateur_id) ? 'me' : 'you'">
               <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
               <div class="notifi-event">
