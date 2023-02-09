@@ -21,8 +21,8 @@
             <div class="event-main-img">
               <img src="../../../assets/images/event-view/arrireplan.png" alt="">
               <div class="event-date">
-                <span class="emnth">JUN</span>
-                <span class="edate">30</span>
+                <span class="emnth">{{month}} </span>
+                <span class="edate">{{event?.date_realisation | date : "dd"}}</span>
               </div>
             </div>
             <div class="event-title-dts">
@@ -38,8 +38,7 @@
               </div>
               <div class="ms-auto mt-4 mt-md-0 mt-lg-0 mt-xl-0">
                 <ul class="egroup-btns">
-                  <li><a class="main--btn view-hover" href="#"><i class="feather-star me-2"></i>Interessé</a></li>
-                  <li><a class="main--btn view-hover" href="#"><i class="feather-check-circle me-2"></i>Aller</a></li>
+                  <li><button class="main--btn view-hover" (click)="likePublication(event?.id)" ><i class="feather-thumbs-up"></i> J'aime</button></li>
                   <li><a class="m-share-btn view-hover" href="#shareModal" data-bs-toggle="modal" role="button"><i class="feather-share-2"></i></a></li>
                   <li>
                     <div class="view-ellipsis">
