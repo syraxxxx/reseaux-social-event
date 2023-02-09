@@ -25,7 +25,7 @@ export class MessagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.spinner.show();
+    this.spinner.show();
     this.getData();
     console.log('this destinataire : ' + this.destinataire);
 
