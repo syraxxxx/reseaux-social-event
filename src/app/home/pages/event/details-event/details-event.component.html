@@ -4,14 +4,12 @@
       <div class="col-lg-12">
         <ol class="title-bar-text">
           <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Détail évènement </li>
+          <li aria-current="page" class="breadcrumb-item active">Détail évènement</li>
         </ol>
       </div>
     </div>
   </div>
-</div>
-<!-- Title Bar End -->
-<!-- Body Start -->
+</div><!-- Title Bar End --><!-- Body Start -->
 <main class="evnt-px">
   <div class="container">
     <div class="row">
@@ -19,7 +17,7 @@
         <div class="main-card">
           <div class="event-detail-content">
             <div class="event-main-img">
-              <img src="../../../assets/images/event-view/arrireplan.png" alt="">
+              <img alt="" src="../../../assets/images/event-view/arrireplan.png">
               <div class="event-date">
                 <span class="emnth">{{month}} </span>
                 <span class="edate">{{event?.date_realisation | date : "dd"}}</span>
@@ -32,23 +30,36 @@
             <div class="d-md-flex d-block align-self-center p-20">
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
-                  <img src="../../../assets/images/homepage/left-side/left-img-5.jpg" alt="">
+                  <img alt="" src="../../../assets/images/homepage/left-side/left-img-5.jpg">
                 </div>
                 <span class="evntcunt">Créé par {{event?.nom}} {{event?.prenom}}</span>
               </div>
               <div class="ms-auto mt-4 mt-md-0 mt-lg-0 mt-xl-0">
                 <ul class="egroup-btns">
-                  <li><button class="main--btn view-hover" (click)="likePublication(event?.id)" ><i class="feather-thumbs-up"></i> J'aime</button></li>
-                  <li><a class="m-share-btn view-hover" href="#shareModal" data-bs-toggle="modal" role="button"><i class="feather-share-2"></i></a></li>
+                  <li *ngIf="!liked_active ;else actived_like">
+                    <button (click)="likePublication(event?.id)" class="main--btn view-hover">
+                      <i class="feather-thumbs-up"></i> J'aime
+                    </button>
+                  </li>
+                  <ng-template #actived_like>
+                    <li>
+                      <button (click)="likePublication(event?.id)" class="main--btn-liked">
+                        <i class="feather-thumbs-up"></i> J'aime déjà
+                      </button>
+                    </li>
+                  </ng-template>
+                  <li>
+                    <a class="m-share-btn view-hover" data-bs-toggle="modal" href="#shareModal" role="button"><i class="feather-share-2"></i></a>
+                  </li>
                   <li>
                     <div class="view-ellipsis">
                       <div class="dropdown">
-                        <a class="ellipsis-btn dropdown-toggle-no-caret view-hover"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="feather-more-vertical"></i></a>
+                        <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret view-hover" data-bs-toggle="dropdown" href="#" role="button"><i class="feather-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
                           <a class="post-link-item" href="#"><i class="feather-eye-off icon-mr1"></i>Hide</a>
                           <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Save</a>
                           <a class="post-link-item" href="user_profile.html"><i class="feather-user icon-mr1"></i>User Profile</a>
-                          <a class="post-link-item" href="#reportModal" data-bs-toggle="modal" role="button"><i class="feather-flag icon-mr1"></i>Report</a>
+                          <a class="post-link-item" data-bs-toggle="modal" href="#reportModal" role="button"><i class="feather-flag icon-mr1"></i>Report</a>
                         </div>
                       </div>
                     </div>
@@ -69,7 +80,7 @@
                   <i class="feather-users"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>5 people responded</span>
+                  <span>{{person_liked?.length}} personnes aiment ca</span>
                 </div>
               </div>
             </div>
@@ -79,8 +90,8 @@
                   <i class="feather-flag"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>Evenement par</span>
-                  <a href="user_profile.html" class="ml-1">{{event?.nom}} {{event?.prenom}}</a>
+                  <span>Évènement créé par </span>
+                  <a class="ml-1" href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a>
                 </div>
               </div>
             </div>
@@ -110,7 +121,7 @@
                   <i class="feather-film"></i>
                 </div>
                 <div class="ttlpple">
-                  <span>Ticket </span>
+                  <span>Lien du Ticket </span>
                   <span class="wthrsml4"><a href="{{event?.payement_link}}">{{event?.payement_link}}</a>
                   </span>
                 </div>
@@ -120,9 +131,8 @@
               <div class="mndesp145">
                 <div class="evarticledes">
                   <p class="mb-0">{{event?.description}}<br></p>
-                  <p class="moretext mb-0">Spice up your Sunday! Bollywood Party<br>
-                    ∙ For Booking &amp; Guestlist: <a href="#">http://example.com/eventname</a><br>
-                    ∙ Drop Your Names on WhatsApp for Booking: +91-0000-0000-00<br>
+                  <p class="moretext mb-0">Spice up your Sunday! Bollywood Party<br> ∙ For Booking &amp; Guestlist:
+                    <a href="#">http://example.com/eventname</a><br> ∙ Drop Your Names on WhatsApp for Booking: +91-0000-0000-00<br>
                   </p>
                 </div>
                 <button class="moreless-btn">Voir Plus</button>
@@ -131,13 +141,13 @@
             <div class="tagtlist">
               <ul class="taglst17">
                 <li>
-                  <a href="#" class="tagbite">Fête</a>
+                  <a class="tagbite" href="#">Fête</a>
                 </li>
                 <li>
-                  <a href="#" class="tagbite">Danse</a>
+                  <a class="tagbite" href="#">Danse</a>
                 </li>
                 <li>
-                  <a href="#" class="tagbite">Comedie</a>
+                  <a class="tagbite" href="#">Comedie</a>
                 </li>
               </ul>
             </div>
@@ -147,10 +157,10 @@
       <div class="col-lg-4 col-md-12">
         <div class="main-card">
           <div class="categories-left-heading border_bottom">
-            <h3>Ticket</h3>
+            <h3>Lien du Ticket</h3>
           </div>
           <div class="p-20">
-            <a href="{{event?.payement_link}}" class="main-btn btn-hover h_40">Trouver Ticket</a>
+            <a class="main-btn btn-hover h_40" href="{{event?.payement_link}}">Trouver Ticket</a>
           </div>
         </div>
         <div class="main-card">
@@ -158,14 +168,12 @@
             <h3>Participant</h3>
           </div>
           <div class="p-20">
-            <div class="gofrnd15s cursur" data-bs-toggle="modal" data-bs-target="#goWithfriendsModal">
+            <div class="gofrnd15s cursur" data-bs-target="#goWithfriendsModal" data-bs-toggle="modal">
               <div class="gowthfrnd">
-                <span class="gofndcunt">2</span>
-                <span class="headttl5e">Participe</span>
+                <span class="gofndcunt">{{person_liked?.length}} </span> <span class="headttl5e">J'aime</span>
               </div>
               <div class="intrsdfrnd">
-                <span class="gofndcunt">3</span>
-                <span class="headttl5e">Interessé(s)</span>
+                <span class="gofndcunt">3</span> <span class="headttl5e">Interessé(s)</span>
               </div>
             </div>
           </div>
@@ -178,11 +186,10 @@
             <div class="user-follow-card">
               <div class="follow-card-left">
                 <div class="follow-avatar">
-                  <img src="../../../assets/images/find-peoples/user-2.jpg" alt="">
+                  <img alt="" src="../../../assets/images/find-peoples/user-2.jpg">
                 </div>
                 <div class="follow-name">
-                  <a href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a>
-                  <span>Organisateur</span>
+                  <a href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a> <span>Organisateur</span>
                 </div>
               </div>
             </div>
@@ -192,10 +199,6 @@
     </div>
   </div>
 </main>
-<ngx-spinner bdColor="rgb(2 2 2 / 90%)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
-  [fullScreen] = "true">
+<ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
   <p style="font-size: 18px; color: white">Chargement des données...</p>
 </ngx-spinner>

@@ -37,6 +37,7 @@ export class PublicationService {
   getCategories(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/getAllCategorie`);
   }
+
   likePublication(body: { [key: string]: string | number | boolean }): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
 
@@ -44,5 +45,13 @@ export class PublicationService {
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
     return this.http.post<any>(`${this.apiEndPoint}/likes`, data, httpOptions);
+  }
+
+  getLikesByPublication(publication_id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/likes/${publication_id}`);
+  }
+
+  isLiked(publication_id: string, user_id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/likes/${publication_id}/${user_id}`);
   }
 }
