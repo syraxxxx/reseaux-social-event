@@ -4,7 +4,7 @@
       <div class="hero-cover">
         <div class="hero-cover-img hero-img-1"></div>
       </div>
-      <div class="upload-profile-cover">
+      <div *ngIf="!idPerson" class="upload-profile-cover">
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -24,12 +24,12 @@
             <div class="main-card user-left-dt">
               <div class="user-avatar-img">
                 <img alt="" src="../../../assets/images/my-dashboard/my-dp.jpg">
-                <div class="avatar-img-btn">
+                <div *ngIf="!this.idPerson" class="avatar-img-btn">
                   <input id="avatar-img" type="file"> <label for="avatar-img"><i class="feather-camera"></i></label>
                 </div>
               </div>
               <div class="user-dts">
-                <h4 class="user-name">{{user_connected.nom}} {{user_connected.prenom}}<span class="verify-badge"><i class="fa-solid fa-circle-check"></i></span>
+                <h4 class="user-name">{{personne_profil?.nom}} {{personne_profil?.prenom}}<span class="verify-badge"><i class="fa-solid fa-circle-check"></i></span>
                 </h4>
                 <span class="user-loc"><i class="feather-map-pin"></i>France</span>
               </div>
@@ -38,9 +38,9 @@
                 <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>5</span>Suivi</a>
               </div>
               <div class="user-description">
-                <p>Bonjour je suis {{user_connected.nom}} {{user_connected.prenom}}</p>
+                <p>Bonjour je suis {{personne_profil?.nom}} {{personne_profil?.prenom}}</p>
               </div>
-              <div class="user-btns">
+              <div *ngIf="!this.idPerson" class="user-btns">
                 <a class="co-main-btn co-btn-width min-width d-inline-block h_40" routerLink="/home/settings"><i class="feather-settings me-2"></i>Paramètres</a>
               </div>
               <div class="profile-social-link">
@@ -56,8 +56,7 @@
               </div>
             </div>
           </div>
-
-          <div class="col-xl-8 col-lg-7 col-md-12">
+          <div *ngIf="!this.idPerson ; else profil_user" class="col-xl-8 col-lg-7 col-md-12">
             <div class="dash-tabs-block mt-4">
               <ul class="nav nav-pills nav-fill p-2 dash-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -263,7 +262,7 @@
                   <div class="about-details">
                     <div class="about-step">
                       <h5>Nom</h5>
-                      <span>{{user_connected.nom}} {{user_connected.prenom}}</span>
+                      <span>{{personne_profil?.nom}} {{personne_profil?.prenom}}</span>
                     </div>
                     <div class="about-step">
                       <h5>Tell us about yourself and let people know who you are</h5>
@@ -607,6 +606,113 @@
               </div>
             </div>
           </div>
+          <ng-template #profil_user>
+            <div class="col-xl-8 col-lg-7 col-md-12">
+              <div class="main-card mt-4 mb-0">
+                <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4">
+                  <h4>Evenements</h4>
+                </div>
+                <div class="events-dash-options main-form">
+                  <div class="row g-2">
+                    <div class="col-lg-4 col-md-4 col-12">
+                      <div class="event-search-dash">
+                        <div class="position-relative">
+                          <input class="form-input" placeholder="Rechercher ..." type="text">
+                          <span class="icon-158"><i class="feather-search"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-12">
+                      <select class="selectpicker" data-width="100%">
+                        <option value="publish-event">Published Events</option>
+                        <option value="draft-event">Draft and Scheduled Events</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-12">
+                      <select class="selectpicker" data-width="100%">
+                        <option value="event-date">Event Date</option>
+                        <option value="publish-date">Publish Date</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="all-dash-events">
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div class="event-main-post">
+                        <div class="main-photo">
+                          <a href="#">
+                            <div class="photo-overlay"></div>
+                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="event-body">
+                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
+                          <a href="event_detail_view.html" class="event-title">Manga Mania Show</a>
+                          <span class="event-type">Location</span>
+                          <p class="ingo-counter">
+                            <span>25 J'aime</span>
+                          </p>
+                          <div class="group-btns">
+                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div class="event-main-post">
+                        <div class="main-photo">
+                          <a href="#">
+                            <div class="photo-overlay"></div>
+                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="event-body">
+                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
+                          <a href="event_detail_view.html" class="event-title">Manga Mania Show</a>
+                          <span class="event-type">Location</span>
+                          <p class="ingo-counter">
+                            <span>25 J'aime</span>
+                          </p>
+                          <div class="group-btns">
+                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div class="event-main-post">
+                        <div class="main-photo">
+                          <a href="#">
+                            <div class="photo-overlay"></div>
+                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                          </a>
+                        </div>
+                        <div class="event-body">
+                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
+                          <a href="event_detail_view.html" class="event-title">Manga Mania Show</a>
+                          <span class="event-type">Location</span>
+                          <p class="ingo-counter">
+                            <span>25 J'aime</span>
+                          </p>
+                          <div class="group-btns">
+                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="loading-btn mb-0">
+                        <button class="process-btn btn-hover" type="button">
+                          Pas plus d'évènements
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>

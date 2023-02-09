@@ -57,4 +57,8 @@ export class UtilisateurService {
       .join('&');
     return this.http.post<any>(`${this.apiEndPoint}/envoisMessage`, data, httpOptions);
   }
+
+  getUserbyId(user_id:any): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/messages/${user_id}`);
+  }
 }
