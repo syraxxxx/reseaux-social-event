@@ -485,12 +485,8 @@
                         <div class="event-body">
                           <span class="event-time">{{pubUser.date_realisation}}</span>
                           <a style="cursor:pointer;" (click)="getDetails(pubUser.id)" class="event-title">{{pubUser.event_name}}</a>
-                          <span class="event-type">Location</span>
-                          <p class="ingo-counter">
-                            <span>25 J'aime</span>
-                          </p>
                           <div class="group-btns">
-                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                            <button class="interest-btn btn-hover" (click)="getDetails(pubUser.id)"><i class="feather-eye me-2"></i>Voir</button>
                           </div>
                         </div>
                       </div>

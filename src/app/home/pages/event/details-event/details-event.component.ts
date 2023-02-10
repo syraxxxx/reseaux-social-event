@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PublicationService} from "../../../../@core/services/publication.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
@@ -30,6 +30,7 @@ export class DetailsEventComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router : Router,
     private publicationService: PublicationService,
     private spinner: NgxSpinnerService,
     private userService: UtilisateurService,
@@ -135,6 +136,10 @@ export class DetailsEventComponent implements OnInit {
       this.commentaires = res.publication;
       this.nombre_comments = res.publication.length;
     });
+  }
+
+  goToUser(idUser: any) {
+    this.router.navigate(['/home/profile', idUser]);
   }
 
 }

@@ -53,7 +53,7 @@
                 <div class="invited_avtar_ee">
                   <img alt="" src="../../../assets/images/homepage/left-side/left-img-5.jpg">
                 </div>
-                <span class="evntcunt">Créé par {{event?.nom}} {{event?.prenom}}</span>
+                <span class="evntcunt">Créé par <a style="cursor: pointer;color: #ff7555" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
               </div>
               <div class="ms-auto mt-4 mt-md-0 mt-lg-0 mt-xl-0">
                 <ul class="egroup-btns">
@@ -128,7 +128,7 @@
           <div class="main-replies">
             <h4>{{nombre_comments}} Commentaires</h4>
             <div *ngFor="let comment of commentaires" class="reply-user-dt">
-              <img alt="" src="../../../assets/images/discussion/img-3.jpg"> <a href="single_discussion_view.html"><h4>{{comment.nom}} {{comment.prenom}}</h4></a>
+              <img alt="" src="../../../assets/images/discussion/img-3.jpg"> <a style="cursor: pointer" (click)="goToUser(comment.utilisateur_id)"><h4>{{comment.nom}} {{comment.prenom}}</h4></a>
               <p>{{comment.corps}}</p>
             </div>
           </div>
@@ -170,7 +170,7 @@
                   <img alt="" src="../../../assets/images/find-peoples/user-2.jpg">
                 </div>
                 <div class="follow-name">
-                  <a href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a> <span>Organisateur</span>
+                  <a style="cursor: pointer" (click)="goToUser(event?.utilisateur_id)">{{event?.nom}} {{event?.prenom}}</a> <span>Organisateur</span>
                 </div>
               </div>
             </div>
