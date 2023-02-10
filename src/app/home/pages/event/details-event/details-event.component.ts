@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {PublicationService} from "../../../../@core/services/publication.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
+import {FormControl, FormGroup} from "@angular/forms";
+import {CommentService} from "../../../../@core/services/comment.service";
 
 @Component({
   selector: 'app-details-event',
@@ -17,13 +19,22 @@ export class DetailsEventComponent implements OnInit {
   person_liked: any;
   liked_active: boolean = false;
   nombre_like: any;
+  nombre_comments: any;
+  commentaires: any;
+
+  formComment = new FormGroup({
+    utilisateur_id: new FormControl(''),
+    publication_id: new FormControl(''),
+    corps: new FormControl(''),
+  });
 
   constructor(
     private route: ActivatedRoute,
     private publicationService: PublicationService,
     private spinner: NgxSpinnerService,
     private userService: UtilisateurService,
-    private postService: PublicationService
+    private postService: PublicationService,
+    private commentService: CommentService
   ) {
   }
 
@@ -48,6 +59,7 @@ export class DetailsEventComponent implements OnInit {
       this.person_liked = response.likes;
     });
     this.getNombreLike();
+    this.getAllCommentaireByEvent();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
@@ -82,9 +94,11 @@ export class DetailsEventComponent implements OnInit {
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
       if (response.sideja == 1) {
         this.liked_active = true
-      };
+      }
+      ;
     });
   }
+
   disLikePublication(idPub: any) {
     let data = {
       utilisateur_id: this.user_connected.id,
@@ -98,7 +112,28 @@ export class DetailsEventComponent implements OnInit {
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
       if (response.sideja == 1) {
         this.liked_active = false
-      };
+      }
+      ;
+    });
+  }
+
+  commentEvent() {
+    this.spinner.show();
+    this.formComment.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.formComment.get('publication_id')?.setValue(this.eventID);
+    this.commentService.create(this.formComment.value).subscribe(response => {
+      this.formComment.reset();
+      this.getAllCommentaireByEvent();
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 500);
+    })
+  }
+
+  getAllCommentaireByEvent() {
+    this.commentService.getCommentairesByIdEvent(this.eventID).subscribe(res => {
+      this.commentaires = res.publication;
+      this.nombre_comments = res.publication.length;
     });
   }
 

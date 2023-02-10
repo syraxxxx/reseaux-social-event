@@ -65,7 +65,7 @@
                             <a (click)="getDetails(pub.id)" class="event-title" routerLink=""> {{pub.event_name}} </a>
                             <span class="event-type">{{pub?.nom }} {{ pub?.prenom}}</span>
                             <p class="ingo-counter">
-                              <span>{{pub?.nombrelike}} J'aime</span> <span>11 commentaire(s)</span>
+                              <span>{{pub?.nombrelike}} J'aime</span> <span>{{pub?.nombreComments}} commentaire(s)</span>
                             </p>
                             <div class="group-btns">
                               <button (click)="likePublication(pub?.id)" *ngIf="!pub.like_actived;else activated_like" class="interest-btn btn-hover">

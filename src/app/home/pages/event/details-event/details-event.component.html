@@ -99,8 +99,8 @@
                     <span> {{this.nombre_like}} J'aime</span>
                   </a>
                 </ng-template>
-                <a class="like-item lc-left" href="#" title="Commentaires"> <i class="feather-message-square"></i>
-                  <span>1 <ins>Commentaires</ins></span> </a>
+                <a class="like-item lc-left"  title="Commentaires"> <i class="feather-message-square"></i>
+                  <span>{{nombre_comments}} <ins>Commentaires</ins></span> </a>
               </div>
               <div class="right-comments">
                 <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>5 <ins>Partages</ins></span>
@@ -112,27 +112,27 @@
         <div class="main-card mt-30">
           <div class="main-reply-comment">
             <h4>Commentaires</h4>
-            <form>
+            <form (ngSubmit)="commentEvent()" [formGroup]="formComment">
               <div class="reply-buttons">
                 <div class="add-photo-button">
                   <div class="screnshot" id="OpenImgUpload1">
-                    <input class="comment-post" id="file1" placeholder="Votre commentaire..." type="text">
+                    <input class="comment-post" id="file1" placeholder="Votre commentaire..." type="text" formControlName="corps">
                   </div>
                 </div>
                 <div class="post-reply-btn">
-                  <button class="btn-add-reply" type="submit">Publier</button>
+                  <button class="btn-add-reply" type="submit">Commenter</button>
                 </div>
               </div>
             </form>
           </div>
           <div class="main-replies">
-            <h4>1 Commentaires</h4>
-            <div class="reply-user-dt">
-              <img alt="" src="images/discussion/img-3.jpg"> <a href="single_discussion_view.html"><h4>Rock Smith</h4>
-            </a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel erat eget purus vestibulum malesuada. Aliquam convallis metus et consectetur varius. Fusce velit ligula, imperdiet vitae vestibulum ut, porta non mi. Etiam justo odio, maximus nec rutrum quis, luctus at orci. Aliquam erat volutpat. Sed eu aliquet justo.</p>
+            <h4>{{nombre_comments}} Commentaires</h4>
+            <div *ngFor="let comment of commentaires" class="reply-user-dt">
+              <img alt="" src="../../../assets/images/discussion/img-3.jpg"> <a href="single_discussion_view.html"><h4>{{comment.nom}} {{comment.prenom}}</h4></a>
+              <p>{{comment.corps}}</p>
             </div>
           </div>
+
         </div>
       </div>
       <div class="col-lg-4 col-md-12">

@@ -3,6 +3,7 @@ import {PublicationService} from "../../../@core/services/publication.service";
 import {Router} from "@angular/router";
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
+import {CommentService} from "../../../@core/services/comment.service";
 
 @Component({
   selector: 'app-accueil',
@@ -18,7 +19,8 @@ export class AccueilComponent implements OnInit {
     private router: Router,
     private postService: PublicationService,
     private userServive: UtilisateurService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private commentService : CommentService
   ) {
   }
 
@@ -33,9 +35,14 @@ export class AccueilComponent implements OnInit {
       this.postService.getListePublication().subscribe(response => {
         this.publications = response.publication;
         for (let pub of this.publications) {
+          // avoir nombre de like par post
           this.postService.getLikesByPublication(pub.id).subscribe(response => {
             pub.nombrelike = response.likes.length;
           });
+          //avoir nombre de commentaire par post
+          this.commentService.getCommentairesByIdEvent(pub.id).subscribe(response=>{
+            pub.nombreComments = response.publication.length;
+          })
           this.postService.isLiked(pub.id, this.user_connected.id).subscribe(response => {
             pub.like_actived = false
             if (response.sideja == 1) {
