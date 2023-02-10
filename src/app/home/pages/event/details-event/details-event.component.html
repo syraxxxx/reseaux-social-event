@@ -26,7 +26,28 @@
             <div class="event-title-dts">
               <span class="evnt_time txtbold">{{event?.date_realisation}}</span>
               <h3 class="event-heading-title text-left"> {{event?.event_name}}</h3>
+              <span class="evnt_time txtbold">Categorie ici</span>
+              <div class="mndtlist">
+                <div class="mndesp145">
+                  <div class="evarticledes">
+                    <p class="mb-0">{{event?.description}}<br></p>
+                  </div>
+                </div>
+              </div>
+              <div class="mndtlist">
+                <div class="evntflldt4">
+                  <div class="hhttd14s">
+                    <i class="feather-film"></i>
+                  </div>
+                  <div class="ttlpple">
+                    <span>Lien du Ticket </span>
+                    <span class="wthrsml4"><a href="{{event?.payement_link}}">{{event?.payement_link}}</a>
+                  </span>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div class="d-md-flex d-block align-self-center p-20">
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
@@ -43,7 +64,7 @@
                   </li>
                   <ng-template #actived_like>
                     <li>
-                      <button (click)="likePublication(event?.id)" class="main--btn-liked">
+                      <button (click)="disLikePublication(event?.id)" class="main--btn-liked">
                         <i class="feather-thumbs-up"></i> J'aime déjà
                       </button>
                     </li>
@@ -67,89 +88,49 @@
                 </ul>
               </div>
             </div>
+            <div class="dis-like-comments">
+              <div class="left-comments">
+                <a *ngIf="!liked_active;else actived_love" class="like-item" > <i class="feather-heart"></i>
+                  <span>{{this.nombre_like}}
+                    <ins>J'aime</ins></span> </a>
+
+                <ng-template #actived_love>
+                  <a class="like-item-liked"> <i class="feather-heart"></i>
+                    <span> {{this.nombre_like}} J'aime</span>
+                  </a>
+                </ng-template>
+                <a class="like-item lc-left" href="#" title="Commentaires"> <i class="feather-message-square"></i>
+                  <span>1 <ins>Commentaires</ins></span> </a>
+              </div>
+              <div class="right-comments">
+                <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>5 <ins>Partages</ins></span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="main-card mt-30">
-          <div class="categories-left-heading border_bottom">
-            <h3>Détail</h3>
+          <div class="main-reply-comment">
+            <h4>Commentaires</h4>
+            <form>
+              <div class="reply-buttons">
+                <div class="add-photo-button">
+                  <div class="screnshot" id="OpenImgUpload1">
+                    <input class="comment-post" id="file1" placeholder="Votre commentaire..." type="text">
+                  </div>
+                </div>
+                <div class="post-reply-btn">
+                  <button class="btn-add-reply" type="submit">Publier</button>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="evntdt99 p-20">
-            <div class="mndtlist alrspndpple gowthfdsbtn">
-              <div class="evntflldt4 flxcntr">
-                <div class="hhttd14s">
-                  <i class="feather-users"></i>
-                </div>
-                <div class="ttlpple">
-                  <span>{{person_liked?.length}} personnes aiment ca</span>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="evntflldt4 flxcntr">
-                <div class="hhttd14s">
-                  <i class="feather-flag"></i>
-                </div>
-                <div class="ttlpple">
-                  <span>Évènement créé par </span>
-                  <a class="ml-1" href="user_profile.html">{{event?.nom}} {{event?.prenom}}</a>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="evntflldt4 flxcntr">
-                <div class="hhttd14s">
-                  <i class="feather-map-pin"></i>
-                </div>
-                <div class="ttlpple">
-                  <a href="#">#000, Sks Nagar, Near Church, Ludhiana, Punjab</a>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="evntflldt4">
-                <div class="hhttd14s">
-                  <i class="feather-clock"></i>
-                </div>
-                <div class="ttlpple">
-                  <span>{{event?.date_realisation}}</span>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="evntflldt4">
-                <div class="hhttd14s">
-                  <i class="feather-film"></i>
-                </div>
-                <div class="ttlpple">
-                  <span>Lien du Ticket </span>
-                  <span class="wthrsml4"><a href="{{event?.payement_link}}">{{event?.payement_link}}</a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="mndtlist">
-              <div class="mndesp145">
-                <div class="evarticledes">
-                  <p class="mb-0">{{event?.description}}<br></p>
-                  <p class="moretext mb-0">Spice up your Sunday! Bollywood Party<br> ∙ For Booking &amp; Guestlist:
-                    <a href="#">http://example.com/eventname</a><br> ∙ Drop Your Names on WhatsApp for Booking: +91-0000-0000-00<br>
-                  </p>
-                </div>
-                <button class="moreless-btn">Voir Plus</button>
-              </div>
-            </div>
-            <div class="tagtlist">
-              <ul class="taglst17">
-                <li>
-                  <a class="tagbite" href="#">Fête</a>
-                </li>
-                <li>
-                  <a class="tagbite" href="#">Danse</a>
-                </li>
-                <li>
-                  <a class="tagbite" href="#">Comedie</a>
-                </li>
-              </ul>
+          <div class="main-replies">
+            <h4>1 Commentaires</h4>
+            <div class="reply-user-dt">
+              <img alt="" src="images/discussion/img-3.jpg"> <a href="single_discussion_view.html"><h4>Rock Smith</h4>
+            </a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel erat eget purus vestibulum malesuada. Aliquam convallis metus et consectetur varius. Fusce velit ligula, imperdiet vitae vestibulum ut, porta non mi. Etiam justo odio, maximus nec rutrum quis, luctus at orci. Aliquam erat volutpat. Sed eu aliquet justo.</p>
             </div>
           </div>
         </div>

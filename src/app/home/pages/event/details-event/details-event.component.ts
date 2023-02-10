@@ -16,6 +16,7 @@ export class DetailsEventComponent implements OnInit {
   user_connected: any;
   person_liked: any;
   liked_active: boolean = false;
+  nombre_like: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,10 +47,16 @@ export class DetailsEventComponent implements OnInit {
     this.publicationService.getLikesByPublication(this.eventID).subscribe(response => {
       this.person_liked = response.likes;
     });
-
+    this.getNombreLike();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
+  }
+
+  getNombreLike() {
+    this.postService.getLikesByPublication(this.eventID).subscribe(response => {
+      this.nombre_like = response.likes.length;
+    });
   }
 
   likeVerification() {
@@ -65,14 +72,32 @@ export class DetailsEventComponent implements OnInit {
   likePublication(idPub: any) {
     const data = {
       utilisateur_id: this.user_connected.id,
-      publication_id: idPub
+      publication_id: idPub,
+      valeur: 1
     };
-    this.postService.likePublication(data).subscribe(response=>{
+    this.postService.likePublication(data).subscribe(response => {
       console.log(response);
+      this.getNombreLike();
     });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
       if (response.sideja == 1) {
         this.liked_active = true
+      };
+    });
+  }
+  disLikePublication(idPub: any) {
+    let data = {
+      utilisateur_id: this.user_connected.id,
+      publication_id: idPub,
+      valeur: -1
+    };
+    this.postService.likePublication(data).subscribe(response => {
+      console.log(response);
+      this.getNombreLike();
+    });
+    this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
+      if (response.sideja == 1) {
+        this.liked_active = false
       };
     });
   }

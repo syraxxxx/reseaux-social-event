@@ -61,16 +61,25 @@ export class AccueilComponent implements OnInit {
   likePublication(idPub: any) {
     const data = {
       utilisateur_id: this.user_connected.id,
-      publication_id: idPub
+      publication_id: idPub,
+      valeur: 1
     };
     this.postService.likePublication(data).subscribe(response => {
       console.log(response);
       this.getData();
     });
-
   }
 
   dislikePublication(idPub: any) {
+    const data = {
+      utilisateur_id: this.user_connected.id,
+      publication_id: idPub,
+      valeur: -1
+    };
+    this.postService.likePublication(data).subscribe(response => {
+      console.log(response);
+      this.getData();
+    });
   }
 
   getEventByCategorie(idCat: any) {
