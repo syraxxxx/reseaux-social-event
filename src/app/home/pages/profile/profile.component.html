@@ -138,106 +138,23 @@
                   </div>
                   <div class="all-dash-events">
                     <div class="row">
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
+                      <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img alt="" height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg">
+                              <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
                             </a>
                           </div>
                           <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Manga mania Show</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget</span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Atteints</span>
-                                <span class="ms-auto">8</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Réponses</span>
-                                <span class="ms-auto">122</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Click sur Ticket</span>
-                                <span class="ms-auto">55</span>
-                              </p>
-                            </div>
+                            <span class="event-time">{{pubUser.date_realisation}}</span>
+                            <a style="cursor:pointer;" (click)="getDetails(pubUser.id)" class="event-title">{{pubUser.event_name}}</a>
+                            <span class="event-type">Location</span>
+                            <p class="ingo-counter">
+                              <span>25 J'aime</span>
+                            </p>
                             <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
-                        <div class="event-main-post">
-                          <div class="main-photo">
-                            <a href="#">
-                              <div class="photo-overlay"></div>
-                              <img alt="" height="200px" src="../../../assets/images/homepage/center/musique.jpg"> </a>
-                          </div>
-                          <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Fête de la musique</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget </span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Atteints</span>
-                                <span class="ms-auto">2</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Responses</span>
-                                <span class="ms-auto">122</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Ticket Clicks</span>
-                                <span class="ms-auto">55</span>
-                              </p>
-                            </div>
-                            <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
-                        <div class="event-main-post">
-                          <div class="main-photo">
-                            <a href="#">
-                              <div class="photo-overlay"></div>
-                              <img alt="" height="200px" src="../../../assets/images/homepage/center/olympique.jpg">
-                            </a>
-                          </div>
-                          <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Grands Jeux</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget Spent</span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Reach</span>
-                                <span class="ms-auto">148</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Responses</span>
-                                <span class="ms-auto">122</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Ticket Clicks</span>
-                                <span class="ms-auto">55</span>
-                              </p>
-                            </div>
-                            <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
+                              <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
                             </div>
                           </div>
                         </div>
@@ -245,7 +162,7 @@
                       <div class="col-12">
                         <div class="loading-btn mb-0">
                           <button class="process-btn btn-hover" type="button">
-                            No More Events
+                            Pas plus d'évènements
                           </button>
                         </div>
                       </div>
@@ -491,104 +408,23 @@
                   </div>
                   <div class="all-dash-events">
                     <div class="row">
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
+                      <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img alt="" src="images/homepage/center/post-img-1.jpg"> </a>
+                              <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                            </a>
                           </div>
                           <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Event Title Here</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget Spent</span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Reach</span>
-                                <span class="ms-auto">0</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Responses</span>
-                                <span class="ms-auto">0</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Ticket Clicks</span>
-                                <span class="ms-auto">0</span>
-                              </p>
-                            </div>
+                            <span class="event-time">{{pubUser.date_realisation}}</span>
+                            <a href="event_detail_view.html" class="event-title">{{pubUser.event_name}}</a>
+                            <span class="event-type">Location</span>
+                            <p class="ingo-counter">
+                              <span>25 J'aime</span>
+                            </p>
                             <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
-                        <div class="event-main-post">
-                          <div class="main-photo">
-                            <a href="#">
-                              <div class="photo-overlay"></div>
-                              <img alt="" src="images/homepage/center/post-img-2.jpg"> </a>
-                          </div>
-                          <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Event Title Here</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget Spent</span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Reach</span>
-                                <span class="ms-auto">148</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Responses</span>
-                                <span class="ms-auto">122</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Ticket Clicks</span>
-                                <span class="ms-auto">55</span>
-                              </p>
-                            </div>
-                            <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-4 col-lg-12 col-md-6 col-12">
-                        <div class="event-main-post">
-                          <div class="main-photo">
-                            <a href="#">
-                              <div class="photo-overlay"></div>
-                              <img alt="" src="images/homepage/center/post-img-3.jpg"> </a>
-                          </div>
-                          <div class="event-body">
-                            <a class="event-title" href="event_detail_view.html">Event Title Here</a>
-                            <div class="dash-counter-block">
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-lock me-2"></i>Budget Spent</span>
-                                <span class="ms-auto">$100</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-users me-2"></i>Reach</span>
-                                <span class="ms-auto">148</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-star me-2"></i>Responses</span>
-                                <span class="ms-auto">122</span>
-                              </p>
-                              <p class="dash-event-counter">
-                                <span class="h-color"><i class="feather-tag me-2"></i>Ticket Clicks</span>
-                                <span class="ms-auto">55</span>
-                              </p>
-                            </div>
-                            <div class="group-btns">
-                              <button class="interest-btn btn-hover w-100"><i class="feather-edit me-2"></i>Edit
-                              </button>
+                              <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
                             </div>
                           </div>
                         </div>
@@ -596,7 +432,7 @@
                       <div class="col-12">
                         <div class="loading-btn mb-0">
                           <button class="process-btn btn-hover" type="button">
-                            No More Events
+                            Pas plus d'évènements
                           </button>
                         </div>
                       </div>
@@ -638,7 +474,7 @@
                 </div>
                 <div class="all-dash-events">
                   <div class="row">
-                    <div  class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                       <div class="event-main-post">
                         <div class="main-photo">
                           <a href="#">
@@ -647,50 +483,8 @@
                           </a>
                         </div>
                         <div class="event-body">
-                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
-                          <a href="event_detail_view.html" class="event-title"> Nom Event</a>
-                          <span class="event-type">Location</span>
-                          <p class="ingo-counter">
-                            <span>25 J'aime</span>
-                          </p>
-                          <div class="group-btns">
-                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
-                      <div class="event-main-post">
-                        <div class="main-photo">
-                          <a href="#">
-                            <div class="photo-overlay"></div>
-                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="event-body">
-                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
-                          <a href="event_detail_view.html" class="event-title">Manga Mania Show</a>
-                          <span class="event-type">Location</span>
-                          <p class="ingo-counter">
-                            <span>25 J'aime</span>
-                          </p>
-                          <div class="group-btns">
-                            <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
-                      <div class="event-main-post">
-                        <div class="main-photo">
-                          <a href="#">
-                            <div class="photo-overlay"></div>
-                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
-                          </a>
-                        </div>
-                        <div class="event-body">
-                          <span class="event-time">thu,30 june 2022 at 3.00 pm</span>
-                          <a href="event_detail_view.html" class="event-title">Manga Mania Show</a>
+                          <span class="event-time">{{pubUser.date_realisation}}</span>
+                          <a style="cursor:pointer;" (click)="getDetails(pubUser.id)" class="event-title">{{pubUser.event_name}}</a>
                           <span class="event-type">Location</span>
                           <p class="ingo-counter">
                             <span>25 J'aime</span>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +17,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UtilisateurService,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -52,5 +53,9 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
+  }
+
+  getDetails(pub: any) {
+    this.router.navigate(['/home/event', pub]);
   }
 }

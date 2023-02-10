@@ -342,7 +342,7 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)">
+                  <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >
                     <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
                   </a>
                 </div>
