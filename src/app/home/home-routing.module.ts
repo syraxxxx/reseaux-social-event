@@ -9,6 +9,7 @@ import {EventComponent} from "./pages/event/event.component";
 import {SettingsComponent} from "./pages/settings/settings.component";
 import {NewEventComponent} from "./pages/event/new-event/new-event.component";
 import {DetailsEventComponent} from "./pages/event/details-event/details-event.component";
+import {ExploreComponent} from "./pages/explore/explore.component";
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'new-event', component: NewEventComponent},
       {path: 'event/:publication_id', component: DetailsEventComponent},
       {path: 'settings', component: SettingsComponent},
+      {path: 'explore', component: ExploreComponent},
     ]
   }
 ];

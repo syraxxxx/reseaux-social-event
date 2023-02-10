@@ -14,6 +14,7 @@ import { DetailsEventComponent } from './pages/event/details-event/details-event
 import { DetailMessagesComponent } from './pages/messages/detail-messages/detail-messages.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
+import { ExploreComponent } from './pages/explore/explore.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     EventComponent,
     NewEventComponent,
     DetailsEventComponent,
-    DetailMessagesComponent
+    DetailMessagesComponent,
+    ExploreComponent
   ],
   imports: [
     CommonModule,
