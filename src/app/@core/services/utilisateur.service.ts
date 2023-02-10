@@ -59,6 +59,9 @@ export class UtilisateurService {
   }
 
   getUserbyId(user_id:any): Observable<any> {
-    return this.http.get<any>(`${this.apiEndPoint}/messages/${user_id}`);
+    return this.http.get<any>(`${this.apiEndPoint}/${user_id}`);
+  }
+  getPublicationByUser(user_id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/publications/${user_id}`);
   }
 }

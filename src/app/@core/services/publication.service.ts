@@ -58,7 +58,4 @@ export class PublicationService {
   getPublicationByCategorie(categorie_id: string): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/cat/${categorie_id}`);
   }
-  getPublicationByUser(user_id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiEndPoint}/cat/${user_id}`);
-  }
 }

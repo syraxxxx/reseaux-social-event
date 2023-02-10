@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   user_connected: any;
   idPerson: any;
   personne_profil: any;
+  personne_publications: any;
 
   constructor(
     private userService: UtilisateurService,
@@ -29,13 +30,19 @@ export class ProfileComponent implements OnInit {
     this.idPerson = this.route.snapshot.paramMap.get('user_id');
     console.log(this.idPerson);
     if (this.idPerson) {
-      // this.userService.getUserbyId(this.idPerson).subscribe(response => {
-      //   this.personne_profil = response.user[0];
-      // });
-      console.log('hello')
+      this.userService.getUserbyId(this.idPerson).subscribe(response => {
+        this.personne_profil = response.utilisateur[0];
+        this.userService.getPublicationByUser(this.personne_profil.id).subscribe(res => {
+          this.personne_publications = res.publication;
+          console.log(this.personne_publications);
+        })
+      });
     } else {
       this.userService.getUserByToken().subscribe(response => {
         this.personne_profil = response.user[0];
+        this.userService.getPublicationByUser(this.personne_profil.id).subscribe(res => {
+          this.personne_publications = response.publication;
+        })
       });
     }
 
