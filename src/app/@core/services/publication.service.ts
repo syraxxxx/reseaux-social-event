@@ -56,6 +56,6 @@ export class PublicationService {
   };
 
   getPublicationByCategorie(categorie_id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiEndPoint}/cat/${categorie_id}`);
+    return this.http.get<any>(`${this.apiEndPoint}/byCategorie/${categorie_id}`);
   }
 }

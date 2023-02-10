@@ -12,7 +12,7 @@
                       <input class="search-form-input" placeholder="Quoi de neuf ? {{user_connected?.nom}} " type="text">
                     </div>
                     <div class="col-lg-2 col-md-12 col-sm-12">
-                      <button class="search-btn" type="submit" routerLink="/home/new-event">
+                      <button class="search-btn" routerLink="/home/new-event" type="submit">
                         <i class="feather-arrow-right"></i><span>Rechercher</span>
                       </button>
                     </div>
@@ -25,18 +25,18 @@
                 <li class="nav-item">
                   <a class="nav-link active" data-bs-toggle="tab" href="#tab-top">Évènements récents</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-local">Local</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-this-week">Cette semaine</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-friends">Amis</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-following">Suivi</a>-->
-<!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-local">Local</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-this-week">Cette semaine</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-friends">Amis</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                  <a class="nav-link" data-bs-toggle="tab" href="#tab-following">Suivi</a>-->
+                <!--                </li>-->
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-top">
@@ -342,7 +342,8 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a *ngFor="let cat of categories" class="category-item" href="explore.html"><img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
+                  <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)">
+                    <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
                   </a>
                 </div>
               </div>
