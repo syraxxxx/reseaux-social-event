@@ -20,7 +20,7 @@
               <div class="msg-top-left-items">
                 <div class="msg-search">
                   <i class="feather-search"></i>
-                  <input class="form-input pl-left refund-textarea" placeholder="Rechercher des personnes" type="text" value="">
+                  <input class="form-input pl-left refund-textarea" placeholder="Rechercher des personnes" name="searchText"  [(ngModel)]="personMessageFilter" type="text" >
                 </div>
                 <div class="msg-create-btns">
                   <button class="btn-main btn-hover" data-placement="top" data-toggle="tooltip" title="Mark all conversations as read" type="button">
@@ -50,7 +50,7 @@
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body" cursor="pointer">
-                        <a *ngFor="let mess of messages" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)" style="cursor:pointer;">
+                        <a *ngFor="let mess of messages | filter:personMessageFilter" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)"  style="cursor:pointer;">
                           <div class="item-img">
                             <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>

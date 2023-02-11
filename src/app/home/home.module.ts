@@ -15,6 +15,7 @@ import { DetailMessagesComponent } from './pages/messages/detail-messages/detail
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { ExploreComponent } from './pages/explore/explore.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ExploreComponent } from './pages/explore/explore.component';
     HomeRoutingModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class HomeModule { }
