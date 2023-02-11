@@ -33,10 +33,10 @@
                 </h4>
                 <span class="user-loc"><i class="feather-map-pin"></i>France</span>
               </div>
-              <div class="ff-block">
-                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>4</span>Abonnées</a>
-                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>5</span>Suivi</a>
-              </div>
+<!--              <div class="ff-block">-->
+<!--                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>4</span>Abonnées</a>-->
+<!--                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>5</span>Suivi</a>-->
+<!--              </div>-->
               <div class="user-description">
                 <p>Bonjour je suis {{personne_profil?.nom}} {{personne_profil?.prenom}}</p>
               </div>
@@ -117,7 +117,7 @@
                       <div class="col-lg-4 col-md-4 col-12">
                         <div class="event-search-dash">
                           <div class="position-relative">
-                            <input class="form-input" placeholder="Rechercher ..." type="text">
+                            <input class="form-input" placeholder="Rechercher ..." name="recherche" [(ngModel)]="searchEvent" type="text">
                             <span class="icon-158"><i class="feather-search"></i></span>
                           </div>
                         </div>
@@ -138,18 +138,18 @@
                   </div>
                   <div class="all-dash-events">
                     <div class="row">
-                      <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div *ngFor="let pubUser of personne_publications | filter:searchEvent"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                              <img ="100px" src="../../assets/images/homepage/center/arrireplan.png" alt="">
                             </a>
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pubUser.date_realisation}}</span>
                             <a style="cursor:pointer;" (click)="getDetails(pubUser.id)" class="event-title">{{pubUser.event_name}}</a>
-                            <span class="event-type">Location</span>
+                            <span class="event-type">{{pubUser.lieu}}</span>
                             <p class="ingo-counter">
                               <span>25 J'aime</span>
                             </p>
@@ -262,15 +262,15 @@
               <div aria-labelledby="events-tab" class="tab-pane fade" id="events" role="tabpanel">
                 <div class="main-card mt-4 mb-0">
                   <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4">
-                    <h4>Events</h4>
-                    <a class="main-btn btn-hover h_40 ms-auto" href="add_new_event.html">Create</a>
+                    <h4>Évènements </h4>
+                    <a class="main-btn btn-hover h_40 ms-auto" routerLink="/home/new-event">Créer</a>
                   </div>
                   <div class="events-dash-options main-form">
                     <div class="row g-2">
                       <div class="col-lg-4 col-md-4 col-12">
                         <div class="event-search-dash">
                           <div class="position-relative">
-                            <input class="form-input" placeholder="Search event" type="text">
+                            <input class="form-input" placeholder="Rechercher ..." type="text" name="recherche" [(ngModel)]="searchEvent">
                             <span class="icon-158"><i class="feather-search"></i></span>
                           </div>
                         </div>
@@ -291,18 +291,18 @@
                   </div>
                   <div class="all-dash-events">
                     <div class="row">
-                      <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div *ngFor="let pubUser of personne_publications | filter:searchEvent"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                              <img height="100px" src="../../assets/images/homepage/center/arrireplan.png" alt="">
                             </a>
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pubUser.date_realisation}}</span>
                             <a href="event_detail_view.html" class="event-title">{{pubUser.event_name}}</a>
-                            <span class="event-type">Location</span>
+                            <span class="event-type">{{pubUser.lieu}}</span>
                             <p class="ingo-counter">
                               <span>25 J'aime</span>
                             </p>
@@ -336,7 +336,7 @@
                     <div class="col-lg-4 col-md-4 col-12">
                       <div class="event-search-dash">
                         <div class="position-relative">
-                          <input class="form-input" placeholder="Rechercher ..." type="text">
+                          <input class="form-input" placeholder="Rechercher ohh ..." name="recherche" [(ngModel)]="searchEvent" type="text">
                           <span class="icon-158"><i class="feather-search"></i></span>
                         </div>
                       </div>
@@ -357,12 +357,12 @@
                 </div>
                 <div class="all-dash-events">
                   <div class="row">
-                    <div *ngFor="let pubUser of personne_publications"  class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div *ngFor="let pubUser of personne_publications | filter: searchEvent"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                       <div class="event-main-post">
                         <div class="main-photo">
                           <a href="#">
                             <div class="photo-overlay"></div>
-                            <img height="200px" src="../../../assets/images/homepage/center/manga-mania.jpg" alt="">
+                            <img height="100px" src="../../assets/images/homepage/center/arrireplan.png" alt="">
                           </a>
                         </div>
                         <div class="event-body">

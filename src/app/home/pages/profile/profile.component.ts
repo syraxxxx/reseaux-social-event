@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   idPerson: any;
   personne_profil: any;
   personne_publications: any;
-
+  searchEvent : any;
   constructor(
     private userService: UtilisateurService,
     private spinner: NgxSpinnerService,
