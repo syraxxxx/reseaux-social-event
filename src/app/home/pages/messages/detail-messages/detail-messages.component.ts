@@ -39,9 +39,7 @@ export class DetailMessagesComponent implements OnChanges {
   getData() {
     this.serviceUser.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
-      console.log("messages : "+this.messageList)
-      if(this.elementRef && this.elementRef.nativeElement.lastElementChild){
-        console.log('hello')
+      if (this.elementRef && this.elementRef.nativeElement.lastElementChild) {
         this.messageList.nativeElement.lastElementChild.scrollIntoView({behavior: "smooth"});
       }
     });

@@ -36,9 +36,10 @@
                 </div>
               </div>
               <div class="msg-tabs search-person"  *ngIf="showSearchPerson">
+                <div class="close"><a href=""><i class="feather-"></i></a></div>
                 <div class="messages-list pt-0 mt-2">
-                  <div [ngClass]="{ 'open': isOpen() }" class="item-body">
-                    <a *ngFor="let person of personnes" (click)="loadMessagebyUser(person.id)" class="media search-each-person" >
+                  <div  class="item-body">
+                    <a *ngFor="let person of personnes  | filter:personMessageFilter" (click)="loadMessagebyUser(person.id)" class="media search-each-person" >
                       <div class="item-img">
                         <img alt="" height="20px" src="../../../assets/images/find-peoples/lily.jpeg">
                         <span class="chat-status offline"></span>
@@ -68,7 +69,7 @@
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body" cursor="pointer">
-                        <a (click)="loadMessagebyUser(mess.interlocuteur_id)" *ngFor="let mess of messages | filter:personMessageFilter" class="media" style="cursor:pointer;">
+                        <a (click)="loadMessagebyUser(mess.interlocuteur_id)" *ngFor="let mess of messages" class="media" style="cursor:pointer;">
                           <div class="item-img">
                             <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>
