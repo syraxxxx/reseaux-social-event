@@ -64,4 +64,7 @@ export class UtilisateurService {
   getPublicationByUser(user_id: string): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/publications/${user_id}`);
   }
+  getAllUser(): Observable<any> {
+    return this.http.get<any>(`${this.apiEndPoint}/liste`);
+  }
 }

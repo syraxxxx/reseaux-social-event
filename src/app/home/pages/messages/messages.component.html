@@ -16,11 +16,11 @@
       <div class="row">
         <div class="col-xl-4 col-lg-5 col-md-12">
           <div class="full-width mb-0">
-            <form class="message-sidebar">
+            <div class="message-sidebar">
               <div class="msg-top-left-items">
                 <div class="msg-search">
                   <i class="feather-search"></i>
-                  <input class="form-input pl-left refund-textarea" placeholder="Rechercher des personnes" name="searchText"  [(ngModel)]="personMessageFilter" type="text" >
+                  <input [(ngModel)]="personMessageFilter" (ngModelChange)="onPersonMessageFilterChange()" class="form-input pl-left refund-textarea" name="searchText" placeholder="Rechercher des personnes" type="text">
                 </div>
                 <div class="msg-create-btns">
                   <button class="btn-main btn-hover" data-placement="top" data-toggle="tooltip" title="Mark all conversations as read" type="button">
@@ -35,6 +35,24 @@
                   </button>
                 </div>
               </div>
+              <div class="msg-tabs search-person"  *ngIf="showSearchPerson">
+                <div class="messages-list pt-0 mt-2">
+                  <div [ngClass]="{ 'open': isOpen() }" class="item-body">
+                    <a *ngFor="let person of personnes" (click)="loadMessagebyUser(person.id)" class="media search-each-person" >
+                      <div class="item-img">
+                        <img alt="" height="20px" src="../../../assets/images/find-peoples/lily.jpeg">
+                        <span class="chat-status offline"></span>
+                      </div>
+                      <div class="media-body">
+                        <h6 class="item-title mb-1">{{person.nom}} {{person.prenom}}</h6>
+                        <div class="item-time">{{person.date_envois}}</div>
+                        <p>{{person.corps}}</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               <div class="msg-tabs">
                 <ul class="nav nav-pills nav-justified" role="tablist">
                   <li class="nav-item">
@@ -50,7 +68,7 @@
                   <div class="tab-pane fade active show" id="users-message" role="tabpanel">
                     <div class="messages-list pt-0 mt-2">
                       <div class="item-body" cursor="pointer">
-                        <a *ngFor="let mess of messages | filter:personMessageFilter" class="media" (click)="loadMessagebyUser(mess.interlocuteur_id)"  style="cursor:pointer;">
+                        <a (click)="loadMessagebyUser(mess.interlocuteur_id)" *ngFor="let mess of messages | filter:personMessageFilter" class="media" style="cursor:pointer;">
                           <div class="item-img">
                             <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
                             <span class="chat-status offline"></span>
@@ -61,18 +79,6 @@
                             <p>{{mess.corps}}</p>
                           </div>
                         </a>
-
-<!--                        <a  class="media" (click)="loadMessagebyUser(2)" href="#">-->
-<!--                          <div class="item-img">-->
-<!--                            <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">-->
-<!--                            <span class="chat-status offline"></span>-->
-<!--                          </div>-->
-<!--                          <div class="media-body">-->
-<!--                            <h6 class="item-title mb-1">Lily Zaman</h6>-->
-<!--                            <div class="item-time">1 mins ago</div>-->
-<!--                            <p>Hey How are you Lily Zaman</p>-->
-<!--                          </div>-->
-<!--                        </a>-->
                       </div>
                     </div>
                   </div>
@@ -86,20 +92,16 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
         <div class="col-xl-8 col-lg-7 col-md-12">
-          <app-detail-messages  [USER_MESSAGE_SELECTED]="messageByUser" [ID_DESTINATAIRE]="destinataire"  ></app-detail-messages>
+          <app-detail-messages [ID_DESTINATAIRE]="destinataire" [USER_MESSAGE_SELECTED]="messageByUser"></app-detail-messages>
         </div>
       </div>
     </div>
   </div>
 </main>
-<ngx-spinner bdColor="rgb(2 2 2 / 90%)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
-  [fullScreen] = "true">
+<ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
   <p style="font-size: 18px; color: white">Chargement des données...</p>
 </ngx-spinner>

@@ -15,6 +15,8 @@ export class MessagesComponent implements OnInit {
   today = new Date();
   destinataire: any;
   personMessageFilter: any;
+  personnes: any;
+  showSearchPerson = false;
 
   constructor(
     private serviceUser: UtilisateurService,
@@ -44,6 +46,9 @@ export class MessagesComponent implements OnInit {
       this.user_connected = response.user[0];
       this.loadAllMessages();
     });
+    this.userService.getAllUser().subscribe(response => {
+      this.personnes = response.utilisateurs;
+    });
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
@@ -62,8 +67,16 @@ export class MessagesComponent implements OnInit {
     this.destinataire = idDestinataire;
     this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
       this.messageByUser = response.publication.sort().reverse();
+      console.log(response.publication);
     });
   };
+  isOpen(){
 
+  }
+  onPersonMessageFilterChange() {
+    this.showSearchPerson = !this.personMessageFilter;
+    console.log('value of show : '+this.showSearchPerson);
+    console.log('opposite value of message Filter : '+ !this.personMessageFilter);
+  }
 
 }

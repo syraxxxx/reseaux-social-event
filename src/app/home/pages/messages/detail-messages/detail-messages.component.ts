@@ -16,6 +16,7 @@ export class DetailMessagesComponent implements OnChanges {
 
   messages: any;
   user_connected: any;
+  destinataire: any;
   formMessage = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
     destinataire_id: new FormControl('', [Validators.required]),
@@ -25,7 +26,7 @@ export class DetailMessagesComponent implements OnChanges {
   constructor(
     private serviceUser: UtilisateurService,
     private messengerService: MessengerService,
-    private elementRef : ElementRef
+    private elementRef: ElementRef
   ) {
     this.messageList = this.elementRef.nativeElement.querySelector('.messageList');
   }
@@ -38,8 +39,18 @@ export class DetailMessagesComponent implements OnChanges {
   getData() {
     this.serviceUser.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
-      this.messageList.nativeElement.lastElementChild.scrollIntoView({ behavior: "smooth" });
+      console.log("messages : "+this.messageList)
+      if(this.elementRef && this.elementRef.nativeElement.lastElementChild){
+        console.log('hello')
+        this.messageList.nativeElement.lastElementChild.scrollIntoView({behavior: "smooth"});
+      }
     });
+    if (this.ID_DESTINATAIRE) {
+      this.serviceUser.getUserbyId(this.ID_DESTINATAIRE).subscribe(response => {
+        this.destinataire = response.utilisateur[0];
+      });
+    }
+
     this.messages = this.USER_MESSAGE_SELECTED;
   }
 
@@ -56,15 +67,13 @@ export class DetailMessagesComponent implements OnChanges {
 
   reloadMessage(idUser: any, idDestinataire: any) {
     this.messengerService.getMessageUser(idUser, idDestinataire).subscribe(response => {
-      this.messages = response.publication.sort().reverse();
-      this.messageList.nativeElement.lastElementChild.scrollIntoView({ behavior: "smooth" });
-      // this.scrollToBottom();
+      if (response) {
+        this.messages = response.publication.sort().reverse();
+        this.messageList.nativeElement.lastElementChild.scrollIntoView({behavior: "smooth"});
+      }
     });
   }
-  public scrollToBottom() {
-    this.messageList.nativeElement.scrollTop = this.messageList.nativeElement.scrollHeight;
-    this.scrollEvent.emit();
-  }
+
 
   messageByme(idUser: any) {
     if (idUser == this.user_connected.id) {
