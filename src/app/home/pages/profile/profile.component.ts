@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
 
   getData() {
     this.idPerson = this.route.snapshot.paramMap.get('user_id');
-    console.log(this.idPerson);
     if (this.idPerson) {
       this.userService.getUserbyId(this.idPerson).subscribe(response => {
         this.personne_profil = response.utilisateur[0];
@@ -39,10 +38,11 @@ export class ProfileComponent implements OnInit {
         })
       });
     } else {
+
       this.userService.getUserByToken().subscribe(response => {
         this.personne_profil = response.user[0];
         this.userService.getPublicationByUser(this.personne_profil.id).subscribe(res => {
-          this.personne_publications = response.publication;
+          this.personne_publications = res.publication;
         })
       });
     }
