@@ -44,6 +44,13 @@
                       </div>
                     </div>
                     <div class="form-group mt-4">
+                      <label class="form-label">Lieu*</label>
+                      <input class="form-input" formControlName="lieu" placeholder="Lieu de l'évènement" type="text">
+                      <div *ngIf="formNewEvent.get('lieu')?.errors?.['required'] && formNewEvent.get('lieu')?.touched">
+                        <span class="error-formNewEvent">Lieu requis*</span>
+                      </div>
+                    </div>
+                    <div class="form-group mt-4">
                       <label class="form-label">Date de réalisation*</label>
                       <input class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
                       <div *ngIf="formNewEvent.get('date_realisation')?.errors?.['required'] && formNewEvent.get('date_realisation')?.touched">

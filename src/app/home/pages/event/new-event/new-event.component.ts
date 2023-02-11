@@ -21,6 +21,7 @@ export class NewEventComponent implements OnInit {
     payement_link: new FormControl('', [Validators.required]),
     event_name: new FormControl('', [Validators.required]),
     date_realisation: new FormControl('', [Validators.required]),
+    lieu: new FormControl(''),
   });
 
   constructor(
@@ -55,18 +56,17 @@ export class NewEventComponent implements OnInit {
     this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
     this.eventService.create(this.formNewEvent.value).subscribe({
       next(res: any) {
-        console.log('here oh ')
-        Swal.fire({
-          text: `Votre évènement a été crée avec succès`, icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(r => 'nothing');
+
       },
       error(err: any) {
       }
     });
-
+    Swal.fire({
+      text: `Votre évènement a été crée avec succès`, icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    }).then(r => 'nothing');
     this.formNewEvent.reset();
-    //service to insert image in db
+
   }
 }
