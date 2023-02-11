@@ -13,10 +13,11 @@ export class DetailMessagesComponent implements OnChanges {
   @Input() ID_DESTINATAIRE: any;
   @ViewChild('messageList') messageList: ElementRef;
   @Output() scrollEvent = new EventEmitter<any>();
-
+  @Output() data = new EventEmitter<any>();
   messages: any;
   user_connected: any;
   destinataire: any;
+
   formMessage = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
     destinataire_id: new FormControl('', [Validators.required]),
@@ -61,6 +62,7 @@ export class DetailMessagesComponent implements OnChanges {
         this.reloadMessage(this.user_connected.id, this.ID_DESTINATAIRE);
       });
     }
+    this.data.emit();
   }
 
   reloadMessage(idUser: any, idDestinataire: any) {

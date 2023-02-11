@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="col-xl-8 col-lg-7 col-md-12">
-          <app-detail-messages [ID_DESTINATAIRE]="destinataire" [USER_MESSAGE_SELECTED]="messageByUser"></app-detail-messages>
+          <app-detail-messages (data)="getData()" [ID_DESTINATAIRE]="destinataire" [USER_MESSAGE_SELECTED]="messageByUser"></app-detail-messages>
         </div>
       </div>
     </div>
