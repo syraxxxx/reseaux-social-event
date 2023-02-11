@@ -72,7 +72,6 @@ export class AccueilComponent implements OnInit {
       valeur: 1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
       this.getData();
     });
   }
@@ -84,7 +83,6 @@ export class AccueilComponent implements OnInit {
       valeur: -1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
       this.getData();
     });
   }

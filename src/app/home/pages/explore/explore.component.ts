@@ -15,7 +15,7 @@ export class ExploreComponent implements OnInit {
   publications: any;
   user_connected: any;
   categories: any;
-
+  searchEvent : any;
   constructor(
     private router: Router,
     private postService: PublicationService,
@@ -56,9 +56,9 @@ export class ExploreComponent implements OnInit {
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
     });
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 500);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 500);
   }
   getDetails(pub: any) {
     this.router.navigate(['/home/event', pub]);
@@ -89,6 +89,7 @@ export class ExploreComponent implements OnInit {
   }
 
   getEventByCategorie(idCat: any) {
+    this.spinner.show();
     this.postService.getPublicationByCategorie(idCat).subscribe(response => {
       this.publications = response.publications;
     });
