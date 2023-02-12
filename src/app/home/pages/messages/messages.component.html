@@ -20,7 +20,7 @@
               <div class="msg-top-left-items">
                 <div class="msg-search">
                   <i class="feather-search"></i>
-                  <input [(ngModel)]="personMessageFilter" (ngModelChange)="onPersonMessageFilterChange()" class="form-input pl-left refund-textarea" name="searchText" placeholder="Rechercher des personnes" type="text">
+                  <input (ngModelChange)="onPersonMessageFilterChange()" [(ngModel)]="personMessageFilter" class="form-input pl-left refund-textarea" name="searchText" placeholder="Rechercher des personnes" type="text">
                 </div>
                 <div class="msg-create-btns">
                   <button class="btn-main btn-hover" data-placement="top" data-toggle="tooltip" title="Mark all conversations as read" type="button">
@@ -35,21 +35,24 @@
                   </button>
                 </div>
               </div>
-              <div class="msg-tabs search-person"  *ngIf="showSearchPerson">
+              <div *ngIf="showSearchPerson" class="msg-tabs search-person">
                 <div class="close"><a href=""><i class="feather-"></i></a></div>
                 <div class="messages-list pt-0 mt-2">
-                  <div  class="item-body">
-                    <a *ngFor="let person of personnes  | filter:personMessageFilter" (click)="loadMessagebyUser(person.id)" class="media search-each-person" >
-                      <div class="item-img">
-                        <img alt="" height="20px" src="../../../assets/images/find-peoples/lily.jpeg">
-                        <span class="chat-status offline"></span>
-                      </div>
-                      <div class="media-body">
-                        <h6 class="item-title mb-1">{{person.nom}} {{person.prenom}}</h6>
-                        <div class="item-time">{{person.date_envois}}</div>
-                        <p>{{person.corps}}</p>
-                      </div>
-                    </a>
+                  <div class="item-body">
+                    <div *ngIf="personnes.length!=0">
+                      COUCOUU
+                    </div>
+                      <a (click)="loadMessagebyUser(person.id)" *ngFor="let person of personnes  | filter:personMessageFilter" class="media search-each-person">
+                        <div class="item-img">
+                          <img alt="" height="20px" src="../../../assets/images/find-peoples/lily.jpeg">
+                          <span class="chat-status offline"></span>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="item-title mb-1">{{person.nom}} {{person.prenom}}</h6>
+                          <div class="item-time">{{person.date_envois}}</div>
+                          <p>{{person.corps}}</p>
+                        </div>
+                      </a>
                   </div>
                 </div>
               </div>
