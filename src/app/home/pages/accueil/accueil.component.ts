@@ -48,17 +48,17 @@ export class AccueilComponent implements OnInit {
             if (response.sideja == 1) {
               pub.like_actived = true
             }
-
-          })
+          });
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 500);
         }
       });
     });
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
     });
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 500);
+
   }
 
   getDetails(pub: any) {
