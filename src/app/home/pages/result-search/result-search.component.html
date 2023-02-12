@@ -1,0 +1,108 @@
+<div class="title-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ol class="title-bar-text">
+          <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Resultat</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Title Bar End -->
+<!-- Body Start -->
+<main class="goeveni-mp">
+  <div class="main-section">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-12">
+          <div class="user-data full-width">
+            <div class="search-explore p-4">
+              <div class="position-relative">
+<!--                <input class="form-input" type="text" placeholder="Mot clés..." name="recherche" [(ngModel)]="searchEvent">-->
+                <span class="icon-158"><i class="feather-search"></i></span>
+              </div>
+            </div>
+            <div class="explore-filters accordion" id="explore-filter-group">
+              <a href="#filter-item-1" class="filter-step collapsed cate-right" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-1">Categories</a>
+              <div class="collapse" id="filter-item-1" data-bs-parent="#explore-filter-group">
+                <div class="cate-group text-start">
+                  <div class="categories-items">
+                    <div class="categories-container">
+<!--                      <a  class="category-item" style="cursor:pointer;" (click)="getData()">-->
+<!--                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">Tous-->
+<!--                      </a>-->
+<!--                      <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >-->
+<!--                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}-->
+<!--                      </a>-->
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-12">
+          <h4>Résultat(s) pour : </h4>
+          <div class="explore-items">
+            <div class="row">
+
+              <div  class="col-xl-4 col-lg-6 col-md-6">
+                <div class="event-main-post">
+                  <div class="main-photo">
+                    <a href="event_detail_view.html">
+                      <div class="photo-overlay"></div>
+                      <img alt="" src="../../assets/images/homepage/center/arrireplan.png"> </a>
+                    <div class="option-ellipsis">
+                      <div class="dropdown">
+                        <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button"><i class="fas fa-ellipsis-v"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a class="post-link-item" href="#"><i class="feather-eye-off icon-mr1"></i>Ne plus voir</a>
+                          <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
+                          <a class="post-link-item" href="#"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
+                          <a class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event-body">
+                    <span class="event-time">date</span>
+                    <a  class="event-title" routerLink=""> nom </a>
+                    <span class="event-type">nom prenom</span>
+                    <p class="ingo-counter">
+                      <span>like J'aime</span> <span>comments commentaire(s)</span>
+                    </p>
+                    <div class="group-btns">
+<!--                      <button (click)="likePublication(pub?.id)" *ngIf="!pub.like_actived;else activated_like" class="interest-btn btn-hover">-->
+<!--                        <i class="feather-thumbs-up me-2"></i> J'aime-->
+<!--                      </button>-->
+<!--                      <ng-template #activated_like>-->
+<!--                        <button (click)="dislikePublication(pub?.id)" class="interest-btn-like btn-hover">-->
+<!--                          <i class="feather-thumbs-up me-2"></i> J'aime déjà-->
+<!--                        </button>-->
+<!--                      </ng-template>-->
+                      <button class="share-btn btn-hover" data-bs-target="#shareModal" data-bs-toggle="modal">
+                        <i class="feather-share-2"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="loading-btn mb-3">
+                  <button class="process-btn btn-hover" type="button">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Chargement...
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxSpinnerModule} from "ngx-spinner";
 import { ExploreComponent } from './pages/explore/explore.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { ResultSearchComponent } from './pages/result-search/result-search.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     NewEventComponent,
     DetailsEventComponent,
     DetailMessagesComponent,
-    ExploreComponent
+    ExploreComponent,
+    ResultSearchComponent
   ],
   imports: [
     CommonModule,
