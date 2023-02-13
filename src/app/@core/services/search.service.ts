@@ -13,7 +13,7 @@ export class SearchService {
   }
 
   search(keyword: any): Observable<any> {
-    return this.http.get<any>(`${this.apiEndPoint}?keyword${keyword}`);
+    return this.http.get<any>(`${this.apiEndPoint}?keyword=${keyword}`);
   }
 
 }

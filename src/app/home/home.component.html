@@ -292,18 +292,18 @@
         </div>
         <div class="offcanvas-body">
           <div class="offcanvas-search navbar-search position-relative d-block d-lg-none d-xl-block">
-            <form>
+            <form (ngSubmit)="onSearch()" >
               <div class="input-group">
-                <input (keyup)="onSearch()" aria-label="Search" class="form-control shadow-none border-0" placeholder="Rechercher des évènements ..." type="text">
+                <input  [(ngModel)]="searchTerm" name="recherche" aria-label="Search" class="form-control shadow-none border-0" placeholder="Rechercher des évènements ..." type="text">
                 <div class="input-group-append">
-                  <button class="btn" type="button">
+                  <button class="btn" >
                     <i class="feather-search"></i>
                   </button>
                 </div>
               </div>
             </form>
           </div>
-          <a class="add-event-btn btn-hover d-block d-lg-none" href="#">Add New Event</a>
+          <a class="add-event-btn btn-hover d-block d-lg-none" href="#">Ajouter nouvel évènement</a>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
             <li *ngFor="let menuItem of menuItems" class="nav-item">
               <a aria-current="page" class="nav-link" routerLink="{{menuItem.path}}">

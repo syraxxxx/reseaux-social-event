@@ -4,7 +4,7 @@ import {LogoutService} from "../security/logout/logout.service";
 import {UtilisateurService} from "../@core/services/utilisateur.service";
 import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
-import {Subject} from "rxjs";
+import {SearchService} from "../@core/services/search.service";
 
 @Component({
   selector: 'app-home',
@@ -17,14 +17,15 @@ export class HomeComponent implements OnInit {
   user_connected: any;
   messages: any;
   messageByUser: any;
-  searchTerm: any;
+  searchTerm!: string;
 
   constructor(
     private router: Router,
     private tokenService: TokenService,
     private logoutService: LogoutService,
     private userService: UtilisateurService,
-    private messengerService: MessengerService
+    private messengerService: MessengerService,
+    private searchService: SearchService
   ) {
   }
 
@@ -69,9 +70,9 @@ export class HomeComponent implements OnInit {
       this.messageByUser = response.publication.sort().reverse();
     });
   };
+
   onSearch() {
-    // this.searchTerm$.next(this.searchTerm);
-    console.log(this.searchTerm);
+    this.router.navigateByUrl('/home/res/' + this.searchTerm);
   }
 
 }
