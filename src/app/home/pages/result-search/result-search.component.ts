@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SearchService} from "../../../@core/services/search.service";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -8,7 +8,7 @@ import {NgxSpinnerService} from "ngx-spinner";
   templateUrl: './result-search.component.html',
   styleUrls: ['./result-search.component.scss']
 })
-export class ResultSearchComponent implements OnInit {
+export class ResultSearchComponent implements OnInit,OnDestroy {
 
   search: any;
   result: any;
@@ -17,7 +17,8 @@ export class ResultSearchComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private searchService: SearchService,
-    private spinner : NgxSpinnerService
+    private spinner : NgxSpinnerService,
+    private cd : ChangeDetectorRef
   ) {
   }
 
@@ -26,9 +27,12 @@ export class ResultSearchComponent implements OnInit {
     this.search = this.route.snapshot.paramMap.get('search');
     this.getResult();
   }
+  ngOnDestroy() {
+    this.cd.detectChanges();
+  }
 
   getResult() {
-    console.log("valeur de recherche : " + this.search);
+    console.log(this.search);
     this.searchService.search(this.search).subscribe(response => {
       console.log(response);
       this.result = response;
