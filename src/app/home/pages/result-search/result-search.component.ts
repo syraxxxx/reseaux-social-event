@@ -8,27 +8,41 @@ import {NgxSpinnerService} from "ngx-spinner";
   templateUrl: './result-search.component.html',
   styleUrls: ['./result-search.component.scss']
 })
-export class ResultSearchComponent implements OnInit,OnDestroy {
+export class ResultSearchComponent implements OnInit {
 
   search: any;
   result: any;
 
   constructor(
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private searchService: SearchService,
-    private spinner : NgxSpinnerService,
-    private cd : ChangeDetectorRef
+    private spinner: NgxSpinnerService,
+    private cd: ChangeDetectorRef
   ) {
   }
 
   ngOnInit(): void {
     this.spinner.show();
-    this.search = this.route.snapshot.paramMap.get('search');
-    this.getResult();
+    // this.search = this.route.snapshot.paramMap.get('search');
+    // this.result = this.route.snapshot.paramMap.get('valeurRecherche');
+    console.log(this.search);
+    console.log(this.result);
+    // console.log(this.route.snapshot.paramMap.get('valeurRecherche'));
+    // this.getResult();
+    this.route.params.subscribe(params=>{
+      this.search = params['search']
+      console.log("params : "+params['search']);
+      this.updateData(params['search']);
+    })
+
   }
-  ngOnDestroy() {
-    this.cd.detectChanges();
+
+  updateData(params :any) {
+    this.searchService.search(params).subscribe(response => {
+      console.log(response);
+      this.result = response;
+    })
   }
 
   getResult() {
