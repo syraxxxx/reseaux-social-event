@@ -19,28 +19,17 @@
           <div class="user-data full-width">
             <div class="search-explore p-4">
               <div class="position-relative">
-                <!--                <input class="form-input" type="text" placeholder="Mot clés..." name="recherche" [(ngModel)]="searchEvent">-->
+                <input class="form-input" name="recherche" placeholder="Mot clés..." type="text">
                 <span class="icon-158"><i class="feather-search"></i></span>
               </div>
             </div>
             <div class="explore-filters accordion" id="explore-filter-group">
-              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" href="#filter-item-1" role="button">Categories</a>
-              <div class="collapse" data-bs-parent="#explore-filter-group" id="filter-item-1">
-                <div class="cate-group text-start">
-                  <div class="categories-items">
-                    <div class="categories-container">
-                      <!--                      <a  class="category-item" style="cursor:pointer;" (click)="getData()">-->
-                      <!--                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">Tous-->
-                      <!--                      </a>-->
-                      <!--                      <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >-->
-                      <!--                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}-->
-                      <!--                      </a>-->
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse"  role="button">Recherche</a>
+<!--              <div class="collapse" data-bs-parent="#explore-filter-group" id="filter-item-1">-->
+<!--                <div class="cate-group text-start">-->
+<!--                  <div class="categories-items"></div>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -69,7 +58,7 @@
               <h5>Évènement(s) trouvée(s)</h5>
               <div *ngIf="result?.publications.length==0;else resultPub">
                 <div class="no-results">
-                  Pas d'évènement trouvées
+                  Pas d'évènement trouvées <br><br><br><br><br><br><br><br><br><br><br>
                 </div>
               </div>
               <ng-template #resultPub>
