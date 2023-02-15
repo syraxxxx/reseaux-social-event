@@ -82,11 +82,11 @@
                     </div>
                     <div class="event-body">
                       <span class="event-time">{{resultPublication.date_realisation}}</span>
-                      <a class="event-title" routerLink=""> {{resultPublication.event_name}} </a>
+                      <a class="event-title" style="cursor: pointer" (click)="getDetails(resultPublication.id)"> {{resultPublication.event_name}} </a>
                       <span class="event-type">{{resultPublication.nom}} {{resultPublication.prenom}}</span>
-                      <p class="ingo-counter">
-                        <span>like J'aime</span> <span>comments commentaire(s)</span>
-                      </p>
+<!--                      <p class="ingo-counter">-->
+<!--                        <span>like J'aime</span> <span>comments commentaire(s)</span>-->
+<!--                      </p>-->
                       <div class="group-btns">
                         <button (click)="getDetails(resultPublication.id)" class="interest-btn btn-hover">
                           <i class="feather-eye me-2"></i>Voir
