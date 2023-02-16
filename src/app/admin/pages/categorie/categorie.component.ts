@@ -34,4 +34,11 @@ export class CategorieComponent implements OnInit {
       this.categories = response.likes;
     });
   }
+
+  delete(id:any){
+
+  }
+  addCategorie(){
+
+  }
 }
