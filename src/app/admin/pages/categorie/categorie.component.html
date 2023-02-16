@@ -1,0 +1,134 @@
+<div class="title-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ol class="title-bar-text">
+          <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Categories</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Title Bar End -->
+<!-- Body Start -->
+<main class="discussion-mp">
+  <div class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-12">
+          <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#add-discussion-model">Ajouter une nouvelle catégorie</button>
+          <div class="topic-categories-bg">
+            <a href="#" class="category-topics active">Tous</a>
+            <a href="#collapse1" class="category-topics cate-right" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse1">All Tags</a>
+            <div class="collapse" id="collapse1">
+              <ul class="tag-card">
+                <li><a href="#" class="tag-item1">Music</a></li>
+                <li><a href="#" class="tag-item1">Singer</a></li>
+                <li><a href="#" class="tag-item1">Cricketer</a></li>
+                <li><a href="#" class="tag-item1">Show</a></li>
+                <li><a href="#" class="tag-item1">Social</a></li>
+                <li><a href="#" class="tag-item1">Art</a></li>
+                <li><a href="#" class="tag-item1">Tv</a></li>
+                <li><a href="#" class="tag-item1">Tech</a></li>
+                <li><a href="#" class="tag-item1">Fashion</a></li>
+                <li><a href="#" class="tag-item1">Beauty</a></li>
+                <li><a href="#" class="tag-item1">Health and Fitness</a></li>
+                <li><a href="#" class="tag-item1">Festival</a></li>
+                <li><a href="#" class="tag-item1">Film Promotion</a></li>
+                <li><a href="#" class="tag-item1">Comedey</a></li>
+                <li><a href="#" class="tag-item1">Club</a></li>
+                <li><a href="#" class="tag-item1">Ilets</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="google-ads-left d-none d-lg-block">
+            <img src="images/discussion/ads.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-12">
+          <div class="all-discussions">
+            <div class="discussion-heading">
+              <h2>Toutes les catégories</h2>
+            </div>
+            <div class="all-discussions-items">
+              <div class="dis-item">
+                <div *ngFor="let cat of categories" class="row no-gutters">
+                  <div class="col-xl-8 col-lg-12 col-md-12">
+                    <div class="dis-img-text">
+                      <img src="../../assets/images/discussion/img-1.jpg" alt="">
+                      <h4>{{cat.nom}} </h4>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                    <div class="dis-reviews">
+                      <button class="btn btn-warning" >Update</button>
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="blog-pagination">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <i class="fas fa-angle-left"></i>
+                    </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">...</a></li>
+                  <li class="page-item"><a class="page-link" href="#">12</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <i class="fas fa-angle-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="main-discussion-model">
+  <div class="modal fade" id="add-discussion-model" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content main-form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter nouvelle catégorie</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <i class="feather-x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input class="form-input" type="text" placeholder="Nom categorie ? ">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea class="form-textarea" placeholder="Decrivez le categorie"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="co-main-btn cancel-btn" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="main-btn btn-hover">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,9 +31,9 @@ export class AdminComponent implements OnInit {
 
   setMenuItems() {
     this.menuItems = [
-      {path: '/home', title: 'Categories', icon: 'fas fa-car'},
-      {path: '/home/explore', title: 'Utilisateurs', icon: 'fas fa-hourglass-half'},
-      {path: '/home/explore', title: 'Evenements', icon: 'fas fa-hourglass-half'}
+      {path: '/admin/categorie', title: 'Categories', icon: 'fas fa-car'},
+      {path: '/admin/users', title: 'Utilisateurs', icon: 'fas fa-hourglass-half'},
+      {path: '/admin/events', title: 'Evenements', icon: 'fas fa-hourglass-half'}
     ];
     this.profilMenuItems = [
       {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
