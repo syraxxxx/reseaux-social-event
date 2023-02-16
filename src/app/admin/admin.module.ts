@@ -5,6 +5,7 @@ import {AdminRoutingModule} from "./admin-routing.module";
 import { AccueilAdminComponent } from './pages/accueil-admin/accueil-admin.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import { CategorieComponent } from './pages/categorie/categorie.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import { CategorieComponent } from './pages/categorie/categorie.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule {
