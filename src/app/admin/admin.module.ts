@@ -1,12 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AdminComponent} from "./admin.component";
+import {AdminRoutingModule} from "./admin-routing.module";
+import { AccueilAdminComponent } from './pages/accueil-admin/accueil-admin.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AdminComponent,
+    AccueilAdminComponent,
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    AdminRoutingModule,
+    NgxSpinnerModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

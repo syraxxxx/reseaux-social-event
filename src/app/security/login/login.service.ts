@@ -17,15 +17,19 @@ export class LoginService implements CanActivate{
     if(!localStorage.getItem('token')) this.router.navigateByUrl('/')
     return true;
   }
+  canActivateAdmin(): boolean {
+    if(!localStorage.getItem('token')) this.router.navigateByUrl('/')
+    return true;
+  }
 
   public login(token: string) {
     localStorage.setItem('token', token);
 
     this.userService.getUserByToken().subscribe(response=>{
       if(response.user[0].admin==1){
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/admin')
       }else{
-        this.router.navigateByUrl('/home/messages')
+        this.router.navigateByUrl('/home')
       }
     })
 
