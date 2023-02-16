@@ -26,5 +26,5 @@ export class EventsComponent implements OnInit {
 
   delete() {
   }
-  
+
 }
