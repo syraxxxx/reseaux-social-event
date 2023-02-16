@@ -152,11 +152,11 @@
         </div>
         <div class="offcanvas-body">
           <div class="offcanvas-search navbar-search position-relative d-block d-lg-none d-xl-block">
-            <!--            <form (ngSubmit)="onSearch()" >-->
+            <!--            <form (ngSubmit)="onSearch()">-->
             <!--              <div class="input-group">-->
-            <!--                <input  [(ngModel)]="searchTerm" name="recherche" aria-label="Search" class="form-control shadow-none border-0" placeholder="Rechercher des évènements ..." type="text">-->
+            <!--                <input [(ngModel)]="searchTerm" aria-label="Search" class="form-control shadow-none border-0" name="recherche" placeholder="Rechercher des évènements ..." type="text">-->
             <!--                <div class="input-group-append">-->
-            <!--                  <button class="btn" >-->
+            <!--                  <button class="btn">-->
             <!--                    <i class="feather-search"></i>-->
             <!--                  </button>-->
             <!--                </div>-->
@@ -165,13 +165,13 @@
           </div>
           <a class="add-event-btn btn-hover d-block d-lg-none" href="#">Ajouter nouvel évènement</a>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
-            <!--            <li *ngFor="let menuItem of menuItems" class="nav-item">-->
-            <!--              <a aria-current="page" class="nav-link" routerLink="{{menuItem.path}}">-->
-            <!--										<span class="nav-icon d-lg-none me-3">-->
-            <!--											<i class="feather-home"></i>-->
-            <!--										</span>{{menuItem.title}}-->
-            <!--              </a>-->
-            <!--            </li>-->
+            <li *ngFor="let menuItem of menuItems" class="nav-item">
+              <a aria-current="page" class="nav-link" routerLink="{{menuItem.path}}">
+                  <span class="nav-icon d-lg-none me-3">
+                    <i class="feather-home"></i>
+                  </span>{{menuItem.title}}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -193,13 +193,13 @@
         <a aria-expanded="false" class="account-link dropdown-toggle-no-caret" data-bs-auto-close="outside" data-bs-toggle="dropdown" href="#" id="dropdownMenuClickableInside">
           <div class="user-dp"><img alt="" src="../../assets/images/dp.jpg"></div>
           <i class="feather-chevron-down ms-2"></i> </a>
-                <div aria-labelledby="dropdownMenuClickableInside" class="dropdown-menu dropdown-account dropdown-menu-end">
-                  <div *ngFor="let profilMenuItem of profilMenuItems">
-                    <a class="link-item" routerLink="{{profilMenuItem.path}}"><i class="{{profilMenuItem.icon}}"></i>{{profilMenuItem.title}}
-                    </a>
-                  </div>
-                  <button (click)="logout()" class="link-item"><i class="feather-log-out me-3"></i>Déconnexion</button>
-                </div>
+        <div aria-labelledby="dropdownMenuClickableInside" class="dropdown-menu dropdown-account dropdown-menu-end">
+          <div *ngFor="let profilMenuItem of profilMenuItems">
+            <a class="link-item" routerLink="{{profilMenuItem.path}}"><i class="{{profilMenuItem.icon}}"></i>{{profilMenuItem.title}}
+            </a>
+          </div>
+          <button (click)="logout()" class="link-item"><i class="feather-log-out me-3"></i>Déconnexion</button>
+        </div>
       </div>
     </div>
   </nav>

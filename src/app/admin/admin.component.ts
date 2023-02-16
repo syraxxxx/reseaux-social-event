@@ -26,13 +26,14 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('chargement admin ')
+    this.setMenuItems();
   }
 
   setMenuItems() {
     this.menuItems = [
       {path: '/home', title: 'Categories', icon: 'fas fa-car'},
       {path: '/home/explore', title: 'Utilisateurs', icon: 'fas fa-hourglass-half'},
+      {path: '/home/explore', title: 'Evenements', icon: 'fas fa-hourglass-half'}
     ];
     this.profilMenuItems = [
       {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
