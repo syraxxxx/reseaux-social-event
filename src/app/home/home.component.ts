@@ -43,21 +43,25 @@ export class HomeComponent implements OnInit {
   }
 
   setMenuItems() {
-    this.menuItems = [
-      {path: '/home', title: 'Accueil', icon: 'fas fa-car'},
-      {path: '/home/explore', title: 'Explorer', icon: 'fas fa-hourglass-half'},
-      // {path: '/home/discussion', title: 'Discussion', icon: 'fas fa-hourglass-half'}
-    ];
     this.profilMenuItems = [
       {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
       {path: '/home/messages', title: 'Messages', icon: 'feather-message-square me-3'},
       {path: '/home/settings', title: 'Paramètres', icon: 'feather-settings me-3'},
     ];
+
+
     this.userService.getUserByToken().subscribe(response=>{
       if(response.user[0].admin==0){
-
+        this.menuItems = [
+          {path: '/home', title: 'Accueil', icon: 'fas fa-car'},
+          {path: '/home/explore', title: 'Explorer', icon: 'fas fa-hourglass-half'},
+          // {path: '/home/discussion', title: 'Discussion', icon: 'fas fa-hourglass-half'}
+        ];
       }else{
-
+        this.menuItems = [
+          {path: '/home', title: 'Categories', icon: 'fas fa-car'},
+          {path: '/home/explore', title: 'Utilisateurs', icon: 'fas fa-hourglass-half'},
+        ];
       }
     })
   }
