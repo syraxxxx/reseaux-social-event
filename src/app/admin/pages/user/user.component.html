@@ -50,17 +50,21 @@
             </div>
             <div class="all-discussions-items">
               <div class="dis-item">
-                <div *ngFor="let user of users" class="row no-gutters">
+                <div *ngFor="let user of users | slice:(page-1)*pageSize:page*pageSize" class="row no-gutters">
                   <div class="col-xl-8 col-lg-12 col-md-12">
                     <div class="dis-img-text">
                       <img alt="" src="../../assets/images/discussion/img-1.jpg">
-                      <h4>{{user.nom}} {{user.prenom}} </h4>
+                      <h4>{{user?.nom }} {{user?.prenom}} </h4>
                     </div>
                   </div>
                   <div class="col-xl-4 col-lg-12 col-md-12">
                     <ul class="dis-reviews">
-                      <li><button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i> Bannir</button></li>
-                      <li><button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button></li>
+                      <li>
+                        <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i> Bannir</button>
+                      </li>
+                      <li>
+                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -70,15 +74,8 @@
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
-                    <a aria-label="Previous" class="page-link" href="#"> <i class="fas fa-angle-left"></i> </a>
-                  </li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">...</a></li>
-                  <li class="page-item"><a class="page-link" href="#">12</a></li>
-                  <li class="page-item">
-                    <a aria-label="Next" class="page-link" href="#"> <i class="fas fa-angle-right"></i> </a>
+                    <button (click)="page = page - 1" [disabled]="page == 1" class="btn btn-secondary">Précédent</button>
+                    <button (click)="page = page + 1" [disabled]="page * pageSize >= (users?.length || 0)" class="btn btn-secondary">Suivant</button>
                   </li>
                 </ul>
               </nav>

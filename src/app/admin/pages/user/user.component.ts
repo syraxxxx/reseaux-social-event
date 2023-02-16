@@ -7,8 +7,9 @@ import {UtilisateurService} from "../../../@core/services/utilisateur.service";
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  users !: any;
-
+  users: any[] = [];
+  page = 1; // page courante
+  pageSize = 10; // nombre de données par page
   constructor(
     private userService: UtilisateurService,
   ) {
