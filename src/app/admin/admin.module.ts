@@ -6,6 +6,7 @@ import { AccueilAdminComponent } from './pages/accueil-admin/accueil-admin.compo
 import {NgxSpinnerModule} from "ngx-spinner";
 import { CategorieComponent } from './pages/categorie/categorie.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserComponent } from './pages/user/user.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AdminComponent,
     AccueilAdminComponent,
     CategorieComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,

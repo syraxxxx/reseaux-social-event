@@ -1,0 +1,92 @@
+<div class="title-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ol class="title-bar-text">
+          <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+          <li aria-current="page" class="breadcrumb-item active">Utilisateurs</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div><!-- Title Bar End --><!-- Body Start -->
+<main class="discussion-mp">
+  <div class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-12">
+          <div class="topic-categories-bg">
+            <a class="category-topics active" href="#">Tous</a>
+            <a aria-controls="collapse1" aria-expanded="false" class="category-topics cate-right" data-bs-toggle="collapse" href="#collapse1" role="button">All Tags</a>
+            <div class="collapse" id="collapse1">
+              <ul class="tag-card">
+                <li><a class="tag-item1" href="#">Music</a></li>
+                <li><a class="tag-item1" href="#">Singer</a></li>
+                <li><a class="tag-item1" href="#">Cricketer</a></li>
+                <li><a class="tag-item1" href="#">Show</a></li>
+                <li><a class="tag-item1" href="#">Social</a></li>
+                <li><a class="tag-item1" href="#">Art</a></li>
+                <li><a class="tag-item1" href="#">Tv</a></li>
+                <li><a class="tag-item1" href="#">Tech</a></li>
+                <li><a class="tag-item1" href="#">Fashion</a></li>
+                <li><a class="tag-item1" href="#">Beauty</a></li>
+                <li><a class="tag-item1" href="#">Health and Fitness</a></li>
+                <li><a class="tag-item1" href="#">Festival</a></li>
+                <li><a class="tag-item1" href="#">Film Promotion</a></li>
+                <li><a class="tag-item1" href="#">Comedey</a></li>
+                <li><a class="tag-item1" href="#">Club</a></li>
+                <li><a class="tag-item1" href="#">Ilets</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="google-ads-left d-none d-lg-block">
+            <img alt="" src="images/discussion/ads.jpg">
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-12">
+          <div class="all-discussions">
+            <div class="discussion-heading">
+              <h2>Listes des utilisateurs </h2>
+            </div>
+            <div class="all-discussions-items">
+              <div class="dis-item">
+                <div *ngFor="let user of users" class="row no-gutters">
+                  <div class="col-xl-8 col-lg-12 col-md-12">
+                    <div class="dis-img-text">
+                      <img alt="" src="../../assets/images/discussion/img-1.jpg">
+                      <h4>{{user.nom}} {{user.prenom}} </h4>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                    <ul class="dis-reviews">
+                      <li><button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i> Bannir</button></li>
+                      <li><button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="blog-pagination">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a aria-label="Previous" class="page-link" href="#"> <i class="fas fa-angle-left"></i> </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">...</a></li>
+                  <li class="page-item"><a class="page-link" href="#">12</a></li>
+                  <li class="page-item">
+                    <a aria-label="Next" class="page-link" href="#"> <i class="fas fa-angle-right"></i> </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

@@ -9,7 +9,7 @@
                 <div class="main-search-inputs main-form">
                   <div class="row g-3">
                     <div class="col-lg-10 col-md-12 col-sm-12">
-                      <input class="search-form-input" placeholder="Quoi de neuf ? {{user_connected?.nom}} " type="text">
+                      <input class="search-form-input" placeholder="Quoi de neuf ?" type="text">
                     </div>
                     <div class="col-lg-2 col-md-12 col-sm-12">
                       <button class="search-btn" routerLink="/home/new-event" type="submit">
@@ -312,9 +312,9 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a  class="category-item" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des évènements </a>
-                  <a  class="category-item" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des utilisateurs </a>
-                  <a  class="category-item" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des catégories </a>
+                  <a  class="category-item" style="cursor:pointer;" routerLink="/admin/events"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des évènements </a>
+                  <a  class="category-item" style="cursor:pointer;" routerLink="/admin/users"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des utilisateurs </a>
+                  <a  class="category-item" style="cursor:pointer;" routerLink="/admin/categorie"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des catégories </a>
                 </div>
               </div>
             </div>
