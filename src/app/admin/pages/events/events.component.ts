@@ -7,7 +7,9 @@ import {PublicationService} from "../../../@core/services/publication.service";
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
-  events !: any;
+  events : any[] = [];
+  page = 1; // page courante
+  pageSize = 10; // nombre de données par page
 
   constructor(
     private postService: PublicationService
