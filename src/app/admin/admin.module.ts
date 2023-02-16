@@ -7,6 +7,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import { CategorieComponent } from './pages/categorie/categorie.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserComponent } from './pages/user/user.component';
+import { EventsComponent } from './pages/events/events.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { UserComponent } from './pages/user/user.component';
     AccueilAdminComponent,
     CategorieComponent,
     UserComponent,
+    EventsComponent,
   ],
   imports: [
     CommonModule,
