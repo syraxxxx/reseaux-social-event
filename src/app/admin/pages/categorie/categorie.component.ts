@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class CategorieComponent implements OnInit {
   categories: any;
   update = false;
+  categorie_updated: any;
 
   formCategorie = new FormGroup({
     nom: new FormControl('', [Validators.required]),
