@@ -10,6 +10,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {CommentService} from "../../../@core/services/comment.service";
 import {CategorieService} from "../../../@core/services/categorie.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categorie',
@@ -51,6 +52,16 @@ export class CategorieComponent implements OnInit {
 
   }
   addCategorie(){
-    this.categorieService;
+    this.categorieService.create(this.formCategorie.value).subscribe(response=>{
+      Swal.fire({
+        text: `La catégorie '${this.formCategorie.value.nom}' a été ajouté à votre liste de catégorie`, icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.getData();
+    });
+  }
+  updateCategorie(){
+
   }
 }

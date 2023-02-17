@@ -60,8 +60,12 @@
                   </div>
                   <div class="col-xl-4 col-lg-12 col-md-12">
                     <ul class="dis-reviews">
-                      <li><button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i> Edit</button></li>
-                      <li><button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button></li>
+                      <li>
+                        <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i> Edit</button>
+                      </li>
+                      <li>
+                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -101,28 +105,28 @@
             <i class="feather-x"></i>
           </button>
         </div>
-        <div class="modal-body">
-          <form (ngSubmit)="addCategorie()" [formGroup]="formCategorie">
+        <form (ngSubmit)="addCategorie()" [formGroup]="formCategorie">
+          <div class="modal-body">
             <div class="container">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input class="form-input" placeholder="Nom categorie" formControlName="nom" type="text">
+                    <input class="form-input" formControlName="nom" placeholder="Nom categorie" type="text">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <textarea class="form-textarea" placeholder="Decrivez le categorie" formControlName="description" ></textarea>
+                    <textarea class="form-textarea" formControlName="description" placeholder="Decrivez le categorie"></textarea>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
-          <button class="main-btn btn-hover" data-bs-dismiss="modal">Ajouter</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button class="main-btn btn-hover" data-bs-dismiss="modal">Ajouter</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

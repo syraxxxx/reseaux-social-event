@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class CategorieService {
 
-  private apiEndPoint = `${environment.BASE}/Categorie`;
+  private apiEndPoint = `${environment.BASE}/Type`;
 
   constructor(private http: HttpClient) {
   }
@@ -19,7 +19,7 @@ export class CategorieService {
     const data = Object.entries(body)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
-    return this.http.post<any>(`${this.apiEndPoint}/create`, data, httpOptions);
+    return this.http.post<any>(`${this.apiEndPoint}/insert`, data, httpOptions);
   }
 
   delete(id_event: any): Observable<any> {
