@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {TokenService} from "../../../@core/services/token.service";
-import {LogoutService} from "../../../security/logout/logout.service";
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
-import {MessengerService} from "../../../@core/services/messenger.service";
-import {SearchService} from "../../../@core/services/search.service";
 import {PublicationService} from "../../../@core/services/publication.service";
 import {NgxSpinnerService} from "ngx-spinner";
-import {CommentService} from "../../../@core/services/comment.service";
 import {CategorieService} from "../../../@core/services/categorie.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from 'sweetalert2';
@@ -19,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class CategorieComponent implements OnInit {
   categories: any;
+  update = false;
 
   formCategorie = new FormGroup({
     nom: new FormControl('', [Validators.required]),
@@ -30,7 +26,7 @@ export class CategorieComponent implements OnInit {
     private postService: PublicationService,
     private userServive: UtilisateurService,
     private spinner: NgxSpinnerService,
-    private categorieService : CategorieService
+    private categorieService: CategorieService
   ) {
   }
 
@@ -39,7 +35,7 @@ export class CategorieComponent implements OnInit {
     this.getData();
   }
 
-  getData(){
+  getData() {
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
     });
@@ -48,11 +44,12 @@ export class CategorieComponent implements OnInit {
     }, 500);
   }
 
-  delete(id:any){
+  delete(id: any) {
 
   }
-  addCategorie(){
-    this.categorieService.create(this.formCategorie.value).subscribe(response=>{
+
+  addCategorie() {
+    this.categorieService.create(this.formCategorie.value).subscribe(response => {
       Swal.fire({
         text: `La catégorie '${this.formCategorie.value.nom}' a été ajouté à votre liste de catégorie`, icon: 'success',
         showConfirmButton: false,
@@ -61,7 +58,13 @@ export class CategorieComponent implements OnInit {
       this.getData();
     });
   }
-  updateCategorie(){
 
+  updateCategorie() {
+
+  }
+
+  updateButton() {
+    this.update = true;
+    console.log(this.update)
   }
 }
