@@ -15,11 +15,14 @@ export class AccueilAdminComponent implements OnInit {
   publications: any;
   user_connected: any;
   categories: any;
-
+  searchFilter : any;
+  utilisateurs : any;
+  page = 1; // page courante
+  pageSize = 3; // nombre de données par page
   constructor(
     private router: Router,
     private postService: PublicationService,
-    private userServive: UtilisateurService,
+    private userService: UtilisateurService,
     private spinner: NgxSpinnerService,
     private commentService : CommentService
   ) {
@@ -31,33 +34,23 @@ export class AccueilAdminComponent implements OnInit {
   }
 
   getData() {
-    this.userServive.getUserByToken().subscribe(response => {
+    this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
       this.postService.getListePublication().subscribe(response => {
         this.publications = response.publication;
-        for (let pub of this.publications) {
-          // avoir nombre de like par post
-          this.postService.getLikesByPublication(pub.id).subscribe(response => {
-            pub.nombrelike = response.likes.length;
-          });
-          //avoir nombre de commentaire par post
-          this.commentService.getCommentairesByIdEvent(pub.id).subscribe(response=>{
-            pub.nombreComments = response.publication.length;
-          })
-          this.postService.isLiked(pub.id, this.user_connected.id).subscribe(response => {
-            pub.like_actived = false
-            if (response.sideja == 1) {
-              pub.like_actived = true
-            }
-          });
-          setTimeout(() => {
-            this.spinner.hide();
-          }, 500);
-        }
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 500);
       });
     });
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
+    });
+    this.userService.getAllUser().subscribe(response=>{
+      this.utilisateurs = response.utilisateurs;
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 500);
     });
 
   }
