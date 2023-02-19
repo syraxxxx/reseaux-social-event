@@ -15,9 +15,17 @@ import Swal from 'sweetalert2';
 export class CategorieComponent implements OnInit {
   categories: any;
   update = false;
-  categorie_updated: any;
+  categorie_updated!: any;
+  displayStyle = 'none';
 
   formCategorie = new FormGroup({
+    id: new FormControl('', [Validators.required]),
+    nom: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+  });
+
+  formCategorieUpdated = new FormGroup({
+    id: new FormControl('', [Validators.required]),
     nom: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
   });
@@ -60,12 +68,30 @@ export class CategorieComponent implements OnInit {
     });
   }
 
-  updateCategorie() {
-
+  updateCategorie(categorie: any) {
+    this.formCategorieUpdated.get('id')?.setValue(categorie.id);
+    this.categorieService.update(this.formCategorieUpdated.value).subscribe(response => {
+      this.getData();
+      this.closePopup();
+      Swal.fire({
+        text: `La catégorie a été mis à jour avec succès `, icon: 'success',
+        showConfirmButton: false,
+        timer: 2000
+      });
+    });
   }
 
-  updateButton() {
-    this.update = true;
-    console.log(this.update)
+  openPopup() {
+    this.displayStyle = 'block';
   }
+
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  updateButton(categorie: any) {
+    this.openPopup();
+    this.categorie_updated = categorie
+  }
+
 }

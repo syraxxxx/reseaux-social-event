@@ -61,7 +61,9 @@
                   <div class="col-xl-4 col-lg-12 col-md-12">
                     <ul class="dis-reviews">
                       <li>
-                        <button (click)="updateButton()" class="btn btn-warning" data-bs-target="#update-discussion-model" data-bs-toggle="modal" ><i class="nav-icon fas fa-edit" ></i> Edit</button>
+                        <button (click)="updateButton(cat)" class="btn btn-warning">
+                          <i class="nav-icon fas fa-edit"></i> Edit
+                        </button>
                       </li>
                       <li>
                         <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
@@ -132,44 +134,38 @@
   </div>
 </div>
 
-<!--<button class="btn btn-success" data-bs-target="#update-discussion-model" data-bs-toggle="modal" type="button">Ajouter une nouvelle catégorie</button>-->
 
-<!--<div *ngIf="update">-->
-  <div class="main-discussion-model">
-    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="update-discussion-model" role="dialog">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content main-form">
-          <div class="modal-header">
-            <h5 class="modal-title" >Modication categorie</h5>
-            <button aria-label="Close" class="close" data-bs-dismiss="modal" type="button">
-              <i class="feather-x"></i>
-            </button>
-          </div>
-          <form (ngSubmit)="updateCategorie()" [formGroup]="formCategorie">
-            <div class="modal-body">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input class="form-input" formControlName="nom" placeholder="Nom categorie" type="text">
-                    </div>
+<div *ngIf="categorie_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(224, 224, 224);">
+      <div class="modal-body" style="text-align:center;">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la catégorie : {{categorie_updated.nom}} </h2>
+        <!--        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>-->
+        <form (ngSubmit)="updateCategorie(categorie_updated)" [formGroup]="formCategorieUpdated">
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  Nom
+                  <div class="form-group">
+                    <input [(ngModel)]="categorie_updated.nom" class="form-input" formControlName="nom" placeholder="Nom categorie" type="text">
                   </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <textarea class="form-textarea" formControlName="description" placeholder="Decrivez le categorie"></textarea>
-                    </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea [(ngModel)]="categorie_updated.description" class="form-textarea" formControlName="description" placeholder="Decrivez le categorie"></textarea>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
-              <button class="main-btn btn-hover" data-bs-dismiss="modal">Ajouter</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button [disabled]="!formCategorieUpdated.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Ajouter</button>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
-<!--</div>-->
-
+</div>
