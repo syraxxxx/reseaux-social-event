@@ -17,6 +17,8 @@ export class CategorieComponent implements OnInit {
   update = false;
   categorie_updated!: any;
   displayStyle = 'none';
+  page = 1; // page courante
+  pageSize = 10; // nombre de données par page
 
   formCategorie = new FormGroup({
     id: new FormControl('', [Validators.required]),

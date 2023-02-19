@@ -23,20 +23,6 @@
               <ul class="tag-card">
                 <li><a class="tag-item1" href="#">Music</a></li>
                 <li><a class="tag-item1" href="#">Singer</a></li>
-                <li><a class="tag-item1" href="#">Cricketer</a></li>
-                <li><a class="tag-item1" href="#">Show</a></li>
-                <li><a class="tag-item1" href="#">Social</a></li>
-                <li><a class="tag-item1" href="#">Art</a></li>
-                <li><a class="tag-item1" href="#">Tv</a></li>
-                <li><a class="tag-item1" href="#">Tech</a></li>
-                <li><a class="tag-item1" href="#">Fashion</a></li>
-                <li><a class="tag-item1" href="#">Beauty</a></li>
-                <li><a class="tag-item1" href="#">Health and Fitness</a></li>
-                <li><a class="tag-item1" href="#">Festival</a></li>
-                <li><a class="tag-item1" href="#">Film Promotion</a></li>
-                <li><a class="tag-item1" href="#">Comedey</a></li>
-                <li><a class="tag-item1" href="#">Club</a></li>
-                <li><a class="tag-item1" href="#">Ilets</a></li>
               </ul>
             </div>
           </div>
@@ -77,15 +63,8 @@
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
-                    <a aria-label="Previous" class="page-link" href="#"> <i class="fas fa-angle-left"></i> </a>
-                  </li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">...</a></li>
-                  <li class="page-item"><a class="page-link" href="#">12</a></li>
-                  <li class="page-item">
-                    <a aria-label="Next" class="page-link" href="#"> <i class="fas fa-angle-right"></i> </a>
+                    <button (click)="page = page - 1" [disabled]="page == 1" class="btn btn-secondary">Précédent</button>
+                    <button (click)="page = page + 1" [disabled]="page * pageSize >= (categories?.length || 0)" class="btn btn-secondary">Suivant</button>
                   </li>
                 </ul>
               </nav>
@@ -97,6 +76,7 @@
   </div>
 </main>
 
+<!--Ajout nouvelle categorie-->
 <div class="main-discussion-model">
   <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="add-discussion-model" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
@@ -134,7 +114,7 @@
   </div>
 </div>
 
-
+<!--Mis à jour categorie-->
 <div *ngIf="categorie_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: rgb(224, 224, 224);">
