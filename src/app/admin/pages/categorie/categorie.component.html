@@ -38,7 +38,7 @@
             </div>
             <div class="all-discussions-items">
               <div class="dis-item">
-                <div *ngFor="let cat of categories | filter:searchFilter" class="row no-gutters">
+                <div *ngFor="let cat of categories | slice:(page-1)*pageSize:page*pageSize | filter:searchFilter" class="row no-gutters">
                   <div class="col-xl-8 col-lg-12 col-md-12">
                     <div class="dis-img-text">
                       <img alt="" src="../../assets/images/discussion/img-1.jpg">

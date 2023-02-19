@@ -15,29 +15,19 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-12">
-          <div class="topic-categories-bg">
-            <a class="category-topics active" href="#">Tous</a>
-            <a aria-controls="collapse1" aria-expanded="false" class="category-topics cate-right" data-bs-toggle="collapse" href="#collapse1" role="button">All Tags</a>
-            <div class="collapse" id="collapse1">
-              <ul class="tag-card">
-                <li><a class="tag-item1" href="#">Music</a></li>
-                <li><a class="tag-item1" href="#">Singer</a></li>
-                <li><a class="tag-item1" href="#">Cricketer</a></li>
-                <li><a class="tag-item1" href="#">Show</a></li>
-                <li><a class="tag-item1" href="#">Social</a></li>
-                <li><a class="tag-item1" href="#">Art</a></li>
-                <li><a class="tag-item1" href="#">Tv</a></li>
-                <li><a class="tag-item1" href="#">Tech</a></li>
-                <li><a class="tag-item1" href="#">Fashion</a></li>
-                <li><a class="tag-item1" href="#">Beauty</a></li>
-                <li><a class="tag-item1" href="#">Health and Fitness</a></li>
-                <li><a class="tag-item1" href="#">Festival</a></li>
-                <li><a class="tag-item1" href="#">Film Promotion</a></li>
-                <li><a class="tag-item1" href="#">Comedey</a></li>
-                <li><a class="tag-item1" href="#">Club</a></li>
-                <li><a class="tag-item1" href="#">Ilets</a></li>
-              </ul>
+          <div class="user-data full-width">
+            <div class="search-explore p-4">
+              <div class="position-relative">
+                <input [(ngModel)]="searchFilter" class="form-input" name="recherche" placeholder="Mot clés..." type="text">
+                <span class="icon-158"><i class="feather-search"></i></span>
+              </div>
             </div>
+            <div class="explore-filters accordion" id="explore-filter-group">
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" href="#filter-item-1" role="button">Categories</a>
+            </div>
+          </div>
+          <div class="google-ads-left d-none d-lg-block">
+            <img alt="" src="images/discussion/ads.jpg">
           </div>
           <div class="google-ads-left d-none d-lg-block">
             <img alt="" src="images/discussion/ads.jpg">
@@ -50,7 +40,7 @@
             </div>
             <div class="all-discussions-items">
               <div  class="dis-item">
-                <div *ngFor="let event of events | slice:(page-1)*pageSize:page*pageSize " class="row no-gutters">
+                <div *ngFor="let event of events | slice:(page-1)*pageSize:page*pageSize | filter:searchFilter" class="row no-gutters">
                   <div class="col-xl-6 col-lg-12 col-md-12">
                     <div class="dis-img-text">
                       <img alt="" src="../../assets/images/discussion/img-1.jpg">

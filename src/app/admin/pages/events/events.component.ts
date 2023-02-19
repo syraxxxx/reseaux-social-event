@@ -10,7 +10,7 @@ export class EventsComponent implements OnInit {
   events : any[] = [];
   page = 1; // page courante
   pageSize = 10; // nombre de données par page
-
+  searchFilter : any;
   constructor(
     private postService: PublicationService
   ) {
