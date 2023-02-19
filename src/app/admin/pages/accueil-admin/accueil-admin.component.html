@@ -1,0 +1,223 @@
+<main>
+  <div class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col col-xl-9 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+          <div class="center-section">
+            <div class="main-search-bar">
+              <form>
+                <div class="main-search-inputs main-form">
+                  <div class="row g-3">
+                    <div class="col-lg-10 col-md-12 col-sm-12">
+                      <input class="search-form-input" placeholder="Quoi de neuf ?" type="text">
+                    </div>
+                    <div class="col-lg-2 col-md-12 col-sm-12">
+                      <button class="search-btn" routerLink="/home/new-event" type="submit">
+                        <i class="feather-arrow-right"></i><span>Rechercher</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+              <div class="dash-tabs-block mt-4">
+                <ul class="nav nav-pills nav-fill p-2 dash-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a aria-controls="dashboard" aria-selected="true" class="nav-link active" data-bs-toggle="tab" href="#dashboard" id="dashboard-tab" role="tab"><i class="feather-grid"></i>Tableau de bord</a>
+                  </li>
+                  <li class="nav-item">
+                    <a aria-controls="about" aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#about" id="about-tab" role="tab"><i class="feather-info"></i>A Propos</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="dashboard-tab" class="tab-pane fade active show" id="dashboard" role="tabpanel">
+                  <div class="main-card pb-2 px-2">
+                    <div class="row g-2">
+                      <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                        <div class="dash-step">
+                          <i class="feather-calendar"></i>
+                          <h6 class="dash-step-title">Evènements</h6>
+                          <span class="count-1">{{publications?.length}} </span>
+                          <span class="count-2">+{{publications?.length}} les 30 derniers jours</span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                        <div class="dash-step">
+                          <i class="feather-users"></i>
+                          <h6 class="dash-step-title">Nombre de personne(s)</h6>
+                          <span class="count-1">{{utilisateurs?.length}}</span>
+                          <span class="count-2">+{{utilisateurs?.length}} les 30 derniers jours</span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                        <div class="dash-step">
+                          <i class="feather-star"></i>
+                          <h6 class="dash-step-title">Categories</h6>
+                          <span class="count-1">{{categories?.length}}</span>
+                          <span class="count-2">+{{categories?.length}} les 30 derniers jours</span>
+                        </div>
+                      </div>
+<!--                      <div class="col-lg-6 col-xl-3 col-md-6 col-12">-->
+<!--                        <div class="dash-step">-->
+<!--                          <i class="feather-tag"></i>-->
+<!--                          <h6 class="dash-step-title">Click sur ticket</h6>-->
+<!--                          <span class="count-1">0</span> <span class="count-2">+0 les 30 derniers jours</span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+                    </div>
+                  </div>
+                  <div class="main-card mt-4 mb-0">
+                    <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4">
+                      <h4>Evenements récent(s)</h4>
+                      <a class="main-btn btn-hover h_40 ms-auto" routerLink="/home/new-event">Créer</a>
+                    </div>
+                    <div class="events-dash-options main-form">
+                      <div class="row g-2">
+                        <div class="col-lg-4 col-md-4 col-12">
+                          <div class="event-search-dash">
+                            <div class="position-relative">
+                              <input class="form-input" name="recherche" placeholder="Rechercher ..." [(ngModel)]="searchFilter" type="text">
+                              <span class="icon-158"><i class="feather-search"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-12">
+                          <select class="selectpicker" data-width="100%">
+                            <option value="publish-event">Published Events</option>
+                            <option value="draft-event">Draft and Scheduled Events</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-12">
+                          <select class="selectpicker" data-width="100%">
+                            <option value="event-date">Event Date</option>
+                            <option value="publish-date">Publish Date</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="all-dash-events">
+                      <div class="row">
+                        <div *ngFor="let pub of publications | slice:(page-1)*pageSize:page*pageSize | filter:searchFilter " class="col-xl-4 col-lg-6 col-md-6 col-12">
+                          <div class="event-main-post">
+                            <div class="main-photo">
+                              <a href="#">
+                                <div class="photo-overlay"></div>
+                                <img alt="" height="100px" src="../../assets/images/homepage/center/arrireplan.png">
+                              </a>
+                            </div>
+                            <div class="event-body">
+                              <span class="event-time">{{pub.date_realisation}}</span>
+                              <a (click)="getDetails(pub.id)" class="event-title" style="cursor:pointer;">{{pub.event_name}}</a>
+                              <span class="event-type">Par {{pub.nom}} {{pub.prenom}}</span>
+                              <p class="ingo-counter">
+                              </p>
+                              <div class="group-btns">
+<!--                                <button class="interest-btn btn-hover">-->
+<!--                                  <i class="feather-eye me-2"></i>Voir-->
+<!--                                </button>-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="blog-pagination">
+                          <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                              <li class="page-item">
+                                <button (click)="page = page - 1" [disabled]="page == 1" class="btn btn-secondary">Précédent</button>
+                                <button (click)="page = page + 1" [disabled]="page * pageSize >= (categories?.length || 0)" class="btn btn-secondary">Suivant</button>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div>
+                        <div class="col-12">
+                          <div class="loading-btn mb-0">
+                            <button class="process-btn btn-hover" type="button">
+                              Pas plus d'évènements
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div aria-labelledby="about-tab" class="tab-pane fade" id="about" role="tabpanel">
+                  <div class="main-card mt-4 mb-0">
+                    <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4 border_bottom">
+                      <h4>A Propos</h4>
+                    </div>
+                    <div class="about-details">
+                      <div class="about-step">
+                        <h5>Evenem Glamour v1.0</h5>
+                      </div>
+                      <div class="about-step">
+                        <h5>Description </h5>
+                        <p class="mb-0">Un réseau social pour évènement (mariage, baptême, concert, théâtre etc…) </p>
+                      </div>
+                      <div class="about-step">
+                        <h5>Trouver nous sur : </h5>
+                        <div class="social-links">
+                          <a aria-label="Facebook" class="social-link" data-bs-original-title="Facebook" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-facebook-square"></i></a>
+                          <a aria-label="Instagram" class="social-link" data-bs-original-title="Instagram" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-instagram"></i></a>
+                          <a aria-label="Twitter" class="social-link" data-bs-original-title="Twitter" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-twitter"></i></a>
+                          <a aria-label="LinkedIn" class="social-link" data-bs-original-title="LinkedIn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-linkedin-in"></i></a>
+                          <a aria-label="Youtube" class="social-link" data-bs-original-title="Youtube" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-youtube"></i></a>
+                          <a aria-label="Website" class="social-link" data-bs-original-title="Website" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fa-solid fa-globe"></i></a>
+                        </div>
+                      </div>
+                      <div class="about-step">
+                        <h5>Addresse</h5>
+                        <p class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-xl-3 order-xl-1 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+          <div class="main-left-sidebar mt-5 mt-lg-5 mt-xl-0">
+            <div class="user-data full-width">
+              <div class="user-profile">
+                <div class="username-dt dpbg-1">
+                  <div class="usr-pic">
+                    <img alt="" src="../../assets/images/homepage/left-side/my-dp.jpg">
+                  </div>
+                </div>
+                <div class="user-main-details">
+                  <h4>{{user_connected?.nom}} {{user_connected?.prenom}}</h4>
+                  <span><i class="feather-map-pin"></i>France</span>
+                </div>
+<!--                <div class="profile-link">-->
+<!--                  <a routerLink="/home/profile">Voir Profil</a>-->
+<!--                </div>-->
+              </div>
+            </div>
+            <div class="user-data full-width">
+              <div class="categories-left-heading">
+                <h3>Gestionnaire</h3>
+              </div>
+              <div class="categories-items">
+                <div class="categories-container">
+                  <a class="category-item" routerLink="/admin/events" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des évènements
+                  </a>
+                  <a class="category-item" routerLink="/admin/users" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des utilisateurs
+                  </a>
+                  <a class="category-item" routerLink="/admin/categorie" style="cursor:pointer;"><img alt="Music" src="../../assets/images/category-icons/icon-2.png">Liste des catégories
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
+  <p style="font-size: 18px; color: white">Chargement des données...</p>
+</ngx-spinner>

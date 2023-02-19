@@ -24,7 +24,12 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: async () => (await import('./home/home.module')).HomeModule,
-    canActivate: [LoginService]
+    canActivate: [LoginService],
+  },
+  {
+    path: 'admin',
+    loadChildren: async () => (await import('./admin/admin.module')).AdminModule,
+    canActivate: [LoginService],
   }
 ];
 

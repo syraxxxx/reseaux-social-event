@@ -1,0 +1,79 @@
+<div class="title-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ol class="title-bar-text">
+          <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+          <li aria-current="page" class="breadcrumb-item active">Évènements</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div><!-- Title Bar End --><!-- Body Start -->
+<main class="discussion-mp">
+  <div class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-12">
+          <div class="user-data full-width">
+            <div class="search-explore p-4">
+              <div class="position-relative">
+                <input [(ngModel)]="searchFilter" class="form-input" name="recherche" placeholder="Mot clés..." type="text">
+                <span class="icon-158"><i class="feather-search"></i></span>
+              </div>
+            </div>
+            <div class="explore-filters accordion" id="explore-filter-group">
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" href="#filter-item-1" role="button">Évènements</a>
+            </div>
+          </div>
+          <div class="google-ads-left d-none d-lg-block">
+            <img alt="" src="images/discussion/ads.jpg">
+          </div>
+          <div class="google-ads-left d-none d-lg-block">
+            <img alt="" src="images/discussion/ads.jpg">
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-12">
+          <div class="all-discussions">
+            <div class="discussion-heading">
+              <h2>Listes des évènements </h2>
+            </div>
+            <div class="all-discussions-items">
+              <div  class="dis-item">
+                <div *ngFor="let event of events | slice:(page-1)*pageSize:page*pageSize | filter:searchFilter" class="row no-gutters">
+                  <div class="col-xl-6 col-lg-12 col-md-12">
+                    <div class="dis-img-text">
+                      <img alt="" src="../../assets/images/discussion/img-1.jpg">
+                      <h4>{{event.event_name}}  </h4>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                    <div class="dis-img-text">
+                      <h4>par {{event.nom}} {{event.prenom}} </h4>
+                    </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-12 col-md-12">
+                    <ul class="dis-reviews">
+                      <li><button class="btn btn-danger">Supprimer</button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="blog-pagination">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <button class="btn btn-secondary" [disabled]="page == 1" (click)="page = page - 1">Précédent</button>
+                    <button class="btn btn-secondary" [disabled]="page * pageSize >= (events?.length || 0)" (click)="page = page + 1">Suivant</button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

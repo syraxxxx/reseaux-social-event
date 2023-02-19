@@ -5,6 +5,7 @@ import {UtilisateurService} from "../@core/services/utilisateur.service";
 import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
 import {SearchService} from "../@core/services/search.service";
+import {response} from "express";
 
 @Component({
   selector: 'app-home',
@@ -52,6 +53,17 @@ export class HomeComponent implements OnInit {
       {path: '/home/messages', title: 'Messages', icon: 'feather-message-square me-3'},
       {path: '/home/settings', title: 'Paramètres', icon: 'feather-settings me-3'},
     ];
+    // this.userService.getUserByToken().subscribe(response=>{
+    //   if(response.user[0].admin==0){
+    //     this.menuItems = [
+    //       {path: '/home', title: 'Accueil', icon: 'fas fa-car'},
+    //       {path: '/home/explore', title: 'Explorer', icon: 'fas fa-hourglass-half'},
+    //       // {path: '/home/discussion', title: 'Discussion', icon: 'fas fa-hourglass-half'}
+    //     ];
+    //   }else{
+    //
+    //   }
+    // })
   }
 
   logout() {
