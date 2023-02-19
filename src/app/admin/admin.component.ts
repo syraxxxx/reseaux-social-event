@@ -36,9 +36,9 @@ export class AdminComponent implements OnInit {
       {path: '/admin/events', title: 'Evenements', icon: 'fas fa-hourglass-half'}
     ];
     this.profilMenuItems = [
-      {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
-      {path: '/home/messages', title: 'Messages', icon: 'feather-message-square me-3'},
-      {path: '/home/settings', title: 'Paramètres', icon: 'feather-settings me-3'},
+      // {path: '/home/profile', title: 'Profile', icon: 'feather-user me-3'},
+      // {path: '/home/messages', title: 'Messages', icon: 'feather-message-square me-3'},
+      // {path: '/home/settings', title: 'Paramètres', icon: 'feather-settings me-3'},
     ];
   }
 
