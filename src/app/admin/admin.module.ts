@@ -8,6 +8,7 @@ import { CategorieComponent } from './pages/categorie/categorie.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserComponent } from './pages/user/user.component';
 import { EventsComponent } from './pages/events/events.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EventsComponent } from './pages/events/events.component';
     AdminRoutingModule,
     NgxSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class AdminModule {

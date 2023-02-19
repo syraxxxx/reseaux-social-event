@@ -15,15 +15,16 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-12">
-          <button class="btn btn-success" data-bs-target="#add-discussion-model" data-bs-toggle="modal" type="button">Ajouter une nouvelle catégorie</button>
-          <div class="topic-categories-bg">
-            <a class="category-topics active" href="#">Tous</a>
-            <a aria-controls="collapse1" aria-expanded="false" class="category-topics cate-right" data-bs-toggle="collapse" href="#collapse1" role="button">All Tags</a>
-            <div class="collapse" id="collapse1">
-              <ul class="tag-card">
-                <li><a class="tag-item1" href="#">Music</a></li>
-                <li><a class="tag-item1" href="#">Singer</a></li>
-              </ul>
+          <button class="btn btn-success" data-bs-target="#add-discussion-model" data-bs-toggle="modal" style="width: 100% ; margin-bottom: 15px" type="button">Ajouter une nouvelle catégorie</button>
+          <div class="user-data full-width">
+            <div class="search-explore p-4">
+              <div class="position-relative">
+                <input [(ngModel)]="searchFilter" class="form-input" name="recherche" placeholder="Mot clés..." type="text">
+                <span class="icon-158"><i class="feather-search"></i></span>
+              </div>
+            </div>
+            <div class="explore-filters accordion" id="explore-filter-group">
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" href="#filter-item-1" role="button">Categories</a>
             </div>
           </div>
           <div class="google-ads-left d-none d-lg-block">
@@ -37,7 +38,7 @@
             </div>
             <div class="all-discussions-items">
               <div class="dis-item">
-                <div *ngFor="let cat of categories" class="row no-gutters">
+                <div *ngFor="let cat of categories | filter:searchFilter" class="row no-gutters">
                   <div class="col-xl-8 col-lg-12 col-md-12">
                     <div class="dis-img-text">
                       <img alt="" src="../../assets/images/discussion/img-1.jpg">

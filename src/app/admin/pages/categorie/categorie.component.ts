@@ -19,6 +19,7 @@ export class CategorieComponent implements OnInit {
   displayStyle = 'none';
   page = 1; // page courante
   pageSize = 10; // nombre de données par page
+  searchFilter : any;
 
   formCategorie = new FormGroup({
     id: new FormControl('', [Validators.required]),
