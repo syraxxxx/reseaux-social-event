@@ -10,6 +10,7 @@ export class UserComponent implements OnInit {
   users: any[] = [];
   page = 1; // page courante
   pageSize = 10; // nombre de données par page
+  searchFilter : any;
   constructor(
     private userService: UtilisateurService,
   ) {
