@@ -45,7 +45,7 @@ export class DetailsEventComponent implements OnInit {
   }
 
   getData() {
-    console.log('valeur de like : ' + this.liked_active)
+    // console.log('valeur de like : ' + this.liked_active)
     const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
     this.eventID = this.route.snapshot.paramMap.get('publication_id');
     this.publicationService.getPublication(this.eventID).subscribe(response => {
@@ -74,7 +74,7 @@ export class DetailsEventComponent implements OnInit {
 
   likeVerification() {
     this.postService.isLiked(this.eventID, this.user_connected.id).subscribe(response => {
-      console.log("valeur de sideja : " + response.sideja)
+      // console.log("valeur de sideja : " + response.sideja)
       if (response.sideja == 1) {
         this.liked_active = true;
       }
@@ -89,7 +89,7 @@ export class DetailsEventComponent implements OnInit {
       valeur: 1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.getNombreLike();
     });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
@@ -107,7 +107,7 @@ export class DetailsEventComponent implements OnInit {
       valeur: -1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.getNombreLike();
     });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {

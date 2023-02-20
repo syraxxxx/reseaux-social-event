@@ -17,7 +17,8 @@ export class MessagesComponent implements OnInit {
   personMessageFilter!: string;
   personnes: any;
   showSearchPerson = false;
-
+  page = 1; // page courante
+  pageSize = 5; // nombre de données par page
   constructor(
     private serviceUser: UtilisateurService,
     private spinner: NgxSpinnerService,
