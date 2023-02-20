@@ -65,7 +65,8 @@
                             <a (click)="getDetails(pub.id)" class="event-title" routerLink=""> {{pub.event_name}} </a>
                             <span class="event-type">{{pub?.nom }} {{ pub?.prenom}}</span>
                             <p class="ingo-counter">
-                              <span>{{pub?.nombrelike}} J'aime</span> <span>{{pub?.nombreComments}} commentaire(s)</span>
+                              <span>{{pub?.nombrelike}} J'aime</span>
+                              <span>{{pub?.nombreComments}} commentaire(s)</span>
                             </p>
                             <div class="group-btns">
                               <button (click)="likePublication(pub?.id)" *ngIf="!pub.like_actived;else activated_like" class="interest-btn btn-hover">
@@ -317,20 +318,20 @@
                   <h4>{{user_connected?.nom}} {{user_connected?.prenom}}</h4>
                   <span><i class="feather-map-pin"></i>France</span>
                 </div>
-<!--                <ul class="followers-dts">-->
-<!--                  <li>-->
-<!--                    <div class="followers-dt-sm">-->
-<!--                      <h4>Abonnée</h4>-->
-<!--                      <span>4</span>-->
-<!--                    </div>-->
-<!--                  </li>-->
-<!--                  <li>-->
-<!--                    <div class="followers-dt-sm">-->
-<!--                      <h4>Suivi</h4>-->
-<!--                      <span>5</span>-->
-<!--                    </div>-->
-<!--                  </li>-->
-<!--                </ul>-->
+                <!--                <ul class="followers-dts">-->
+                <!--                  <li>-->
+                <!--                    <div class="followers-dt-sm">-->
+                <!--                      <h4>Abonnée</h4>-->
+                <!--                      <span>4</span>-->
+                <!--                    </div>-->
+                <!--                  </li>-->
+                <!--                  <li>-->
+                <!--                    <div class="followers-dt-sm">-->
+                <!--                      <h4>Suivi</h4>-->
+                <!--                      <span>5</span>-->
+                <!--                    </div>-->
+                <!--                  </li>-->
+                <!--                </ul>-->
                 <div class="profile-link">
                   <a routerLink="/home/profile">Voir Profil</a>
                 </div>
@@ -342,8 +343,10 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >
-                    <img alt="Music" src="../../assets/images/category-icons/icon-2.png">{{cat.nom}}
+                  <a (click)="getData()" class="category-item" style="cursor:pointer;">
+                    <img alt="Music" src="../../assets/images/category-icons/icon-all.png">Tous </a>
+                  <a (click)="getEventByCategorie(cat?.id)" *ngFor="let cat of categories" class="category-item" style="cursor:pointer;">
+                    <img alt="Music" src="../../assets/images/category-icons/icon-all.png">{{cat.nom}}
                   </a>
                 </div>
               </div>

@@ -31,10 +31,10 @@
                   <div class="categories-items">
                     <div class="categories-container">
                       <a  class="category-item" style="cursor:pointer;" (click)="getData()">
-                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">Tous
+                        <img alt="Music" src="../../assets/images/category-icons/icon-all.png">Tous
                       </a>
                       <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >
-                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
+                        <img alt="Music" src="../../assets/images/category-icons/icon-all.png">{{cat.nom}}
                       </a>
                     </div>
 
