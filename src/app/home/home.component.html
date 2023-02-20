@@ -332,9 +332,9 @@
             <i class="feather-user-plus"></i> </a>
           <div class="dropdown-menu dropdown-list dropdown-menu-end p-0">
             <div class="item-header">
-              <h6>Friend Requests</h6>
+              <h6>Demande d'amis</h6>
               <div class="heading-btns">
-                <a href="friend_requests.html">Setting</a> <a href="find_friends.html">Find Friends</a>
+                <a href="friend_requests.html">Paramètres</a> <a href="find_friends.html">Trouver amis</a>
               </div>
             </div>
             <div class="item-body">
@@ -345,44 +345,17 @@
                 </div>
                 <div class="media-body">
                   <a class="item-title" href="user_profile.html">Lily Zaman</a>
-                  <p>4 in mutual friends</p>
+                  <p>4 amis en commun</p>
                 </div>
                 <div class="btn-area">
                   <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Accept"><i class="feather-user-plus"></i></a>
                   <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Decline"><i class="feather-user-minus"></i></a>
                 </div>
               </div>
-              <div class="media">
-                <div class="item-img">
-                  <img alt="" src="../../assets/images/find-peoples/user-3.jpg">
-                  <span class="chat-status online"></span>
-                </div>
-                <div class="media-body">
-                  <a class="item-title" href="user_profile.html">Johnson Dua</a>
-                  <p>6 in mutual friends</p>
-                </div>
-                <div class="btn-area">
-                  <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Accept"><i class="feather-user-plus"></i></a>
-                  <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Decline"><i class="feather-user-minus"></i></a>
-                </div>
-              </div>
-              <div class="media">
-                <div class="item-img">
-                  <img alt="" src="../../assets/images/find-peoples/user-4.jpg">
-                  <span class="chat-status offline"></span>
-                </div>
-                <div class="media-body">
-                  <a class="item-title" href="user_profile.html">Rock William</a>
-                  <p>No mutual friends</p>
-                </div>
-                <div class="btn-area">
-                  <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Accept"><i class="feather-user-plus"></i></a>
-                  <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Decline"><i class="feather-user-minus"></i></a>
-                </div>
-              </div>
+
             </div>
             <div class="item-footer">
-              <a class="view-all" href="friend_requests.html">View All Friend Request</a>
+              <a class="view-all" href="friend_requests.html">Voir toutes les demandes</a>
             </div>
           </div>
         </li>
@@ -394,7 +367,7 @@
               <h6>Messages</h6>
             </div>
             <div class="item-body">
-              <a (click)="loadMessagebyUser(mess.interlocuteur_id)" *ngFor="let mess of messages" class="media" style="cursor:pointer;">
+              <a  *ngFor="let mess of messages | slice:(page-1)*pageSize:page*pageSize" (click)="loadMessagebyUser(mess?.interlocuteur_id)" class="media" style="cursor:pointer;">
                 <div class="item-img">
                   <img alt="" src="../../assets/images/find-peoples/user-2.jpg">
                   <span class="chat-status offline"></span>
@@ -413,12 +386,12 @@
         </li>
         <li class="dropdown">
           <a class="icon-set dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button">
-            <i class="feather-bell"></i> <span class="notify-count">3</span> </a>
+            <i class="feather-bell"></i> <span class="notify-count">0</span> </a>
           <div class="dropdown-menu dropdown-list dropdown-menu-end p-0">
             <div class="item-header">
               <h6>Notifications</h6>
               <div class="heading-btns">
-                <a href="#">Setting</a>
+                <a href="#">Paramètres</a>
               </div>
             </div>
             <div class="item-body">
@@ -429,31 +402,14 @@
                 </div>
                 <div class="media-body">
                   <h6 class="item-title mb-1">Lily Zaman</h6>
-                  <div class="item-time">2 mins ago</div>
-                  <p>Following you.</p>
+                  <div class="item-time">2 min</div>
+                  <p>Vous suit.</p>
                 </div>
-              </a> <a class="media" href="#">
-              <div class="item-img">
-                <img alt="" src="../../assets/images/find-peoples/user-3.jpg"> <span class="chat-status online"></span>
-              </div>
-              <div class="media-body">
-                <h6 class="item-title mb-1">Johnson Dua</h6>
-                <div class="item-time">5 mins ago</div>
-                <p>your order is accepted.</p>
-              </div>
-            </a> <a class="media" href="#">
-              <div class="item-img">
-                <img alt="" src="../../assets/images/find-peoples/user-4.jpg"> <span class="chat-status offline"></span>
-              </div>
-              <div class="media-body">
-                <h6 class="item-title mb-1">Rock William</h6>
-                <div class="item-time">10 mins ago</div>
-                <p>your bill slip sent on your email.</p>
-              </div>
-            </a>
+              </a>
+
             </div>
             <div class="item-footer">
-              <a class="view-all" href="notifications.html">View All Notifications</a>
+              <a class="view-all" href="notifications.html">Voir toutes les notifications</a>
             </div>
           </div>
         </li>

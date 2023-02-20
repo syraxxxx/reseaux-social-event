@@ -5,7 +5,7 @@ import {UtilisateurService} from "../@core/services/utilisateur.service";
 import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
 import {SearchService} from "../@core/services/search.service";
-import {response} from "express";
+import {Message} from "../@core/models/message.model";
 
 @Component({
   selector: 'app-home',
@@ -16,9 +16,11 @@ export class HomeComponent implements OnInit {
   menuItems !: any[];
   profilMenuItems !: any[]
   user_connected: any;
-  messages: any;
+  messages!: Message[];
   messageByUser: any;
   searchTerm!: string;
+  page = 1;
+  pageSize = 4;
 
   constructor(
     private router: Router,
@@ -73,6 +75,7 @@ export class HomeComponent implements OnInit {
   loadAllMessages() {
     this.messengerService.getListePersonMessages(this.user_connected.id).subscribe(response => {
       this.messages = response.publication;
+      console.log(this.messages)
     });
   };
 
