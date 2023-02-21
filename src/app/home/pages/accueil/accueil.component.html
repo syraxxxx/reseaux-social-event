@@ -55,7 +55,7 @@
                                   <a *ngIf="pub.utilisateur_id==user_connected.id" class="post-link-item" href="#"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                                   <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
                                   <a (click)="goToUser(pub.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
-                                  <a class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
+                                  <a *ngIf="pub.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
                                 </div>
                               </div>
                             </div>
