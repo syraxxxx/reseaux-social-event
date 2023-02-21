@@ -94,5 +94,8 @@ export class ExploreComponent implements OnInit {
       this.publications = response.publications;
     });
   }
+  goToUser(idUser: any) {
+    this.router.navigate(['/home/profile', idUser]);
+  }
 
 }
