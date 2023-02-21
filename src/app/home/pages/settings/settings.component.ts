@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
   formMdp = new FormGroup({
     id: new FormControl('', [Validators.required]),
     mdp: new FormControl('', [Validators.required]),
-    new_mdp: new FormControl('', [Validators.required]),
+    newmdp: new FormControl('', [Validators.required]),
   });
   formDesactivate = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
@@ -49,6 +49,7 @@ export class SettingsComponent implements OnInit {
   changeMdp() {
     console.log('change mdp');
     this.formMdp.get('id')?.setValue(this.user_connected.id);
+    console.log(this.formMdp.value);
     this.userService.changePassword(this.formMdp.value).subscribe({
       next(res: any) {
         console.log(res)
@@ -59,7 +60,11 @@ export class SettingsComponent implements OnInit {
         }).then(r => 'nothing');
       },
       error(err: any) {
-        console.log(err)
+        Swal.fire({
+          text: `Ce n'est pas votre ancien mot de passe`, icon: 'warning',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(r => 'nothing');
       }
     });
     this.formMdp.reset();
