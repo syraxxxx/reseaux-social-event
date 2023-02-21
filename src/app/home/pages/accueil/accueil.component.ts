@@ -34,6 +34,7 @@ export class AccueilComponent implements OnInit {
       this.user_connected = response.user[0];
       this.postService.getListePublication().subscribe(response => {
         this.publications = response.publication;
+        console.log(this.publications);
         for (let pub of this.publications) {
           // avoir nombre de like par post
           this.postService.getLikesByPublication(pub.id).subscribe(response => {
@@ -92,7 +93,9 @@ export class AccueilComponent implements OnInit {
       this.publications = response.publications;
     });
   }
-
+  goToUser(idUser: any) {
+    this.router.navigate(['/home/profile', idUser]);
+  }
 
   openNewEventDialog() {
 
