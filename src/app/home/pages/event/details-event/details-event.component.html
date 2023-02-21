@@ -77,7 +77,7 @@
                       <div class="dropdown">
                         <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret view-hover" data-bs-toggle="dropdown" href="#" role="button"><i class="feather-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a *ngIf="event?.utilisateur_id==user_connected?.id" class="post-link-item" href="#"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                          <a *ngIf="event?.utilisateur_id==user_connected?.id" class="post-link-item" (click)="updateButton(event)"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                           <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
                           <a (click)="goToUser(event.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
                           <a *ngIf="event?.utilisateur_id!=user_connected?.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
@@ -183,3 +183,78 @@
 <ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
   <p style="font-size: 18px; color: white">Chargement des données...</p>
 </ngx-spinner>
+
+<!--Mis à jour categorie-->
+<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(224, 224, 224);">
+      <div class="modal-body" style="text-align:center;">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la catégorie :  </h2>
+        <!--        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>-->
+        <form  [formGroup]="formEventUpdate">
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  Nom
+                  <div class="form-group">
+                    <input [(ngModel)]="event_updated.event_name" class="form-input" formControlName="nom" placeholder="Nom categorie" type="text">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea [(ngModel)]="event_updated.description" [value]="event_updated.description" class="form-textarea" formControlName="description" placeholder="Decrivez le categorie"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button [disabled]="!formEventUpdate.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Ajouter</button>
+          </div>
+        </form>
+        <form >
+          <div class="add-event-tabs">
+            <div class="tab-content" id="mainTabContent">
+              <div>
+                <div class="main-form">
+                  <div class="form-group mt-4">
+                    <label class="form-label">Nom de l'évènement*</label>
+                    <input class="form-input" formControlName="event_name" placeholder="Nom de l'évènement" type="text">
+                  </div>
+                  <div class="form-group mt-4">
+                    <label class="form-label">Lieu*</label>
+                    <input class="form-input" formControlName="lieu" placeholder="Lieu de l'évènement" type="text">
+                  </div>
+                  <div class="form-group mt-4">
+                    <label class="form-label">Date de réalisation*</label>
+                    <input class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
+                  </div>
+                  <div class="form-group mt-4">
+                    <label class="form-label">Categorie*</label>
+                    <select class="form-input" data-size="5" data-width="100%" formControlName="categories_id">
+                      <option value="">Categorie</option>
+                      <option [(ngModel)]="event_updated.categories_id" >Categorie</option>
+                    </select>
+                  </div>
+                  <div class="form-group mt-4">
+                    <label class="form-label">Lien du ticket*</label>
+                    <input class="form-input" formControlName="payement_link" placeholder="https://" type="text">
+                    <span class="small-des">Ajouter un lien vers votre site de ticket</span>
+                  </div>
+                  <div class="form-group mt-4">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-textarea" formControlName="description" placeholder="Descrivez votre évènement en quelques mots"></textarea>
+                    <span class="small-des">Fournissez plus d'informations sur votre événement afin que les invités sachent à quoi s'attendre..</span>
+                  </div>
+                  <button [disabled]="!formEventUpdate.valid" class="main-btn btn-hover h-40 w-100 mt-37 mb-3">Creer évènement</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

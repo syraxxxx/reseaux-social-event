@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PublicationService} from "../../../../@core/services/publication.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CommentService} from "../../../../@core/services/comment.service";
 
 @Component({
@@ -21,16 +21,27 @@ export class DetailsEventComponent implements OnInit {
   nombre_like: any;
   nombre_comments: any;
   commentaires: any;
+  displayStyle = 'none';
+  event_updated: any;
 
   formComment = new FormGroup({
     utilisateur_id: new FormControl(''),
     publication_id: new FormControl(''),
     corps: new FormControl(''),
   });
+  formEventUpdate = new FormGroup({
+    utilisateur_id: new FormControl(''),
+    categories_id: new FormControl('', [Validators.required]),
+    description: new FormControl(''),
+    payement_link: new FormControl('', [Validators.required]),
+    event_name: new FormControl('', [Validators.required]),
+    date_realisation: new FormControl('', [Validators.required]),
+    lieu: new FormControl(''),
+  });
 
   constructor(
     private route: ActivatedRoute,
-    private router : Router,
+    private router: Router,
     private publicationService: PublicationService,
     private spinner: NgxSpinnerService,
     private userService: UtilisateurService,
@@ -143,4 +154,16 @@ export class DetailsEventComponent implements OnInit {
     this.router.navigate(['/home/profile', idUser]);
   }
 
+  openPopup() {
+    this.displayStyle = 'block';
+  }
+
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  updateButton(event: any) {
+    this.event_updated = event;
+    this.openPopup();
+  }
 }
