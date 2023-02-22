@@ -29,6 +29,7 @@ export class DetailsEventComponent implements OnInit {
     publication_id: new FormControl(''),
     corps: new FormControl(''),
   });
+
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
     categories_id: new FormControl('', [Validators.required]),
