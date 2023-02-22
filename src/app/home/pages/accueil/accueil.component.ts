@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CommentService} from "../../../@core/services/comment.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-accueil',
@@ -14,13 +15,26 @@ export class AccueilComponent implements OnInit {
   publications: any;
   user_connected: any;
   categories: any;
+  displayStyle = 'none';
+  event_updated: any;
+  errorMessage: any;
+
+  formEventUpdate = new FormGroup({
+    utilisateur_id: new FormControl(''),
+    categories_id: new FormControl(''),
+    description: new FormControl(''),
+    payement_link: new FormControl(''),
+    event_name: new FormControl(''),
+    date_realisation: new FormControl(''),
+    lieu: new FormControl(''),
+  });
 
   constructor(
     private router: Router,
     private postService: PublicationService,
     private userServive: UtilisateurService,
     private spinner: NgxSpinnerService,
-    private commentService : CommentService
+    private commentService: CommentService
   ) {
   }
 
@@ -41,7 +55,7 @@ export class AccueilComponent implements OnInit {
             pub.nombrelike = response.likes.length;
           });
           //avoir nombre de commentaire par post
-          this.commentService.getCommentairesByIdEvent(pub.id).subscribe(response=>{
+          this.commentService.getCommentairesByIdEvent(pub.id).subscribe(response => {
             pub.nombreComments = response.publication.length;
           })
           this.postService.isLiked(pub.id, this.user_connected.id).subscribe(response => {
@@ -93,12 +107,29 @@ export class AccueilComponent implements OnInit {
       this.publications = response.publications;
     });
   }
+
   goToUser(idUser: any) {
     this.router.navigate(['/home/profile', idUser]);
   }
 
-  openNewEventDialog() {
+  openPopup() {
+    this.displayStyle = 'block';
+  }
 
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  updateButton(event: any) {
+    this.event_updated = event;
+    this.openPopup();
+  }
+
+  updatePublication() {
+    console.log(this.formEventUpdate.value);
+    this.postService.update(this.formEventUpdate.value).subscribe(response => {
+      console.log(response);
+    })
   }
 
 }
