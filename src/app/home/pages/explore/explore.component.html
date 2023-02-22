@@ -165,7 +165,7 @@
                       <div class="dropdown">
                         <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button"><i class="fas fa-ellipsis-v"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a *ngIf="pub.utilisateur_id==user_connected.id" class="post-link-item" href="#"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                          <a *ngIf="pub.utilisateur_id==user_connected.id" class="post-link-item" (click)="updateButton(pub)" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                           <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
                           <a (click)="goToUser(pub.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
                           <a *ngIf="pub.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
@@ -209,3 +209,48 @@
     </div>
   </div>
 </main>
+
+<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: #ececec">
+      <div class="modal-body">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la publication </h2>
+        <hr>
+        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>
+        <form (ngSubmit)="updatePublication()" [formGroup]="formEventUpdate">
+          <div class="container">
+            <div class="row">
+              <div class="form-group mt-4">
+                <label class="form-label">Nom de l'évènement</label>
+                <input [(ngModel)]="event_updated.event_name" class="form-input" formControlName="event_name" placeholder="Nom de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lieu</label>
+                <input [(ngModel)]="event_updated.lieu" class="form-input" formControlName="lieu" placeholder="Lieu de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Date de réalisation</label>
+                <input [(ngModel)]="event_updated.date_realisation" class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lien du ticket</label>
+                <input [(ngModel)]="event_updated.payement_link" class="form-input" formControlName="payement_link" placeholder="https://" type="text">
+                <span class="small-des">Ajouter un lien vers votre site de ticket</span>
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Description</label>
+                <textarea [(ngModel)]="event_updated.description" class="form-textarea" formControlName="description" placeholder="Descrivez votre évènement en quelques mots"></textarea>
+                <span class="small-des">Fournissez plus d'informations sur votre événement afin que les invités sachent à quoi s'attendre..</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button [disabled]="!formEventUpdate.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Modifier</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
