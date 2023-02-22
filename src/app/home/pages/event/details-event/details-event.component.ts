@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PublicationService} from "../../../../@core/services/publication.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {CommentService} from "../../../../@core/services/comment.service";
 
 @Component({
@@ -23,7 +23,7 @@ export class DetailsEventComponent implements OnInit {
   commentaires: any;
   displayStyle = 'none';
   event_updated: any;
-
+  errorMessage: any;
   formComment = new FormGroup({
     utilisateur_id: new FormControl(''),
     publication_id: new FormControl(''),
@@ -32,11 +32,11 @@ export class DetailsEventComponent implements OnInit {
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
-    categories_id: new FormControl('', [Validators.required]),
+    categories_id: new FormControl(''),
     description: new FormControl(''),
-    payement_link: new FormControl('', [Validators.required]),
-    event_name: new FormControl('', [Validators.required]),
-    date_realisation: new FormControl('', [Validators.required]),
+    payement_link: new FormControl(''),
+    event_name: new FormControl(''),
+    date_realisation: new FormControl(''),
     lieu: new FormControl(''),
   });
 
@@ -166,5 +166,12 @@ export class DetailsEventComponent implements OnInit {
   updateButton(event: any) {
     this.event_updated = event;
     this.openPopup();
+  }
+
+  updatePublication() {
+    console.log(this.formEventUpdate.value);
+    this.postService.update(this.formEventUpdate.value).subscribe(response => {
+      console.log(response);
+    })
   }
 }
