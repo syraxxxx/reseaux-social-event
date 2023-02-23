@@ -32,6 +32,7 @@ export class ResultSearchComponent implements OnInit {
   getResult(params: any) {
     this.searchService.search(params).subscribe(response => {
       this.result = response;
+      console.log(this.result);
     })
   }
 
@@ -39,5 +40,8 @@ export class ResultSearchComponent implements OnInit {
     this.router.navigate(['/home/event', pub]);
   }
 
+  goToUser(idUser: any) {
+    this.router.navigate(['/home/profile', idUser]);
+  }
 
 }

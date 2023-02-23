@@ -24,12 +24,12 @@
               </div>
             </div>
             <div class="explore-filters accordion" id="explore-filter-group">
-              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse"  role="button">Recherche</a>
-<!--              <div class="collapse" data-bs-parent="#explore-filter-group" id="filter-item-1">-->
-<!--                <div class="cate-group text-start">-->
-<!--                  <div class="categories-items"></div>-->
-<!--                </div>-->
-<!--              </div>-->
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" role="button">Recherche</a>
+              <!--              <div class="collapse" data-bs-parent="#explore-filter-group" id="filter-item-1">-->
+              <!--                <div class="cate-group text-start">-->
+              <!--                  <div class="categories-items"></div>-->
+              <!--                </div>-->
+              <!--              </div>-->
             </div>
           </div>
         </div>
@@ -48,8 +48,8 @@
                 <div class="row">
                   <div *ngFor="let resultUser of result?.users" class="result-person col-md-4">
                     <div class="sugguest-user-dt">
-                      <a href="user_profile.html"><img alt="" src="../../assets/images/homepage/left-side/left-img-1.jpg"></a>
-                      <a href="user_profile.html"><h4>{{resultUser.nom}} {{resultUser.prenom}}</h4></a>
+                      <a (click)="goToUser(resultUser.id)"><img alt="" src="../../assets/images/homepage/left-side/left-img-1.jpg"></a>
+                      <a (click)="goToUser(resultUser.id)"><h4>{{resultUser.nom}} {{resultUser.prenom}}</h4></a>
                     </div>
                   </div>
                 </div>
@@ -82,11 +82,11 @@
                     </div>
                     <div class="event-body">
                       <span class="event-time">{{resultPublication.date_realisation}}</span>
-                      <a class="event-title" style="cursor: pointer" (click)="getDetails(resultPublication.id)"> {{resultPublication.event_name}} </a>
+                      <a (click)="getDetails(resultPublication.id)" class="event-title" style="cursor: pointer"> {{resultPublication.event_name}} </a>
                       <span class="event-type">{{resultPublication.nom}} {{resultPublication.prenom}}</span>
-<!--                      <p class="ingo-counter">-->
-<!--                        <span>like J'aime</span> <span>comments commentaire(s)</span>-->
-<!--                      </p>-->
+                      <!--                      <p class="ingo-counter">-->
+                      <!--                        <span>like J'aime</span> <span>comments commentaire(s)</span>-->
+                      <!--                      </p>-->
                       <div class="group-btns">
                         <button (click)="getDetails(resultPublication.id)" class="interest-btn btn-hover">
                           <i class="feather-eye me-2"></i>Voir
