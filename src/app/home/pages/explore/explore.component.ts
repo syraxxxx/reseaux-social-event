@@ -20,6 +20,8 @@ export class ExploreComponent implements OnInit {
   displayStyle = 'none';
   event_updated: any;
   errorMessage: any;
+  page = 1; // page courante
+  pageSize = 9; // nombre de données par page
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),

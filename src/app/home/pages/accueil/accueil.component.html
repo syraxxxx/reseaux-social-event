@@ -42,7 +42,7 @@
                 <div class="tab-pane fade show active" id="tab-top">
                   <div class="main-posts">
                     <div class="row">
-                      <div *ngFor="let pub of publications" class="col-md-6">
+                      <div *ngFor="let pub of publications | slice:(page-1)*pageSize:page*pageSize" class="col-md-6">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="event_detail_view.html">
@@ -52,17 +52,17 @@
                               <div class="dropdown">
                                 <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button"><i class="fas fa-ellipsis-v"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                  <a *ngIf="pub.utilisateur_id==user_connected.id" class="post-link-item" (click)="updateButton(pub)" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                                  <a *ngIf="pub?.utilisateur_id==user_connected.id" class="post-link-item" (click)="updateButton(pub)" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                                   <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
-                                  <a (click)="goToUser(pub.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
-                                  <a *ngIf="pub.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
+                                  <a (click)="goToUser(pub?.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
+                                  <a *ngIf="pub?.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pub.date_realisation}}</span>
-                            <a (click)="getDetails(pub.id)" class="event-title" routerLink=""> {{pub.event_name}} </a>
+                            <a (click)="getDetails(pub?.id)" class="event-title" routerLink=""> {{pub.event_name}} </a>
                             <span class="event-type">{{pub?.nom }} {{ pub?.prenom}}</span>
                             <p class="ingo-counter">
                               <span>{{pub?.nombrelike}} J'aime</span>
@@ -85,8 +85,8 @@
                       </div>
                       <div class="col-md-12">
                         <div class="loading-btn">
-                          <button class="process-btn btn-hover" type="button">
-                            <i class="fa-solid fa-spinner fa-spin"></i> Chargement...
+                          <button class="process-btn btn-hover" routerLink="/home/explore">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Voir Plus dans Explore
                           </button>
                         </div>
                       </div>

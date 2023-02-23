@@ -5,6 +5,7 @@ import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CommentService} from "../../../@core/services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Publication} from "../../../@core/models/publication.model";
 
 @Component({
   selector: 'app-accueil',
@@ -12,12 +13,14 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
-  publications: any;
+  publications!: Publication[];
   user_connected: any;
   categories: any;
   displayStyle = 'none';
   event_updated: any;
   errorMessage: any;
+  page = 1; // page courante
+  pageSize = 6  ; // nombre de données par page
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
