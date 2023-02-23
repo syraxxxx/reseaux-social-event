@@ -43,7 +43,6 @@ export class NewEventComponent implements OnInit {
     });
     this.eventService.getCategories().subscribe(response => {
       this.categories = response.likes;
-      console.log(response.likes);
     });
     setTimeout(() => {
       this.spinner.hide();
@@ -51,8 +50,6 @@ export class NewEventComponent implements OnInit {
   }
 
   create_event() {
-    console.log(this.formNewEvent.value);
-    console.log('click');
     this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
     this.eventService.create(this.formNewEvent.value).subscribe({
       next(res: any) {
@@ -67,6 +64,5 @@ export class NewEventComponent implements OnInit {
       timer: 1500
     }).then(r => 'nothing');
     this.formNewEvent.reset();
-
   }
 }

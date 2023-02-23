@@ -58,4 +58,13 @@ export class PublicationService {
   getPublicationByCategorie(categorie_id: string): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/byCategorie/${categorie_id}`);
   }
+
+  update(body: { [key: string]: string | number | boolean }): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
+
+    const data = Object.entries(body)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    return this.http.post<any>(`${this.apiEndPoint}/update`, data, httpOptions);
+  }
 }

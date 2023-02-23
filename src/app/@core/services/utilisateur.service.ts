@@ -67,4 +67,15 @@ export class UtilisateurService {
   getAllUser(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/liste`);
   }
+  changePassword(body: { [key: string]: string | number | boolean }): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+    const data = Object.entries(body)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    return this.http.post<any>(`${this.apiEndPoint}/changepassword`, data, httpOptions);
+  }
 }

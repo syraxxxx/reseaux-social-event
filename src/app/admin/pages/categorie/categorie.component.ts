@@ -96,5 +96,7 @@ export class CategorieComponent implements OnInit {
     this.openPopup();
     this.categorie_updated = categorie
   }
+  fonction(){
 
+  }
 }

@@ -40,11 +40,10 @@
                 <div class="messages-list pt-0 mt-2">
                   <div class="item-body">
                     <div *ngIf="personnes.length!=0">
-                      COUCOUU
                     </div>
-                      <a (click)="loadMessagebyUser(person.id)" *ngFor="let person of personnes  | filter:personMessageFilter" class="media search-each-person">
+                      <a (click)="loadMessagebyUser(person.id)" *ngFor="let person of personnes | slice:(page-1)*pageSize:page*pageSize  | filter:personMessageFilter" class="media search-each-person">
                         <div class="item-img">
-                          <img alt="" height="20px" src="../../../assets/images/find-peoples/lily.jpeg">
+                          <img alt="" height="20px" src="../../../assets/images/find-peoples/user-profile.jpg">
                           <span class="chat-status offline"></span>
                         </div>
                         <div class="media-body">
@@ -74,7 +73,7 @@
                       <div class="item-body" cursor="pointer">
                         <a (click)="loadMessagebyUser(mess.interlocuteur_id)" *ngFor="let mess of messages" class="media" style="cursor:pointer;">
                           <div class="item-img">
-                            <img alt="" src="../../../assets/images/find-peoples/lily.jpeg">
+                            <img alt="" src="../../../assets/images/find-peoples/user-profile.jpg">
                             <span class="chat-status offline"></span>
                           </div>
                           <div class="media-body">

@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
         this.personne_profil = response.utilisateur[0];
         this.userService.getPublicationByUser(this.personne_profil.id).subscribe(res => {
           this.personne_publications = res.publication;
-          console.log(this.personne_publications);
+          // console.log(this.personne_publications);
         })
       });
     } else {

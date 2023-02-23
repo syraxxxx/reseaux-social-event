@@ -23,7 +23,7 @@
           <div class="col-xl-4 col-lg-5 col-md-12">
             <div class="main-card user-left-dt">
               <div class="user-avatar-img">
-                <img alt="" src="../../../assets/images/my-dashboard/my-dp.jpg">
+                <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                 <div *ngIf="!this.idPerson" class="avatar-img-btn">
                   <input id="avatar-img" type="file"> <label for="avatar-img"><i class="feather-camera"></i></label>
                 </div>
@@ -150,11 +150,8 @@
                             <span class="event-time">{{pubUser.date_realisation}}</span>
                             <a style="cursor:pointer;" (click)="getDetails(pubUser.id)" class="event-title">{{pubUser.event_name}}</a>
                             <span class="event-type">{{pubUser.lieu}}</span>
-                            <p class="ingo-counter">
-                              <span>25 J'aime</span>
-                            </p>
                             <div class="group-btns">
-                              <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                              <button class="interest-btn btn-hover" (click)="getDetails(pubUser.id)" ><i class="feather-eye me-2"></i>Voir</button>
                             </div>
                           </div>
                         </div>
@@ -183,10 +180,10 @@
                     </div>
                     <div class="about-step">
                       <h5>Dites nous quelques choses à propos de vous </h5>
-                      <p class="mb-0"> Une petite description de la personne </p>
+                      <p class="mb-0"> ...  </p>
                     </div>
                     <div class="about-step">
-                      <h5>Find me on</h5>
+                      <h5>Trouver moi sur </h5>
                       <div class="social-links">
                         <a aria-label="Facebook" class="social-link" data-bs-original-title="Facebook" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-facebook-square"></i></a>
                         <a aria-label="Instagram" class="social-link" data-bs-original-title="Instagram" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title=""><i class="fab fa-instagram"></i></a>
@@ -197,7 +194,7 @@
                       </div>
                     </div>
                     <div class="about-step">
-                      <h5>Address</h5>
+                      <h5>Adresse</h5>
                       <p class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</p>
                     </div>
                   </div>
@@ -303,11 +300,8 @@
                             <span class="event-time">{{pubUser.date_realisation}}</span>
                             <a href="event_detail_view.html" class="event-title">{{pubUser.event_name}}</a>
                             <span class="event-type">{{pubUser.lieu}}</span>
-                            <p class="ingo-counter">
-                              <span>25 J'aime</span>
-                            </p>
                             <div class="group-btns">
-                              <button class="interest-btn btn-hover" onclick="window.location.href='event_detail_view.html';"><i class="feather-eye me-2"></i>Voir</button>
+                              <button class="interest-btn btn-hover" (click)="getDetails(pubUser.id)" ><i class="feather-eye me-2"></i>Voir</button>
                             </div>
                           </div>
                         </div>

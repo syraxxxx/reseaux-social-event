@@ -4,14 +4,12 @@
       <div class="col-lg-12">
         <ol class="title-bar-text">
           <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Explorer</li>
+          <li aria-current="page" class="breadcrumb-item active">Explorer</li>
         </ol>
       </div>
     </div>
   </div>
-</div>
-<!-- Title Bar End -->
-<!-- Body Start -->
+</div><!-- Title Bar End --><!-- Body Start -->
 <main class="goeveni-mp">
   <div class="main-section">
     <div class="container">
@@ -20,137 +18,136 @@
           <div class="user-data full-width">
             <div class="search-explore p-4">
               <div class="position-relative">
-                <input class="form-input" type="text" placeholder="Mot clés..." name="recherche" [(ngModel)]="searchEvent">
+                <input [(ngModel)]="searchEvent" class="form-input" name="recherche" placeholder="Mot clés..." type="text">
                 <span class="icon-158"><i class="feather-search"></i></span>
               </div>
             </div>
             <div class="explore-filters accordion" id="explore-filter-group">
-              <a href="#filter-item-1" class="filter-step collapsed cate-right" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-1">Categories</a>
-              <div class="collapse" id="filter-item-1" data-bs-parent="#explore-filter-group">
+              <a aria-controls="filter-item-1" aria-expanded="false" class="filter-step collapsed cate-right" data-bs-toggle="collapse" href="#filter-item-1" role="button">Categories</a>
+              <div class="collapse" data-bs-parent="#explore-filter-group" id="filter-item-1">
                 <div class="cate-group text-start">
                   <div class="categories-items">
                     <div class="categories-container">
-                      <a  class="category-item" style="cursor:pointer;" (click)="getData()">
-                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">Tous
-                      </a>
-                      <a *ngFor="let cat of categories" class="category-item"  (click)="getEventByCategorie(cat?.id)" style="cursor:pointer;" >
-                        <img alt="Music" src="../../assets/images/category-icons/icon-1.png">{{cat.nom}}
+                      <a (click)="getData()" class="category-item" style="cursor:pointer;">
+                        <img alt="Music" src="../../assets/images/category-icons/icon-all.png">Tous </a>
+                      <a (click)="getEventByCategorie(cat?.id)" *ngFor="let cat of categories" class="category-item" style="cursor:pointer;">
+                        <img alt="Music" src="../../assets/images/category-icons/icon-all.png">{{cat.nom}}
                       </a>
                     </div>
 
                   </div>
                 </div>
               </div>
-<!--              <a href="#filter-item-2" class="filter-step collapsed cate-right" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-2">Location</a>-->
-<!--              <div class="collapse" id="filter-item-2" data-bs-parent="#explore-filter-group">-->
-<!--                <div class="filter-location main-form text-start">-->
-<!--                  <div class="form-group mt-0">-->
-<!--                    <select class="selectpicker" title="Select Country / Regions" data-size="5" data-live-search="true">-->
-<!--                      <option value="Algeria">Algeria</option>-->
-<!--                      <option value="Argentina">Argentina</option>-->
-<!--                      <option value="Australia">Australia</option>-->
-<!--                      <option value="Austria">Austria (Österreich)</option>-->
-<!--                      <option value="Belgium">Belgium (België)</option>-->
-<!--                      <option value="Bolivia">Bolivia</option>-->
-<!--                      <option value="Brazil">Brazil</option>-->
-<!--                      <option value="Canada">Canada</option>-->
-<!--                      <option value="Chile">Chile</option>-->
-<!--                      <option value="Colombia">Colombia</option>-->
-<!--                      <option value="Costa Rica">Costa Rica</option>-->
-<!--                      <option value="Cyprus">Cyprus</option>-->
-<!--                      <option value="Czech Republic">Czech Republic</option>-->
-<!--                      <option value="Denmark">Denmark</option>-->
-<!--                      <option value="Dominican Republic">Dominican Republic</option>-->
-<!--                      <option value="Estonia">Estonia</option>-->
-<!--                      <option value="Finland">Finland</option>-->
-<!--                      <option value="France">France</option>-->
-<!--                      <option value="Germany">Germany</option>-->
-<!--                      <option value="Greece">Greece</option>-->
-<!--                      <option value="Hong Kong">Hong Kong</option>-->
-<!--                      <option value="Iceland">Iceland</option>-->
-<!--                      <option value="India">India</option>-->
-<!--                      <option value="Indonesia">Indonesia</option>-->
-<!--                      <option value="Ireland">Ireland</option>-->
-<!--                      <option value="Israel">Israel</option>-->
-<!--                      <option value="Italy">Italy</option>-->
-<!--                      <option value="Japan">Japan</option>-->
-<!--                      <option value="Latvia">Latvia</option>-->
-<!--                      <option value="Lithuania">Lithuania</option>-->
-<!--                      <option value="Luxembourg">Luxembourg</option>-->
-<!--                      <option value="Malaysia">Malaysia</option>-->
-<!--                      <option value="Mexico">Mexico</option>-->
-<!--                      <option value="Nepal">Nepal</option>-->
-<!--                      <option value="Netherlands">Netherlands</option>-->
-<!--                      <option value="New Zealand">New Zealand</option>-->
-<!--                      <option value="Norway">Norway</option>-->
-<!--                      <option value="Paraguay">Paraguay</option>-->
-<!--                      <option value="Peru">Peru</option>-->
-<!--                      <option value="Philippines">Philippines</option>-->
-<!--                      <option value="Poland">Poland</option>-->
-<!--                      <option value="Portugal">Portugal</option>-->
-<!--                      <option value="Singapore">Singapore</option>-->
-<!--                      <option value="Slovakia">Slovakia</option>-->
-<!--                      <option value="Slovenia">Slovenia</option>-->
-<!--                      <option value="South Africa">South Africa</option>-->
-<!--                      <option value="South Korea">South Korea</option>-->
-<!--                      <option value="Spain">Spain</option>-->
-<!--                      <option value="Sweden">Sweden</option>-->
-<!--                      <option value="Switzerland">Switzerland</option>-->
-<!--                      <option value="Tanzania">Tanzania</option>-->
-<!--                      <option value="Thailand">Thailand</option>-->
-<!--                      <option value="Turkey">Turkey</option>-->
-<!--                      <option value="United Kingdom">United Kingdom</option>-->
-<!--                      <option value="United States">United States</option>-->
-<!--                      <option value="Vietnam">Vietnam</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-<!--                  <div class="form-group mt-3">-->
-<!--                    <input class="form-input" type="text" id="location" placeholder="City">-->
-<!--                  </div>-->
-<!--                  <button class="main-btn btn-hover w-100 mt-3">Apply</button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <a href="#filter-item-3" class="filter-step collapsed cate-right border-bottom-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-3">Dates</a>-->
-<!--              <div class="collapse" id="filter-item-3" data-bs-parent="#explore-filter-group">-->
-<!--                <div class="date-group text-start">-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-1" checked>-->
-<!--                    <label class="form-check-label" for="date-1">-->
-<!--                      All Dates-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-2">-->
-<!--                    <label class="form-check-label" for="date-2">-->
-<!--                      Upcoming 30 Days-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-3">-->
-<!--                    <label class="form-check-label" for="date-3">-->
-<!--                      Upcoming 20 Days-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-4">-->
-<!--                    <label class="form-check-label" for="date-4">-->
-<!--                      Upcoming 10 Days-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-5">-->
-<!--                    <label class="form-check-label" for="date-5">-->
-<!--                      Upcoming 10 Days-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-6">-->
-<!--                    <label class="form-check-label" for="date-6">-->
-<!--                      Upcoming 5 Days-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <a href="#filter-item-2" class="filter-step collapsed cate-right" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-2">Location</a>-->
+              <!--              <div class="collapse" id="filter-item-2" data-bs-parent="#explore-filter-group">-->
+              <!--                <div class="filter-location main-form text-start">-->
+              <!--                  <div class="form-group mt-0">-->
+              <!--                    <select class="selectpicker" title="Select Country / Regions" data-size="5" data-live-search="true">-->
+              <!--                      <option value="Algeria">Algeria</option>-->
+              <!--                      <option value="Argentina">Argentina</option>-->
+              <!--                      <option value="Australia">Australia</option>-->
+              <!--                      <option value="Austria">Austria (Österreich)</option>-->
+              <!--                      <option value="Belgium">Belgium (België)</option>-->
+              <!--                      <option value="Bolivia">Bolivia</option>-->
+              <!--                      <option value="Brazil">Brazil</option>-->
+              <!--                      <option value="Canada">Canada</option>-->
+              <!--                      <option value="Chile">Chile</option>-->
+              <!--                      <option value="Colombia">Colombia</option>-->
+              <!--                      <option value="Costa Rica">Costa Rica</option>-->
+              <!--                      <option value="Cyprus">Cyprus</option>-->
+              <!--                      <option value="Czech Republic">Czech Republic</option>-->
+              <!--                      <option value="Denmark">Denmark</option>-->
+              <!--                      <option value="Dominican Republic">Dominican Republic</option>-->
+              <!--                      <option value="Estonia">Estonia</option>-->
+              <!--                      <option value="Finland">Finland</option>-->
+              <!--                      <option value="France">France</option>-->
+              <!--                      <option value="Germany">Germany</option>-->
+              <!--                      <option value="Greece">Greece</option>-->
+              <!--                      <option value="Hong Kong">Hong Kong</option>-->
+              <!--                      <option value="Iceland">Iceland</option>-->
+              <!--                      <option value="India">India</option>-->
+              <!--                      <option value="Indonesia">Indonesia</option>-->
+              <!--                      <option value="Ireland">Ireland</option>-->
+              <!--                      <option value="Israel">Israel</option>-->
+              <!--                      <option value="Italy">Italy</option>-->
+              <!--                      <option value="Japan">Japan</option>-->
+              <!--                      <option value="Latvia">Latvia</option>-->
+              <!--                      <option value="Lithuania">Lithuania</option>-->
+              <!--                      <option value="Luxembourg">Luxembourg</option>-->
+              <!--                      <option value="Malaysia">Malaysia</option>-->
+              <!--                      <option value="Mexico">Mexico</option>-->
+              <!--                      <option value="Nepal">Nepal</option>-->
+              <!--                      <option value="Netherlands">Netherlands</option>-->
+              <!--                      <option value="New Zealand">New Zealand</option>-->
+              <!--                      <option value="Norway">Norway</option>-->
+              <!--                      <option value="Paraguay">Paraguay</option>-->
+              <!--                      <option value="Peru">Peru</option>-->
+              <!--                      <option value="Philippines">Philippines</option>-->
+              <!--                      <option value="Poland">Poland</option>-->
+              <!--                      <option value="Portugal">Portugal</option>-->
+              <!--                      <option value="Singapore">Singapore</option>-->
+              <!--                      <option value="Slovakia">Slovakia</option>-->
+              <!--                      <option value="Slovenia">Slovenia</option>-->
+              <!--                      <option value="South Africa">South Africa</option>-->
+              <!--                      <option value="South Korea">South Korea</option>-->
+              <!--                      <option value="Spain">Spain</option>-->
+              <!--                      <option value="Sweden">Sweden</option>-->
+              <!--                      <option value="Switzerland">Switzerland</option>-->
+              <!--                      <option value="Tanzania">Tanzania</option>-->
+              <!--                      <option value="Thailand">Thailand</option>-->
+              <!--                      <option value="Turkey">Turkey</option>-->
+              <!--                      <option value="United Kingdom">United Kingdom</option>-->
+              <!--                      <option value="United States">United States</option>-->
+              <!--                      <option value="Vietnam">Vietnam</option>-->
+              <!--                    </select>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-group mt-3">-->
+              <!--                    <input class="form-input" type="text" id="location" placeholder="City">-->
+              <!--                  </div>-->
+              <!--                  <button class="main-btn btn-hover w-100 mt-3">Apply</button>-->
+              <!--                </div>-->
+              <!--              </div>-->
+              <!--              <a href="#filter-item-3" class="filter-step collapsed cate-right border-bottom-0" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filter-item-3">Dates</a>-->
+              <!--              <div class="collapse" id="filter-item-3" data-bs-parent="#explore-filter-group">-->
+              <!--                <div class="date-group text-start">-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-1" checked>-->
+              <!--                    <label class="form-check-label" for="date-1">-->
+              <!--                      All Dates-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-2">-->
+              <!--                    <label class="form-check-label" for="date-2">-->
+              <!--                      Upcoming 30 Days-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-3">-->
+              <!--                    <label class="form-check-label" for="date-3">-->
+              <!--                      Upcoming 20 Days-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-4">-->
+              <!--                    <label class="form-check-label" for="date-4">-->
+              <!--                      Upcoming 10 Days-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-5">-->
+              <!--                    <label class="form-check-label" for="date-5">-->
+              <!--                      Upcoming 10 Days-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                  <div class="form-check">-->
+              <!--                    <input class="form-check-input" type="radio" name="dateRadioDefault" id="date-6">-->
+              <!--                    <label class="form-check-label" for="date-6">-->
+              <!--                      Upcoming 5 Days-->
+              <!--                    </label>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
             </div>
           </div>
         </div>
@@ -168,10 +165,10 @@
                       <div class="dropdown">
                         <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button"><i class="fas fa-ellipsis-v"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a class="post-link-item" href="#"><i class="feather-eye-off icon-mr1"></i>Ne plus voir</a>
+                          <a *ngIf="pub.utilisateur_id==user_connected.id" class="post-link-item" (click)="updateButton(pub)" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                           <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
-                          <a class="post-link-item" href="#"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
-                          <a class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
+                          <a (click)="goToUser(pub.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
+                          <a *ngIf="pub.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
                         </div>
                       </div>
                     </div>
@@ -201,8 +198,7 @@
               <div class="col-md-12">
                 <div class="loading-btn mb-3">
                   <button class="process-btn btn-hover" type="button">
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                    Chargement...
+                    <i class="fa-solid fa-spinner fa-spin"></i> Chargement...
                   </button>
                 </div>
               </div>
@@ -213,3 +209,48 @@
     </div>
   </div>
 </main>
+
+<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: #ececec">
+      <div class="modal-body">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la publication </h2>
+        <hr>
+        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>
+        <form (ngSubmit)="updatePublication()" [formGroup]="formEventUpdate">
+          <div class="container">
+            <div class="row">
+              <div class="form-group mt-4">
+                <label class="form-label">Nom de l'évènement</label>
+                <input [(ngModel)]="event_updated.event_name" class="form-input" formControlName="event_name" placeholder="Nom de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lieu</label>
+                <input [(ngModel)]="event_updated.lieu" class="form-input" formControlName="lieu" placeholder="Lieu de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Date de réalisation</label>
+                <input [(ngModel)]="event_updated.date_realisation" class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lien du ticket</label>
+                <input [(ngModel)]="event_updated.payement_link" class="form-input" formControlName="payement_link" placeholder="https://" type="text">
+                <span class="small-des">Ajouter un lien vers votre site de ticket</span>
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Description</label>
+                <textarea [(ngModel)]="event_updated.description" class="form-textarea" formControlName="description" placeholder="Descrivez votre évènement en quelques mots"></textarea>
+                <span class="small-des">Fournissez plus d'informations sur votre événement afin que les invités sachent à quoi s'attendre..</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button [disabled]="!formEventUpdate.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Modifier</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -26,7 +26,7 @@
             <div class="event-title-dts">
               <span class="evnt_time txtbold">{{event?.date_realisation}}</span>
               <h3 class="event-heading-title text-left"> {{event?.event_name}}</h3>
-              <span class="evnt_time txtbold">Categorie ici</span>
+              <span class="evnt_time txtbold">Categorie</span>
               <div class="mndtlist">
                 <div class="mndesp145">
                   <div class="evarticledes">
@@ -77,10 +77,10 @@
                       <div class="dropdown">
                         <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret view-hover" data-bs-toggle="dropdown" href="#" role="button"><i class="feather-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a class="post-link-item" href="#"><i class="feather-eye-off icon-mr1"></i>Hide</a>
-                          <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Save</a>
-                          <a class="post-link-item" href="user_profile.html"><i class="feather-user icon-mr1"></i>User Profile</a>
-                          <a class="post-link-item" data-bs-toggle="modal" href="#reportModal" role="button"><i class="feather-flag icon-mr1"></i>Report</a>
+                          <a (click)="updateButton(event)" *ngIf="event?.utilisateur_id==user_connected?.id" style="cursor: pointer" class="post-link-item"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                          <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
+                          <a (click)="goToUser(event.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
+                          <a *ngIf="event?.utilisateur_id!=user_connected?.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
                         </div>
                       </div>
                     </div>
@@ -90,17 +90,17 @@
             </div>
             <div class="dis-like-comments">
               <div class="left-comments">
-                <a *ngIf="!liked_active;else actived_love" class="like-item" > <i class="feather-heart"></i>
+                <a *ngIf="!liked_active;else actived_love" class="like-item"> <i class="feather-heart"></i>
                   <span>{{this.nombre_like}}
                     <ins>J'aime</ins></span> </a>
 
                 <ng-template #actived_love>
-                  <a class="like-item-liked"> <i class="feather-heart"></i>
-                    <span> {{this.nombre_like}} J'aime</span>
+                  <a class="like-item-liked"> <i class="feather-heart"></i> <span> {{this.nombre_like}} J'aime</span>
                   </a>
                 </ng-template>
-                <a class="like-item lc-left"  title="Commentaires"> <i class="feather-message-square"></i>
-                  <span>{{nombre_comments}} <ins>Commentaires</ins></span> </a>
+                <a class="like-item lc-left" title="Commentaires"> <i class="feather-message-square"></i>
+                  <span>{{nombre_comments}}
+                    <ins>Commentaires</ins></span> </a>
               </div>
               <div class="right-comments">
                 <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>0 <ins>Partages</ins></span>
@@ -116,7 +116,7 @@
               <div class="reply-buttons">
                 <div class="add-photo-button">
                   <div class="screnshot" id="OpenImgUpload1">
-                    <input class="comment-post" id="file1" placeholder="Votre commentaire..." type="text" formControlName="corps">
+                    <input class="comment-post" formControlName="corps" id="file1" placeholder="Votre commentaire..." type="text">
                   </div>
                 </div>
                 <div class="post-reply-btn">
@@ -128,7 +128,9 @@
           <div class="main-replies">
             <h4>{{nombre_comments}} Commentaires</h4>
             <div *ngFor="let comment of commentaires" class="reply-user-dt">
-              <img alt="" src="../../../assets/images/discussion/img-3.jpg"> <a style="cursor: pointer" (click)="goToUser(comment.utilisateur_id)"><h4>{{comment.nom}} {{comment.prenom}}</h4></a>
+              <img alt="" src="../../../assets/images/discussion/img-3.jpg">
+              <a (click)="goToUser(comment.utilisateur_id)" style="cursor: pointer">
+                <h4>{{comment.nom}} {{comment.prenom}}</h4></a>
               <p>{{comment.corps}}</p>
             </div>
           </div>
@@ -170,7 +172,8 @@
                   <img alt="" src="../../../assets/images/find-peoples/user-2.jpg">
                 </div>
                 <div class="follow-name">
-                  <a style="cursor: pointer" (click)="goToUser(event?.utilisateur_id)">{{event?.nom}} {{event?.prenom}}</a> <span>Organisateur</span>
+                  <a (click)="goToUser(event?.utilisateur_id)" style="cursor: pointer">{{event?.nom}} {{event?.prenom}}</a>
+                  <span>Organisateur</span>
                 </div>
               </div>
             </div>
@@ -183,3 +186,48 @@
 <ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
   <p style="font-size: 18px; color: white">Chargement des données...</p>
 </ngx-spinner>
+
+<!--Mis à jour categorie-->
+<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: #ececec">
+      <div class="modal-body">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la publication </h2>
+        <hr>
+        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>
+        <form (ngSubmit)="updatePublication()" [formGroup]="formEventUpdate">
+          <div class="container">
+            <div class="row">
+              <div class="form-group mt-4">
+                <label class="form-label">Nom de l'évènement</label>
+                <input [(ngModel)]="event_updated.event_name" class="form-input" formControlName="event_name" placeholder="Nom de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lieu</label>
+                <input [(ngModel)]="event_updated.lieu" class="form-input" formControlName="lieu" placeholder="Lieu de l'évènement" type="text">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Date de réalisation</label>
+                <input [(ngModel)]="event_updated.date_realisation" class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Lien du ticket</label>
+                <input [(ngModel)]="event_updated.payement_link" class="form-input" formControlName="payement_link" placeholder="https://" type="text">
+                <span class="small-des">Ajouter un lien vers votre site de ticket</span>
+              </div>
+              <div class="form-group mt-4">
+                <label class="form-label">Description</label>
+                <textarea [(ngModel)]="event_updated.description" class="form-textarea" formControlName="description" placeholder="Descrivez votre évènement en quelques mots"></textarea>
+                <span class="small-des">Fournissez plus d'informations sur votre événement afin que les invités sachent à quoi s'attendre..</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button [disabled]="!formEventUpdate.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Modifier</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

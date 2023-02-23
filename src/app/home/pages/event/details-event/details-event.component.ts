@@ -21,16 +21,28 @@ export class DetailsEventComponent implements OnInit {
   nombre_like: any;
   nombre_comments: any;
   commentaires: any;
-
+  displayStyle = 'none';
+  event_updated: any;
+  errorMessage: any;
   formComment = new FormGroup({
     utilisateur_id: new FormControl(''),
     publication_id: new FormControl(''),
     corps: new FormControl(''),
   });
 
+  formEventUpdate = new FormGroup({
+    utilisateur_id: new FormControl(''),
+    categories_id: new FormControl(''),
+    description: new FormControl(''),
+    payement_link: new FormControl(''),
+    event_name: new FormControl(''),
+    date_realisation: new FormControl(''),
+    lieu: new FormControl(''),
+  });
+
   constructor(
     private route: ActivatedRoute,
-    private router : Router,
+    private router: Router,
     private publicationService: PublicationService,
     private spinner: NgxSpinnerService,
     private userService: UtilisateurService,
@@ -45,11 +57,12 @@ export class DetailsEventComponent implements OnInit {
   }
 
   getData() {
-    console.log('valeur de like : ' + this.liked_active)
+    // console.log('valeur de like : ' + this.liked_active)
     const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
     this.eventID = this.route.snapshot.paramMap.get('publication_id');
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       this.event = response.publication[0];
+      // console.log(this.event);
       this.month = months[new Date(this.event.date_realisation).getMonth()].toUpperCase();
     });
     this.userService.getUserByToken().subscribe(response => {
@@ -74,7 +87,7 @@ export class DetailsEventComponent implements OnInit {
 
   likeVerification() {
     this.postService.isLiked(this.eventID, this.user_connected.id).subscribe(response => {
-      console.log("valeur de sideja : " + response.sideja)
+      // console.log("valeur de sideja : " + response.sideja)
       if (response.sideja == 1) {
         this.liked_active = true;
       }
@@ -89,7 +102,7 @@ export class DetailsEventComponent implements OnInit {
       valeur: 1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.getNombreLike();
     });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
@@ -107,7 +120,7 @@ export class DetailsEventComponent implements OnInit {
       valeur: -1
     };
     this.postService.likePublication(data).subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.getNombreLike();
     });
     this.postService.isLiked(idPub, this.user_connected.id).subscribe(response => {
@@ -142,4 +155,23 @@ export class DetailsEventComponent implements OnInit {
     this.router.navigate(['/home/profile', idUser]);
   }
 
+  openPopup() {
+    this.displayStyle = 'block';
+  }
+
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
+  updateButton(event: any) {
+    this.event_updated = event;
+    this.openPopup();
+  }
+
+  updatePublication() {
+    console.log(this.formEventUpdate.value);
+    this.postService.update(this.formEventUpdate.value).subscribe(response => {
+      console.log(response);
+    })
+  }
 }
