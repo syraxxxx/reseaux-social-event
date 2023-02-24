@@ -166,6 +166,11 @@
           </div>
           <a class="add-event-btn btn-hover d-block d-lg-none" href="#">Ajouter nouvel évènement</a>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
+            <a aria-current="page" class="nav-link" routerLink="/admin">
+                  <span class="nav-icon d-lg-none me-3">
+                    <i class="feather-home"></i>
+                  </span>Accueil
+            </a>
             <li *ngFor="let menuItem of menuItems" class="nav-item">
               <a aria-current="page" class="nav-link" routerLink="{{menuItem.path}}">
                   <span class="nav-icon d-lg-none me-3">
