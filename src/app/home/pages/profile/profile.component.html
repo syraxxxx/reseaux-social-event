@@ -156,6 +156,16 @@
                           </div>
                         </div>
                       </div>
+                      <div class="blog-pagination">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <button (click)="page = page - 1" [disabled]="page == 1" class="btn btn-secondary">Précédent</button>
+                              <button (click)="page = page + 1" [disabled]="page * pageSize >= (personne_publications?.length || 0)" class="btn btn-secondary">Suivant</button>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
                       <div class="col-12">
                         <div class="loading-btn mb-0">
                           <button class="process-btn btn-hover" type="button">
@@ -288,7 +298,7 @@
                   </div>
                   <div class="all-dash-events">
                     <div class="row">
-                      <div *ngFor="let pubUser of personne_publications | filter:searchEvent"  class="col-xl-4 col-lg-6 col-md-6 col-12">
+                      <div *ngFor="let pubUser of personne_publications | slice:(page-1)*pageSize:page*pageSize | filter:searchEvent"  class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a href="#">
@@ -305,6 +315,16 @@
                             </div>
                           </div>
                         </div>
+                      </div>
+                      <div class="blog-pagination">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <button (click)="page = page - 1" [disabled]="page == 1" class="btn btn-secondary">Précédent</button>
+                              <button (click)="page = page + 1" [disabled]="page * pageSize >= (personne_publications?.length || 0)" class="btn btn-secondary">Suivant</button>
+                            </li>
+                          </ul>
+                        </nav>
                       </div>
                       <div class="col-12">
                         <div class="loading-btn mb-0">
