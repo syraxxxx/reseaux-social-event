@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   personne_profil: any;
   personne_publications: any;
   searchEvent : any;
+  page = 1; // page courante
+  pageSize = 6  ; // nombre de données par page
   constructor(
     private userService: UtilisateurService,
     private spinner: NgxSpinnerService,
