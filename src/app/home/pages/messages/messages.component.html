@@ -39,7 +39,8 @@
                 <div class="close"><a href=""><i class="feather-"></i></a></div>
                 <div class="messages-list pt-0 mt-2">
                   <div class="item-body">
-                    <div *ngIf="personnes.length!=0">
+                    <div *ngIf="(personnes | filter:personMessageFilter).length == 0">
+                      Pas de résultat(s)
                     </div>
                       <a (click)="loadMessagebyUser(person.id)" *ngFor="let person of personnes | slice:(page-1)*pageSize:page*pageSize  | filter:personMessageFilter" class="media search-each-person">
                         <div class="item-img">
