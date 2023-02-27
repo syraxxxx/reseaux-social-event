@@ -80,5 +80,6 @@ export class MessagesComponent implements OnInit {
 
   clearFilter() {
     this.showSearchPerson = false;
+    this.personMessageFilter = '';
   }
 }

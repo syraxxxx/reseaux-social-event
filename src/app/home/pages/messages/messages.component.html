@@ -21,7 +21,7 @@
                 <div class="msg-search">
                   <i class="feather-search"></i>
                   <input (ngModelChange)="onPersonMessageFilterChange()" [(ngModel)]="personMessageFilter" class="form-input pl-left refund-textarea" name="searchText" placeholder="Rechercher des personnes" type="text">
-                  <i (click)="clearFilter()" class="fas fa-times clear-icon"></i>
+                  <i *ngIf="showSearchPerson" style="cursor: pointer" (click)="clearFilter()" class="fas fa-times clear-icon"></i>
 <!--                  <button (click)="clearFilter()" class="clear-icon"></button>-->
                 </div>
 
