@@ -75,6 +75,10 @@ export class MessagesComponent implements OnInit {
 
   onPersonMessageFilterChange() {
     this.showSearchPerson = !(!this.personMessageFilter);
+    console.log("value of show person : " + this.showSearchPerson)
   }
 
+  clearFilter() {
+    this.showSearchPerson = false;
+  }
 }

@@ -21,7 +21,10 @@
                 <div class="msg-search">
                   <i class="feather-search"></i>
                   <input (ngModelChange)="onPersonMessageFilterChange()" [(ngModel)]="personMessageFilter" class="form-input pl-left refund-textarea" name="searchText" placeholder="Rechercher des personnes" type="text">
+                  <i (click)="clearFilter()" class="fas fa-times clear-icon"></i>
+<!--                  <button (click)="clearFilter()" class="clear-icon"></button>-->
                 </div>
+
                 <div class="msg-create-btns">
                   <button class="btn-main btn-hover" data-placement="top" data-toggle="tooltip" title="Mark all conversations as read" type="button">
                     <svg height="23" viewBox="0 0 24 24" width="23" xmlns="http://www.w3.org/2000/svg">
