@@ -90,4 +90,7 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/home/res/' + this.searchTerm);
   }
 
+  clearFilter() {
+    this.searchTerm = '';
+  }
 }

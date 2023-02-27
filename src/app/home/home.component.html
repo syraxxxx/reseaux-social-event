@@ -295,6 +295,7 @@
             <form (ngSubmit)="onSearch()" >
               <div class="input-group">
                 <input  [(ngModel)]="searchTerm" name="recherche" aria-label="Search" class="form-control shadow-none border-0" placeholder="Rechercher des évènements ..." type="text">
+                <i  style="cursor: pointer" (click)="clearFilter()" class="fas fa-times clear-icon"></i>
                 <div class="input-group-append">
                   <button class="btn" >
                     <i class="feather-search"></i>
