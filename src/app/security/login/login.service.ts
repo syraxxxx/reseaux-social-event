@@ -15,6 +15,7 @@ export class LoginService implements CanActivate {
 
   canActivate(): boolean {
     if (!localStorage.getItem('token')) {
+      //return to / when there is no token
       this.router.navigateByUrl('/')
     }
     this.userService.getUserByToken().subscribe(response => {
