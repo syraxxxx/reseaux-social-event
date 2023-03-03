@@ -73,9 +73,9 @@ export class ExploreComponent implements OnInit {
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;
     });
-    // setTimeout(() => {
-    //   this.spinner.hide();
-    // }, 500);
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   getDetails(pub: any) {
