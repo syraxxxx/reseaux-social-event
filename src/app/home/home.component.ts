@@ -4,7 +4,6 @@ import {LogoutService} from "../security/logout/logout.service";
 import {UtilisateurService} from "../@core/services/utilisateur.service";
 import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
-import {SearchService} from "../@core/services/search.service";
 import {Message} from "../@core/models/message.model";
 
 @Component({
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit {
     private logoutService: LogoutService,
     private userService: UtilisateurService,
     private messengerService: MessengerService,
-    private searchService: SearchService
   ) {
   }
 
