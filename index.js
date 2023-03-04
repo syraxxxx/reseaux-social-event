@@ -1,2 +1,2 @@
-const {main} = require('./api/main'
+const {main} = require('./api/main')
 main()
