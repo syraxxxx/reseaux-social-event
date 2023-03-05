@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.logoutService.logout();
   }
 
-  
+
   loadAllMessages() {
     this.messengerService.getListePersonMessages(this.user_connected.id).subscribe(response => {
       this.messages = response.publication;
