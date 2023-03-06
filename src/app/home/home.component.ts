@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.getData();
   }
 
-  
+
   getData() {
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  
   setMenuItems() {
     this.menuItems = [
       {path: '/home', title: 'Accueil', icon: 'fas fa-car'},
