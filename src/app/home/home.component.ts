@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.getData();
   }
 
+  
   getData() {
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
