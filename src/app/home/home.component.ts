@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  
+
   setMenuItems() {
     this.menuItems = [
       {path: '/home', title: 'Accueil', icon: 'fas fa-car'},
