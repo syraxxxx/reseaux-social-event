@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  BASE: 'https://www.evenemglamour.com/api/'
+  BASE: 'http://www.evenemglamour.com/api/'
 };
 
