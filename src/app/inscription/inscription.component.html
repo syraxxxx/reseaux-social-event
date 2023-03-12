@@ -73,7 +73,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-input h_50" formControlName="mdp" placeholder="Mot de passe" type="mdp">
+                        <input class="form-input h_50" formControlName="mdp" placeholder="Mot de passe" type="password">
                         <div *ngIf="formInscription.get('mdp')?.invalid && formInscription.get('mdp')?.touched">
                           <div *ngIf="formInscription.get('mdp')?.errors?.['required']">
                             <span class="error-formInscription">Mot de passe requis</span>
