@@ -33,13 +33,13 @@ export class LoginService implements CanActivate {
   public login(token: string) {
     localStorage.setItem('token', token);
 
-    this.userService.getUserByToken().subscribe(response => {
-      if (response.user[0].admin == 1) {
-        this.router.navigateByUrl('/admin')
-      } else {
-        this.router.navigateByUrl('/home')
-      }
-    })
+    // this.userService.getUserByToken().subscribe(response => {
+    //   if (response.user[0].admin == 1) {
+    //     this.router.navigateByUrl('/admin')
+    //   } else {
+    //     this.router.navigateByUrl('/home')
+    //   }
+    // })
 
   }
 }

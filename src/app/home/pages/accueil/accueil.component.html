@@ -83,7 +83,12 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-12">
+                      <div *ngIf="publications?.length==0" class="col-md-12">
+                        <div class="loading-btn">
+                          Pas d'évènements récents
+                        </div>
+                      </div>
+                      <div *ngIf="publications?.length!=0" class="col-md-12">
                         <div class="loading-btn">
                           <button class="process-btn btn-hover" routerLink="/home/explore">
                             <i class="fa-solid fa-spinner fa-spin"></i> Voir Plus dans Explore

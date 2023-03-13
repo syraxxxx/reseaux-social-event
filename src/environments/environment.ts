@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE: 'http://www.evenemglamour.com/api'
+  BASE: 'http://localhost/reseausociaux'
 };
 
 /*

@@ -66,11 +66,12 @@ export class AccueilComponent implements OnInit {
               pub.like_actived = true
             }
           });
-          setTimeout(() => {
-            this.spinner.hide();
-          }, 500);
+
         }
       });
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 500);
     });
     this.postService.getCategories().subscribe(response => {
       this.categories = response.likes;

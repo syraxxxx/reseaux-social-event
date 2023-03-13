@@ -17,6 +17,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import { ExploreComponent } from './pages/explore/explore.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { ResultSearchComponent } from './pages/result-search/result-search.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ResultSearchComponent } from './pages/result-search/result-search.compo
     DetailsEventComponent,
     DetailMessagesComponent,
     ExploreComponent,
-    ResultSearchComponent
+    ResultSearchComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
