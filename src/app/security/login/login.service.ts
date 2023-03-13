@@ -19,13 +19,16 @@ export class LoginService implements CanActivate {
       this.router.navigateByUrl('/')
     }
     this.userService.getUserByToken().subscribe(response => {
-      if (response.user[0].admin == 1) {
-        this.router.navigateByUrl('/admin')
-      } else if (response.user[0].admin == 0) {
-        this.router.navigateByUrl('/home')
-      } else {
+      const currentUrl = this.router.url;
+      console.log('the current url : ' + currentUrl)
+      if (response.user[0].admin == 0 && currentUrl=='/admin') {
         this.router.navigateByUrl('/home')
       }
+      // } else if (response.user[0].admin == 0) {
+      //   this.router.navigateByUrl('/home')
+      // } else {
+      //   this.router.navigateByUrl('/home')
+      // }
     });
     return true;
   }

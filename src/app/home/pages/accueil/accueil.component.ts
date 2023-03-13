@@ -129,7 +129,7 @@ export class AccueilComponent implements OnInit {
   }
 
   updatePublication() {
-    console.log(this.formEventUpdate.value);
+    // console.log(this.formEventUpdate.value);
     this.postService.update(this.formEventUpdate.value).subscribe(response => {
     })
   }
