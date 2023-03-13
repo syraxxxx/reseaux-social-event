@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
 
     if (this.form.valid) {
-      console.log('click');
+      // console.log('click');
       this.serviceUser.login(this.form.value).subscribe({
         next: (res: any) => {
           this.loginService.login(res.token)

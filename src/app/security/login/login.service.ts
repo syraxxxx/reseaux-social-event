@@ -20,9 +20,11 @@ export class LoginService implements CanActivate {
     }
     this.userService.getUserByToken().subscribe(response => {
       const currentUrl = this.router.url;
-      console.log('the current url : ' + currentUrl)
-      if (response.user[0].admin == 0 && currentUrl=='/admin') {
+      if(currentUrl ==''){
         this.router.navigateByUrl('/home')
+      }
+      if (response.user[0].admin == 0 && currentUrl=='/admin') {
+        this.router.navigateByUrl('/home/404')
       }
       // } else if (response.user[0].admin == 0) {
       //   this.router.navigateByUrl('/home')
@@ -36,13 +38,13 @@ export class LoginService implements CanActivate {
   public login(token: string) {
     localStorage.setItem('token', token);
 
-    // this.userService.getUserByToken().subscribe(response => {
-    //   if (response.user[0].admin == 1) {
-    //     this.router.navigateByUrl('/admin')
-    //   } else {
-    //     this.router.navigateByUrl('/home')
-    //   }
-    // })
+    this.userService.getUserByToken().subscribe(response => {
+      if (response.user[0].admin == 1) {
+        this.router.navigateByUrl('/admin')
+      } else {
+        this.router.navigateByUrl('/home')
+      }
+    })
 
   }
 }

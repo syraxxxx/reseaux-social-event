@@ -30,7 +30,7 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getData();
-    console.log('this destinataire : ' + this.destinataire);
+    // console.log('this destinataire : ' + this.destinataire);
 
     // setInterval(() => {
     //   if (this.destinataire) {
@@ -75,7 +75,7 @@ export class MessagesComponent implements OnInit {
 
   onPersonMessageFilterChange() {
     this.showSearchPerson = !(!this.personMessageFilter);
-    console.log("value of show person : " + this.showSearchPerson)
+    // console.log("value of show person : " + this.showSearchPerson)
   }
 
   clearFilter() {

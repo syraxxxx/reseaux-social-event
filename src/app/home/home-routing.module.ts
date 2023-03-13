@@ -10,6 +10,7 @@ import {NewEventComponent} from "./pages/event/new-event/new-event.component";
 import {DetailsEventComponent} from "./pages/event/details-event/details-event.component";
 import {ExploreComponent} from "./pages/explore/explore.component";
 import {ResultSearchComponent} from "./pages/result-search/result-search.component";
+import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 
 const routes: Routes = [
 
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'settings', component: SettingsComponent},
       {path: 'explore', component: ExploreComponent},
       {path: 'res/:search', component: ResultSearchComponent},
+      {path: '404', component: PageNotFoundComponent},
     ]
   }
 ];

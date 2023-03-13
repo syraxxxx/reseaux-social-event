@@ -51,7 +51,7 @@ export class InscriptionComponent implements OnInit {
   }
   getListCountry(){
     this.serviceCountry.getCountries().subscribe(res =>{
-      console.log(res)
+      // console.log(res)
     })
   }
 
