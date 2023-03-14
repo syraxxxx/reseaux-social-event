@@ -417,7 +417,14 @@
       </ul>
       <div class="account dropdown">
         <a aria-expanded="false" class="account-link dropdown-toggle-no-caret" data-bs-auto-close="outside" data-bs-toggle="dropdown" href="#" id="dropdownMenuClickableInside">
-          <div class="user-dp"><img alt="" src="../../assets/images/dp.png"></div>
+          <div class="user-dp">
+            <div *ngIf="user_connected?.couverture_photo!=null;else defaultImage">
+              <img alt="" src="{{env}}/Image/getimage/{{user_connected?.couverture_photo}}">
+            </div>
+            <ng-template #defaultImage>
+              <img alt="" src="../../assets/images/dp.png">
+            </ng-template>
+          </div>
           <i class="feather-chevron-down ms-2"></i> </a>
         <div aria-labelledby="dropdownMenuClickableInside" class="dropdown-menu dropdown-account dropdown-menu-end">
           <div *ngFor="let profilMenuItem of profilMenuItems">

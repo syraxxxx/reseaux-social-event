@@ -23,7 +23,12 @@
           <div class="col-xl-4 col-lg-5 col-md-12">
             <div class="main-card user-left-dt">
               <div class="user-avatar-img">
-                <img alt="" src="{{env}}/Image/getimage/photo.png">
+                <div *ngIf="personne_profil.couverture_photo!=null;else defaultImage">
+                  <img alt="" src="{{env}}/Image/getimage/{{personne_profil.couverture_photo}}">
+                </div>
+                <ng-template #defaultImage>
+                  <img alt="" src="../../../assets/images/my-dashboard/dp.png">
+                </ng-template>
                 <div *ngIf="!this.idPerson" class="avatar-img-btn">
                   <input id="avatar-img" type="file"> <label for="avatar-img"><i class="feather-camera"></i></label>
                 </div>
