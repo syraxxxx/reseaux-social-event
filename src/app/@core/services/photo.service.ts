@@ -8,16 +8,13 @@ import {Observable} from "rxjs";
 })
 export class PhotoService {
 
-  private apiEndPoint = `${environment.BASE}/Messenger`;
+  private apiEndPoint = `${environment.BASE}/Image/getimage`;
 
   constructor(private http: HttpClient) {
   }
 
-  getListePersonMessages(user_id: any): Observable<any> {
+  getPhoto(user_id: any): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/getAllDiscution?user_id=${user_id}`);
   }
 
-  getMessageUser(id_user: any, id_destinataire: any): Observable<any> {
-    return this.http.get<any>(`${this.apiEndPoint}/discusbetween/${id_user}/${id_destinataire}`);
-  }
 }
