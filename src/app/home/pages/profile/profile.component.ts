@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PhotoService} from "../../../@core/services/photo.service";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-profile',
@@ -13,14 +15,19 @@ export class ProfileComponent implements OnInit {
   idPerson: any;
   personne_profil: any;
   personne_publications: any;
-  searchEvent : any;
+  searchEvent: any;
   page = 1; // page courante
-  pageSize = 6  ; // nombre de données par page
+  pageSize = 6; // nombre de données par page
+  photo: any;
+
+  env = `${environment.BASE}`;
+
   constructor(
     private userService: UtilisateurService,
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private photoService: PhotoService
   ) {
   }
 
@@ -30,6 +37,14 @@ export class ProfileComponent implements OnInit {
   }
 
   getData() {
+    this.photoService.getPhoto('photo.png').subscribe({
+      next: (res: any) => {
+        console.log(res)
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
     this.idPerson = this.route.snapshot.paramMap.get('user_id');
     if (this.idPerson) {
       this.userService.getUserbyId(this.idPerson).subscribe(response => {

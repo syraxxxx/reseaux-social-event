@@ -5,6 +5,7 @@ import {UtilisateurService} from "../@core/services/utilisateur.service";
 import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
 import {Message} from "../@core/models/message.model";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   searchTerm!: string;
   page = 1;
   pageSize = 4;
-
+  env = `${environment.BASE}`;
   constructor(
     private router: Router,
     private tokenService: TokenService,

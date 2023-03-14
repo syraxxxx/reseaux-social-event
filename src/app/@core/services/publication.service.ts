@@ -17,13 +17,21 @@ export class PublicationService {
   //   return this.http.post<any>(`${this.apiEndPoint}/create`, body);
   // }
 
+  // create(body: { [key: string]: string | number | boolean }): Observable<any> {
+  //   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+  //
+  //   const data = Object.entries(body)
+  //     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+  //     .join('&');
+  //   return this.http.post<any>(`${this.apiEndPoint}/create`, data, httpOptions);
+  // }
   create(body: { [key: string]: string | number | boolean }): Observable<any> {
-    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})};
-
-    const data = Object.entries(body)
-      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      .join('&');
-    return this.http.post<any>(`${this.apiEndPoint}/create`, data, httpOptions);
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+    const formData = new FormData();
+    Object.entries(body).forEach(([key, value]) => {
+      formData.append(key, value.toString());
+    });
+    return this.http.post<any>(`${this.apiEndPoint}/create`, formData, httpOptions);
   }
 
   getListePublication(): Observable<any> {

@@ -22,6 +22,7 @@ export class NewEventComponent implements OnInit {
     event_name: new FormControl('', [Validators.required]),
     date_realisation: new FormControl('', [Validators.required]),
     lieu: new FormControl(''),
+    couverture_photo: new FormControl(''),
   });
 
   constructor(
@@ -51,6 +52,7 @@ export class NewEventComponent implements OnInit {
 
   create_event() {
     this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
+    console.log(this.formNewEvent.value)
     this.eventService.create(this.formNewEvent.value).subscribe({
       next(res: any) {
 
