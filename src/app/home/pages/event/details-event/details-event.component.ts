@@ -24,6 +24,7 @@ export class DetailsEventComponent implements OnInit {
   displayStyle = 'none';
   event_updated: any;
   errorMessage: any;
+  
   formComment = new FormGroup({
     utilisateur_id: new FormControl(''),
     publication_id: new FormControl(''),

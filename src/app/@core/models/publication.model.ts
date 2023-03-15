@@ -16,4 +16,5 @@ export interface Publication {
   publication_id: string
   realiser: string
   utilisateur_id: string
+  couverture_photo:string
 }

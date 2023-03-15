@@ -6,6 +6,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {CommentService} from "../../../@core/services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Publication} from "../../../@core/models/publication.model";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-accueil',
@@ -21,7 +22,8 @@ export class AccueilComponent implements OnInit {
   errorMessage: any;
   page = 1; // page courante
   pageSize = 6  ; // nombre de données par page
-
+  env = `${environment.BASE}`;
+  
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
     categories_id: new FormControl(''),
