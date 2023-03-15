@@ -45,7 +45,7 @@
                       <div *ngFor="let pub of publications | slice:(page-1)*pageSize:page*pageSize" class="col-md-6">
                         <div class="event-main-post">
                           <div class="main-photo">
-                            <a (click)="getDetails(pub?.id)"  >
+                            <a (click)="getDetails(pub?.id)"  style="cursor: pointer">
                               <div class="photo-overlay"></div>
                               <div *ngIf="pub?.couverture_photo!=null;else defaultImage">
                                 <img height="200px" alt="" src="{{env}}/Image/getimage/{{pub?.couverture_photo}}">

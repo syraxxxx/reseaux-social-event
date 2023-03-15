@@ -17,7 +17,12 @@
         <div class="main-card">
           <div class="event-detail-content">
             <div class="event-main-img">
-              <img alt="" src="../../../assets/images/event-view/arrireplan.png">
+              <div *ngIf="event?.couverture_photo!=null;else defaultImage">
+                <img height="200px" alt="" src="{{env}}/Image/getimage/{{event?.couverture_photo}}">
+              </div>
+              <ng-template #defaultImage>
+                <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
+              </ng-template>
               <div class="event-date">
                 <span class="emnth">{{month}} </span>
                 <span class="edate">{{event?.date_realisation | date : "dd"}}</span>
