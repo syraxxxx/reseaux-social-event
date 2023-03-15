@@ -88,22 +88,38 @@ export class UtilisateurService {
     Object.entries(body).forEach(([key, value]) => {
       formData.append(key, value.toString());
     });
-    return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
+    return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
   }
+  // updateCouverturePicture(body: { [key: string]: string | number | boolean }, file: File): Observable<any> {
+  //   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+  //   const formData = new FormData();
+  //   Object.entries(body).forEach(([key, value]) => {
+  //     formData.append(key, value.toString());
+  //   });
+  //   formData.append('couverture_picture', file, file.name);
+  //   return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
+  // }
 
-  updateProfilPicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+  // updateProfilPicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'multipart/form-data',
+  //       // 'boundary': 'ng2-file-upload',
+  //     })
+  //   };
+  //   const formData = new FormData();
+  //   Object.entries(body).forEach(([key, value]) => {
+  //     formData.append(key, value.toString());
+  //     // console.log(key + ': ' + value)
+  //   });
+  //   return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
+  // }
+  updateProfilPicture(formData: FormData): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-        // 'boundary': 'ng2-file-upload',
+        'Authorization': 'Bearer ',
       })
     };
-    const formData = new FormData();
-    Object.entries(body).forEach(([key, value]) => {
-      formData.append(key, value.toString());
-      console.log(key + ': ' + value)
-    });
-
 
     return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
   }

@@ -13,6 +13,7 @@
               <div class="cover-img-btn">
                 <input id="cover-img" type="file">
                 <label for="cover-img"><i class="feather-image me-2"></i>Changer Couverture</label>
+                <a for="cover-img" (click)="updateCoverButton()"><i class="feather-image me-2"></i>Changer Couverture</a>
               </div>
             </div>
           </div>
@@ -387,6 +388,24 @@
         <form (ngSubmit)="updatePictureProfil()" [formGroup]="formPicProfil">
           <input (change)="onFileSelected($event)" formControlName="profil_photo" type="file">
           <img [src]="previewImageProfil" class="circular-image">
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button class="main-btn btn-hover" data-bs-dismiss="modal">Mettre à jour</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--mis à jour couverture-->
+<div *ngIf="couverture_update!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: rgb(224, 224, 224);">
+      <div class="modal-body" style="text-align:center;">
+        <form (ngSubmit)="updatePictureCouverture()" [formGroup]="formPicCover">
+          <input (change)="onFileSelectedCover($event)" formControlName="couverture_photo" type="file">
+          <img [src]="previewImageCover" class="square-image">
           <div class="modal-footer">
             <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
             <button class="main-btn btn-hover" data-bs-dismiss="modal">Mettre à jour</button>
