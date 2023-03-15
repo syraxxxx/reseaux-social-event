@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ActivatedRoute, Router} from "@angular/router";
-import {PhotoService} from "../../../@core/services/photo.service";
 import {environment} from "../../../../environments/environment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
 import {DomSanitizer} from "@angular/platform-browser";
+import {PhotoService} from "../../../@core/services/photo.service";
 
 @Component({
   selector: 'app-profile',
@@ -154,7 +154,7 @@ export class ProfileComponent implements OnInit {
     const file = event.target.files[0];
 
     // Vérifier si le fichier est une image
-    
+
     if (file.type.match('image.*')) {
       // Lire le fichier avec FileReader
       const reader = new FileReader();

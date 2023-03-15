@@ -156,7 +156,13 @@
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img alt="" height="100px" src="../../assets/images/homepage/center/arrireplan.png"> </a>
+                              <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
+                                <img  class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
+                              </div>
+                              <ng-template #defaultImage>
+                                <img alt="" class="picture-pub" src="../../assets/images/homepage/center/arrireplan.png">
+                              </ng-template>
+                              </a>
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pubUser.date_realisation}}</span>
@@ -262,7 +268,13 @@
                           <div class="main-photo">
                             <a href="#">
                               <div class="photo-overlay"></div>
-                              <img alt="" height="100px" src="../../assets/images/homepage/center/arrireplan.png"> </a>
+                              <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
+                                <img class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
+                              </div>
+                              <ng-template #defaultImage>
+                                <img alt="" class="picture-pub"src="../../assets/images/homepage/center/arrireplan.png">
+                              </ng-template>
+                              </a>
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pubUser.date_realisation}}</span>
@@ -336,7 +348,13 @@
                         <div class="main-photo">
                           <a href="#">
                             <div class="photo-overlay"></div>
-                            <img alt="" height="100px" src="../../assets/images/homepage/center/arrireplan.png"> </a>
+                            <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
+                              <img  class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
+                            </div>
+                            <ng-template #defaultImage>
+                              <img alt="" class="picture-pub" src="../../assets/images/homepage/center/arrireplan.png">
+                            </ng-template>
+                            </a>
                         </div>
                         <div class="event-body">
                           <span class="event-time">{{pubUser.date_realisation}}</span>
