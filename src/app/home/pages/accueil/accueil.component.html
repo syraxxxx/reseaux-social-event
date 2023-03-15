@@ -322,27 +322,18 @@
               <div class="user-profile">
                 <div class="username-dt dpbg-1">
                   <div class="usr-pic">
-                    <img alt="" src="../../assets/images/homepage/left-side/dp.png">
+                    <div *ngIf="user_connected?.profil_photo!=null;else defaultImage">
+                      <img class="circle-image" alt="" width="100px" alt="" src="{{env}}/Image/getimage/{{user_connected?.profil_photo}}">
+                    </div>
+                    <ng-template #defaultImage>
+                      <img alt="" src="../../assets/images/homepage/left-side/dp.png">
+                    </ng-template>
                   </div>
                 </div>
                 <div class="user-main-details">
                   <h4>{{user_connected?.nom}} {{user_connected?.prenom}}</h4>
                   <span><i class="feather-map-pin"></i>France</span>
                 </div>
-                <!--                <ul class="followers-dts">-->
-                <!--                  <li>-->
-                <!--                    <div class="followers-dt-sm">-->
-                <!--                      <h4>Abonnée</h4>-->
-                <!--                      <span>4</span>-->
-                <!--                    </div>-->
-                <!--                  </li>-->
-                <!--                  <li>-->
-                <!--                    <div class="followers-dt-sm">-->
-                <!--                      <h4>Suivi</h4>-->
-                <!--                      <span>5</span>-->
-                <!--                    </div>-->
-                <!--                  </li>-->
-                <!--                </ul>-->
                 <div class="profile-link">
                   <a routerLink="/home/profile">Voir Profil</a>
                 </div>
