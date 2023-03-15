@@ -100,21 +100,7 @@ export class UtilisateurService {
   //   return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
   // }
 
-  // updateProfilPicture(body: { [key: string]: string | number | boolean }): Observable<any> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'multipart/form-data',
-  //       // 'boundary': 'ng2-file-upload',
-  //     })
-  //   };
-  //   const formData = new FormData();
-  //   Object.entries(body).forEach(([key, value]) => {
-  //     formData.append(key, value.toString());
-  //     // console.log(key + ': ' + value)
-  //   });
-  //   return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
-  // }
-  updateProfilPicture(formData: FormData): Observable<any> {
+  updateProfilPicture(body: { [key: string]: string | number | boolean | File }): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ',
