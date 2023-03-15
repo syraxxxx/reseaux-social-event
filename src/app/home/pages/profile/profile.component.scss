@@ -1,0 +1,7 @@
+.circular-image {
+  width: 70%; /* ou la taille de votre choix */
+  height: 70%; /* ou la taille de votre choix */
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}

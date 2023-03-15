@@ -6,6 +6,7 @@ import {PhotoService} from "../../../@core/services/photo.service";
 import {environment} from "../../../../environments/environment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-profile',
@@ -25,11 +26,11 @@ export class ProfileComponent implements OnInit {
   token = localStorage.getItem('token');
   profil_update!: any;
   displayStyle = 'none';
-
+  previewImageProfil: any;
   formPicProfil = new FormGroup({
     utilisateur_id: new FormControl('', [Validators.required]),
     token_id: new FormControl('', [Validators.required]),
-    photo_profil: new FormControl('', [Validators.required]),
+    profil_photo: new FormControl('', [Validators.required]),
   });
   formPicCover = new FormGroup({
     utilisateur_id: new FormControl('', [Validators.required]),
@@ -42,7 +43,8 @@ export class ProfileComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
     private router: Router,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private sanitizer: DomSanitizer
   ) {
   }
 
@@ -95,10 +97,35 @@ export class ProfileComponent implements OnInit {
   updatePictureProfil() {
     this.formPicProfil.get('utilisateur_id')?.setValue(this.user_connected.id);
     this.formPicProfil.get('token_id')?.setValue(this.token);
+    console.log(this.formPicProfil.value);
     this.userService.updateProfilPicture(this.formPicProfil.value).subscribe({
       next: (res: any) => {
+        console.log(res)
         Swal.fire({
           text: `Votre Photo de Profil a été modifié`, icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
+  }
+
+  updateProfilButton() {
+    console.log("click button")
+    this.openPopup();
+    this.profil_update = 'test';
+  }
+
+  updatePictureCover() {
+    this.formPicProfil.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.formPicProfil.get('token_id')?.setValue(this.token);
+    this.userService.updateCouverturePicture(this.formPicProfil.value).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          text: `Votre Photo de couverture a été modifié`, icon: 'success',
           showConfirmButton: false,
           timer: 1500
         });
@@ -109,20 +136,22 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  updateProfilButton() {
-    this.openPopup();
-    this.profil_update = 'test';
-  }
+  onFileSelected(event: any) {
+    // Récupérer le fichier sélectionné
+    const file = event.target.files[0];
 
-  updatePictureCover() {
-    this.userService.updateCouverturePicture(this.formPicProfil.value).subscribe({
-      next: (res: any) => {
-
-      },
-      error: (err: any) => {
-
-      }
-    })
+    // Vérifier si le fichier est une image
+    if (file.type.match('image.*')) {
+      // Lire le fichier avec FileReader
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        // Convertir l'URL en objet sécurisé pour l'afficher
+        this.previewImageProfil = this.sanitizer.bypassSecurityTrustUrl(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log('Le fichier sélectionné n\'est pas une image.');
+    }
   }
 
   openPopup() {

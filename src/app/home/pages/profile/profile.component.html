@@ -30,10 +30,10 @@
                   <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                 </ng-template>
                 <div *ngIf="!this.idPerson" class="avatar-img-btn">
-<!--                  <form (ngSubmit)="updatePictureProfil()" [formGroup]="formPicProfil">-->
-                    <a style="cursor: pointer" (click)="updateProfilButton" href="" id="avatar-img"><label for="avatar-img"><i class="feather-camera"></i></label></a>
-<!--&lt;!&ndash;                    <a (click)="updateProfilButton" formControlName="profil_photo" id="avatar-img" ><label for="avatar-img"><i class="feather-camera"></i></label>&ndash;&gt;-->
-<!--                  </form>-->
+                  <!--                  <form (ngSubmit)="updatePictureProfil()" [formGroup]="formPicProfil">-->
+                  <a (click)="updateProfilButton()" id="avatar-img" style="cursor: pointer"> <label for="avatar-img">
+                    <i class="feather-camera"></i> </label> </a>
+                  <!--                  </form>-->
                 </div>
               </div>
               <div class="user-dts">
@@ -221,62 +221,7 @@
                   </div>
                 </div>
               </div>
-              <!--              <div aria-labelledby="discussion-tab" class="tab-pane fde" id="discussion" role="tabpanel">-->
-              <!--                <div class="main-card mt-4 mb-0">-->
-              <!--                  <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4 border_bottom">-->
-              <!--                    <h4>All Discussions</h4>-->
-              <!--                    <a class="main-btn btn-hover h_40 ms-auto" data-bs-toggle="modal" href="#add-discussion-model" role="button">Add Topic</a>-->
-              <!--                  </div>-->
-              <!--                  <div class="my-all-discussions">-->
-              <!--                    <div class="dis-item">-->
-              <!--                      <div class="row no-gutters">-->
-              <!--                        <div class="col-xl-8 col-lg-12 col-md-12">-->
-              <!--                          <div class="dis-img-text">-->
-              <!--                            <img alt="" src="images/discussion/img-1.jpg"> <a href="single_discussion_view.html">-->
-              <!--                            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4></a>-->
-              <!--                          </div>-->
-              <!--                        </div>-->
-              <!--                        <div class="col-xl-4 col-lg-12 col-md-12">-->
-              <!--                          <ul class="dis-reviews">-->
-              <!--                            <li>-->
-              <!--                              <a href="#">5 h</a>-->
-              <!--                            </li>-->
-              <!--                            <li>-->
-              <!--                              <a href="#">3k views</a>-->
-              <!--                            </li>-->
-              <!--                            <li>-->
-              <!--                              <a href="#">5 replies</a>-->
-              <!--                            </li>-->
-              <!--                          </ul>-->
-              <!--                        </div>-->
-              <!--                      </div>-->
-              <!--                    </div>-->
-              <!--                    <div class="dis-item">-->
-              <!--                      <div class="row no-gutters">-->
-              <!--                        <div class="col-xl-8 col-lg-12 col-md-12">-->
-              <!--                          <div class="dis-img-text">-->
-              <!--                            <img alt="" src="images/discussion/img-1.jpg"> <a href="single_discussion_view.html">-->
-              <!--                            <h4>ellentesque vitae metus at neque cursus finibus.</h4></a>-->
-              <!--                          </div>-->
-              <!--                        </div>-->
-              <!--                        <div class="col-xl-4 col-lg-12 col-md-12">-->
-              <!--                          <ul class="dis-reviews">-->
-              <!--                            <li>-->
-              <!--                              <a href="#">6 h</a>-->
-              <!--                            </li>-->
-              <!--                            <li>-->
-              <!--                              <a href="#">6k views</a>-->
-              <!--                            </li>-->
-              <!--                            <li>-->
-              <!--                              <a href="#">10 replies</a>-->
-              <!--                            </li>-->
-              <!--                          </ul>-->
-              <!--                        </div>-->
-              <!--                      </div>-->
-              <!--                    </div>-->
-              <!--                  </div>-->
-              <!--                </div>-->
-              <!--              </div>-->
+
               <div aria-labelledby="events-tab" class="tab-pane fade" id="events" role="tabpanel">
                 <div class="main-card mt-4 mb-0">
                   <div class="events-dash-heading d-flex align-items-center w-100 py-2 pe-2 ps-4">
@@ -437,9 +382,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: rgb(224, 224, 224);">
       <div class="modal-body" style="text-align:center;">
-        <!--        <p style="color: rgb(255, 0, 0);">{{errorMessage}}</p>-->
-
-
+        <form (ngSubmit)="updatePictureProfil()" [formGroup]="formPicProfil">
+          <input (change)="onFileSelected($event)" formControlName="profil_photo" type="file">
+          <img [src]="previewImageProfil" class="circular-image">
+          <div class="modal-footer">
+            <button (click)="closePopup()" class="co-main-btn cancel-btn" data-bs-dismiss="modal" type="button">Annuler</button>
+            <button class="main-btn btn-hover" data-bs-dismiss="modal">Mettre à jour</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
