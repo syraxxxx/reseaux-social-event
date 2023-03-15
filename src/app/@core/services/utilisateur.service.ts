@@ -91,7 +91,7 @@ export class UtilisateurService {
     return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
   }
 
-  updateProfilPicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+  updateProfilPicture(body: { [key: string]: string | number | boolean | File }): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'multipart/form-data',
@@ -100,11 +100,14 @@ export class UtilisateurService {
     };
     const formData = new FormData();
     Object.entries(body).forEach(([key, value]) => {
-      formData.append(key, value.toString());
-      console.log(key + ': ' + value)
+      if(key == 'profil_photo'){
+        formData.append(key, value as Blob);
+      } else {
+        formData.append(key, value.toString());
+      }
     });
+    console.log(formData);
 
-
-    return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
+    return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData);
   }
 }

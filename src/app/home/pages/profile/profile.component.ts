@@ -141,6 +141,7 @@ export class ProfileComponent implements OnInit {
     const file = event.target.files[0];
 
     // Vérifier si le fichier est une image
+    
     if (file.type.match('image.*')) {
       // Lire le fichier avec FileReader
       const reader = new FileReader();
@@ -149,6 +150,7 @@ export class ProfileComponent implements OnInit {
         this.previewImageProfil = this.sanitizer.bypassSecurityTrustUrl(e.target.result);
       };
       reader.readAsDataURL(file);
+      this.formPicProfil.get('profil_photo')?.setValue(file);
     } else {
       console.log('Le fichier sélectionné n\'est pas une image.');
     }
