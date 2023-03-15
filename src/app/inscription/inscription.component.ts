@@ -16,8 +16,8 @@ export class InscriptionComponent implements OnInit {
   formInscription = new FormGroup({
     nom: new FormControl('', [Validators.required]),
     prenom: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required,Validators.email]),
-    tel: new FormControl('', [Validators.required,Validators.pattern(/^\d+$/)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    tel: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
     mdp: new FormControl('', [Validators.required]),
     pays: new FormControl('', [Validators.required]),
     ville: new FormControl('', [Validators.required]),
@@ -26,8 +26,8 @@ export class InscriptionComponent implements OnInit {
 
   constructor(
     private serviceUser: UtilisateurService,
-    private serviceCountry : CountryService,
-    private  router : Router
+    private serviceCountry: CountryService,
+    private router: Router
   ) {
   }
 
@@ -35,22 +35,27 @@ export class InscriptionComponent implements OnInit {
     // this.getListCountry();
   }
 
-   signIn() {
-     this.serviceUser.create(this.formInscription.value).subscribe({
+  signIn() {
+    this.serviceUser.create(this.formInscription.value).subscribe({
       next: (response) => {
         console.log(response);
-        Swal.fire({
-          text: `${this.formInscription.value.nom}, votre inscription a été effectuée avec succès`, icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        });
-        this.router.navigate(['/login']);
+        if (!response.success) {
+          this.errorMessage = response.message
+        } else {
+          Swal.fire({
+            text: `${this.formInscription.value.nom}, votre inscription a été effectuée avec succès`, icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          this.router.navigate(['/login']);
+        }
       },
       error: (erreur) => this.errorMessage = erreur.error.message
     });
   }
-  getListCountry(){
-    this.serviceCountry.getCountries().subscribe(res =>{
+
+  getListCountry() {
+    this.serviceCountry.getCountries().subscribe(res => {
       // console.log(res)
     })
   }

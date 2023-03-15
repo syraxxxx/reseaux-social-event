@@ -4,6 +4,8 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PhotoService} from "../../../@core/services/photo.service";
 import {environment} from "../../../../environments/environment";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-profile',
@@ -19,8 +21,21 @@ export class ProfileComponent implements OnInit {
   page = 1; // page courante
   pageSize = 6; // nombre de données par page
   photo: any;
-
   env = `${environment.BASE}`;
+  token = localStorage.getItem('token');
+  profil_update!: any;
+  displayStyle = 'none';
+
+  formPicProfil = new FormGroup({
+    utilisateur_id: new FormControl('', [Validators.required]),
+    token_id: new FormControl('', [Validators.required]),
+    photo_profil: new FormControl('', [Validators.required]),
+  });
+  formPicCover = new FormGroup({
+    utilisateur_id: new FormControl('', [Validators.required]),
+    token_id: new FormControl('', [Validators.required]),
+    couverture_photo: new FormControl('', [Validators.required]),
+  })
 
   constructor(
     private userService: UtilisateurService,
@@ -66,6 +81,7 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
+      console.log("token : " + this.token);
     });
     setTimeout(() => {
       this.spinner.hide();
@@ -75,4 +91,46 @@ export class ProfileComponent implements OnInit {
   getDetails(pub: any) {
     this.router.navigate(['/home/event', pub]);
   }
+
+  updatePictureProfil() {
+    this.formPicProfil.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.formPicProfil.get('token_id')?.setValue(this.token);
+    this.userService.updateProfilPicture(this.formPicProfil.value).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          text: `Votre Photo de Profil a été modifié`, icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      error: (err: any) => {
+
+      }
+    })
+  }
+
+  updateProfilButton() {
+    this.openPopup();
+    this.profil_update = 'test';
+  }
+
+  updatePictureCover() {
+    this.userService.updateCouverturePicture(this.formPicProfil.value).subscribe({
+      next: (res: any) => {
+
+      },
+      error: (err: any) => {
+
+      }
+    })
+  }
+
+  openPopup() {
+    this.displayStyle = 'block';
+  }
+
+  closePopup() {
+    this.displayStyle = 'none';
+  }
+
 }
