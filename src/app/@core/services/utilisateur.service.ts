@@ -58,15 +58,18 @@ export class UtilisateurService {
     return this.http.post<any>(`${this.apiEndPoint}/envoisMessage`, data, httpOptions);
   }
 
-  getUserbyId(user_id:any): Observable<any> {
+  getUserbyId(user_id: any): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/${user_id}`);
   }
+
   getPublicationByUser(user_id: string): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/publications/${user_id}`);
   }
+
   getAllUser(): Observable<any> {
     return this.http.get<any>(`${this.apiEndPoint}/liste`);
   }
+
   changePassword(body: { [key: string]: string | number | boolean }): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -77,5 +80,23 @@ export class UtilisateurService {
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
     return this.http.post<any>(`${this.apiEndPoint}/changepassword`, data, httpOptions);
+  }
+
+  updateCouverturePicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+    const formData = new FormData();
+    Object.entries(body).forEach(([key, value]) => {
+      formData.append(key, value.toString());
+    });
+    return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
+  }
+
+  updateProfilPicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+    const formData = new FormData();
+    Object.entries(body).forEach(([key, value]) => {
+      formData.append(key, value.toString());
+    });
+    return this.http.post<any>(`${this.apiEndPoint}/updateProfilPicture`, formData, httpOptions);
   }
 }
