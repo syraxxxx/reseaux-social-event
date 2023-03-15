@@ -5,6 +5,7 @@ import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CommentService} from "../../../@core/services/comment.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-explore',
@@ -22,6 +23,7 @@ export class ExploreComponent implements OnInit {
   errorMessage: any;
   page = 1; // page courante
   pageSize = 9; // nombre de données par page
+  env = `${environment.BASE}`;
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),

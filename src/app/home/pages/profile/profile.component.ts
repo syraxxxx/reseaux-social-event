@@ -25,8 +25,10 @@ export class ProfileComponent implements OnInit {
   env = `${environment.BASE}`;
   token = localStorage.getItem('token');
   profil_update!: any;
+  couverture_update!: any;
   displayStyle = 'none';
   previewImageProfil: any;
+  previewImageCover: any;
   formPicProfil = new FormGroup({
     utilisateur_id: new FormControl('', [Validators.required]),
     token_id: new FormControl('', [Validators.required]),
@@ -112,18 +114,20 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
+  updatePictureCouverture() {
+    this.formPicCover.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.formPicCover.get('token_id')?.setValue(this.token);
 
-  updateProfilButton() {
-    console.log("click button")
-    this.openPopup();
-    this.profil_update = 'test';
-  }
+    const formData = new FormData();
+    formData.append('utilisateur_id', this.user_connected.id);
+    formData.append('token_id', this.token+'');
+    formData.append('couveture_photo', this.formPicCover.get('couverture_photo')?.value, this.formPicCover.get('couverture_photo')?.value);
 
-  updatePictureCover() {
-    this.formPicProfil.get('utilisateur_id')?.setValue(this.user_connected.id);
-    this.formPicProfil.get('token_id')?.setValue(this.token);
-    this.userService.updateCouverturePicture(this.formPicProfil.value).subscribe({
+    console.log(this.formPicCover.get('couverture_photo')?.value);
+    console.log(this.formPicCover.value);
+    this.userService.updateCouverturePicture(this.formPicCover.value).subscribe({
       next: (res: any) => {
+        console.log(res)
         Swal.fire({
           text: `Votre Photo de couverture a été modifié`, icon: 'success',
           showConfirmButton: false,
@@ -131,9 +135,18 @@ export class ProfileComponent implements OnInit {
         });
       },
       error: (err: any) => {
-
+        console.log(err)
       }
     })
+  }
+  updateProfilButton() {
+    this.openPopup();
+    this.profil_update = 'test';
+  }
+
+  updateCoverButton() {
+    this.openPopup();
+    this.couverture_update = 'value';
   }
 
   onFileSelected(event: any) {
@@ -155,6 +168,23 @@ export class ProfileComponent implements OnInit {
       console.log('Le fichier sélectionné n\'est pas une image.');
     }
   }
+  onFileSelectedCover(event: any) {
+    // Récupérer le fichier sélectionné
+    const file = event.target.files[0];
+
+    // Vérifier si le fichier est une image
+    if (file.type.match('image.*')) {
+      // Lire le fichier avec FileReader
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        // Convertir l'URL en objet sécurisé pour l'afficher
+        this.previewImageCover = this.sanitizer.bypassSecurityTrustUrl(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log('Le fichier sélectionné n\'est pas une image.');
+    }
+  }
 
   openPopup() {
     this.displayStyle = 'block';
@@ -162,6 +192,8 @@ export class ProfileComponent implements OnInit {
 
   closePopup() {
     this.displayStyle = 'none';
+    this.couverture_update = null;
+    this.profil_update = null;
   }
 
 }

@@ -5,6 +5,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {CommentService} from "../../../../@core/services/comment.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-details-event',
@@ -24,6 +25,8 @@ export class DetailsEventComponent implements OnInit {
   displayStyle = 'none';
   event_updated: any;
   errorMessage: any;
+  env = `${environment.BASE}`;
+
   formComment = new FormGroup({
     utilisateur_id: new FormControl(''),
     publication_id: new FormControl(''),

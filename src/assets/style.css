@@ -7396,11 +7396,11 @@ display: block;
 	float: left;
 }
 
-.upload-profile-cover .cover-img-btn [type="file"] + label {
+.upload-profile-cover .cover-img-btn  + label {
 	color: #313131;
-    background: #fff;
+    background: #ff0000;
     border: 1px solid #e6e6e6;
-	border-radius: 5px;
+	border-radius: 55px;
 	cursor: pointer;
 	display: inline-block;
 	font-size:14px;
