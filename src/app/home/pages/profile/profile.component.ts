@@ -103,6 +103,8 @@ export class ProfileComponent implements OnInit {
     this.userService.updateProfilPicture(this.formPicProfil.value).subscribe({
       next: (res: any) => {
         console.log(res)
+        this.closePopup();
+        this.getData();
         Swal.fire({
           text: `Votre Photo de Profil a été modifié`, icon: 'success',
           showConfirmButton: false,
@@ -127,7 +129,8 @@ export class ProfileComponent implements OnInit {
     console.log(this.formPicCover.value);
     this.userService.updateCouverturePicture(this.formPicCover.value).subscribe({
       next: (res: any) => {
-        console.log(res)
+        this.closePopup();
+        this.getData();
         Swal.fire({
           text: `Votre Photo de couverture a été modifié`, icon: 'success',
           showConfirmButton: false,
@@ -191,9 +194,11 @@ export class ProfileComponent implements OnInit {
   }
 
   closePopup() {
+    console.log('close popup ! ')
     this.displayStyle = 'none';
     this.couverture_update = null;
     this.profil_update = null;
+    console.log('value of profil photo : '+this.profil_update);
   }
 
 }

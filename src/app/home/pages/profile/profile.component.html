@@ -33,10 +33,8 @@
                   <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                 </ng-template>
                 <div *ngIf="!this.idPerson" class="avatar-img-btn">
-                  <!--                  <form (ngSubmit)="updatePictureProfil()" [formGroup]="formPicProfil">-->
-                  <a (click)="updateProfilButton()" id="avatar-img" style="cursor: pointer"> <label for="avatar-img">
-                    <i class="feather-camera"></i> </label> </a>
-                  <!--                  </form>-->
+                  <a class="updated-profil" (click)="updateProfilButton()" id="avatar-img" > <label for="avatar-img">
+                    <i style="cursor: pointer" class="feather-camera"></i> </label> </a>
                 </div>
               </div>
               <div class="user-dts">
