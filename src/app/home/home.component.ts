@@ -6,6 +6,7 @@ import {MessengerService} from "../@core/services/messenger.service";
 import {Router} from "@angular/router";
 import {Message} from "../@core/models/message.model";
 import {environment} from "../../environments/environment";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
     private logoutService: LogoutService,
     private userService: UtilisateurService,
     private messengerService: MessengerService,
+    private spinner: NgxSpinnerService,
   ) {
   }
 
@@ -77,7 +79,11 @@ export class HomeComponent implements OnInit {
   };
 
   onSearch() {
+    this.spinner.show();
     this.router.navigateByUrl('/home/res/' + this.searchTerm);
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   clearFilter() {

@@ -85,7 +85,7 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];
-      console.log("token : " + this.token);
+      // console.log("token : " + this.token);
     });
     setTimeout(() => {
       this.spinner.hide();
