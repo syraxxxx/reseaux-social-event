@@ -23,7 +23,7 @@ export class AccueilComponent implements OnInit {
   page = 1; // page courante
   pageSize = 6  ; // nombre de données par page
   env = `${environment.BASE}`;
-  
+
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
     categories_id: new FormControl(''),
@@ -108,9 +108,13 @@ export class AccueilComponent implements OnInit {
   }
 
   getEventByCategorie(idCat: any) {
+    this.spinner.show();
     this.postService.getPublicationByCategorie(idCat).subscribe(response => {
       this.publications = response.publications;
     });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   goToUser(idUser: any) {
@@ -135,5 +139,11 @@ export class AccueilComponent implements OnInit {
     this.postService.update(this.formEventUpdate.value).subscribe(response => {
     })
   }
-
+  loadAll(){
+    this.spinner.show();
+    this.getData();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
+  }
 }

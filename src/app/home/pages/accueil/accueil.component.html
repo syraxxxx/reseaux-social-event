@@ -333,7 +333,7 @@
               </div>
               <div class="categories-items">
                 <div class="categories-container">
-                  <a (click)="getData()" class="category-item" style="cursor:pointer;">
+                  <a (click)="loadAll()" class="category-item" style="cursor:pointer;">
                     <img alt="Music" src="../../assets/images/category-icons/icon-all.png">Tous </a>
                   <a (click)="getEventByCategorie(cat?.id)" *ngFor="let cat of categories" class="category-item" style="cursor:pointer;">
                     <img alt="Music" src="../../assets/images/category-icons/icon-all.png">{{cat.nom}}

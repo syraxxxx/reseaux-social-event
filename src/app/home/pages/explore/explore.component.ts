@@ -107,12 +107,21 @@ export class ExploreComponent implements OnInit {
       this.getData();
     });
   }
-
+  loadAll(){
+    this.spinner.show();
+    this.getData();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
+  }
   getEventByCategorie(idCat: any) {
     this.spinner.show();
     this.postService.getPublicationByCategorie(idCat).subscribe(response => {
       this.publications = response.publications;
     });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   goToUser(idUser: any) {

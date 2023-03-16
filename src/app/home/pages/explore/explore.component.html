@@ -28,7 +28,7 @@
                 <div class="cate-group text-start">
                   <div class="categories-items">
                     <div class="categories-container">
-                      <a (click)="getData()" class="category-item" style="cursor:pointer;">
+                      <a (click)="loadAll()" class="category-item" style="cursor:pointer;">
                         <img alt="Music" src="../../assets/images/category-icons/icon-all.png">Tous </a>
                       <a (click)="getEventByCategorie(cat?.id)" *ngFor="let cat of categories" class="category-item" style="cursor:pointer;">
                         <img alt="Music" src="../../assets/images/category-icons/icon-all.png">{{cat.nom}}
@@ -49,12 +49,12 @@
                   <div class="main-photo">
                     <a (click)="getDetails(pub.id)" style="cursor: pointer">
                       <div class="photo-overlay"></div>
-<!--                      <div *ngIf="pub?.couverture_photo!=null;else defaultImage">-->
-<!--                        <img height="200px" alt="" src="{{env}}/Image/getimage/{{pub?.couverture_photo}}">-->
-<!--                      </div>-->
-<!--                      <ng-template #defaultImage>-->
-<!--                        <img alt="" src="../../assets/images/homepage/center/arrireplan.png">-->
-<!--                      </ng-template>-->
+                      <div *ngIf="pub?.couverture_photo!=null;else defaultImage">
+                        <img height="200px" alt="" src="{{env}}/Image/getimage/{{pub?.couverture_photo}}">
+                      </div>
+                      <ng-template #defaultImage>
+                        <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
+                      </ng-template>
                      </a>
                     <div class="option-ellipsis">
                       <div class="dropdown">
@@ -162,4 +162,6 @@
   </div>
 </div>
 
-
+<ngx-spinner [fullScreen]="true" bdColor="rgb(2 2 2 / 90%)" color="#fff" size="medium" type="ball-scale-multiple">
+  <p style="font-size: 18px; color: white">Chargement des données...</p>
+</ngx-spinner>
