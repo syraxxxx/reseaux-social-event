@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../security/login/login.service';
 import {UtilisateurService} from "../@core/services/utilisateur.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -23,18 +24,20 @@ export class LoginComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private loginService: LoginService,
-    private serviceUser: UtilisateurService
+    private serviceUser: UtilisateurService,
+    private spinner: NgxSpinnerService,
   ) {
   }
 
   login() {
-    // console.log(this.form.value);
-
+    this.spinner.show();
     if (this.form.valid) {
-      // console.log('click');
       this.serviceUser.login(this.form.value).subscribe({
         next: (res: any) => {
-          this.loginService.login(res.token)
+          this.loginService.login(res.token);
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 500);
         },
         error: (err: any) => {
           this.errorMessage = "Mail ou mot de passe incorrect"

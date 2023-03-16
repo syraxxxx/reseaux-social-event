@@ -50,7 +50,10 @@ export class InscriptionComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       },
-      error: (erreur) => this.errorMessage = erreur.error.message
+      error: (erreur) => {
+        this.errorMessage = erreur.error.message
+      }
+
     });
   }
 
