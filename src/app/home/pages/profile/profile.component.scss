@@ -20,3 +20,30 @@
   border-radius: 100%;
   padding : 8px 8px 8px 8px ;
 }
+.updated-profil:hover{
+  background: #d3009c;
+  border: 1px solid #ae4e95;
+  color: #fff !important;
+}
+.couverture-button{
+  color: #313131;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  padding: 12px 20px;
+  position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+  margin: 0;
+  float: right;
+}
+.couverture-button:hover{
+  background: #d3009c;
+  border: 1px solid #ae4e95;
+  color: #fff !important;
+}

@@ -82,14 +82,14 @@ export class UtilisateurService {
     return this.http.post<any>(`${this.apiEndPoint}/changepassword`, data, httpOptions);
   }
 
-  updateCouverturePicture(body: { [key: string]: string | number | boolean }): Observable<any> {
-    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
-    const formData = new FormData();
-    Object.entries(body).forEach(([key, value]) => {
-      formData.append(key, value.toString());
-    });
-    return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
-  }
+  // updateCouverturePicture(body: { [key: string]: string | number | boolean }): Observable<any> {
+  //   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+  //   const formData = new FormData();
+  //   Object.entries(body).forEach(([key, value]) => {
+  //     formData.append(key, value.toString());
+  //   });
+  //   return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
+  // }
   // updateCouverturePicture(body: { [key: string]: string | number | boolean }, file: File): Observable<any> {
   //   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
   //   const formData = new FormData();
@@ -100,6 +100,18 @@ export class UtilisateurService {
   //   return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formData, httpOptions);
   // }
 
+  updateCouverturePicture(body: { [key: string]: string | number | boolean | File }): Observable<any> {
+    const formDatas = new FormData();
+    Object.entries(body).forEach(([key, value]) => {
+      if (key == 'couverture_photo') {
+        formDatas.append(key, value as Blob);
+      } else {
+        formDatas.append(key, value.toString());
+      }
+    });
+    return this.http.post<any>(`${this.apiEndPoint}/updateCouverturePicture`, formDatas);
+  }
+
   updateProfilPicture(body: { [key: string]: string | number | boolean | File }): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -108,7 +120,7 @@ export class UtilisateurService {
     };
     const formData = new FormData();
     Object.entries(body).forEach(([key, value]) => {
-      if(key == 'profil_photo'){
+      if (key == 'profil_photo') {
         formData.append(key, value as Blob);
       } else {
         formData.append(key, value.toString());

@@ -3,17 +3,23 @@
     <div class="hero-cover-block">
       <div class="hero-cover">
         <div class="hero-cover-img hero-img-1">
-          <img width="100%" alt="" src="../../../assets/images/my-dashboard/weather-bg.jpg">
+<!--          <img width="100%" alt="" src="../../../assets/images/my-dashboard/weather-bg.jpg">-->
+          <div *ngIf="personne_profil?.couverture_photo!=null;else defaultImage">
+            <img width="100%" alt="" src="{{env}}/Image/getimage/{{personne_profil?.couverture_photo}}">
+          </div>
+          <ng-template #defaultImage>
+            <img width="100%" alt="" src="../../../assets/images/my-dashboard/weather-bg.jpg">
+          </ng-template>
         </div>
       </div>
       <div *ngIf="!idPerson" class="upload-profile-cover">
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <div class="cover-img-btn">
+              <div class="cover-img-btn ">
                 <input id="cover-img" type="file">
-                <label for="cover-img"><i class="feather-image me-2"></i>Changer Couverture</label>
-                <a for="cover-img" (click)="updateCoverButton()"><i class="feather-image me-2"></i>Changer Couverture</a>
+<!--                <label for="cover-img"><i class="feather-image me-2"></i>Changer Couverture</label>-->
+                <a class="couverture-button" for="cover-img" (click)="updateCoverButton()"><i class="feather-image me-2"></i>Changer Couverture</a>
               </div>
             </div>
           </div>
