@@ -354,11 +354,10 @@
 <!--                  <a class="item-btn" data-bs-placement="top" data-bs-toggle="tooltip" href="#" title="Decline"><i class="feather-user-minus"></i></a>-->
 <!--                </div>-->
 <!--              </div>-->
-
             </div>
-            <div class="item-footer">
-              <a class="view-all" href="friend_requests.html">Voir toutes les demandes</a>
-            </div>
+<!--            <div class="item-footer">-->
+<!--              <a class="view-all" href="friend_requests.html">Voir toutes les demandes</a>-->
+<!--            </div>-->
           </div>
         </li>
         <li class="dropdown">
@@ -380,6 +379,7 @@
                   <p>{{mess?.corps}}</p>
                 </div>
               </a>
+              <div *ngIf="messages?.length==0" class="nothing-here">Aucun message</div>
             </div>
             <div class="item-footer">
               <button class="view-all" routerLink="/home/messages">Voir tous les messages</button>
@@ -392,27 +392,28 @@
           <div class="dropdown-menu dropdown-list dropdown-menu-end p-0">
             <div class="item-header">
               <h6>Notifications</h6>
-              <div class="heading-btns">
-                <a href="#">Paramètres</a>
-              </div>
+<!--              <div class="heading-btns">-->
+<!--                <a href="#">Paramètres</a>-->
+<!--              </div>-->
             </div>
             <div class="item-body">
-              <a class="media" href="#">
-                <div class="item-img">
-                  <img alt="" src="../../assets/images/find-peoples/user-2.jpg">
-                  <span class="chat-status offline"></span>
-                </div>
-                <div class="media-body">
-                  <h6 class="item-title mb-1">Lily Zaman</h6>
-                  <div class="item-time">2 min</div>
-                  <p>Vous suit.</p>
-                </div>
-              </a>
+              <div class="nothing-here">Aucune Notification</div>
+<!--              <a class="media" href="#">-->
+<!--                <div class="item-img">-->
+<!--                  <img alt="" src="../../assets/images/find-peoples/user-2.jpg">-->
+<!--                  <span class="chat-status offline"></span>-->
+<!--                </div>-->
+<!--                <div class="media-body">-->
+<!--                  <h6 class="item-title mb-1">Lily Zaman</h6>-->
+<!--                  <div class="item-time">2 min</div>-->
+<!--                  <p>Vous suit.</p>-->
+<!--                </div>-->
+<!--              </a>-->
 
             </div>
-            <div class="item-footer">
-              <a class="view-all" href="notifications.html">Voir toutes les notifications</a>
-            </div>
+<!--            <div class="item-footer">-->
+<!--              <a class="view-all" href="notifications.html">Voir toutes les notifications</a>-->
+<!--            </div>-->
           </div>
         </li>
       </ul>
@@ -450,10 +451,10 @@
       <div class="col-lg-6 col-md-12">
         <div class="footer-left">
           <ul>
-            <li><a href="privacy_policy.html">Privée</a></li>
-            <li><a href="term_conditions.html">Termes et Conditions</a></li>
-            <li><a href="about.html">A Propos</a></li>
-            <li><a href="contact_us.html">Contactez-nous</a></li>
+            <li><a routerLink="/home">Privée</a></li>
+            <li><a routerLink="/home">Termes et Conditions</a></li>
+            <li><a routerLink="/home">A Propos</a></li>
+            <li><a routerLink="/home">Contactez-nous</a></li>
           </ul>
         </div>
       </div>
@@ -463,7 +464,7 @@
             <li><a routerLink="/home"><img alt="" src="../../assets/images/fav-eg-white.jpg" height="25px"></a></li>
             <li>
               <div class="ftr-1"><i class="far fa-copyright"></i> 2023 Evenemglamour by
-                <a href="#">YTT</a>. Tous droits Réservées.
+                <a routerLink="/home">YTT</a>. Tous droits Réservées.
               </div>
             </li>
           </ul>
