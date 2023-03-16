@@ -80,9 +80,9 @@
                       </button>
                     </li>
                   </ng-template>
-                  <li>
-                    <a class="m-share-btn view-hover" data-bs-toggle="modal" href="#shareModal" role="button"><i class="feather-share-2"></i></a>
-                  </li>
+<!--                  <li>-->
+<!--                    <a class="m-share-btn view-hover" data-bs-toggle="modal" href="#shareModal" role="button"><i class="feather-share-2"></i></a>-->
+<!--                  </li>-->
                   <li>
                     <div class="view-ellipsis">
                       <div class="dropdown">
@@ -113,10 +113,10 @@
                   <span>{{nombre_comments}}
                     <ins>Commentaires</ins></span> </a>
               </div>
-              <div class="right-comments">
-                <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>0 <ins>Partages</ins></span>
-                </a>
-              </div>
+<!--              <div class="right-comments">-->
+<!--                <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>0 <ins>Partages</ins></span>-->
+<!--                </a>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@
       <div class="col-lg-4 col-md-12">
         <div class="main-card">
           <div class="categories-left-heading border_bottom">
-            <h3>Lien du Ticket</h3>
+            <h3>{{event?.payement_link}}</h3>
           </div>
           <div class="p-20">
             <a class="main-btn btn-hover h_40" href="{{event?.payement_link}}">Trouver Ticket</a>
