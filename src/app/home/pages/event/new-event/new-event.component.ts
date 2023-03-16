@@ -5,6 +5,7 @@ import {PublicationService} from "../../../../@core/services/publication.service
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 import {NgxSpinnerService} from "ngx-spinner";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-new-event',
@@ -24,12 +25,15 @@ export class NewEventComponent implements OnInit {
     lieu: new FormControl(''),
     couverture_photo: new FormControl(''),
   });
+  previewImage: any;
+
 
   constructor(
     private userService: UtilisateurService,
     private eventService: PublicationService,
     private router: Router,
-    private spinner : NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private sanitizer: DomSanitizer
   ) {
   }
 
@@ -66,5 +70,24 @@ export class NewEventComponent implements OnInit {
       timer: 1500
     }).then(r => 'nothing');
     this.formNewEvent.reset();
+    this.previewImage = null;
+  }
+
+  onFileSelected(event: any) {
+    // Récupérer le fichier sélectionné
+    const file = event.target.files[0];
+    // Vérifier si le fichier est une image
+    if (file.type.match('image.*')) {
+      // Lire le fichier avec FileReader
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        // Convertir l'URL en objet sécurisé pour l'afficher
+        this.previewImage = this.sanitizer.bypassSecurityTrustUrl(e.target.result);
+      };
+      reader.readAsDataURL(file);
+      this.formNewEvent.get('couverture_photo')?.setValue(file);
+    } else {
+      console.log('Le fichier sélectionné n\'est pas une image.');
+    }
   }
 }

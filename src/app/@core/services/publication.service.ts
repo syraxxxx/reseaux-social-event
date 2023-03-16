@@ -25,13 +25,16 @@ export class PublicationService {
   //     .join('&');
   //   return this.http.post<any>(`${this.apiEndPoint}/create`, data, httpOptions);
   // }
-  create(body: { [key: string]: string | number | boolean }): Observable<any> {
-    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})};
+  create(body: { [key: string]: string | number | boolean | File }): Observable<any> {
     const formData = new FormData();
     Object.entries(body).forEach(([key, value]) => {
-      formData.append(key, value.toString());
+      if (key == 'couverture_photo') {
+        formData.append(key, value as Blob);
+      } else {
+        formData.append(key, value.toString());
+      }
     });
-    return this.http.post<any>(`${this.apiEndPoint}/create`, formData, httpOptions);
+    return this.http.post<any>(`${this.apiEndPoint}/create`, formData);
   }
 
   getListePublication(): Observable<any> {
