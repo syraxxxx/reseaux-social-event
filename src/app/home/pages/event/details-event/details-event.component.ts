@@ -67,7 +67,7 @@ export class DetailsEventComponent implements OnInit {
     this.eventID = this.route.snapshot.paramMap.get('publication_id');
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       this.event = response.publication[0];
-      console.log(this.event);
+      // console.log(this.event);
       this.month = months[new Date(this.event.date_realisation).getMonth()].toUpperCase();
     });
     this.userService.getUserByToken().subscribe(response => {

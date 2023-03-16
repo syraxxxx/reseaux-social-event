@@ -56,14 +56,6 @@ export class ProfileComponent implements OnInit {
   }
 
   getData() {
-    this.photoService.getPhoto('photo.png').subscribe({
-      next: (res: any) => {
-        console.log(res)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    })
     this.idPerson = this.route.snapshot.paramMap.get('user_id');
     if (this.idPerson) {
       this.userService.getUserbyId(this.idPerson).subscribe(response => {
