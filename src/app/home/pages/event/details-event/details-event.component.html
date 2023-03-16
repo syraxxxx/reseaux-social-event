@@ -56,12 +56,14 @@
             <div class="d-md-flex d-block align-self-center p-20">
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
-                  <div *ngIf="event?.profil_photo!=null;else defaultImage">
+                  <div *ngIf="event?.profil_photo!=null;else defaultImageUtilisateur">
                     <img class="profil-icon-create" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
-                  <ng-template #defaultImage>
+                  <ng-template #defaultImageUtilisateur>
                     <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
+
+
                 </div>
                 <span class="evntcunt">Créé par <a style="cursor: pointer;color: #d3009c" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
               </div>

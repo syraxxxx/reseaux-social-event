@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SearchService} from "../../../@core/services/search.service";
 import {NgxSpinnerService} from "ngx-spinner";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-result-search',
@@ -12,6 +13,7 @@ export class ResultSearchComponent implements OnInit {
 
   search: any;
   result: any;
+  env = `${environment.BASE}`;
 
   constructor(
     private route: ActivatedRoute,

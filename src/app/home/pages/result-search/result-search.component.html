@@ -48,8 +48,15 @@
                 <div class="row">
                   <div *ngFor="let resultUser of result?.users" class="result-person col-md-4">
                     <div class="sugguest-user-dt">
-                      <a (click)="goToUser(resultUser.id)"><img alt="" src="../../assets/images/homepage/left-side/left-img-1.jpg"></a>
-                      <a (click)="goToUser(resultUser.id)"><h4>{{resultUser.nom}} {{resultUser.prenom}}</h4></a>
+                      <a style="cursor: pointer" (click)="goToUser(resultUser.id)">
+                        <div *ngIf="resultUser?.profil_photo!=null;else defaultImageUser">
+                          <img class="profil-icon-organisateur" alt="" src="{{env}}/Image/getimage/{{resultUser?.profil_photo}}">
+                        </div>
+                        <ng-template #defaultImageUser>
+                          <img alt="" src="../../../assets/images/my-dashboard/dp.png">
+                        </ng-template>
+                      </a>
+                      <a style="cursor: pointer" (click)="goToUser(resultUser.id)"><h4>{{resultUser.nom}} {{resultUser.prenom}}</h4></a>
                     </div>
                   </div>
                 </div>
@@ -65,9 +72,14 @@
                 <div *ngFor="let resultPublication of result?.publications" class="col-xl-4 col-lg-6 col-md-6">
                   <div class="event-main-post">
                     <div class="main-photo">
-                      <a href="event_detail_view.html">
+                      <a (click)="getDetails(resultPublication.id)" style="cursor: pointer">
                         <div class="photo-overlay"></div>
-                        <img alt="" src="../../assets/images/homepage/center/arrireplan.png"> </a>
+                        <div *ngIf="resultPublication?.couverture_photo!=null;else defaultImage">
+                          <img height="200px" alt="" src="{{env}}/Image/getimage/{{resultPublication?.couverture_photo}}">
+                        </div>
+                        <ng-template #defaultImage>
+                          <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
+                        </ng-template></a>
                       <div class="option-ellipsis">
                         <div class="dropdown">
                           <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" href="#" role="button"><i class="fas fa-ellipsis-v"></i></a>
@@ -84,9 +96,6 @@
                       <span class="event-time">{{resultPublication.date_realisation}}</span>
                       <a (click)="getDetails(resultPublication.id)" class="event-title" style="cursor: pointer"> {{resultPublication.event_name}} </a>
                       <span class="event-type">{{resultPublication.nom}} {{resultPublication.prenom}}</span>
-                      <!--                      <p class="ingo-counter">-->
-                      <!--                        <span>like J'aime</span> <span>comments commentaire(s)</span>-->
-                      <!--                      </p>-->
                       <div class="group-btns">
                         <button (click)="getDetails(resultPublication.id)" class="interest-btn btn-hover">
                           <i class="feather-eye me-2"></i>Voir
