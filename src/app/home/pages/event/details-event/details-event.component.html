@@ -56,6 +56,12 @@
             <div class="d-md-flex d-block align-self-center p-20">
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
+                  <div *ngIf="event?.profil_photo!=null;else defaultImage">
+                    <img alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                  </div>
+                  <ng-template #defaultImage>
+                    <img alt="" src="../../../assets/images/my-dashboard/dp.png">
+                  </ng-template>
                   <img alt="" src="../../../assets/images/homepage/left-side/left-img-5.jpg">
                 </div>
                 <span class="evntcunt">Créé par <a style="cursor: pointer;color: #d3009c" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
@@ -133,7 +139,13 @@
           <div class="main-replies">
             <h4>{{nombre_comments}} Commentaires</h4>
             <div *ngFor="let comment of commentaires" class="reply-user-dt">
-              <img alt="" src="../../../assets/images/discussion/img-3.jpg">
+              <div *ngIf="comment?.profil_photo!=null;else defaultImageComment">
+                <img alt="" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
+              </div>
+              <ng-template #defaultImageComment>
+                <img class="photo-comments" alt="" src="../../../assets/images/my-dashboard/dp.png">
+              </ng-template>
+<!--              <img alt="" src="../../../assets/images/discussion/img-3.jpg">-->
               <a (click)="goToUser(comment.utilisateur_id)" style="cursor: pointer">
                 <h4>{{comment.nom}} {{comment.prenom}}</h4></a>
               <p>{{comment.corps}}</p>
@@ -174,7 +186,12 @@
             <div class="user-follow-card">
               <div class="follow-card-left">
                 <div class="follow-avatar">
-                  <img alt="" src="../../../assets/images/find-peoples/user-2.jpg">
+                  <div *ngIf="event?.profil_photo!=null;else defaultImageUser">
+                    <img alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                  </div>
+                  <ng-template #defaultImageUser>
+                    <img  alt="" src="../../../assets/images/my-dashboard/dp.png">
+                  </ng-template>
                 </div>
                 <div class="follow-name">
                   <a (click)="goToUser(event?.utilisateur_id)" style="cursor: pointer">{{event?.nom}} {{event?.prenom}}</a>

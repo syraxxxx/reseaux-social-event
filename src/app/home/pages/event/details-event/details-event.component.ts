@@ -57,15 +57,17 @@ export class DetailsEventComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getData();
+
   }
 
   getData() {
+
     // console.log('valeur de like : ' + this.liked_active)
     const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
     this.eventID = this.route.snapshot.paramMap.get('publication_id');
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       this.event = response.publication[0];
-      // console.log(this.event);
+      console.log(this.event);
       this.month = months[new Date(this.event.date_realisation).getMonth()].toUpperCase();
     });
     this.userService.getUserByToken().subscribe(response => {
@@ -80,6 +82,7 @@ export class DetailsEventComponent implements OnInit {
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
+
   }
 
   getNombreLike() {
