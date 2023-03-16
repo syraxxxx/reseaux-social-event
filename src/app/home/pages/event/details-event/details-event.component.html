@@ -57,12 +57,11 @@
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
                   <div *ngIf="event?.profil_photo!=null;else defaultImage">
-                    <img alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                    <img class="profil-icon-create" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
                   <ng-template #defaultImage>
                     <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
-                  <img alt="" src="../../../assets/images/homepage/left-side/left-img-5.jpg">
                 </div>
                 <span class="evntcunt">Créé par <a style="cursor: pointer;color: #d3009c" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
               </div>
@@ -187,10 +186,10 @@
               <div class="follow-card-left">
                 <div class="follow-avatar">
                   <div *ngIf="event?.profil_photo!=null;else defaultImageUser">
-                    <img alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                    <img class="profil-icon-organisateur" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
                   <ng-template #defaultImageUser>
-                    <img  alt="" src="../../../assets/images/my-dashboard/dp.png">
+                    <img class="profil-icon-organisateur" alt="" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
                 </div>
                 <div class="follow-name">

@@ -157,7 +157,7 @@
                       <div *ngFor="let pubUser of personne_publications | slice:(page-1)*pageSize:page*pageSize | filter:searchEvent" class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
-                            <a href="#">
+                            <a (click)="getDetails(pubUser.id)" style="cursor:pointer;">
                               <div class="photo-overlay"></div>
                               <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
                                 <img  class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
@@ -169,7 +169,7 @@
                           </div>
                           <div class="event-body">
                             <span class="event-time">{{pubUser.date_realisation}}</span>
-                            <a (click)="getDetails(pubUser.id)" class="event-title" style="cursor:pointer;">{{pubUser.event_name}}</a>
+                            <a (click)="getDetails(pubUser.id)" style="cursor:pointer;" class="event-title" >{{pubUser.event_name}}</a>
                             <span class="event-type">{{pubUser.lieu}}</span>
                             <div class="group-btns">
                               <button (click)="getDetails(pubUser.id)" class="interest-btn btn-hover">
@@ -269,7 +269,7 @@
                       <div *ngFor="let pubUser of personne_publications | slice:(page-1)*pageSize:page*pageSize | filter:searchEvent" class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="event-main-post">
                           <div class="main-photo">
-                            <a href="#">
+                            <a (click)="getDetails(pubUser.id)" style="cursor:pointer;">
                               <div class="photo-overlay"></div>
                               <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
                                 <img class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
@@ -349,7 +349,7 @@
                     <div *ngFor="let pubUser of personne_publications  | slice:(page-1)*pageSize:page*pageSize | filter: searchEvent" class="col-xl-4 col-lg-6 col-md-6 col-12">
                       <div class="event-main-post">
                         <div class="main-photo">
-                          <a href="#">
+                          <a (click)="getDetails(pubUser.id)" style="cursor:pointer;">
                             <div class="photo-overlay"></div>
                             <div *ngIf="pubUser?.couverture_photo!=null;else defaultImage">
                               <img  class="picture-pub" alt="" src="{{env}}/Image/getimage/{{pubUser?.couverture_photo}}">
