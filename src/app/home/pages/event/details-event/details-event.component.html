@@ -46,7 +46,7 @@
                   </div>
                   <div class="ttlpple">
                     <span>Lien du Ticket </span>
-                    <span class="wthrsml4"><a href="{{event?.payement_link}}">{{event?.payement_link}}</a>
+                    <span class="wthrsml4"><a class="link-payment" href="{{event?.payment_link}}">{{event?.payment_link}}</a>
                   </span>
                   </div>
                 </div>
@@ -57,13 +57,11 @@
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
                   <div *ngIf="event?.profil_photo!=null;else defaultImageUtilisateur">
-                    <img class="profil-icon-create" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                    <img  class="profil-icon-create" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
                   <ng-template #defaultImageUtilisateur>
                     <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
-
-
                 </div>
                 <span class="evntcunt">Créé par <a style="cursor: pointer;color: #d3009c" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
               </div>
@@ -141,12 +139,11 @@
             <h4>{{nombre_comments}} Commentaires</h4>
             <div *ngFor="let comment of commentaires" class="reply-user-dt">
               <div *ngIf="comment?.profil_photo!=null;else defaultImageComment">
-                <img alt="" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
+                <img class="photo-comments" alt="" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
               </div>
               <ng-template #defaultImageComment>
                 <img class="photo-comments" alt="" src="../../../assets/images/my-dashboard/dp.png">
               </ng-template>
-<!--              <img alt="" src="../../../assets/images/discussion/img-3.jpg">-->
               <a (click)="goToUser(comment.utilisateur_id)" style="cursor: pointer">
                 <h4>{{comment.nom}} {{comment.prenom}}</h4></a>
               <p>{{comment.corps}}</p>
