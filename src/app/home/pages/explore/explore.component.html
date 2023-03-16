@@ -90,7 +90,10 @@
                   </div>
                 </div>
               </div>
-              <div class="blog-pagination">
+              <div class="pas-publication" *ngIf="publications?.length==0">
+                Aucun évènement à montrer
+              </div>
+              <div *ngIf="publications?.length!=0" class="blog-pagination">
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item">
