@@ -3,11 +3,10 @@
     <div class="hero-cover-block">
       <div class="hero-cover">
         <div class="hero-cover-img hero-img-1">
-<!--          <img width="100%" alt="" src="../../../assets/images/my-dashboard/weather-bg.jpg">-->
-          <div *ngIf="personne_profil?.couverture_photo!=null;else defaultImage">
+          <div *ngIf="personne_profil?.couverture_photo!=null;else defaultImageCover">
             <img width="100%" alt="" src="{{env}}/Image/getimage/{{personne_profil?.couverture_photo}}">
           </div>
-          <ng-template #defaultImage>
+          <ng-template #defaultImageCover>
             <img width="100%" alt="" src="../../../assets/images/my-dashboard/weather-bg.jpg">
           </ng-template>
         </div>
