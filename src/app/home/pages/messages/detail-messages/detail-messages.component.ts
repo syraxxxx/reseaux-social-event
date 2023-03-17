@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtilisateurService} from "../../../../@core/services/utilisateur.service";
 import {MessengerService} from "../../../../@core/services/messenger.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-detail-messages',
@@ -17,7 +18,7 @@ export class DetailMessagesComponent implements OnChanges {
   messages: any;
   user_connected: any;
   destinataire: any;
-
+  env = `${environment.BASE}`;
   formMessage = new FormGroup({
     user_id: new FormControl('', [Validators.required]),
     destinataire_id: new FormControl('', [Validators.required]),

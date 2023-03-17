@@ -62,6 +62,7 @@ export class MessagesComponent implements OnInit {
   loadAllMessages() {
     this.messengerService.getListePersonMessages(this.user_connected.id).subscribe(response => {
       this.messages = response.publication;
+      console.log(this.messages);
     });
   }
 

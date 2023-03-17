@@ -4,7 +4,13 @@
       <div class="recipients-top-dt">
         <div class="msg-usr-dt">
           <div class="recipient-avatar">
-            <img alt="" class="presence-entity__image nt-view-attr__img--centered" loading="lazy" src="../../../assets/images/find-peoples/user-profile.jpg">
+            <div *ngIf="destinataire?.profil_photo!=null;else defaultImageUser">
+              <img class="presence-entity__image nt-view-attr__img&#45;&#45;centered" alt="" src="{{env}}/Image/getimage/{{destinataire?.profil_photo}}">
+            </div>
+            <ng-template #defaultImageUser>
+              <img alt="" class="presence-entity__image nt-view-attr__img--centered" loading="lazy" src="../../../assets/images/my-dashboard/dp.png">
+            </ng-template>
+<!--            <img alt="" class="presence-entity__image nt-view-attr__img&#45;&#45;centered" loading="lazy" src="../../../assets/images/find-peoples/user-profile.jpg">-->
             <span class="chat-status online"></span>
           </div>
           <div class="recipient-user-dt">
@@ -22,7 +28,15 @@
         <div class="chat-content">
           <ul class="chats-lists" #messageList>
             <li *ngFor="let message of messages" [ngClass]="messageByme(message.utilisateur_id) ? 'me' : 'you'">
-              <div class="chat-thumb"><img alt="" src="../../../assets/images/dp.jpg"></div>
+              <div class="chat-thumb">
+                <div *ngIf="message?.profil_photo!=null;else defaultImageUser">
+                  <img class="profil-icon-organisateur" alt="" src="{{env}}/Image/getimage/{{message?.profil_photo}}">
+                </div>
+                <ng-template #defaultImageUser>
+                  <img alt="" src="../../../assets/images/my-dashboard/dp.png">
+                </ng-template>
+<!--                <img alt="" src="../../../assets/images/dp.jpg">-->
+              </div>
               <div class="notifi-event">
                 <span class="chat-msg-item">{{message.corps}}</span> <span class="notifi-date"><time class="posted-date" datetime="2021-01-24T18:18">{{message.date_envois}}</time></span>
               </div>
