@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {MessengerService} from "../../../@core/services/messenger.service";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-messages',
@@ -19,6 +20,7 @@ export class MessagesComponent implements OnInit {
   showSearchPerson = false;
   page = 1; // page courante
   pageSize = 5; // nombre de données par page
+  env = `${environment.BASE}`;
   constructor(
     private serviceUser: UtilisateurService,
     private spinner: NgxSpinnerService,
@@ -49,6 +51,7 @@ export class MessagesComponent implements OnInit {
     });
     this.userService.getAllUser().subscribe(response => {
       this.personnes = response.utilisateurs;
+      console.log(this.personnes)
     });
 
     setTimeout(() => {
@@ -63,14 +66,15 @@ export class MessagesComponent implements OnInit {
   }
 
   loadMessagebyUser(idDestinataire: any) {
-    // console.log('connnected : ' + this.user_connected.id);
-    // console.log('destinataire : ' + idDestinataire);
-
+    this.spinner.show();
     this.showSearchPerson = false;
     this.destinataire = idDestinataire;
     this.messengerService.getMessageUser(this.user_connected.id, idDestinataire).subscribe(response => {
       this.messageByUser = response.publication.sort().reverse();
     });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   };
 
   onPersonMessageFilterChange() {
