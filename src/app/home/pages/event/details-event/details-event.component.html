@@ -18,7 +18,7 @@
           <div class="event-detail-content">
             <div class="event-main-img">
               <div *ngIf="event?.couverture_photo!=null;else defaultImage">
-                <img height="200px" alt="" src="{{env}}/Image/getimage/{{event?.couverture_photo}}">
+                <img alt="" height="200px" src="{{env}}/Image/getimage/{{event?.couverture_photo}}">
               </div>
               <ng-template #defaultImage>
                 <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
@@ -57,13 +57,13 @@
               <div class="ttlcnt15 invtbyuser">
                 <div class="invited_avtar_ee">
                   <div *ngIf="event?.profil_photo!=null;else defaultImageUtilisateur">
-                    <img  class="profil-icon-create" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                    <img alt="" class="profil-icon-create" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
                   <ng-template #defaultImageUtilisateur>
                     <img alt="" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
                 </div>
-                <span class="evntcunt">Créé par <a style="cursor: pointer;color: #d3009c" (click)="goToUser(event?.utilisateur_id)" >{{event?.nom}} {{event?.prenom}}</a> </span>
+                <span class="evntcunt">Créé par <a (click)="goToUser(event?.utilisateur_id)" style="cursor: pointer;color: #d3009c">{{event?.nom}} {{event?.prenom}}</a> </span>
               </div>
               <div class="ms-auto mt-4 mt-md-0 mt-lg-0 mt-xl-0">
                 <ul class="egroup-btns">
@@ -79,15 +79,15 @@
                       </button>
                     </li>
                   </ng-template>
-<!--                  <li>-->
-<!--                    <a class="m-share-btn view-hover" data-bs-toggle="modal" href="#shareModal" role="button"><i class="feather-share-2"></i></a>-->
-<!--                  </li>-->
+                  <!--                  <li>-->
+                  <!--                    <a class="m-share-btn view-hover" data-bs-toggle="modal" href="#shareModal" role="button"><i class="feather-share-2"></i></a>-->
+                  <!--                  </li>-->
                   <li>
                     <div class="view-ellipsis">
                       <div class="dropdown">
-                        <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret view-hover" data-bs-toggle="dropdown" style="cursor:pointer;" role="button"><i class="feather-more-vertical"></i></a>
+                        <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret view-hover" data-bs-toggle="dropdown" role="button" style="cursor:pointer;"><i class="feather-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a (click)="updateButton(event)" *ngIf="event?.utilisateur_id==user_connected?.id" style="cursor: pointer" class="post-link-item"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                          <a (click)="updateButton(event)" *ngIf="event?.utilisateur_id==user_connected?.id" class="post-link-item" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
                           <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>
                           <a (click)="goToUser(event.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
                           <a *ngIf="event?.utilisateur_id!=user_connected?.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
@@ -112,10 +112,10 @@
                   <span>{{nombre_comments}}
                     <ins>Commentaires</ins></span> </a>
               </div>
-<!--              <div class="right-comments">-->
-<!--                <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>0 <ins>Partages</ins></span>-->
-<!--                </a>-->
-<!--              </div>-->
+              <!--              <div class="right-comments">-->
+              <!--                <a class="like-item lc-left" href="#" title="Share"> <i class="feather-share-2"></i> <span>0 <ins>Partages</ins></span>-->
+              <!--                </a>-->
+              <!--              </div>-->
             </div>
           </div>
         </div>
@@ -138,11 +138,9 @@
           <div class="main-replies">
             <h4>{{nombre_comments}} Commentaires</h4>
             <div *ngFor="let comment of commentaires" class="reply-user-dt">
-              <div *ngIf="comment?.profil_photo!=null;else defaultImageComment">
-                <img class="photo-comments" alt="" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
-              </div>
+              <img *ngIf="comment?.profil_photo!=null;else defaultImageComment" alt="" class="photo-comments" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
               <ng-template #defaultImageComment>
-                <img class="photo-comments" alt="" src="../../../assets/images/my-dashboard/dp.png">
+                <img alt="" class="photo-comments" src="../../../assets/images/my-dashboard/dp.png">
               </ng-template>
               <a (click)="goToUser(comment.utilisateur_id)" style="cursor: pointer">
                 <h4>{{comment.nom}} {{comment.prenom}}</h4></a>
@@ -161,21 +159,21 @@
             <a class="main-btn btn-hover h_40" href="{{event?.payement_link}}">Trouver Ticket</a>
           </div>
         </div>
-<!--        <div class="main-card">-->
-<!--          <div class="categories-left-heading border_bottom">-->
-<!--            <h3>Participant</h3>-->
-<!--          </div>-->
-<!--          <div class="p-20">-->
-<!--            <div class="gofrnd15s cursur" data-bs-target="#goWithfriendsModal" data-bs-toggle="modal">-->
-<!--              <div class="gowthfrnd">-->
-<!--                <span class="gofndcunt">{{person_liked?.length}} </span> <span class="headttl5e">J'aime</span>-->
-<!--              </div>-->
-<!--              <div class="intrsdfrnd">-->
-<!--                <span class="gofndcunt">3</span> <span class="headttl5e">Interessé(s)</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="main-card">-->
+        <!--          <div class="categories-left-heading border_bottom">-->
+        <!--            <h3>Participant</h3>-->
+        <!--          </div>-->
+        <!--          <div class="p-20">-->
+        <!--            <div class="gofrnd15s cursur" data-bs-target="#goWithfriendsModal" data-bs-toggle="modal">-->
+        <!--              <div class="gowthfrnd">-->
+        <!--                <span class="gofndcunt">{{person_liked?.length}} </span> <span class="headttl5e">J'aime</span>-->
+        <!--              </div>-->
+        <!--              <div class="intrsdfrnd">-->
+        <!--                <span class="gofndcunt">3</span> <span class="headttl5e">Interessé(s)</span>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
         <div class="main-card">
           <div class="categories-left-heading border_bottom">
             <h3>Créateur</h3>
@@ -185,10 +183,10 @@
               <div class="follow-card-left">
                 <div class="follow-avatar">
                   <div *ngIf="event?.profil_photo!=null;else defaultImageUser">
-                    <img class="profil-icon-organisateur" alt="" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
+                    <img alt="" class="profil-icon-organisateur" src="{{env}}/Image/getimage/{{event?.profil_photo}}">
                   </div>
                   <ng-template #defaultImageUser>
-                    <img class="profil-icon-organisateur" alt="" src="../../../assets/images/my-dashboard/dp.png">
+                    <img alt="" class="profil-icon-organisateur" src="../../../assets/images/my-dashboard/dp.png">
                   </ng-template>
                 </div>
                 <div class="follow-name">

@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './security/login/login.service';
 import { LogoutService } from './security/logout/logout.service';
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {PageNotFoundComponent} from "./home/pages/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: async () => (await import('./admin/admin.module')).AdminModule,
     canActivate: [LoginService],
-  }
+  },
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

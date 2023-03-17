@@ -27,7 +27,8 @@ const routes: Routes = [
       {path: 'settings', component: SettingsComponent},
       {path: 'explore', component: ExploreComponent},
       {path: 'res/:search', component: ResultSearchComponent},
-      {path: '404', component: PageNotFoundComponent},
+      {path: 'error', component: PageNotFoundComponent},
+      {path: '**', component: PageNotFoundComponent},
     ]
   }
 ];
