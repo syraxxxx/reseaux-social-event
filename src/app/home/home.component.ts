@@ -60,7 +60,11 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
+    this.spinner.show();
     this.logoutService.logout();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
 
