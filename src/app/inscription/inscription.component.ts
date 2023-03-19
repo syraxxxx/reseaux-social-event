@@ -23,6 +23,7 @@ export class InscriptionComponent implements OnInit {
     ville: new FormControl('', [Validators.required]),
     profil_photo: new FormControl('')
   });
+  passwordType = 'password';
 
   constructor(
     private serviceUser: UtilisateurService,
@@ -63,4 +64,11 @@ export class InscriptionComponent implements OnInit {
     })
   }
 
+  showPassword() {
+    this.passwordType = 'text';
+  }
+
+  hidePassword() {
+    this.passwordType = 'password';
+  }
 }

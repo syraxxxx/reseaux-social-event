@@ -73,7 +73,11 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input class="form-input h_50" formControlName="mdp" placeholder="Mot de passe" type="password">
+                        <input class="form-input h_50" formControlName="mdp" placeholder="Mot de passe" type="{{passwordType}}">
+                        <div class="password-icon">
+                          <i *ngIf="passwordType=='text'" (click)="hidePassword()" class="fa fa-eye" aria-hidden="true"></i>
+                          <i *ngIf="passwordType=='password'" (click)="showPassword()" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        </div>
                         <div *ngIf="formInscription.get('mdp')?.invalid && formInscription.get('mdp')?.touched">
                           <div *ngIf="formInscription.get('mdp')?.errors?.['required']">
                             <span class="error-formInscription">Mot de passe requis</span>

@@ -22,3 +22,13 @@
 .login-register-form{
   text-align: left !important;
 }
+.password-icon{
+  position: relative;
+  margin-top: -35px;
+  margin-left: 90%;
+  color: #6c6c6c;
+  cursor: pointer;
+}
+.password-icon:hover{
+  color: #d3009c;
+}
