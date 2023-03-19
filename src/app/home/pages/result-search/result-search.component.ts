@@ -34,6 +34,10 @@ export class ResultSearchComponent implements OnInit {
   getResult(params: any) {
     this.searchService.search(params).subscribe(response => {
       this.result = response;
+      console.log(this.result);
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 500);
     })
   }
 
