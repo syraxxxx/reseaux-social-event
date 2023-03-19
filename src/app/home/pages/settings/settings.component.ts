@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtilisateurService} from "../../../@core/services/utilisateur.service";
 import Swal from "sweetalert2";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-settings',
@@ -28,12 +29,17 @@ export class SettingsComponent implements OnInit {
   });
 
   constructor(
-    private userService: UtilisateurService
+    private userService: UtilisateurService,
+    private spinner: NgxSpinnerService,
   ) {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getData();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
   }
 
   getData() {
