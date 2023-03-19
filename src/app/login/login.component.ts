@@ -36,16 +36,19 @@ export class LoginComponent implements OnInit {
       this.serviceUser.login(this.form.value).subscribe({
         next: (res: any) => {
           this.loginService.login(res.token);
-
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 500);
         },
         error: (err: any) => {
-          this.errorMessage = "Mail ou mot de passe incorrect"
+          this.errorMessage = "Mail ou mot de passe incorrect";
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 500);
         },
 
       })
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 500);
+
     }
   }
 
