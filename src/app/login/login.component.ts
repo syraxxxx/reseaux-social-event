@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
     mdp: new FormControl('', [Validators.required]),
   })
+  passwordType = 'password';
 
   constructor(
     private http: HttpClient,
@@ -46,5 +47,13 @@ export class LoginComponent implements OnInit {
         this.spinner.hide();
       }, 500);
     }
+  }
+
+  showPassword() {
+    this.passwordType = 'text';
+  }
+
+  hidePassword() {
+    this.passwordType = 'password';
   }
 }

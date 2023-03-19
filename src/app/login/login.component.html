@@ -45,7 +45,11 @@
 														<input class="form-input h_50" type="email" formControlName="email" placeholder="Mail ou numero de téléphone">
 													</div>
 													<div class="form-group">
-														<input class="form-input h_50" type="password" formControlName="mdp" placeholder="Mot de passe">
+														<input class="form-input h_50" type="{{passwordType}}" formControlName="mdp" placeholder="Mot de passe">
+                            <div class="password-icon">
+                              <i *ngIf="passwordType=='text'" (click)="hidePassword()" class="fa fa-eye" aria-hidden="true"></i>
+                              <i *ngIf="passwordType=='password'" (click)="showPassword()" class="fa fa-eye-slash" aria-hidden="true"></i>
+                            </div>
 													</div>
                           <p style="text-align: center; margin-top: 20px; color:rgb(255, 52, 52)">{{errorMessage}}</p>
 													<button class="login-btn" type="submit">Se Connecter</button>
