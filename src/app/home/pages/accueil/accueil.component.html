@@ -30,13 +30,13 @@
                 <div class="tab-pane fade show active" id="tab-top">
                   <div class="main-posts">
                     <div class="row">
-                      <div *ngFor="let pub of publications | slice:(page-1)*pageSize:page*pageSize" class="col-md-6">
+                      <div *ngFor="let pub of publications | slice:(page-1)*pageSize:page*pageSize" class="col-md-12">
                         <div class="event-main-post">
                           <div class="main-photo">
                             <a (click)="getDetails(pub?.id)"  style="cursor: pointer">
                               <div class="photo-overlay"></div>
                               <div *ngIf="pub?.couverture_photo!=null;else defaultImage">
-                                <img height="200px" alt="" src="{{env}}/Image/getimage/{{pub?.couverture_photo}}">
+                                <img height="300px" alt="" src="{{env}}/Image/getimage/{{pub?.couverture_photo}}">
                               </div>
                               <ng-template #defaultImage>
                                 <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
@@ -71,6 +71,9 @@
                                   <i class="feather-thumbs-up me-2"></i> J'aime déjà
                                 </button>
                               </ng-template>
+                              <button (click)="detailButton(pub)"  class="interest-btn btn-hover">
+                                <i class="feather-message-square me-3"></i> Commenter
+                              </button>
 <!--                              <button class="share-btn btn-hover" data-bs-target="#shareModal" data-bs-toggle="modal">-->
 <!--                                <i class="feather-share-2"></i></button>-->
                             </div>
@@ -320,7 +323,7 @@
                 </div>
                 <div class="user-main-details">
                   <h4>{{user_connected?.nom}} {{user_connected?.prenom}}</h4>
-                  <span><i class="feather-map-pin"></i>France</span>
+                  <span><i class="feather-map-pin"></i>{{user_connected?.pays}}</span>
                 </div>
                 <div class="profile-link">
                   <a routerLink="/home/profile">Voir Profil</a>
@@ -425,7 +428,7 @@
   <p style="font-size: 18px; color: white">Chargement des données...</p>
 </ngx-spinner>
 
-<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;">
+<div *ngIf="event_updated!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;backdrop-filter: brightness(20%)">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: #ececec">
       <div class="modal-body">
@@ -464,6 +467,67 @@
             <button [disabled]="!formEventUpdate.dirty" class="main-btn btn-hover" data-bs-dismiss="modal">Modifier</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="event_detail!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;backdrop-filter: brightness(20%)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background-color: #ececec">
+      <div class="modal-body">
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la publication </h2>
+        <hr>
+        <div  class="col-md-12">
+          <div class="event-main-post">
+            <div class="main-photo">
+              <a (click)="getDetails(event_detail?.id)"  style="cursor: pointer">
+                <div class="photo-overlay"></div>
+                <div *ngIf="event_detail?.couverture_photo!=null;else defaultImage">
+                  <img height="300px" alt="" src="{{env}}/Image/getimage/{{event_detail?.couverture_photo}}">
+                </div>
+                <ng-template #defaultImage>
+                  <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
+                </ng-template>
+              </a>
+              <div class="option-ellipsis">
+                <div class="dropdown">
+                  <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" style="cursor:pointer;" role="button"><i class="fas fa-ellipsis-v"></i></a>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <a (click)="updateButton(event_detail)" *ngIf="event_detail?.utilisateur_id==user_connected.id" class="post-link-item" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
+                    <!--                                  <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>-->
+                    <a (click)="goToUser(event_detail?.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
+                    <a *ngIf="event_detail?.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="event-body">
+              <span class="event-time">{{event_detail.date_realisation}}</span>
+              <a (click)="getDetails(event_detail?.id)" class="event-title" routerLink=""> {{event_detail.event_name}} </a>
+              <span class="event-type">{{event_detail?.nom }} {{ event_detail?.prenom}}</span>
+              <p class="ingo-counter">
+                <span>{{event_detail?.nombrelike}} J'aime</span>
+                <span>{{event_detail?.nombreComments}} commentaire(s)</span>
+              </p>
+              <div class="group-btns">
+                <button (click)="likePublication(event_detail?.id)" *ngIf="!event_detail.like_actived;else activated_like" class="interest-btn btn-hover">
+                  <i class="feather-thumbs-up me-2"></i> J'aime
+                </button>
+                <ng-template #activated_like>
+                  <button (click)="dislikePublication(event_detail?.id)" class="interest-btn-like btn-hover">
+                    <i class="feather-thumbs-up me-2"></i> J'aime déjà
+                  </button>
+                </ng-template>
+                <button (click)="detailButton(event_detail)"  class="interest-btn btn-hover">
+                  <i class="feather-message-square me-3"></i> Commenter
+                </button>
+                <!--                              <button class="share-btn btn-hover" data-bs-target="#shareModal" data-bs-toggle="modal">-->
+                <!--                                <i class="feather-share-2"></i></button>-->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

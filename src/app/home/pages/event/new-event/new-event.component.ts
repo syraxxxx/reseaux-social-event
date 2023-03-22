@@ -19,7 +19,7 @@ export class NewEventComponent implements OnInit {
     utilisateur_id: new FormControl(''),
     categories_id: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    payement_link: new FormControl('', [Validators.required]),
+    payement_link: new FormControl(''),
     event_name: new FormControl('', [Validators.required]),
     date_realisation: new FormControl('', [Validators.required]),
     lieu: new FormControl(''),
@@ -56,7 +56,7 @@ export class NewEventComponent implements OnInit {
 
   create_event() {
     this.formNewEvent.get('utilisateur_id')?.setValue(this.user_connected.id);
-    console.log(this.formNewEvent.value)
+    // console.log(this.formNewEvent.value)
     this.eventService.create(this.formNewEvent.value).subscribe({
       next(res: any) {
 

@@ -21,8 +21,10 @@ export class AccueilComponent implements OnInit {
   event_updated: any;
   errorMessage: any;
   page = 1; // page courante
-  pageSize = 6  ; // nombre de données par page
+  pageSize = 6; // nombre de données par page
   env = `${environment.BASE}`;
+  event_detail: any;
+  dsiplay_detail = 'none';
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
@@ -139,11 +141,17 @@ export class AccueilComponent implements OnInit {
     this.postService.update(this.formEventUpdate.value).subscribe(response => {
     })
   }
-  loadAll(){
+
+  loadAll() {
     this.spinner.show();
     this.getData();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
+  }
+
+  detailButton(event: any){
+    this.event_detail = event;
+    this.openPopup();
   }
 }
