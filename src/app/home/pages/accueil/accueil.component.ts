@@ -24,7 +24,9 @@ export class AccueilComponent implements OnInit {
   pageSize = 6; // nombre de données par page
   env = `${environment.BASE}`;
   event_detail: any;
-  dsiplay_detail = 'none';
+  nombre_comments: any;
+  commentaires: any;
+  eventID: any;
 
   formEventUpdate = new FormGroup({
     utilisateur_id: new FormControl(''),
@@ -34,6 +36,11 @@ export class AccueilComponent implements OnInit {
     event_name: new FormControl(''),
     date_realisation: new FormControl(''),
     lieu: new FormControl(''),
+  });
+  formComment = new FormGroup({
+    utilisateur_id: new FormControl(''),
+    publication_id: new FormControl(''),
+    corps: new FormControl(''),
   });
 
   constructor(
@@ -150,8 +157,30 @@ export class AccueilComponent implements OnInit {
     }, 500);
   }
 
-  detailButton(event: any){
+  detailButton(event: any) {
     this.event_detail = event;
+    this.eventID = event.id;
+    this.getAllCommentaireByEvent();
     this.openPopup();
+  }
+
+  commentEvent() {
+    this.spinner.show();
+    this.formComment.get('utilisateur_id')?.setValue(this.user_connected.id);
+    this.formComment.get('publication_id')?.setValue(this.eventID);
+    this.commentService.create(this.formComment.value).subscribe(response => {
+      this.formComment.reset();
+      this.getAllCommentaireByEvent();
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 500);
+    })
+  }
+
+  getAllCommentaireByEvent() {
+    this.commentService.getCommentairesByIdEvent(this.eventID).subscribe(res => {
+      this.commentaires = res.publication;
+      this.nombre_comments = res.publication.length;
+    });
   }
 }

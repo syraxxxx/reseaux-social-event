@@ -13,3 +13,38 @@
   height: 100px;
   border-radius: 100%;
 }
+.comment-post{
+  width: 100%;
+  padding: 10px;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+.reply-user-dt{
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f3f3f3;
+}
+.photo-comments{
+  width: 40px;
+  border-radius: 100%;
+  border: 1px solid grey;
+}
+.clear-icon{
+  position: absolute;
+  left: 90%;
+  top: 2% !important;
+  font-size: 25px;
+  z-index: 99999;
+  background-color: rgba(164, 164, 164, 0.5);
+  width: 30px;
+  height: 30px;
+  padding-top: 2px;
+  padding-bottom : 8px;
+  padding-left : 7px;
+  border-radius: 25px;
+}

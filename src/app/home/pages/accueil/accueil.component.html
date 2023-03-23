@@ -473,10 +473,12 @@
 </div>
 
 <div *ngIf="event_detail!=null" [ngStyle]="{'display':displayStyle}" class="modal" style="backdrop-filter: blur(3px);margin-top: 1%;backdrop-filter: brightness(20%)">
+
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: #ececec">
       <div class="modal-body">
-        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Mis à jour de la publication </h2>
+        <i  style="cursor: pointer" (click)="closePopup()"  class="fas fa-times clear-icon"></i>
+        <h2 class="modal-title" style="padding:2% 5%; text-align: center">Publication de {{event_detail?.nom}} {{event_detail?.prenom}}</h2>
         <hr>
         <div  class="col-md-12">
           <div class="event-main-post">
@@ -490,17 +492,6 @@
                   <img alt="" src="../../assets/images/homepage/center/arrireplan.png">
                 </ng-template>
               </a>
-              <div class="option-ellipsis">
-                <div class="dropdown">
-                  <a aria-expanded="false" class="ellipsis-btn dropdown-toggle-no-caret" data-bs-toggle="dropdown" style="cursor:pointer;" role="button"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a (click)="updateButton(event_detail)" *ngIf="event_detail?.utilisateur_id==user_connected.id" class="post-link-item" style="cursor: pointer"><i class="feather-edit-2 icon-mr1"></i>Modifier</a>
-                    <!--                                  <a class="post-link-item" href="#"><i class="feather-bookmark icon-mr1"></i>Sauvegarder</a>-->
-                    <a (click)="goToUser(event_detail?.utilisateur_id)" class="post-link-item" style="cursor: pointer"><i class="feather-user icon-mr1"></i>Voir le Profil</a>
-                    <a *ngIf="event_detail?.utilisateur_id!=user_connected.id" class="post-link-item" data-bs-target="#reportModal" data-bs-toggle="modal" href="#"><i class="feather-flag icon-mr1"></i>Signaler</a>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="event-body">
               <span class="event-time">{{event_detail.date_realisation}}</span>
@@ -510,22 +501,39 @@
                 <span>{{event_detail?.nombrelike}} J'aime</span>
                 <span>{{event_detail?.nombreComments}} commentaire(s)</span>
               </p>
-              <div class="group-btns">
-                <button (click)="likePublication(event_detail?.id)" *ngIf="!event_detail.like_actived;else activated_like" class="interest-btn btn-hover">
-                  <i class="feather-thumbs-up me-2"></i> J'aime
-                </button>
-                <ng-template #activated_like>
-                  <button (click)="dislikePublication(event_detail?.id)" class="interest-btn-like btn-hover">
-                    <i class="feather-thumbs-up me-2"></i> J'aime déjà
-                  </button>
+            </div>
+          </div>
+          <div class="main-card mt-30">
+            <div class="main-reply-comment">
+              <h4>Commentaires</h4>
+              <form (ngSubmit)="commentEvent()" [formGroup]="formComment">
+                <div class="reply-buttons">
+                  <div class="add-photo-button">
+                    <div class="screnshot" id="OpenImgUpload1">
+                      <input class="comment-post" formControlName="corps" id="file1" placeholder="Votre commentaire..." type="text">
+                    </div>
+                  </div>
+                  <div class="post-reply-btn">
+                    <button  [disabled]="!formComment.get('corps')?.value" class="btn-main btn-hover send-button">
+                      <i class="feather-send"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="main-replies">
+              <h4>{{nombre_comments}} Commentaires</h4>
+              <div *ngFor="let comment of commentaires" class="reply-user-dt">
+                <img *ngIf="comment?.profil_photo!=null;else defaultImageComment" alt="" class="photo-comments" src="{{env}}/Image/getimage/{{comment?.profil_photo}}">
+                <ng-template #defaultImageComment>
+                  <img alt="" class="photo-comments" src="../../../assets/images/my-dashboard/dp.png">
                 </ng-template>
-                <button (click)="detailButton(event_detail)"  class="interest-btn btn-hover">
-                  <i class="feather-message-square me-3"></i> Commenter
-                </button>
-                <!--                              <button class="share-btn btn-hover" data-bs-target="#shareModal" data-bs-toggle="modal">-->
-                <!--                                <i class="feather-share-2"></i></button>-->
+                <a (click)="goToUser(comment.utilisateur_id)" style="cursor: pointer">
+                  <h4>{{comment.nom}} {{comment.prenom}}</h4></a>
+                <p>{{comment.corps}}</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
