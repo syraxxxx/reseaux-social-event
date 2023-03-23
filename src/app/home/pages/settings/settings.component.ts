@@ -55,7 +55,7 @@ export class SettingsComponent implements OnInit {
   changeMdp() {
     console.log('change mdp');
     this.formMdp.get('id')?.setValue(this.user_connected.id);
-    console.log(this.formMdp.value);
+    // console.log(this.formMdp.value);
     this.userService.changePassword(this.formMdp.value).subscribe({
       next(res: any) {
         console.log(res)
