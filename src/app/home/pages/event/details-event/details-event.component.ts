@@ -39,7 +39,8 @@ export class DetailsEventComponent implements OnInit {
     description: new FormControl(''),
     payement_link: new FormControl(''),
     event_name: new FormControl(''),
-    date_realisation: new FormControl(''),
+    date_debut: new FormControl(''),
+    date_fin: new FormControl(''),
     lieu: new FormControl(''),
   });
 
@@ -68,7 +69,7 @@ export class DetailsEventComponent implements OnInit {
     this.publicationService.getPublication(this.eventID).subscribe(response => {
       this.event = response.publication[0];
       // console.log(this.event);
-      this.month = months[new Date(this.event.date_realisation).getMonth()].toUpperCase();
+      this.month = months[new Date(this.event.date_debut).getMonth()].toUpperCase();
     });
     this.userService.getUserByToken().subscribe(response => {
       this.user_connected = response.user[0];

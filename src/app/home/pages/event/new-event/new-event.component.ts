@@ -21,7 +21,8 @@ export class NewEventComponent implements OnInit {
     description: new FormControl(''),
     payement_link: new FormControl(''),
     event_name: new FormControl('', [Validators.required]),
-    date_realisation: new FormControl('', [Validators.required]),
+    date_debut: new FormControl('', [Validators.required]),
+    date_fin: new FormControl('', [Validators.required]),
     lieu: new FormControl(''),
     couverture_photo: new FormControl(''),
   });

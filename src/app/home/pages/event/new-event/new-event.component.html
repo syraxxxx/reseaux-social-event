@@ -52,10 +52,17 @@
                       </div>
                     </div>
                     <div class="form-group mt-4">
-                      <label class="form-label">Date de réalisation*</label>
-                      <input class="search-form-input datepicker-here" data-language='en' formControlName="date_realisation" formControlName="date_realisation" type="datetime-local">
-                      <div *ngIf="formNewEvent.get('date_realisation')?.errors?.['required'] && formNewEvent.get('date_realisation')?.touched">
-                        <span class="error-formNewEvent">Vous devez indiquer la date de réalisation*</span>
+                      <label class="form-label">Date début*</label>
+                      <input class="search-form-input datepicker-here" data-language='en' formControlName="date_debut"  type="datetime-local">
+                      <div *ngIf="formNewEvent.get('date_debut')?.errors?.['required'] && formNewEvent.get('date_debut')?.touched">
+                        <span class="error-formNewEvent">Vous devez indiquer la date de début*</span>
+                      </div>
+                    </div>
+                    <div class="form-group mt-4">
+                      <label class="form-label">Date de fin*</label>
+                      <input class="search-form-input datepicker-here" data-language='en' formControlName="date_fin"  type="datetime-local">
+                      <div *ngIf="formNewEvent.get('date_fin')?.errors?.['required'] && formNewEvent.get('date_fin')?.touched">
+                        <span class="error-formNewEvent">Vous devez indiquer la date de fin*</span>
                       </div>
                     </div>
                     <div class="form-group mt-4">
