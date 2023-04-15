@@ -48,12 +48,17 @@
                 </h4>
                 <span class="user-loc"><i class="feather-map-pin"></i>{{personne_profil?.pays}}</span>
               </div>
-              <!--              <div class="ff-block">-->
-              <!--                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>4</span>Abonnées</a>-->
-              <!--                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>5</span>Suivi</a>-->
-              <!--              </div>-->
+              <div class="ff-block">
+                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>0</span>Abonnées</a>
+                <a class="" data-bs-target="#FFModal" data-bs-toggle="modal" href="#" role="button"><span>0</span>Suivi</a>
+              </div>
               <div class="user-description">
                 <p>Bonjour je suis {{personne_profil?.nom}} {{personne_profil?.prenom}}</p>
+              </div>
+
+              <div *ngIf="this.idPerson" class="user-btns">
+                <button class="main-btn btn-hover min-width d-inline-block h_40 me-2">Suivre</button>
+                <button class="co-main-btn min-width h_40" >Message</button>
               </div>
               <div *ngIf="!this.idPerson" class="user-btns">
                 <a class="co-main-btn co-btn-width min-width d-inline-block h_40" routerLink="/home/settings"><i class="feather-settings me-2"></i>Paramètres</a>
